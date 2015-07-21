@@ -20,7 +20,7 @@ html, body {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #AFA0D0;
+    color: #9E9FC9;
     background-color: transparent;
 }
 
@@ -32,7 +32,7 @@ html, body {
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #AFA0D0;
+    color: #9E9FC9;
     background-color: transparent;
 }
 
@@ -55,10 +55,10 @@ html, body {
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color:#585A69;
   opacity:50%;
-  color:#AFA0D0;
+  color:#9E9FC9;
 }
 .table-striped > tbody > tr:nth-of-type(even) {
-  background-color: #AFA0D0;
+  background-color: #9E9FC9;
   opacity:50%;
 }
 
@@ -76,7 +76,7 @@ a:visited{
 	min-height: 100%;
 	/*overflow: hidden;*/
 	padding:45px;
-	background-color: #AFA0D0;
+	background-color: #9E9FC9;
 }
 
 
@@ -86,7 +86,7 @@ a:visited{
 	/*min-height: 100%;*/
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #AFA0D0;
+	background-color: #9E9FC9;
 }
 
 .research-section{
@@ -95,7 +95,7 @@ a:visited{
 	/*overflow: hidden;*/
 	padding:50px;
 	width:auto;
-	background-color: #AFA0D0;
+	background-color: #9E9FC9;
 }
 
 .teaching-section{
@@ -103,7 +103,7 @@ a:visited{
 	/*min-height: 100%;*/
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #AFA0D0;
+	background-color: #9E9FC9;
 }
 
 .reference-section{
@@ -111,14 +111,14 @@ a:visited{
 	/*min-height: 100%;*/
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #AFA0D0;
+	background-color: #9E9FC9;
 }
 .contact-section{
 	height:auto;
 	min-height: 100%;
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #AFA0D0;
+	background-color: #9E9FC9;
 }
 
 .infobox{
@@ -140,7 +140,7 @@ a:visited{
 }
 
 .symbolline span {
-    background-color: #AFA0D0;
+    background-color: #9E9FC9;
     color:white; 
     padding:0px 10px;  
   	position: relative;
@@ -209,5 +209,5 @@ h6 .small,
 .h6 .small {
   font-weight: normal;
   line-height: .8;
-  color: #AFA0D0;
+  color: #9E9FC9;
 }
