@@ -20,7 +20,7 @@ html, body {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #9E9FC9;
+    color: #8E8F9C;
     background-color: transparent;
 }
 
@@ -32,7 +32,7 @@ html, body {
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #9E9FC9;
+    color: #8E8F9C;
     background-color: transparent;
 }
 
@@ -55,10 +55,10 @@ html, body {
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color:#585A69;
   opacity:50%;
-  color:#9E9FC9;
+  color:#8E8F9C;
 }
 .table-striped > tbody > tr:nth-of-type(even) {
-  background-color: #9E9FC9;
+  background-color: #8E8F9C;
   opacity:50%;
 }
 
@@ -76,7 +76,7 @@ a:visited{
 	min-height: 100%;
 	/*overflow: hidden;*/
 	padding:45px;
-	background-color: #9E9FC9;
+	background-color: #8E8F9C;
 }
 
 
@@ -86,7 +86,7 @@ a:visited{
 	/*min-height: 100%;*/
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #9E9FC9;
+	background-color: #8E8F9C;
 }
 
 .research-section{
@@ -95,7 +95,7 @@ a:visited{
 	/*overflow: hidden;*/
 	padding:50px;
 	width:auto;
-	background-color: #9E9FC9;
+	background-color: #8E8F9C;
 }
 
 .teaching-section{
@@ -103,7 +103,7 @@ a:visited{
 	/*min-height: 100%;*/
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #9E9FC9;
+	background-color: #8E8F9C;
 }
 
 .reference-section{
@@ -111,14 +111,14 @@ a:visited{
 	/*min-height: 100%;*/
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #9E9FC9;
+	background-color: #8E8F9C;
 }
 .contact-section{
 	height:auto;
 	min-height: 100%;
 	/*overflow: hidden;*/
 	padding:50px;
-	background-color: #9E9FC9;
+	background-color: #8E8F9C;
 }
 
 .infobox{
@@ -140,7 +140,7 @@ a:visited{
 }
 
 .symbolline span {
-    background-color: #9E9FC9;
+    background-color: #8E8F9C;
     color:white; 
     padding:0px 10px;  
   	position: relative;
@@ -209,5 +209,5 @@ h6 .small,
 .h6 .small {
   font-weight: normal;
   line-height: .8;
-  color: #9E9FC9;
+  color: #8E8F9C;
 }
