@@ -211,3 +211,7 @@ h6 .small,
   line-height: .8;
   color: #B4B4B8;
 }
+
+.table-responsive{
+	border:0;
+}

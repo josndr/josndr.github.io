@@ -394,41 +394,28 @@
     "input-groups.less",
     "navs.less",
     "navbar.less",
-    "breadcrumbs.less",
-    "pagination.less",
-    "pager.less",
     "labels.less",
     "badges.less",
-    "jumbotron.less",
     "thumbnails.less",
-    "alerts.less",
-    "progress-bars.less",
     "media.less",
     "list-group.less",
     "panels.less",
     "responsive-embed.less",
-    "wells.less",
     "close.less",
     "component-animations.less",
     "dropdowns.less",
     "tooltip.less",
     "popovers.less",
-    "modals.less",
-    "carousel.less"
+    "modals.less"
   ],
   "js": [
-    "alert.js",
-    "button.js",
-    "carousel.js",
     "dropdown.js",
     "modal.js",
-    "tooltip.js",
-    "popover.js",
     "tab.js",
     "affix.js",
     "collapse.js",
     "scrollspy.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=1ae760c1a6cadd1dbda6"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=0052664c08f2212292bf"
 }
