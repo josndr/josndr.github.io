@@ -181,6 +181,8 @@ div.textContainer p{
     text-align: left;
 }
 
+.center { float: none; margin-left: auto; margin-right: auto; }
+
 h4 {color:white;}
 
 h1 small,
