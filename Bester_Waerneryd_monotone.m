@@ -1,7 +1,16 @@
-% ALGORITHM FOR MONOTONE LOTTERIES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Supplementary Material to: Managing a Conflict %
+%%%%%%%%%% By B.Balzer and J. Schneider %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ALGORITHM FOR MONOTONE LOTTERIES %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear
 options = optimset('Display','off');
+
+
 %{
 INPUT part. Here we determine the input part. The base line model is one
 similar to that discussed in Bester/Waerneryd with a fraction q<1 available
