@@ -1,9 +1,13 @@
 html, body {
 	height:100%;
 	width:100%;
-	font-family: "Century Gothic",Futura,Verdana,Helvetica;
-
+	font-family: Memphis,"Rockwell","Filosofia","Courier Prime", serif;
 }
+
+h1{font-family:"Century Gothic";}
+h3{font-family:"Century Gothic";}
+
+/*p{font-style: italic;}*/
 
 
 
@@ -13,12 +17,13 @@ html, body {
 	border:0;
 	color:black;
 	overflow:hidden;
+	font-family: "Century Gothic", Futura, sans-serif;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: white;
     background-color: #585A69;
-    border:0;
+    border:0;    
 }
 
 .navbar-default .navbar-nav > li > a:hover {
