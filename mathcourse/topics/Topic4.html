@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 4: Continuity, Closed Sets, and Existence</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic3.html" class="nav-prev">← Previous</a><a href="Topic5.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic4.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-4-continuity-closed-sets-and-existence">Topic 4: Continuity, Closed Sets, and Existence</h1>
+<p><em>(Why solutions exist — and when they do not)</em></p>
+<hr />
+<h2 id="why-continuity-and-closedness-matter">1. Why continuity and closedness matter</h2>
+<p>Up to now, we have talked about: - sets of feasible alternatives, - preferences over those alternatives, - and geometric structure such as convexity.</p>
+<p>But we have carefully avoided a fundamental question:</p>
+<blockquote>
+<p>Does an optimal choice actually exist?</p>
+</blockquote>
+<p>This question is not rhetorical. Many economic models are internally consistent, well-motivated, and intuitive — and yet fail to have solutions.</p>
+<p>The reason is usually not a lack of convexity, but a lack of <strong>topological regularity</strong>:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> - sets that are not closed, - preferences that jump discontinuously, - or objective functions that approach a maximum without ever reaching it.</p>
+<p>This topic introduces the minimal tools needed to understand what later we will call <strong>existence</strong>.</p>
+<hr />
+<h2 id="open-and-closed-sets-intuition-first">2. Open and closed sets: intuition first</h2>
+<p>Again, let’s think about Euclidean spaces and let <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span>.</p>
+<p>Informally we say that <span class="math inline">\(X\)</span> is - an <strong>open</strong> set if wherever you start in the set, you can move a little in any direction and stay inside the set, - a <strong>closed</strong> set if it contains all its boundary points.</p>
+<p>At first glance, this sounds like two mutually exclusive notions. If the set contains the boundary, then walking away from the boundary will make me leave the set at least in one direction. It turns out, this intuition is often true, but not always.</p>
+<p>First, let us be a bit more precise:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> is <strong>open</strong> if for every <span class="math inline">\(x \in X\)</span> there exists <span class="math inline">\(\varepsilon &gt; 0\)</span> such that <span class="math display">\[ B_\varepsilon(x) \subseteq X, \]</span> where <span class="math inline">\(B_\varepsilon(x)\)</span> denotes the open ball of radius <span class="math inline">\(\varepsilon\)</span> around <span class="math inline">\(x\)</span>.</li>
+<li><span class="math inline">\(X\)</span> is <strong>closed</strong> if its complement is an open set.</li>
+</ul>
+<p>The notion of the ball <span class="math inline">\(B_\varepsilon(x)\)</span> may be unfamiliar at first glance, but it basically means that around <span class="math inline">\(x\)</span> we can form some form of ‘’aura’’ so that if we want to stand at <span class="math inline">\(x\)</span> we miss slightly (in the slightest way of slightly) we will at least be in that ball. If the set is open and we miss in the slightest way of slightly the point <span class="math inline">\(x\)</span> we wanted to be at, we will at least still be in the set.</p>
+<p>Now, let us go back on the notions. It turns out they are really independent notions. - a set can be open but not closed, - closed but not open, - both, - or neither.</p>
+<p>Intervals in <span class="math inline">\(\mathbb{R}\)</span> make that very clear. The interval <span class="math inline">\([1,2]\)</span> is a closed set, but not open, the interval <span class="math inline">\((1,2)\)</span> is open but not closed. The interval <span class="math inline">\((1,2]\)</span> is neither. The emptyset, <span class="math inline">\(\emptyset\)</span> is by definition open,<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> thus the entire underlying space—which is the complement to <span class="math inline">\(\emptyset\)</span> (here <span class="math inline">\(\mathbb{R}\)</span>)—must be closed. However that space is also open, because if we slightly miss, we remain in <span class="math inline">\(\mathbb{R}\)</span>. That means <span class="math inline">\(\emptyset\)</span> has to be closed too.</p>
+<hr />
+<h2 id="why-closedness-is-economically-important">3. Why closedness is economically important</h2>
+<p>Closedness matters because <strong>maxima</strong> are typically on boundaries. They are the largest point there is (in some direction). So, they have to live on the boundary.</p>
+<p>Consider a consumer choosing <span class="math inline">\(x\)</span> from a feasible set <span class="math inline">\(X\)</span> to maximize utility. Even if preferences are continuous and well-behaved, the optimal choice may lie: - at a corner, - on a constraint, - or exactly at the boundary of feasibility.</p>
+<p>If the boundary is not included, the optimum may be <em>approached</em> but never <em>attained</em>, so the problem would have no solution.</p>
+<hr />
+<h2 id="example-a-failure-of-existence">4. Example: A failure of existence</h2>
+<p>Consider the simple problem:</p>
+<p><span class="math display">\[
+\max_{x \in (0,1)} x.
+\]</span></p>
+<p>The objective function is continuous. The feasible set is convex. Preferences are trivial.</p>
+<p>And yet: <strong>there is no solution</strong>.</p>
+<p>The supremum is <span class="math inline">\(1\)</span>, but <span class="math inline">\(1 \notin (0,1)\)</span>.</p>
+<p>This example shows: &gt; Convexity alone does not guarantee existence.</p>
+<p>Closedness is essential.</p>
+<hr />
+<h2 id="compactness-putting-everything-together">5. Compactness: putting everything together</h2>
+<p>In finite-dimensional spaces, existence results are often driven by <strong>compactness</strong>.</p>
+<p>A set <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is <strong>compact</strong> if it is: - closed, - and bounded.</p>
+<p>This characterization is specific to <span class="math inline">\(\mathbb{R}^n\)</span> and is known as the <strong>Heine–Borel property</strong>.</p>
+<p>Compactness is powerful because it ensures that sequences cannot ‘’escape to infinity’’ and that limits stay inside the set.</p>
+<hr />
+<h2 id="continuity-of-functions">6. Continuity of functions</h2>
+<p>Let <span class="math inline">\(f: X \to \mathbb{R}\)</span> be a function.</p>
+<p>Informally, <span class="math inline">\(f\)</span> is <strong>continuous</strong> if: &gt; small changes in the input lead to small changes in the output.</p>
+<p>Formally, <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span> if for every <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists <span class="math inline">\(\delta &gt; 0\)</span> such that</p>
+<p><span class="math display">\[
+\|x - x&#39;\| &lt; \delta \Rightarrow |f(x) - f(x&#39;)| &lt; \varepsilon.
+\]</span></p>
+<p>We will not work directly with <span class="math inline">\(\varepsilon\)</span>–<span class="math inline">\(\delta\)</span> arguments in the course. Instead, we will use continuity as a structural assumption with powerful consequences.</p>
+<h3 id="a-remark-on-metrics">A remark on metrics</h3>
+<p>You may have noticed that the definition of continuity relies on a notion of “distance”: <span class="math inline">\(\|x - x&#39;\|\)</span> measures how far apart two points are. In <span class="math inline">\(\mathbb{R}^n\)</span>, this is the usual Euclidean distance — the one you know from school. It basically says, the distance between two points is the length of the line connecting the two points.</p>
+<p>More generally, a <strong>metric</strong> on a set <span class="math inline">\(X\)</span> is any function <span class="math inline">\(d: X \times X \to \mathbb{R}\)</span> that satisfies four properties:</p>
+<ol type="1">
+<li><span class="math inline">\(d(x,y) \geq 0\)</span> for all <span class="math inline">\(x, y\)</span> (distances are nonnegative),</li>
+<li><span class="math inline">\(d(x,y) = 0\)</span> if and only if <span class="math inline">\(x = y\)</span> (only identical points have zero distance),</li>
+<li><span class="math inline">\(d(x,y) = d(y,x)\)</span> for all <span class="math inline">\(x, y\)</span> (distance is symmetric),</li>
+<li><span class="math inline">\(d(x,z) \leq d(x,y) + d(y,z)\)</span> for all <span class="math inline">\(x, y, z\)</span> (the triangle inequality — going via a detour is never shorter).</li>
+</ol>
+<p>A set equipped with a metric is called a <strong>metric space</strong>. Everything we have discussed in this topic — open sets, closed sets, continuity, compactness — can be defined in any metric space, not just in <span class="math inline">\(\mathbb{R}^n\)</span>. The definitions look exactly the same, with <span class="math inline">\(d(x,x&#39;)\)</span> replacing <span class="math inline">\(\|x - x&#39;\|\)</span>.</p>
+<p>For most of this course, we will work with the usual Euclidean metric on <span class="math inline">\(\mathbb{R}^n\)</span> and will not need to think about alternatives. But sometimes we need to work on different spaces in economics (the space of functions, environments, whatever). Then the natural metric is, perhaps, less clear. Therefore, we will later, in Topic <a href="Topic13.html">13</a>, return to the question of why economists sometimes need more abstract metrics — for instance, when the objects being compared are not vectors of numbers but <em>functions</em>, <em>sets</em>, or <em>probability distributions</em>. Naming the concept now means it will not be unfamiliar when it reappears.</p>
+<hr />
+<h2 id="the-intermediate-value-theorem">7. The Intermediate Value Theorem</h2>
+<p>Continuity has immediate consequences, and the simplest one is that continuous functions cannot “skip” values.</p>
+<p>The following theorem says this:</p>
+<blockquote>
+<p>“If a continuous (one-dimensional) function starts below some value and ends above it, then it must pass through that value somewhere in between.”</p>
+</blockquote>
+<hr />
+<p><strong>Theorem (Intermediate Value Theorem).</strong> Let <span class="math inline">\(f: [a,b] \to \mathbb{R}\)</span> be continuous, and suppose <span class="math inline">\(f(a) \leq c \leq f(b)\)</span> (or <span class="math inline">\(f(b) \leq c \leq f(a)\)</span>). Then there exists some <span class="math inline">\(\hat{x} \in [a,b]\)</span> such that <span class="math inline">\(f(\hat{x}) = c\)</span>.</p>
+<hr />
+<p><strong>Proof.</strong> Without loss assume <span class="math inline">\(f(a)&lt;f(b)\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Let <span class="math inline">\(X={x \in [a,b] : f(x) \leq c}\)</span> be the set of points such that the function value is below <span class="math inline">\(c\)</span>. <span class="math inline">\(X\)</span> is clearly non-empty, because it contains <span class="math inline">\(a\)</span>. It is also bounded above by <span class="math inline">\(b\)</span>, so there has to be a supremum <span class="math inline">\(\sup X=\hat{x}\in [a,b]\)</span>.</p>
+<p>We now want to show that <span class="math inline">\(f(\hat{x})=c\)</span>.</p>
+<p>First, <span class="math inline">\(f(\hat{x})&lt;c\)</span> cannot be true because either <span class="math inline">\(\hat{x}=b\)</span> in which case <span class="math inline">\(f(\hat{x}\)</span>)=<span class="math inline">\(f(b)\geq c\)</span> or <span class="math inline">\(\hat{x}&lt;b\)</span> in which case we can, using continuity of <span class="math inline">\(f\)</span> find some <span class="math inline">\(x&#39; \in (\hat{x},b)\)</span> such that <span class="math inline">\(f(x&#39;)&lt;c\)</span> and thus <span class="math inline">\(x&#39; \in X\)</span> contradicting the definition of <span class="math inline">\(\hat{x}\)</span> as the supremum of <span class="math inline">\(X\)</span>.</p>
+<p>Now <span class="math inline">\(f(\hat{x})&gt;c\)</span> cannot be true because either <span class="math inline">\(\hat{x}=a\)</span> in which case <span class="math inline">\(f(\hat{x}\)</span>)=<span class="math inline">\(f(a)\leq c\)</span> or <span class="math inline">\(\hat{x}&gt;a\)</span> in which case we can, using continuity of <span class="math inline">\(f\)</span> find some <span class="math inline">\(x&#39; \in (a,\hat{x})\)</span> such that <span class="math inline">\(f(x&#39;)&gt;c\)</span> and thus <span class="math inline">\(x&#39; \notin X\)</span> contradicting the definition of <span class="math inline">\(\hat{x}\)</span> as the supremum of <span class="math inline">\(X\)</span>.</p>
+<p>Ths <span class="math inline">\(f(\overline{x})=c\)</span> is the only remaining possibility, and thus the theorem is proven. <span class="math inline">\(\square\)</span></p>
+<p>The theorem says nothing about <em>where</em> that point is, or how many such points there are. It only guarantees existence. But that guarantee is surprisingly powerful.</p>
+<p>Why does this work? Because continuity means no jumps. If the function starts at <span class="math inline">\(f(a)\)</span> and ends at <span class="math inline">\(f(b)\)</span> and never jumps, it has to pass through everything in between. A function that skips a value would need a discontinuity to do so.</p>
+<p>This is our first taste of a pattern that will recur throughout the course: <strong>continuity plus structure gives existence</strong>. The Intermediate Value Theorem is, in a sense, the one-dimensional ancestor of the fixed-point theorems we will meet later. In fact, many fixed-point arguments in one dimension are just clever applications of this result.</p>
+<hr />
+<h2 id="the-weierstrass-theorem-existence-of-maxima">8. The Weierstrass Theorem (existence of maxima)</h2>
+<p>Why do we do all this? Because of Weierstrass.</p>
+<p><strong>Theorem (Weierstrass).</strong><br />
+If <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is compact and <span class="math inline">\(f: X \to \mathbb{R}\)</span> is continuous, then:</p>
+<p><span class="math display">\[
+\max_{x \in X} f(x)
+\]</span></p>
+<p>exists.</p>
+<p>The theorem in words: Suppose the choice set is a subset of a Euclidean space and compact. Assume the objective is continuous. Then a choice that maximizes the objective exists.</p>
+<p>This theorem is the backbone of existence results in microeconomics.</p>
+<hr />
+<h2 id="why-economists-care-about-continuity">9. Why economists care about continuity</h2>
+<p>Continuity is not a technical luxury. It encodes economically meaningful assumptions: - small changes in prices do not cause jumps in demand, - small changes in endowments do not cause discontinuous behavior, - incentives vary smoothly with parameters.</p>
+<p>Discontinuities often signal: - indivisibilities, - threshold effects, - or institutional constraints.</p>
+<p>These can be important—but they require different tools.</p>
+<hr />
+<h2 id="continuity-of-preferences-and-utility-representations">10. Continuity of preferences and utility representations</h2>
+<p>Preferences are <strong>continuous</strong> if small changes in alternatives do not flip rankings abruptly.</p>
+<p>Formally, continuity of preferences means that for any <span class="math inline">\(x\)</span>: - the better set <span class="math inline">\(\{y \mid y \succeq x\}\)</span> is closed, - and the <em>worse set</em> (or lower contour set) <span class="math inline">\(\{y \mid x \succeq y\}\)</span> is closed.</p>
+<p>When preferences admit a utility representation, continuity of preferences corresponds to continuity of the representing utility function.</p>
+<p>If we have that, our lives are simple. If not, they require other tools.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<hr />
+<h2 id="existence-of-optimal-choices">12. Existence of optimal choices</h2>
+<p>Putting everything together:</p>
+<p>If: - preferences are complete and transitive, - preferences are continuous, - the feasible set is compact,</p>
+<p>then: - an optimal choice exists, - and the choice correspondence is non-empty.</p>
+<p>This result will be used repeatedly: - in consumer theory, - in mechanism design, - in equilibrium analysis, - and later in dynamic models.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>The relevant material appears in:</p>
+<ul>
+<li><strong>MWG, Chapter 1</strong> (preferences and continuity)</li>
+<li><strong>MWG, Chapter 3</strong> (consumer optimization)</li>
+<li><strong>MWG, Mathematical Appendix A</strong> (topological notions)</li>
+<li><strong>MWG, Mathematical Appendix C</strong> (existence theorems)</li>
+</ul>
+<p>The appendices give formal statements. The chapters show how these ideas power economic analysis.</p>
+<hr />
+<h2 id="another-economic-example-non-existence-of-demand">12. Another economic example: non-existence of demand</h2>
+<p>Consider a consumer with utility <span class="math inline">\(u(x)=x\)</span> and feasible set <span class="math inline">\(X=(0,1)\)</span>.</p>
+<p>Even though preferences are continuous and convex, demand is empty. Which of course does not make much economic sense. Often, if a model fails to produce existence, it is a bad model. It is not useful to think about situation where we don’t know what is happening, and often they are not applicable to the real world in which things typically tend to happen. But, it is a useful example, because it explains why economists insist on (in their models): - closed budget sets, - local nonsatiation, - and sometimes artificial bounds.</p>
+<p>Existence is not automatic — it is engineered.</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">13. Why this matters for microeconomics</h2>
+<p>Much of microeconomic theory is concerned with <strong>existence before uniqueness</strong>.</p>
+<p>Before we ask: - how many equilibria exist, - how they compare, - how they change with parameters,</p>
+<p>we must first ensure that <em>something exists at all</em>.</p>
+<p>Continuity and closedness are the quiet assumptions that make the rest of the theory possible.</p>
+<hr />
+<h2 id="what-you-should-take-away">14. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - distinguishing open and closed sets, - understanding why compactness matters, - seeing continuity as an economic assumption, - and recognizing when existence arguments apply.</p>
+<p>These tools will soon be used implicitly. Knowing where they come from will help you spot when they fail.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><strong>Topology</strong> is the study of properties of geometric objects. In our setting which ultimately talks about optimization, it often means which movements in the choice space we allow and how we restrict the effect on those moves on outcomes. For now this is very vague, but it helps us answer questions that economists like, such as: ‘’If we just add one more tiny thing? Would we be better or worse?’’<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This sounds a bit fishy, but for reasons that are not yet clear is important to be able to work with closedness.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The equality case is trivial, the flipped inequality case is just a relabeling exercise.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Note, that continuity rarely comes for free, and sometimes is explicitly not desired. But if we have it, we can use a lot of machinery to understand what is going on even if we can’t describe a solution—the knowledge of its existence is enough.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic3.html" class="nav-prev">← Previous</a><a href="Topic5.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

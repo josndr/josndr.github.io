@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 1: Sets, Mappings, and the Language of Economic Models</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic2.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic1.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-1-sets-mappings-and-the-language-of-economic-models">Topic 1: Sets, Mappings, and the Language of Economic Models</h1>
+<p><em>(Why economists spend so much time talking about functions)</em></p>
+<hr />
+<h2 id="why-this-topic-exists-at-all">1. Why this topic exists at all</h2>
+<p>When economists write down a model, they are almost never trying to compute a number.<br />
+They are trying to describe a <strong>relationship</strong>.</p>
+<p>For example: - how prices relate to demand, - how preferences relate to choices, - how information relates to outcomes, - how today’s actions relate to tomorrow’s incentives.</p>
+<p>Mathematically, a relationship is expressed by a <strong>mapping</strong>: something that takes inputs and assigns outputs.</p>
+<p>Much of the difficulty students face with formal economic theory comes from not being fully comfortable with this basic ideas like: - what are the objects? - what is being mapped to what? - what does it mean to “solve” the model?</p>
+<p>This first topic is therefore about learning to <strong>read and write the language in which economic relationships are expressed</strong>.</p>
+<hr />
+<h2 id="sets-describing-what-can-possibly-happen">2. Sets: describing what can possibly happen</h2>
+<p>We begin with the simplest idea: a <strong>set</strong>.</p>
+<p>A set is simply a collection of objects. These could be <strong>things you own</strong>, <strong>options you have</strong>, <strong>things that can be produced</strong>, etc.</p>
+<p>If, for example, a consumer chooses quantities of two goods, she then has a set of goods. There are many ways to write them down, one we often use is a pair of numbers, say <span class="math inline">\((x_1,x_2)\)</span>.<br />
+The set of all possible bundles is written as a subset of the two-dimensional plane <span class="math inline">\(\mathbb{R}^2.\)</span></p>
+<p>Already here we see an important idea: <strong>economic objects are often vectors, not scalars</strong>.</p>
+<hr />
+<h2 id="cartesian-products-building-multidimensional-spaces">3. Cartesian products: building multidimensional spaces</h2>
+<p>Suppose we have two sets: - <span class="math inline">\(X_1\)</span>: possible choices of good 1, - <span class="math inline">\(X_2\)</span>: possible choices of good 2.</p>
+<p>The <strong>Cartesian product</strong> <span class="math display">\[ X_1 \times X_2 \]</span> is the set of all ordered pairs <span class="math inline">\((x_1,x_2)\)</span> with <span class="math inline">\(x_1 \in X_1\)</span> and <span class="math inline">\(x_2 \in X_2\)</span>.</p>
+<p>Geometrically, you should think of a Cartesian product as a <strong>multidimensional space</strong>: - one dimension per component, - each point representing a complete specification of choices.</p>
+<p>This construction appears everywhere in economics: - a consumption bundle is a point in a product space, - a strategy profile is a point in a product of players’ strategy sets, - a type profile is a point in a product of agents’ type spaces.</p>
+<p>Whenever you see notation like <span class="math display">\[ x = (x_1,\dots,x_n), \]</span> you are in a Cartesian product. Understanding this is essential for following later arguments about equilibrium and interaction.</p>
+<hr />
+<h2 id="functions-when-behavior-is-uniquely-determined">4. Functions: when behavior is uniquely determined</h2>
+<p>A <strong>function</strong> is a rule that assigns <strong>exactly one output</strong> to each input.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Formally, a function <span class="math inline">\(f\)</span> from a set <span class="math inline">\(X\)</span> to a set <span class="math inline">\(Y\)</span> is written as <span class="math display">\[ f: X \to Y. \]</span> This formulation means <strong>every</strong> element in set <span class="math inline">\(X\)</span> is mapped to <strong>some</strong> element in set <span class="math inline">\(Y\)</span>, or formally <span class="math inline">\(\forall x \in X, \exists y \in Y\)</span> such that <span class="math inline">\(f(x)=y\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> It does <em>not</em> mean: For every element <span class="math inline">\(y\)</span> in <span class="math inline">\(Y\)</span> there is (at least one) <span class="math inline">\(x\)</span> such that <span class="math inline">\(f(x)=y.\)</span></p>
+<p>In economics, functions are used when the model predicts a <strong>unique response</strong>.</p>
+<p>Examples: - a utility function assigns a number to each consumption bundle, - a production function assigns output to inputs, - an allocation rule in mechanism design assigns an outcome to reported types.</p>
+<p>What matters is not just the formula, but the <strong>direction of the mapping</strong>: - What is taken as given? - What is determined as a consequence?</p>
+<p>Economic reasoning is often about fixing the domain and studying how the output changes when the input changes.</p>
+<h2 id="injective-surjective-and-bijective-mappings">5 Injective, surjective, and bijective mappings</h2>
+<p>So far, we have said what a function is, but not all functions behave in the same way.<br />
+In economics, it is often important to understand <em>how much information is lost or preserved</em> by a mapping.</p>
+<p>Let <span class="math inline">\(f: X \to Y\)</span> be a function.</p>
+<p>We say that <span class="math inline">\(f\)</span> is <strong>injective</strong> (or one-to-one) if different inputs always lead to different outputs. Formally, this means:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <span class="math display">\[ f(x) = f(x&#39;) \Rightarrow x = x&#39;. \]</span></p>
+<p>Intuitively, injectivity means that observing the output uniquely pins down the input. No two distinct elements of <span class="math inline">\(X\)</span> are “collapsed” into the same element of <span class="math inline">\(Y\)</span>.</p>
+<p>In economic terms, injectivity is related to <strong>identification</strong>: - if a mapping from types to outcomes is injective, observing the outcome reveals the type, - if it is not injective, some information is necessarily lost (at least in some instances).</p>
+<hr />
+<p>We say that <span class="math inline">\(f\)</span> is <strong>surjective</strong> (or onto) if every element of <span class="math inline">\(Y\)</span> is reached by <em>some</em> element of <span class="math inline">\(X\)</span>. Formally: <span class="math display">\[ \forall y \in Y, \exists x \in X \text{ such that } f(x) = y. \]</span></p>
+<p>Surjectivity is about <strong>coverage</strong>: - the codomain <span class="math inline">\(Y\)</span> does not contain “irrelevant” elements that <span class="math inline">\(f(x)\)</span> never reaches, because - everything in <span class="math inline">\(Y\)</span> can actually arise as an outcome if we pick the right <span class="math inline">\(x\)</span>.</p>
+<p>In economics, surjectivity often fails by design. For example, not every allocation may be feasible given technological or incentive constraints.</p>
+<hr />
+<p>Finally, a function is <strong>bijective</strong> if it is both injective and surjective.</p>
+<p>A bijection establishes a perfect one-to-one correspondence between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: - no information is lost, - no outcomes are redundant.</p>
+<p>Bijective mappings allow us to “relabel” objects without changing structure. They play an important role when we talk about equivalent representations, such as different utility functions representing the same preferences.</p>
+<hr />
+<p>It is worth emphasizing that <strong>most economically interesting mappings are not bijective</strong>. Demand is typically not injective, allocation rules are often not surjective, and equilibrium correspondences (see below) are almost never single-valued. Understanding this prevents a lot of confusion later on.</p>
+<hr />
+<h2 id="correspondences-when-economics-refuses-to-choose-uniquely">6. Correspondences: when economics refuses to choose uniquely</h2>
+<p>Very often, however, economic models do <em>not</em> deliver unique outcomes.</p>
+<p>Consider a consumer who is indifferent between several bundles. Or a firm that has multiple profit-maximizing input choices.<br />
+Or a player who has several best responses.</p>
+<p>In such cases, behavior cannot be described by a function. Instead, we use a <strong>correspondence</strong>.</p>
+<p>A correspondence assigns <strong>a set of outputs</strong> to each input: <span class="math display">\[ F: X \rightrightarrows Y. \]</span></p>
+<p>This notation means: &gt; for each <span class="math inline">\(x \in X\)</span>, <span class="math inline">\(F(x)\)</span> is a subset (not necessarily a single element) of <span class="math inline">\(Y\)</span>. Other than that, correspondences behave <em>conceptually</em> very much like functions.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>Economically, looking at correspondences reflects an important modeling choice: - non-uniqueness is not a bug, - it is a realistic feature of optimization and strategic interaction.</p>
+<hr />
+<h2 id="graphs-putting-inputs-and-outputs-together">7. Graphs: putting inputs and outputs together</h2>
+<p>To study functions and correspondences, it is often useful to look at their <strong>graphs</strong>.</p>
+<p>Formally, the graph of a correspondence <span class="math inline">\(F\)</span> is the set <span class="math display">\[ \text{Gr}(F) = \{(x,y) \in X \times Y \mid y \in F(x)\}. \]</span></p>
+<p>Intuitively, the graph is the picture we would draw to represent the function. Geometrically, the graph lives in a higher-dimensional space that records both: - the input, - and all admissible outputs.</p>
+<p>Later in the course, properties of graphs (such as being closed) will be crucial for proving: - existence of equilibrium, - stability of solutions, - continuity of economic behavior.</p>
+<p>For now, the key idea is simple with unidimensional functions:<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <strong>a graph makes the mapping visible</strong>.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-collel-whinston-and-green-mwg-henceforth.">8. Where this appears in Mas-Collel, Whinston, and Green (MWG henceforth).</h2>
+<p>The basic language of sets, functions, relations, and correspondences is developed in:</p>
+<ul>
+<li><strong>MWG, Mathematical Appendix A</strong></li>
+</ul>
+<p>The appendix is concise and formal. These notes are meant to provide the <em>verbal intuition</em> that helps you read it fluently.</p>
+<hr />
+<h2 id="an-economic-example-demand.">9. An economic example: demand.</h2>
+<p>Consider a standard consumer problem: <span class="math display">\[ \max_{x \in X} u(x) \quad \text{s.t. } p \cdot x \leq w. \]</span></p>
+<p>What is the solution?</p>
+<p>The correct answer is not necessarily “a bundle that solves the problem.” The correct answer is: “**the set of bundles* that solve the problem.”</p>
+<p>This set is called the <strong>demand correspondence</strong>: <span class="math display">\[ x(p,w) \subseteq X. \]</span></p>
+<p>Why is that the case? Because if <span class="math inline">\(p\)</span> is not the price for a single good but a <strong>price vector</strong> capturing the prices of several goods, the consumer may be indifferent between very different bundles for some <span class="math inline">\(p\)</span> and <span class="math inline">\(w\)</span>, but as prices change slightly, she may not anymore. Thus, keeping track of those indifferences (and changes therein) is going to drive some results.</p>
+<p>If you mistakenly think demand must be a function, many later results will seem mysterious or false.</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">10. Why this matters for microeconomics</h2>
+<p>Once you see economic models as <strong>mappings between sets</strong>, many things fall into place:</p>
+<ul>
+<li>equilibrium is a fixed point of a correspondence,</li>
+<li>incentive compatibility is a constraint on a mapping,</li>
+<li>equilibrium payoffs in repeated games form a set.</li>
+</ul>
+<p>Microeconomic theory is, in many ways, the study of <strong>structured relationships</strong>.<br />
+Learning to read and write these relationships carefully is the first step toward understanding everything that follows.</p>
+<hr />
+<h2 id="what-you-should-take-away">11. What you should take away</h2>
+<p>After this topic, you should be comfortable with the following mental moves: - asking what the domain and codomain of an object are, - recognizing when outcomes are sets rather than points, - visualizing multidimensional economic objects as product spaces.</p>
+<p>You do <strong>not</strong> need to memorize formal definitions. You do need to develop the habit of <em>asking what lives where</em>.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Note that the opposite need not be true. So each output may have more than one input assigned to it. For more on this, see below when we talk about bijectivity and related concepts.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>You should read this subclause as: ``<span class="math inline">\(\dots\)</span> or formally <em>for each</em> (<span class="math inline">\(\forall\)</span>) element <span class="math inline">\(x\)</span> in set <span class="math inline">\(X\)</span> <em>there exists</em> an element <span class="math inline">\(y\)</span> in set <span class="math inline">\(Y\)</span> such that plugging <span class="math inline">\(x\)</span> into function <span class="math inline">\(f\)</span> gives the result <span class="math inline">\(y\)</span>. In terms of notation you may also sometimes see <span class="math inline">\(x \mapsto f(x)\)</span> when talking about specific elements rather than domain <span class="math inline">\((X)\)</span> and codomain <span class="math inline">\((Y)\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Read the following sentence like this: the value of function <span class="math inline">\(f\)</span> with input <span class="math inline">\(x\)</span> is equal to the value of function <span class="math inline">\(f\)</span> with input <span class="math inline">\(x&#39;\)</span> <strong>only if</strong> <span class="math inline">\(x\)</span> is the same as <span class="math inline">\(x&#39;\)</span>. This sounds overly complicated, but it also teaches us something about negations. Here, we would say “if <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> are not exactly the same, then <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(f(x&#39;)\)</span> <em>cannot</em> be the same when <span class="math inline">\(f\)</span> is injective.”<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Obviously, if <span class="math inline">\(f\)</span> is a function it is also a correspondence. However if <span class="math inline">\(g\)</span> is a correspondence, it may or may not be a function.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>That is functions that map, e.g., from one number into another.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic2.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

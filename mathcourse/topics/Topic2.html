@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 2: Preferences and Utility Representation</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic1.html" class="nav-prev">← Previous</a><a href="Topic3.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic2.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-2-preferences-and-utility-representation">Topic 2: Preferences and Utility Representation</h1>
+<p><em>(How economists talk about what people want)</em></p>
+<hr />
+<h2 id="why-preferences-come-next">1. Why preferences come next</h2>
+<p>In Topic <a href="Topic1.html">1</a>, we learned how economists describe <strong>relationships</strong> using sets and mappings. So far, however, we have not said <em>what drives choice</em>.</p>
+<p>When we say that a consumer chooses one bundle rather than another, or that an agent prefers one outcome to another, we are making a statement about <strong>preferences</strong>. Preferences are the primitive objects economists use to encode tastes, goals, and objectives.</p>
+<p>This topic introduces preferences as <strong>formal objects</strong>. Only later will we show how they can be represented by utility functions. For now, the goal is to understand what economists mean when they say that an agent “prefers” one alternative to another, and what structure we impose on such statements.</p>
+<hr />
+<h2 id="alternatives-and-preference-relations">2. Alternatives and preference relations</h2>
+<p>Let <span class="math inline">\(X\)</span> be a set of alternatives. Depending on the context, <span class="math inline">\(X\)</span> could be: - a set of consumption bundles, - a set of allocations, - a set of outcomes of a mechanism, - or a set of lotteries.</p>
+<p>A <strong>preference relation</strong> on <span class="math inline">\(X\)</span> is a binary relation, usually denoted by <span class="math inline">\(\succeq\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Formally, we write <span class="math display">\[ x \succeq x&#39; \]</span> to mean that <span class="math inline">\(x\)</span> is weakly preferred to <span class="math inline">\(x&#39;\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>From the weak preference relation <span class="math inline">\(\succeq\)</span>, we define two <em>derived</em> shorthand notations:</p>
+<ul>
+<li><p><strong>Strict preference</strong>: <span class="math display">\[ x \succ y \]</span> meaning “<span class="math inline">\(x\)</span> is strictly preferred to <span class="math inline">\(y\)</span>”, or, formally, <span class="math inline">\(x \succeq y\)</span> but <em>not</em> <span class="math inline">\(y \succeq x\)</span>.</p></li>
+<li><p><strong>Indifference</strong>: <span class="math display">\[ x \sim y \]</span> meaning “the agent is indifferent between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>”.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+</ul>
+<p>These are not new primitives. They are constructed from <span class="math inline">\(\succeq\)</span> and will inherit its properties.</p>
+<hr />
+<h2 id="basic-properties-of-preferences">3. Basic properties of preferences</h2>
+<p>Economists typically impose structure on preferences to make choice predictable and analyzable.</p>
+<h3 id="completeness">Completeness</h3>
+<p>Preferences are <strong>complete</strong> if for every pair <span class="math inline">\(x,y \in X\)</span>, either <span class="math display">\[ x \succeq y \quad \text{or} \quad y \succeq x \quad \text{(or both)}. \]</span></p>
+<p>What this means: &gt; “Given any two alternatives, the agent can compare them.”</p>
+<p>Completeness rules out indecision. It does <em>not</em> rule out indifference.</p>
+<hr />
+<h3 id="transitivity">Transitivity</h3>
+<p>Preferences are <strong>transitive</strong> if whenever <span class="math display">\[ x \succeq y \quad \text{and} \quad y \succeq z, \]</span> it follows that <span class="math display">\[ x \succeq z. \]</span></p>
+<p>Read aloud: &gt; “If <span class="math inline">\(x\)</span> is at least as good as <span class="math inline">\(y\)</span>, and <span class="math inline">\(y\)</span> is at least as good as <span class="math inline">\(z\)</span>, then <span class="math inline">\(x\)</span> is at least as good as <span class="math inline">\(z\)</span>.”</p>
+<p>Transitivity rules out preference cycles. Without it, optimization problems would often be ill-defined.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<hr />
+<h3 id="rational-preferences">Rational preferences</h3>
+<p>A preference relation that is both complete and transitive is often called <strong>rational</strong>.</p>
+<p>This terminology is not meant to be normative. It simply signals that preferences are structured enough to support meaningful choice and optimization (more on this later).</p>
+<hr />
+<h2 id="choice-and-the-meaning-of-rationality">4. Choice and the meaning of rationality</h2>
+<p>Why do we impose completeness and transitivity?</p>
+<p>Because together they ensure that the agent can make an (optimal) choice from a given set <span class="math inline">\(X\)</span></p>
+<p>Formally, <span class="math inline">\(b \in X\)</span> is an optimal choice <span class="math display">\[ b \succeq x \quad \text{for all } x \in X. \]</span></p>
+<p>Notice that: - there may be more than one such <span class="math inline">\(b\)</span>, - choices are therefore naturally a <strong>correspondences</strong>, not a functions.</p>
+<p>This connects directly back to Topic <a href="Topic1.html">1</a>.</p>
+<hr />
+<h2 id="utility-representation-turning-preferences-into-numbers">5. Utility representation: turning preferences into numbers</h2>
+<p>Working directly with preference relations can be cumbersome. Economists therefore often ask whether preferences can be <em>represented</em> by a <strong>utility function</strong>.</p>
+<p>A utility function represents a preference if we can find a mapping <span class="math display">\[ u: X \to \mathbb{R} \]</span> such that <span class="math display">\[ x \succeq x&#39; \quad \Leftrightarrow \quad u(x) \geq u(x&#39;). \]</span></p>
+<p>Read aloud: &gt; “The agent weakly prefers <span class="math inline">\(x\)</span> to <span class="math inline">\(x&#39;\)</span> if and only if the utility assigned to <span class="math inline">\(x\)</span> is at least as large as the utility assigned to <span class="math inline">\(x&#39;\)</span>.”<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>This equivalence is crucial. Utility is not an extra assumption – it is a <strong>representation</strong> of preferences.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<hr />
+<h2 id="ordinal-versus-cardinal-utility">6. Ordinal versus cardinal utility</h2>
+<p>The definition above immediately implies an important point. If <span class="math inline">\(u\)</span> represents preferences, then so does any function of the form <span class="math display">\[ v(x) = f(u(x)), \]</span> as long as <span class="math inline">\(f\)</span> is <strong>strictly increasing</strong>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>Why is this the case? Well, if <span class="math inline">\(f\)</span> is strictly increasing that means higher numbers in <span class="math inline">\(\Rightarrow\)</span> higher numbers out. But because <span class="math inline">\(u(x)&gt;u(x&#39;)\)</span> if <span class="math inline">\(x \succeq x&#39;\)</span>, we know that this holds also for <span class="math inline">\(f(u(x))\)</span>.</p>
+<p>Why is this important? Because it implies that: - only the <strong>ordering</strong> of utility values matters, - differences in utility have no direct meaning.</p>
+<p>For this reason, utility in microeconomic theory is (without further assumptions) <strong>ordinal</strong>, not <em>cardinal</em>. That means, it gives us a ranking of alternative <span class="math inline">\(x\)</span> vs <span class="math inline">\(x&#39;\)</span>, but nothing on how much more we like <span class="math inline">\(x\)</span> than <span class="math inline">\(x&#39;\)</span>. This observation will matter later when we discuss welfare comparisons, mechanism design, and incentives where sometimes we make additional assumptions to get a cardinal interpretation.</p>
+<hr />
+<h2 id="existence-of-utility-representations-informal">7. Existence of utility representations (informal)</h2>
+<p>Not every preference relation can be represented by a utility function. Some structure is needed.</p>
+<p>A central result in microeconomic theory states that: - if preferences are complete and transitive, - and satisfy suitable continuity conditions, then a utility representation exists.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>We will not prove this result here nor make the conditions explicit. For now, the important message is that <strong>utility functions do not come for free</strong>. They summarize assumptions about preferences.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">8. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>The formal treatment of preferences and utility representation appears in:</p>
+<ul>
+<li><strong>MWG, Chapter 1</strong></li>
+<li><strong>MWG, Mathematical Appendix A</strong> (relations and functions)</li>
+</ul>
+<p>The existence of utility representations is discussed in detail in Chapter 1, with formal proofs relying on the mathematical tools introduced in the appendix.</p>
+<hr />
+<h2 id="an-economic-example-indifference-and-choice">9. An economic example: indifference and choice</h2>
+<p>Consider a consumer who only cares about the total number of calories she consumes, not about the composition of goods.</p>
+<p>Many different bundles may deliver the same caloric content. Such bundles will be <strong>indifferent</strong> according to her preferences.</p>
+<p>This indifference implies: - multiple optimal choices, - flat regions in utility representations, - demand correspondences rather than demand functions.</p>
+<p>Understanding this example prevents confusion later when demand fails to be single-valued.</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">10. Why this matters for microeconomics</h2>
+<p>Preferences are the starting point of almost all microeconomic models.</p>
+<p>They: - generate demand, - shape incentives, - determine equilibrium outcomes, - constrain what mechanisms can achieve.</p>
+<p>Much of microeconomic theory can be seen as studying how <strong>different institutional environments transform preferences into outcomes</strong>.</p>
+<p>If you understand preferences as structured relations—rather than vague statements of taste—you are well prepared to follow everything that comes next.</p>
+<hr />
+<h2 id="what-you-should-take-away">11. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - reading preference notation, - understanding what completeness and transitivity do and do not imply, - interpreting utility functions as representations rather than psychological objects.</p>
+<p>You should also see how this topic connects directly back to Topic <a href="Topic1.html">1</a>: preferences live on sets, generate correspondences, and are often represented by functions.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The relation is “binary” because formally it compares elements from two sets. In our context the two sets are <span class="math inline">\(X\)</span> and <span class="math inline">\(X\)</span> again. If you want to be pedantic <span class="math inline">\(\succeq\)</span> in itself is a subset of <span class="math inline">\(X \times X\)</span>. More on this after the definition.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>So in light of the set interpretation of <span class="math inline">\(\succeq\)</span>, we see that <span class="math inline">\(\succeq\)</span> is indeed the set of all pairs <span class="math inline">\((x,x&#39;)\)</span> such that we weakly prefer <span class="math inline">\(x\)</span> over <span class="math inline">\(x&#39;\)</span>. Think about the more familiar <span class="math inline">\(\geq\)</span> which of course is also a binary relation. Writing <span class="math inline">\(x \succeq x&#39;\)</span> is then a simple and intuitive shorthand for this (perhaps) more complicated object.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Think about how you would express this with <span class="math inline">\(\succeq\)</span>!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>An interesting fact in economics is that while individuals are often somewhat transitive in their preferences, it may be the case that a <em>group</em> of individuals with transitive preferences does <em>not</em> have transitive preferences on the group level.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The term <em>if and only if</em> describes <em>equivalence</em> because it says the left hand side is true <em>if</em> the right hand side is true (<span class="math inline">\(\Leftarrow\)</span>). But it also says, that the left hand side can be true <em>only if</em> the right hand side is true, which in turn means that the left hand side being true implies the right hand side being true (<span class="math inline">\(\Rightarrow\)</span>).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>You may wonder why we need to “represent” something here. There reason is (as often) tractability. If we have the utility representation, we work on the real-line which makes it very easy for us to compare things. As we will see below, it also makes it easier for us to understand what properties mean, because we simply know very well how to operate and walk around in <span class="math inline">\(\mathbb{R}\)</span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Recall from school, that <span class="math inline">\(f(u(x))\)</span> implies we first plug <span class="math inline">\(x\)</span> into <span class="math inline">\(u\)</span> to obtain some <span class="math inline">\(y=u(x)\)</span> which we then plug into <span class="math inline">\(f\)</span> to obtain <span class="math inline">\(f(y)=f(u(x))\)</span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Note that this is an <em>only if</em> condition. So, that means other preferences may also have representations, but we would need to look at them carefully.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic1.html" class="nav-prev">← Previous</a><a href="Topic3.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

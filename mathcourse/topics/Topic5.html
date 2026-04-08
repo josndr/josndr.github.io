@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 5: Optimization, Correspondences, and Existence of Solutions</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic4.html" class="nav-prev">← Previous</a><a href="Topic6.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic5.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-5-optimization-correspondences-and-existence-of-solutions">Topic 5: Optimization, Correspondences, and Existence of Solutions</h1>
+<p><em>(Why optimal behavior is rarely a point and often a set)</em></p>
+<hr />
+<h2 id="why-this-topic-sits-where-it-does">1. Why this topic sits where it does</h2>
+<p>By now we have introduced: - sets and mappings, - preferences and utility, - convexity and geometry, - continuity, closedness, compactness, and existence.</p>
+<p>What we have <em>not</em> yet done is put all of this together in a single place.</p>
+<p>This topic does exactly that. It explains how optimization problems in economics actually behave once we take all previous structure seriously.</p>
+<p>The key message is simple but important:</p>
+<blockquote>
+<p>Even when optimization problems are well behaved, their solutions are often <strong>sets</strong>, not points.</p>
+</blockquote>
+<p>Understanding this is essential before moving on to equilibrium, mechanisms, or games.</p>
+<hr />
+<h2 id="optimization-problems-revisited">2. Optimization problems revisited</h2>
+<p>A generic economic optimization problem takes the form</p>
+<p><span class="math display">\[
+\max_{x \in X} f(x),
+\]</span></p>
+<p>where: - <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is a feasible set, - <span class="math inline">\(f: X \to \mathbb{R}\)</span> is an objective function.</p>
+<p>From Topics <a href="Topic3.html">3</a> and <a href="Topic4.html">4</a> we know that: - convexity of <span class="math inline">\(X\)</span> simplifies geometry, - continuity of <span class="math inline">\(f\)</span> and compactness of <span class="math inline">\(X\)</span> guarantee existence.</p>
+<p>What these assumptions do <em>not</em> guarantee is <strong>uniqueness</strong>.</p>
+<hr />
+<h2 id="linear-versus-convex-problems">3. Linear versus convex problems</h2>
+<p>An important special case is when: - <span class="math inline">\(X\)</span> is convex, - <span class="math inline">\(f\)</span> is <strong>linear</strong>.</p>
+<p>In this case, if a maximum exists, it is always attained at an <strong>extreme point</strong> of <span class="math inline">\(X\)</span>.</p>
+<p>So the message is &gt; “Linear objectives on convex sets push solutions to the boundary.”</p>
+<p>Why is that the case? If a function is linear, that means if we walk a little bit in any given direction in <span class="math inline">\(X\)</span>, then <span class="math inline">\(f\)</span> changes the same, no matter where we start. In the 1-dimensional case this is obvious because linear functions have a constant slope. But then, whatever direction we take, this function either goes up or down everywhere (or is flat throughout). In each of these cases, picking a point at the boundary of <span class="math inline">\(X\)</span> in that dimension is optimal. Because <span class="math inline">\(X\)</span> is compact, that boundary exists.</p>
+<p>This observation explains why: - prices support extreme allocations, - corner solutions are common, - incentive constraints in mechanism design are linear.</p>
+<p>However, in a more general world linearity is a knife-edge case.</p>
+<hr />
+<h2 id="convex-concave-objectives-and-non-uniqueness">4. Convex (concave) objectives and non-uniqueness</h2>
+<p>Now suppose instead: - <span class="math inline">\(X\)</span> is convex, - <span class="math inline">\(f\)</span> is strictly<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <strong>concave</strong>.</p>
+<p>Now what do we know then? As we walk along the slope diminishes. So if we are at a point where in all directions the slope (in the intuitive sense) goes down, then this is the unique hill top on our landscape, because concavity tells us we will never recover.</p>
+<p>If we give up on strict concavity, there may be flat regions, so although every top is a global <span class="math inline">\(\max\)</span>, there may be plateau so the set of optima may not be a single point.</p>
+<hr />
+<h2 id="the-argmax-leads-to-a-correspondence">5. The argmax leads to a correspondence</h2>
+<p>Given an optimization problem, define the <strong>argmax</strong></p>
+<p><span class="math display">\[
+\operatorname{argmax}_X f = \{x \in X \mid f(x) \ge f(x&#39;) \text{ for all } x&#39; \in X\}.
+\]</span></p>
+<p>This equation means: The <span class="math inline">\(\arg\max\)</span> of a function <span class="math inline">\(f\)</span> is the set of all <span class="math inline">\(x\)</span> in the choice set that maximize <span class="math inline">\(f\)</span>.</p>
+<p>The argmax is an important piece of notation, as often we are not interested in what the <em>value</em> of the best choice is, but what the actual <em>choice</em> is.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Often, however, <span class="math inline">\(f\)</span> is not strictly concave (or even concave at all), so the <span class="math inline">\(\arg\max\)</span> may be more than a singleton for a given <span class="math inline">\(f\)</span>. Thus the mapping <span class="math inline">\(g: \mathcal{F} \rightarrow X\)</span> which maps choice functions to their maximizers is in general a correspondence.</p>
+<hr />
+<h2 id="why-are-correspondences-unavoidable">6. Why are correspondences unavoidable?</h2>
+<p>There are three distinct reasons why optimal behavior is typically set-valued:</p>
+<ol type="1">
+<li><p><strong>Indifference</strong><br />
+Preferences may be flat along some directions.</p></li>
+<li><p><strong>Linear constraints</strong><br />
+Linear objectives on convex sets produce faces of maximizers.</p></li>
+<li><p><strong>Symmetry</strong><br />
+Different choices may be payoff-equivalent.</p></li>
+</ol>
+<p>Recognizing this early prevents confusion later when: - demand is a correspondence, - best responses are sets, - equilibria are not unique.</p>
+<hr />
+<h2 id="regularity-of-solution-correspondences">7. Regularity of solution correspondences</h2>
+<p>Existence alone is not enough. We also want solution sets to behave <em>stably</em> when the problem changes.</p>
+<p>Theory’s purpose is to deliver guidance and predictions on how to think about a changing world. So we want to know what happens when institutions change, prices change, players’ types change. All these things are embedded in <span class="math inline">\(f\)</span>.</p>
+<p>At least for small changes we want to know whether solutions change drastically, which is why we ask: &gt; “Does the <strong>set of solutions</strong> vary in a controlled way?”</p>
+<p>In functions, continuity helps with that. We now need to understand what continuity means when facing correspondences.</p>
+<hr />
+<h2 id="upper-hemicontinuity-definition">8. Upper hemicontinuity (definition)</h2>
+<hr />
+<p>Let <span class="math inline">\(F: X \rightrightarrows Y\)</span> be a correspondence.</p>
+<p><span class="math inline">\(F\)</span> is <strong>upper hemicontinuous</strong> at <span class="math inline">\(x \in X\)</span> if:</p>
+<p>For every open set <span class="math inline">\(V \supseteq F(x)\)</span> there is an open set <span class="math inline">\(U \subset X\)</span> containing <span class="math inline">\(x\)</span></p>
+<p>such that for every <span class="math inline">\(u \in U\)</span>, <span class="math inline">\(F(u) \subset V\)</span>.</p>
+<hr />
+<p>That means: We take a “fuzzy approach” at the image <span class="math inline">\(F(x)\)</span>—that is we consider some (open) set <span class="math inline">\(V\)</span> in the space of the <em>codomain</em> that contains the whole image <span class="math inline">\(F(x)\)</span>. Then it is possible for us to find <em>one</em> (open) set <span class="math inline">\(U\)</span> in the space of the <em>domain</em> that also contains our starting point <span class="math inline">\(x\)</span> and for all points in that set <span class="math inline">\(U\)</span> the image lies in <span class="math inline">\(V\)</span>.</p>
+<p>The important conditions in this definition are: (i) this needs to hold for <em>any</em> open set <span class="math inline">\(V\)</span> that contains the <em>whole</em> image, but we only need to find <em>one single</em> set <span class="math inline">\(U\)</span> in the domain.</p>
+<p>Practically, what upper hemicontinuity means is that there are no floating stairs in the graph. Suppose we look at the graph from afar with our binoculars and sharpen them in a way that we just cover the graph at a given point. Now, as we move a little bit to the left or right in the domain (as in, turn our head a little), we shouldn’t suddenly lose the image out of sight because it, for example, explodes. As long as small head movements are possible, we’re good on hemicontinuity.</p>
+<p>If <span class="math inline">\(F\)</span> is upper hemicontinuous at <em>any</em> <span class="math inline">\(x\)</span>, then <span class="math inline">\(F\)</span> in itself is upper hemicontinuous.</p>
+<hr />
+<h2 id="lower-hemicontinuity-definition">9. Lower hemicontinuity (definition)</h2>
+<p>The “no floating staircases” property is not the only thing that continuity in the classical function space implies. So, for correspondences we need another continuity notion.</p>
+<hr />
+<p>Let <span class="math inline">\(F: X \rightrightarrows Y\)</span> be a correspondence.</p>
+<p><span class="math inline">\(F\)</span> is <strong>lower hemicontinuous</strong> at <span class="math inline">\(x \in X\)</span> if:</p>
+<p>For every open set <span class="math inline">\(V \subseteq Y\)</span> that contains some element of <span class="math inline">\(F(x)\)</span> there is an open set <span class="math inline">\(U\)</span> containing <span class="math inline">\(x\)</span> such that some element of <span class="math inline">\(F(x&#39;)\)</span> is in <span class="math inline">\(V\)</span> for all <span class="math inline">\(x&#39; \in U\)</span>.</p>
+<hr />
+<p>Again, we take our “fuzzy approach,” but now we provide more focus. Instead of looking at a subset of the codomain that covers the whole image <span class="math inline">\(F(x)\)</span>, we look at a subset that covers some part of the image. Now for <em>every</em> such subset (that means also those that contain very little of the image) we can find one (open) set <span class="math inline">\(U\)</span> around our starting point <span class="math inline">\(x\)</span> that makes sure that again <em>some</em> elements of the image <span class="math inline">\(F(x&#39;)\)</span> is also in <span class="math inline">\(V\)</span> for any <span class="math inline">\(x&#39;\)</span>.</p>
+<p>The important qualifier here is now that we look only at a set that contains <em>some element</em> of <span class="math inline">\(F(x)\)</span>. So instead of making the focus of our binoculars close to the whole graph, we focus on one point in the graph. Now, if we turn our head a little, we may lose our graph because suddenly we look at nothing. So for lower hemicontinuity, we need that there is no sharp “cliff” in the set. For upper hemicontinuity, we need to exclude the floating stair.</p>
+<hr />
+<h2 id="hemicontinuity-taken-together">10. Hemicontinuity taken together</h2>
+<p>Here are two graphs hopefully showing the difference</p>
+<p><strong>Upper hemicontinuous but not lower hemicontinuous</strong></p>
+<figure>
+<img src="../figures/uhc_not_lhc.png" alt="Upper hemicontinuous but not lower hemicontinuous" />
+<figcaption aria-hidden="true">Upper hemicontinuous but not lower hemicontinuous</figcaption>
+</figure>
+<p>In this example, the correspondence is <strong>upper hemicontinuous</strong> at <span class="math inline">\(x=1/2\)</span> because the image does not suddenly expand outward: every neighborhood of the image at <span class="math inline">\(x=1/2\)</span> contains the images of nearby points. However, it is <strong>not lower hemicontinuous</strong>, since points in the vertical segment disappear immediately to the right of <span class="math inline">\(1/2\)</span>.</p>
+<hr />
+<p><strong>Lower hemicontinuous but not upper hemicontinuous</strong></p>
+<figure>
+<img src="../figures/lhc_not_uhc.png" alt="Lower hemicontinuous but not upper hemicontinuous" />
+<figcaption aria-hidden="true">Lower hemicontinuous but not upper hemicontinuous</figcaption>
+</figure>
+<p>In this example, the correspondence is <strong>lower hemicontinuous</strong> at <span class="math inline">\(x=1/2\)</span> because points in the image can be approximated by points in the images of nearby <span class="math inline">\(x\)</span>. However, it is <strong>not upper hemicontinuous</strong>, since the image suddenly expands at <span class="math inline">\(x=1/2\)</span>.</p>
+<hr />
+<h3 id="closed-graphs">Closed Graphs</h3>
+<p>The <em>closed-graph property</em> is another concept that sometimes shows up, and there is some relation to upper hemi-continuity.</p>
+<hr />
+<p>A correspondence <span class="math inline">\(f:X \to Y\)</span> is said to have a closed graph if the set <span class="math inline">\(\{(x,y)| y \in f(x)\}\)</span> is a closed subset of <span class="math inline">\(X \times Y\)</span>.</p>
+<hr />
+<p>While upper-hemicontinuity and closed-graphs are not the same in general, the following is true</p>
+<p><em>If <span class="math inline">\(f\)</span> is <strong>compact-valued</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, then <span class="math inline">\(f\)</span> has a closed graph if and only if <span class="math inline">\(f\)</span> is upper hemicontinuous.</em></p>
+<hr />
+<h2 id="berges-maximum-theorem-economic-reading">11. Berge’s Maximum Theorem (economic reading)</h2>
+<p>Berge’s Maximum Theorem connects all previous ideas.</p>
+<p>Informally:</p>
+<p>If: - the objective function is continuous, - the feasible set correspondence is compact-valued and upper hemicontinuous,</p>
+<p>then: - the argmax correspondence is non-empty (there is a solution), - compact-valued, - and upper hemicontinuous.</p>
+<p>Or in short: &gt; “Well-behaved problems have well-behaved solution sets.”</p>
+<p>This theorem explains why demand, best responses, and equilibrium correspondences exist and vary regularly.</p>
+<hr />
+<h2 id="economic-example-demand-as-a-correspondence">12. Economic example: demand as a correspondence</h2>
+<p>Consider the consumer problem</p>
+<p><span class="math display">\[
+\max_{x \in B(p,w)} u(x),
+\]</span></p>
+<p>where: - <span class="math inline">\(u\)</span> is continuous, - <span class="math inline">\(B(p,w)\)</span> is the budget correspondence.</p>
+<p>Under standard assumptions: - <span class="math inline">\(B(p,w)\)</span> is compact-valued and upper hemicontinuous, - the demand correspondence is non-empty, - and it is upper hemicontinuous in <span class="math inline">\((p,w)\)</span>.</p>
+<p>Comparative statics rely on exactly this structure.</p>
+<hr />
+<h2 id="why-this-prepares-equilibrium-analysis">13. Why this prepares equilibrium analysis</h2>
+<p>Equilibrium concepts are defined as: - fixed points of correspondences, - intersections of best-response sets, - solutions to systems of optimization problems.</p>
+<p>Without the machinery developed here: - existence arguments collapse, - comparative statics break down, - equilibrium becomes fragile.</p>
+<p>This topic is the last step before equilibrium theory proper.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">14. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>The core references are:</p>
+<ul>
+<li><strong>MWG, Chapter 3</strong> (consumer optimization)</li>
+<li><strong>MWG, Chapter 5</strong> (duality and linear structure)</li>
+<li><strong>MWG, Mathematical Appendix A</strong> (correspondences)</li>
+<li><strong>MWG, Mathematical Appendix C</strong> (Berge’s theorem)</li>
+</ul>
+<p>The technical tools introduced here are used repeatedly and often implicitly.</p>
+<hr />
+<h2 id="what-you-should-take-away">15. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - viewing optimization solutions as correspondences, - understanding why non-uniqueness is normal, - reading upper hemicontinuity statements, - and seeing how existence and stability interact.</p>
+<p>From here on, equilibrium and strategic interaction can be treated without apology.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Strict concavity means Jensen’s inequality is strict.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>And often we can determine it without the need to be specific about <span class="math inline">\(f\)</span>, think of the linear case we had looked at before.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><span class="math inline">\(f\)</span> is compact valued if the image <span class="math inline">\(f(x)\)</span> is a compact set for all <span class="math inline">\(x\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic4.html" class="nav-prev">← Previous</a><a href="Topic6.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

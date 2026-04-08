@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathematical Tools for Econ PhD</title>
+<link rel="stylesheet" href="style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="landing-page">
+<header class="site-header">
+  <h1 class="site-title">Mathematical Tools for Econ PhD</h1>
+  <div class="course-description"><p>This course is a handbook–precourse hybrid intended to walk (prospective) PhD students through the math concepts needed for (at least) the Micro sequence of the PhD. Each topic aims at introducing a key concept and fleshes out its relation to economic ideas and why it is important.</p><details class="preface-more"><summary>Show Full Preface</summary><div class="preface-body"><h2 id="style-and-tone">Style and Tone</h2>
+<p>The course is deliberately chatty in an attempt to stand apart from the mathematical appendices of economic textbooks. It also tries not to lose sight of the economic problem, in the hope of keeping on board those who care less about the beauty of the concept discussed and more about its application.</p>
+<p>It is always a fine line between being comprehensive and complete, yet not losing track of the intuition. For the purposes I imagine with this course, I have chosen to sometimes not discuss things to the finest detail, but to leave that to a point in one’s career when motivation is already built up sufficiently to have the stamina to survive (seemingly) unrelated lemmata. At the same time, I have tried to be precise and consistent and to flag any hand-wavy part. The hope is that this way the reader can at least see when we are using some magic to get us halfway there.</p>
+<p>One thing that I aim at with these notes is to deliver stories behind concepts that capture at least the main intuition behind our topic. The goal is to have easy-to-remember items that deliver the gist of some buzz word. I am aware that there are slippery slopes on this road. Yet, I think it is sometimes better to have some idea before going back to the textbook.</p>
+<h2 id="relation-to-textbooks">Relation to Textbooks</h2>
+<p>One frustration I felt in my days as a PhD student was that basic math seemed either scattered across random mathematical appendices — all with different notation, many requiring you to read the textbook itself first — or buried in pure math books where it was unclear what the prerequisites were. This led to inefficient rabbit-holing at times (not to be confused with the efficient kind of rabbit hole which, I firmly believe, is key to surviving a PhD core sequence).</p>
+<p>I believe that with AI at one’s fingertips a new alternative arises: asking the machine every time to explain things — which, for many reasons, at least right now, leads to unpredictable outcomes because conveying for what purpose we are interested in these topics is hard for the machine to grasp, and difficult for the learner to explain to it.</p>
+<p>So what I did here is curate a set of concepts in a language I like, at a precision level I can tolerate, and with a particular goal (the PhD core sequence) in mind. None of what happens here is new, but it comes together in one place and with limited noise surrounding it. Ideally, that makes it a useful tool.</p>
+<p>Ideally for me, it also makes my life easier when teaching Microeconomics, because we do not get side tracked too much in discussions about who knows which math concepts and how well, but can focus on the <strong>purpose</strong> of the concept in the <strong>economic</strong> problem.</p>
+<p>However, textbooks serve a purpose still, and Mas-Colell, Whinston, and Green (1995, MWG henceforth) remains incredibly powerful despite being older than most PhD students. Therefore, I aim to relate each topic to the relevant literature and in particular to MWG, hoping that readers can also use these topics as a guide through the many excellent textbooks out there.</p>
+<p>Other books I refer to are Ok (2007), Aliprantis and Border (2006), and Mailath and Samuelson (2006). Kreps’s writing style is always in the background, and all his books are worth getting into.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Aliprantis, C. D. and Border, K. C. (2006). <em>Infinite Dimensional Analysis: A Hitchhiker’s Guide</em>, 3rd ed. Springer, Berlin.</li>
+<li>Kreps, D. M. (1988). <em>Notes on the Theory of Choice</em>. Westview Press, Boulder.</li>
+<li>Kreps, D. M. (1990). <em>A Course in Microeconomic Theory</em>. Princeton University Press, Princeton.</li>
+<li>Kreps, D. M. (2012). <em>Microeconomic Foundations I: Choice and Competitive Markets</em>. Princeton University Press, Princeton.</li>
+<li>Mailath, G. J. and Samuelson, L. (2006). <em>Repeated Games and Reputations: Long-Run Relationships</em>. Oxford University Press, Oxford.</li>
+<li>Mas-Colell, A., Whinston, M. D., and Green, J. R. (1995). <em>Microeconomic Theory</em>. Oxford University Press, Oxford.</li>
+<li>Ok, E. A. (2007). <em>Real Analysis with Economic Applications</em>. Princeton University Press, Princeton.</li>
+</ul></div></details></div>
+</header>
+<main class="topic-list">
+
+  <article class="topic-card">
+    <span class="topic-badge">1</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic1.html">Topic 1: Sets, Mappings, and the Language of Economic Models</a></h2>
+      <p class="card-subtitle">Why economists spend so much time talking about functions</p>
+      <div class="card-actions">
+        <a href="topics/Topic1.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic1.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">2</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic2.html">Topic 2: Preferences and Utility Representation</a></h2>
+      <p class="card-subtitle">How economists talk about what people want</p>
+      <div class="card-actions">
+        <a href="topics/Topic2.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic2.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">3</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic3.html">Topic 3: Convex Sets and the Geometry of Choice</a></h2>
+      <p class="card-subtitle">Why economists care so much about "nice" shapes</p>
+      <div class="card-actions">
+        <a href="topics/Topic3.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic3.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">4</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic4.html">Topic 4: Continuity, Closed Sets, and Existence</a></h2>
+      <p class="card-subtitle">Why solutions exist — and when they do not</p>
+      <div class="card-actions">
+        <a href="topics/Topic4.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic4.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">5</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic5.html">Topic 5: Optimization, Correspondences, and Existence of Solutions</a></h2>
+      <p class="card-subtitle">Why optimal behavior is rarely a point and often a set</p>
+      <div class="card-actions">
+        <a href="topics/Topic5.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic5.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">6</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic6.html">Topic 6: Differentiability and Marginal Reasoning</a></h2>
+      <p class="card-subtitle">Why economists care about slopes, not just optima</p>
+      <div class="card-actions">
+        <a href="topics/Topic6.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic6.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">7</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic7.html">Topic 7: Order, Lattices, and Monotonicity</a></h2>
+      <p class="card-subtitle">How to do comparative statics without calculus</p>
+      <div class="card-actions">
+        <a href="topics/Topic7.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic7.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">8</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic8.html">Topic 8: Probability and Expectations</a></h2>
+      <p class="card-subtitle">How economists talk about uncertainty, types, and randomization</p>
+      <div class="card-actions">
+        <a href="topics/Topic8.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic8.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">9</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic9.html">Topic 9: Fixed Points and Equilibrium Existence</a></h2>
+      <p class="card-subtitle">Why equilibrium is a mathematical object, not a metaphor</p>
+      <div class="card-actions">
+        <a href="topics/Topic9.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic9.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">10</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic10.html">Topic 10: Discounting and Infinite Horizons</a></h2>
+      <p class="card-subtitle">Why the future is cheaper, and why that makes infinite problems tractable</p>
+      <div class="card-actions">
+        <a href="topics/Topic10.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic10.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">11</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic11.html">Topic 11: Dynamic Programming and Recursive Thinking</a></h2>
+      <p class="card-subtitle">How to solve infinite-dimensional problems one step at a time</p>
+      <div class="card-actions">
+        <a href="topics/Topic11.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic11.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">12</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic12.html">Topic 12: Linear Constraints and Incentives as Geometry</a></h2>
+      <p class="card-subtitle">Why prices are perpendicular and constraints have shape</p>
+      <div class="card-actions">
+        <a href="topics/Topic12.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic12.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">13</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic13.html">Topic 13: Topology in Practice</a></h2>
+      <p class="card-subtitle">How metrics structure change and space</p>
+      <div class="card-actions">
+        <a href="topics/Topic13.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic13.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">14</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic14.html">Topic 14: Measurability and Integration</a></h2>
+      <p class="card-subtitle">Giving \(\int f\, d\mu\) a rigorous home</p>
+      <div class="card-actions">
+        <a href="topics/Topic14.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic14.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">15</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic15.html">Topic 15: Proof Techniques in Economic Theory</a></h2>
+      <p class="card-subtitle">Making conscious what you have been doing all along</p>
+      <div class="card-actions">
+        <a href="topics/Topic15.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic15.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+</main>
+<footer class="site-footer"><span class="footer-label">Course updates</span><a href="changelog.html" class="changelog-link">Open changelog</a></footer>
+</body>
+</html>

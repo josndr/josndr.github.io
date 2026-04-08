@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 3: Convex Sets and the Geometry of Choice</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic2.html" class="nav-prev">← Previous</a><a href="Topic4.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic3.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-3-convex-sets-and-the-geometry-of-choice">Topic 3: Convex Sets and the Geometry of Choice</h1>
+<p><em>(Why economists care so much about “nice” shapes)</em></p>
+<hr />
+<h2 id="why-geometry-enters-microeconomics">1. Why geometry enters microeconomics</h2>
+<p>In Topic <a href="Topic2.html">2</a>, we introduced preferences and choice. At that point, however, we were deliberately vague about <em>what the set of alternatives looks like</em>.</p>
+<p>This was intentional.</p>
+<p>To understand why many economic problems are tractable – and why others are not – we need to think about the <strong>geometry</strong> of choice. That is, we need to understand the <em>shape</em> of the sets over which agents choose.</p>
+<p>Convexity is the key concept here. It will explain: - why interior solutions exist, - why averaging alternatives often makes sense, - why optimization problems behave smoothly, - and why equilibrium analysis is even possible in large economies.</p>
+<hr />
+<h2 id="convex-sets-the-basic-idea">2. Convex sets: the basic idea</h2>
+<p>Let <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> be a set.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>We say that <span class="math inline">\(X\)</span> is <strong>convex</strong> if for any two points <span class="math inline">\(x,x&#39; \in X\)</span> and any <span class="math inline">\(\lambda \in [0,1]\)</span>, <span class="math display">\[ \lambda x + (1-\lambda)x&#39; \in X. \]</span></p>
+<p>Read aloud: &gt; “If <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> are feasible, then any weighted average of <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> is also feasible.”</p>
+<p>Geometrically, this means that the straight line segment connecting <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> lies entirely inside the set. Or, in somewhat looser terms: If you want to walk from point <span class="math inline">\(x\)</span> to point <span class="math inline">\(x&#39;\)</span> and you are not allowed to turn, you can do that by walking straight and without leaving the set <span class="math inline">\(X\)</span>.</p>
+<hr />
+<h2 id="economic-interpretation-of-convexity">3. Economic interpretation of convexity</h2>
+<p>Convexity has a very natural economic interpretation.</p>
+<p>Think of <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> as two consumption bundles. The bundle <span class="math display">\[ \lambda x + (1-\lambda)x&#39; \]</span> can be interpreted as consuming a fraction <span class="math inline">\(\lambda\)</span> of <span class="math inline">\(x\)</span> and a fraction <span class="math inline">\(1-\lambda\)</span> of <span class="math inline">\(x&#39;\)</span>.</p>
+<p>Convexity therefore formalizes the idea that: &gt; “Mixing feasible alternatives remains feasible.”</p>
+<p>This is a powerful assumption. It encodes divisibility of goods, absence of indivisibilities, and the ability to trade off quantities smoothly.</p>
+<p>It, in fact, also says that you can do combinations of choices. It means, if you have the option to go left and right, you can also go anything in between like “straight” (50% left, 50% right) or somewhat left (80% left, 20% right) and so on.</p>
+<p>Most standard consumption sets in microeconomics are convex for exactly this reason.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<hr />
+<h2 id="why-convex-problems-are-easier-to-solve">4. Why convex problems are easier to solve</h2>
+<p>From a math point of view, convexity matters because it dramatically simplifies optimization.</p>
+<p>If choice sets are non-convex we often - cannot use standard optimization algorithms - need to worry about discrete math - have a hard time to figure out what small perturbations imply</p>
+<p>Therefore much of economic theory is built on convexity. That sometimes makes things less realistic, but often just simplifies the amount of math needed to convey ideas accurately and intuitively. In practice, one needs to, of course, think about what convexity assumptions preclude, but often the convexity assumption in fact allows us to separate the wheat from the chaff among the set of possible solutions. More on this, once we are actually solving things.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<hr />
+<h2 id="convex-combinations-and-notation">5. Convex combinations and notation</h2>
+<p>The expression <span class="math display">\[ \lambda x + (1-\lambda)x&#39; \]</span> is called a <strong>convex combination</strong> of <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span>.</p>
+<p>More generally, if <span class="math inline">\(x_1,\dots,x_k \in X\)</span> and <span class="math inline">\(\lambda_1,\dots,\lambda_k \geq 0\)</span> with <span class="math display">\[ \sum_{i=1}^k \lambda_i = 1, \]</span> then <span class="math display">\[ \sum_{i=1}^k \lambda_i x_i \]</span> is a convex combination of the points <span class="math inline">\(x_1,\dots,x_k\)</span>.</p>
+<p>Convex sets are exactly those sets that contain <em>all</em> convex combinations of their elements. Coming back to our ‘’walking’’ interpretation, here is how to think about this result.</p>
+<p>Suppose you give me a set of points <span class="math inline">\(x_1,\dots,x_k\)</span> (in a Euclidean space). And now I want construct a set that contains those points and everything ‘’inbetween’’ then what I am doing is constructing a convex set.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>In practice constructing this set is easy on a 2-dimensional plane (like <span class="math inline">\(\mathbb{R}^2\)</span>). There, I would simply connect each point with every other point by a straight line. This gives me the shape of a fully connected network, with my initial points as <em>nodes</em> and the lines connecting those points as <em>edges</em>. Now if in a second step, I connect all points on the edges with all other points on all other edges through straight lines, I have constructed the convex hull. This type of reasoning, does not directly extend to more dimensions in the sense that it is not clear that I can always construct the convex hull using finitely many such steps. It is true, however, that if I were to follow that procedure <em>ad infinitum</em> I will eventually arrive at the convex hull.</p>
+<hr />
+<h2 id="a-brief-word-on-concavity-will-show-up-again">6. A brief word on Concavity (will show up again)</h2>
+<p>If one talks about convexity, one has the urge to talk about concavity as well which is often seen as the antonym of convexity.</p>
+<p>However, with the set interpretation, that is, in fact hard to do. So I will just clarify a few things that are not true (at least under our conventions).</p>
+<ul>
+<li>It is not the case that every non-convex set is concave. It is simply <em>non-convex</em></li>
+<li>It is not the case that the complement of a convex set is concave. It is (sometimes) called <em>reverse convex</em>.</li>
+</ul>
+<p>To sum up, there is no relevant notion of concave set in math.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>All that said, concavity will come back to these lecture notes, but only after we talk about other notions of <em>convexity,</em></p>
+<hr />
+<h2 id="convex-preferences-informal">7. Convex preferences (informal)</h2>
+<p>One confusion that sometimes comes up in Microeconomics is that when we talk about convex preferences we do not talk about sets of preferences, but something else.</p>
+<p>We call preferences <strong>convex</strong> if agents weakly prefer any combination of two bundles <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> over a third bundle <span class="math inline">\(z\)</span> when <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> alone are (weakly) preferred to <span class="math inline">\(z\)</span>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> This sounds, at first, totally unrelated to the geometric convexity notion apart from the fact that it talks about some form of mixing.</p>
+<p>Formally, the statement is:</p>
+<p><strong>Preferences are convex if the following holds:</strong></p>
+<p><strong>If</strong> for all <span class="math inline">\(x,x&#39;,z\)</span>, <span class="math display">\[ x \succeq z \text{ and } x&#39;\succeq z \]</span> <strong>then</strong> <span class="math display">\[ \lambda x + (1-\lambda)x&#39; \succeq z \quad \text{for all } \lambda \in [0,1]. \]</span></p>
+<p>In words the formal part means &gt; “*If the preferences are convex and the agent likes <span class="math inline">\(x\)</span> and <span class="math inline">\(x&#39;\)</span> better than <span class="math inline">\(z\)</span>, then she prefers any combination <span class="math inline">\(\lambda x + (1-\lambda)x&#39;\)</span> over <span class="math inline">\(z\)</span> too.”</p>
+<p><em>How does that connect to our convexity notion?</em> To understand this, we need to understand what a <strong>better set</strong> (MWG and mathematicians call it <strong>upper contour set</strong>—I will likely use both equivalently) is. The better set of some bundle <span class="math inline">\(x\)</span> is the set of all things the agent weakly prefers to <span class="math inline">\(x\)</span>.</p>
+<p>So formally, the better set of <span class="math inline">\(x\)</span> is</p>
+<p><span class="math display">\[\{x&#39;| x&#39; \succeq x\}\]</span></p>
+<p>which means<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<blockquote>
+<p>the set of all <span class="math inline">\(x&#39;\)</span> (often relative to a base set) such that <span class="math inline">\(x&#39;\)</span> is weakly preferred to <span class="math inline">\(x\)</span>.</p>
+</blockquote>
+<p>Now, you may have already understood the relationship here. Convex preferences are preferences where for any bundle <span class="math inline">\(x\)</span>, the better set is a convex set.</p>
+<hr />
+<h2 id="convex-functions">8. Convex Functions</h2>
+<p>When we talk about functions, we also often talk about convexity. One may remember from school that <span class="math inline">\(f:x \mapsto x^2\)</span> is called a “convex function.” Again, it may be hard to think about this given our notion of convexity on sets. It is not, however, if we think about it in the way we thought about it with our preferences.</p>
+<p>Take a function that has domain <span class="math inline">\(X\)</span> and codomain <span class="math inline">\(Y\)</span><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, We call a function’s <strong>epigraph</strong> the set of all points in <span class="math inline">\(X \times Y\)</span> that lie <em>on or above</em> the graph of the function.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>For a real valued function <span class="math inline">\(f: X \to \mathbb{R}\)</span>, we can write the epigraph as</p>
+<p><span class="math display">\[\{(x,y) \in X \times \mathbb{R}| y \geq f(x) \}.\]</span></p>
+<p>Then we can define convex functions as follows:</p>
+<p><strong>A function is convex if its epigraph is a convex set.</strong></p>
+<p>Perhaps you have heard a different definition before which says that a function is convex if the straight line connecting any two points on the graph lies weakly above the function, that is,</p>
+<p><strong>A function <span class="math inline">\(f:X \to \mathbb{R}\)</span> is convex if</strong></p>
+<p><span class="math display">\[ \forall x,x&#39; \in X, \text{ and } \lambda \in [0,1] \text{ it holds that } \lambda f(x) + (1-\lambda) f(x&#39;) \geq f(\lambda x + (1-\lambda)x&#39;)\]</span></p>
+<p>The inequality in this function is often known as “Jensen’s inequality.” This definition is <em>equivalent</em> to the epigraph definition, yet—perhaps—the connection to convex sets is less clear.</p>
+<p>However, Jensen’s inequality helps us to finally get to concavity which is well defined in this function interpretation, and very important in economics. The simplest definition is this</p>
+<blockquote>
+<p><strong>A function <span class="math inline">\(f:X \to \mathbb{R}\)</span> is concave if <span class="math inline">\(-f\)</span> is convex.</strong></p>
+</blockquote>
+<p>Alternatively, a function is concave if Jensen’s inequality has <span class="math inline">\(\leq\)</span> instead of <span class="math inline">\(\geq\)</span>.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>Clearly, of course, that means that a <em>linear</em> function <span class="math inline">\(f(x)=m x\)</span> or an <em>affine</em> function <span class="math inline">\(f(x)=mx +t\)</span> is both: convex <em>and</em> concave.</p>
+<h2 id="utility-functions-and-concavity">9. Utility functions and concavity</h2>
+<p>An important relationship between preferences and utility functions is that when it is possible to have a utility representation and this representation is a <em>concave utility function</em>, then the underlying preferences must be convex.</p>
+<p>The intuition is simply that a concave utility function says, that if I take a combination <span class="math inline">\(\lambda x + (1-\lambda)x&#39;\)</span> then this gives me utility of</p>
+<p><span class="math display">\[u(\lambda x + (1-\lambda)x&#39;) \geq \lambda u(x) + (1-\lambda) u(x&#39;).\]</span></p>
+<p>Now take a third bundle <span class="math inline">\(z\)</span> that has <span class="math inline">\(u(z) \leq \min\{u(x), u(x&#39;)\}\)</span>.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<p>Now we do know that this is true for any <span class="math inline">\(x, x&#39;\)</span> weakly better than <span class="math inline">\(z\)</span>:</p>
+<p><span class="math display">\[u(\lambda x + (1-\lambda)x&#39;) \geq \lambda u(x) + (1-\lambda) u(x&#39;) \geq u(z).\]</span></p>
+<p>which means that <span class="math inline">\(u\)</span> represents the preference relation<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<p><span class="math inline">\(\lambda x + (1-\lambda)x&#39; \succeq z\)</span> for any <span class="math inline">\(x,x&#39;,z\)</span>. That in turn is the very definition of convex preferences.</p>
+<p>Concave utilities have many desirable properties that we are going to discuss over the course, but unfortunately the converse is not true. That is, assuming convexity does not get us a concave utility representation.</p>
+<p>There are two reasons. One is the monotone transformations we discussed when talking about cardinal vs ordinal preferences.</p>
+<p>The utility function <span class="math inline">\(u(x,y)=x+y\)</span> (which is concave) represents the same preferences as the utility <span class="math inline">\(u&#39;(x,y)=(x+y)^3\)</span>, if <span class="math inline">\(x,y\geq 0\)</span>. But we see that <span class="math display">\[u&#39;(2,1)= u&#39;( 1/2*(4,0) + 1/2*(0,2))=27 &lt; 1/2 u&#39;(4,0) + 1/2 u&#39;(0,2)= 32 + 4.\]</span></p>
+<p>This in itself would not cause too much trouble, because it would perhaps be enough if all convex preferences have <em>at least one</em> concave utility representation. Unfortunately, that is not true either.</p>
+<p>This is not a result to be discussed here but Danish-German mathematician Werner Fenchel proved in 1953 that if indifference curves are lines that are not always parallel, then no concave utility representation exists. That means, restricting ourselves to concave utility functions is not enough.</p>
+<hr />
+<h2 id="quasi-concavity-and-upper-contour-sets">10. Quasi-concavity and upper contour sets</h2>
+<p>Instead, economists use a weaker (and more annoying) concept called ‘’quasi-concavity.’’</p>
+<p><strong>A function <span class="math inline">\(u\)</span> is quasi-concave if, for every real number <span class="math inline">\(\bar{u}\)</span>, the </strong>upper contour set** of the function<strong> <span class="math display">\[ \{ x \in X \mid u(x) \geq \bar{u} \} \]</span> </strong>is convex.**<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<p>That means, we are looking for the set of choices <span class="math inline">\(x\)</span> such that <span class="math inline">\(u(x)\)</span> is larger than some given level <span class="math inline">\(\bar{u}\)</span>. Now think back to our “better” sets. If <span class="math inline">\(u\)</span> represents preferences and <span class="math inline">\(x\)</span> is in the better set of some other <span class="math inline">\(x&#39;\)</span> which delivers utility <span class="math inline">\(\bar{u}\)</span> then it is weakly better than <span class="math inline">\(\bar{u}\)</span> and must thus be represented by a (weakly) higher <span class="math inline">\(u\)</span>.</p>
+<p>Thus, quasi-concavity is not really derived from convex preferences, it is the exact same thing!</p>
+<p>However, there is another way to represent quasi concavity. It is (equivalently) true that</p>
+<p>**a function <span class="math inline">\(u\)</span> is quasi-concave if <span class="math display">\[\forall x,x&#39;\quad u(\lambda x+(1-\lambda) x&#39;) \geq \min \{u(x),u(x&#39;)\}.\]</span></p>
+<p>That means a function of a convex combination of the inputs is at least larger than the minimum of the two extremes. The main thing this rules out is that the function has an interior minimum (we will come back to what those are) like <span class="math inline">\(x^2\)</span> for example. Here if we take <span class="math inline">\(x=-2\)</span> and <span class="math inline">\(x=2\)</span> then for any <span class="math inline">\(\lambda \in(0,1)\)</span>, <span class="math inline">\(\lambda (-2)+ (1-\lambda)2 \in (-2,2)\)</span> and for any <span class="math inline">\(z \in (-2,2)\)</span> <span class="math inline">\(u(z)&lt;u(2)=\min\{u(2),u(-2)\}=4.\)</span></p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>Convexity and concavity are introduced and used throughout:</p>
+<ul>
+<li><strong>MWG, Chapter 1</strong> (preferences and choice)</li>
+<li><strong>MWG, Chapter 3</strong> (consumer theory)</li>
+<li><strong>MWG, Mathematical Appendix B</strong> (convex sets and functions)</li>
+</ul>
+<p>The appendix provides formal definitions and theorems. The chapters show how these ideas drive economic results.</p>
+<hr />
+<h2 id="an-economic-example-diversification">12. An economic example: diversification</h2>
+<p>Consider an agent choosing between two risky assets.</p>
+<p>If preferences are convex, then holding a diversified portfolio – a mixture of the two assets – is weakly preferred to holding either asset alone.</p>
+<p>This simple geometric fact underlies: - portfolio choice, - insurance demand, - and risk-sharing in general equilibrium.</p>
+<p>Without convexity, diversification need not be attractive.</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">13. Why this matters for microeconomics</h2>
+<p>Convexity is one of the main reasons microeconomic models “work”.</p>
+<p>It: - makes optimization tractable, - ensures equilibria exist, - stabilizes comparative statics, - and links geometry to economic intuition.</p>
+<p>Later in the course, convexity will quietly sit in the background of: - welfare theorems, - mechanism design, - monotone comparative statics, - and repeated games with convex payoff sets.</p>
+<p>Understanding convexity now will save you a lot of confusion later.</p>
+<hr />
+<h2 id="what-you-should-take-away">14. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - visualizing feasible sets geometrically, - interpreting convexity economically, - understanding why convex problems are easier to solve, - and seeing how convexity shapes choice correspondences.</p>
+<p>Most importantly, you should appreciate that geometry is not decoration in microeconomics – it is structure.</p>
+<hr />
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This is not a requirement. But for the cleanest geometric interpretation, and for most of the applications we are interested in, assuming the underlying vector space is a Euclidean space isomorphic to <span class="math inline">\(\mathbb{R}^n\)</span> will be fine.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>There are of course important situations where this assumption fails. If you have to make the decision whether to move to the US or stay in Europe, moving half way into the middle of the Atlantic may not be feasible, for example.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>For the applied economist it is worthwhile to note that many of the estimators also assume explicitly or implicitly a somewhat convex choice set to be working.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>In fact, what I am constructing is what is called the <strong>convex hull</strong>—the smallest convex set containing all my points<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>I say relevant, because as often in math, there may be some esoteric subfield, at least, that has defined such a notion. But that is irrelevant to us.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>This holds especially if <span class="math inline">\(z=x\)</span> which has the interpretation that combining <span class="math inline">\(x\)</span> with something weakly better than <span class="math inline">\(x\)</span> cannot make it worse.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Sometimes you will see a “<span class="math inline">\(:\)</span>” instead of a “<span class="math inline">\(|\)</span>” in the notation for conditioning (so in our case <span class="math inline">\(\{x: x&#39;\succeq x\}\)</span>). These are identical. I use the <span class="math inline">\(|\)</span> because it is familiar from, e.g., <em>conditional expectations</em>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>So, as we should know by now <span class="math inline">\(f: X \to Y\)</span>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>You may, of course, wonder what <em>above</em> in this context now means, and you are correct in asking for a metric. This goes beyond what we cover here (where we focus on real-valued functions), but there are natural generalizations to codomains that are <em>partially ordered vector spaces</em>. <a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>You can also think of the counterpart of the epigraph, the <em>hypograph</em> to define concavity of a function.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Read as: Take any bundle that fulfills this property.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>See Topic <a href="Topic2.html">2</a>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>The name is the same here like with the better sets, because mathematically it is the same thing (just with a different metric). But there is a connection to convex preferences!<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic2.html" class="nav-prev">← Previous</a><a href="Topic4.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

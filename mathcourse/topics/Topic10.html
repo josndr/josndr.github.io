@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 10: Discounting and Infinite Horizons</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic9.html" class="nav-prev">← Previous</a><a href="Topic11.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic10.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-10-discounting-and-infinite-horizons">Topic 10: Discounting and Infinite Horizons</h1>
+<p><em>(Why the future is cheaper, and why that makes infinite problems tractable)</em></p>
+<hr />
+<h2 id="why-discounting-enters-now">1. Why discounting enters now</h2>
+<p>The pre-course has so far been mostly static. Agents choose, they optimize, they interact — but everything happens at a single point in time.</p>
+<p>In much of microeconomics, however, decisions have consequences that unfold over time: - a firm invests today and earns returns tomorrow, - a player cooperates now in exchange for future cooperation, - a consumer saves part of her income for later.</p>
+<p>Once time enters, we need to compare payoffs that arrive at different dates. A euro today is not the same as a euro next year. This is not a psychological claim — it is an assumption that economists encode with <strong>discounting</strong>.</p>
+<p>This topic introduces discounting and the infinite horizon as mathematical objects. The goal is to make two things precise: how economists aggregate payoffs over time, and why infinite-horizon problems are often <em>easier</em> than finite-horizon ones.</p>
+<hr />
+<h2 id="the-discount-factor">2. The discount factor</h2>
+<p>Let <span class="math inline">\(\delta \in (0,1)\)</span> be a number called the <strong>discount factor</strong>.</p>
+<blockquote>
+<p>“The discount factor <span class="math inline">\(\delta\)</span> captures how much the agent values tomorrow relative to today. A payoff of <span class="math inline">\(x\)</span> received one period from now is worth <span class="math inline">\(\delta x\)</span> today.”</p>
+</blockquote>
+<p>If <span class="math inline">\(\delta\)</span> is close to 1, the agent is <strong>patient</strong>: she treats the future almost like the present. If <span class="math inline">\(\delta\)</span> is close to 0, the agent is <strong>impatient</strong>: the future is heavily discounted.</p>
+<p>Where does <span class="math inline">\(\delta\)</span> come from? In different models it has different interpretations: - a pure time preference (the agent simply prefers earlier consumption), - an interest rate (<span class="math inline">\(\delta = 1/(1+r)\)</span>, where <span class="math inline">\(r\)</span> is the rate of return on savings), - a probability of continuation (in each period, the game continues with probability <span class="math inline">\(\delta\)</span> and ends with probability <span class="math inline">\(1-\delta\)</span>).</p>
+<p>The third interpretation is worth flagging because it shows up in repeated games: discounting and random termination are mathematically the same thing. A patient player is one whose game is likely to continue.</p>
+<p>The key restriction is <span class="math inline">\(\delta &lt; 1\)</span>. If <span class="math inline">\(\delta \geq 1\)</span>, the agent values the future at least as much as the present, and infinite sums of payoffs will (generically) diverge. Everything in this topic depends on <span class="math inline">\(\delta &lt; 1\)</span>.</p>
+<hr />
+<h2 id="geometric-series-the-basic-calculation">3. Geometric series: the basic calculation</h2>
+<p>The mathematical object behind discounting is the <strong>geometric series</strong>.</p>
+<h3 id="finite-geometric-series">Finite geometric series</h3>
+<p>The sum of a finite geometric series is <span class="math display">\[\sum_{t=0}^{T} \delta^t = 1 + \delta + \delta^2 + \cdots + \delta^T = \frac{1 - \delta^{T+1}}{1 - \delta}.\]</span></p>
+<p>This formula is worth knowing by heart. It comes from a simple trick: if <span class="math inline">\(S = 1 + \delta + \cdots + \delta^T\)</span>, then <span class="math inline">\(\delta S = \delta + \delta^2 + \cdots + \delta^{T+1}\)</span>, so <span class="math inline">\(S - \delta S = 1 - \delta^{T+1}\)</span>, and dividing both sides by <span class="math inline">\((1-\delta)\)</span> gives the result.</p>
+<h3 id="infinite-geometric-series">Infinite geometric series</h3>
+<p>Now let <span class="math inline">\(T \to \infty\)</span>. Since <span class="math inline">\(\delta &lt; 1\)</span>, the term <span class="math inline">\(\delta^{T+1} \to 0\)</span>, and we get <span class="math display">\[\sum_{t=0}^{\infty} \delta^t = \frac{1}{1-\delta}.\]</span></p>
+<blockquote>
+<p>“The infinite sum of a geometric series with ratio <span class="math inline">\(\delta &lt; 1\)</span> is <span class="math inline">\(1/(1-\delta)\)</span>. The smaller <span class="math inline">\(\delta\)</span>, the smaller the sum — because the future matters less.”</p>
+</blockquote>
+<p>This formula is the backbone of every present-value calculation in economics. It works because <span class="math inline">\(\delta &lt; 1\)</span> ensures the terms shrink fast enough that the infinite sum converges. Convergence here is in the sense of Topic <a href="Topic4.html">4</a>: the partial sums form a bounded, increasing sequence in a complete space, so a limit exists.</p>
+<h3 id="shifted-series">Shifted series</h3>
+<p>A useful variant: if the series starts at period <span class="math inline">\(s\)</span> instead of period <span class="math inline">\(0\)</span>, <span class="math display">\[\sum_{t=s}^{\infty} \delta^t = \delta^s \cdot \frac{1}{1-\delta}.\]</span></p>
+<p>This says: the “value of the future as seen from period <span class="math inline">\(s\)</span>” is just a scaled-down version of the value as seen from period <span class="math inline">\(0\)</span>. The future always looks the same, just discounted by how far away you are from it. This observation will be important shortly.</p>
+<hr />
+<h2 id="present-value-of-a-stream">4. Present value of a stream</h2>
+<p>Suppose an agent receives a stream of payoffs <span class="math inline">\((x_0, x_1, x_2, \dots)\)</span>. The <strong>present value</strong> (or <strong>discounted sum</strong>) of this stream is <span class="math display">\[V = \sum_{t=0}^{\infty} \delta^t x_t.\]</span></p>
+<blockquote>
+<p>“The present value weights each future payoff by the appropriate power of the discount factor. Earlier payoffs count more; later ones are discounted away.”</p>
+</blockquote>
+<p>For the present value to be well-defined, we need the sum to converge. If the payoffs are bounded — say <span class="math inline">\(|x_t| \leq M\)</span> for all <span class="math inline">\(t\)</span> — then <span class="math display">\[|V| \leq \sum_{t=0}^{\infty} \delta^t M = \frac{M}{1-\delta},\]</span> so the sum converges absolutely. Bounded payoffs and <span class="math inline">\(\delta &lt; 1\)</span> are enough.</p>
+<p>A special case that comes up constantly: if the stream is constant, <span class="math inline">\(x_t = c\)</span> for all <span class="math inline">\(t\)</span>, then <span class="math display">\[V = c \cdot \sum_{t=0}^{\infty} \delta^t = \frac{c}{1-\delta}.\]</span></p>
+<hr />
+<h2 id="the-normalized-average-payoff">5. The normalized (average) payoff</h2>
+<p>The present value <span class="math inline">\(V = \sum_{t=0}^{\infty} \delta^t x_t\)</span> has an awkward feature: it scales with <span class="math inline">\(1/(1-\delta)\)</span>. A constant stream of <span class="math inline">\(c\)</span> per period gives present value <span class="math inline">\(c/(1-\delta)\)</span>, which blows up as <span class="math inline">\(\delta \to 1\)</span>. This makes it difficult to compare payoffs across different levels of patience, and — more practically — difficult to compare the value of a stream with the value of a single period’s payoff.</p>
+<p>The standard fix is to <strong>normalize</strong> by multiplying with <span class="math inline">\((1-\delta)\)</span>: <span class="math display">\[\bar{V} = (1-\delta) \sum_{t=0}^{\infty} \delta^t x_t.\]</span></p>
+<blockquote>
+<p>“The normalized payoff rescales the present value so that a constant stream of <span class="math inline">\(c\)</span> per period has normalized value exactly <span class="math inline">\(c\)</span>.”</p>
+</blockquote>
+<p>Why is this a natural thing to do? Think of <span class="math inline">\((1-\delta)\)</span> as the weight on “this period” in the discounting scheme. The full weights <span class="math inline">\((1-\delta), (1-\delta)\delta, (1-\delta)\delta^2, \dots\)</span> sum to one: <span class="math display">\[(1-\delta) \sum_{t=0}^{\infty} \delta^t = 1.\]</span></p>
+<p>So the normalized payoff is a genuine weighted average of the per-period payoffs, with weights that sum to one and decline geometrically. It tells us: “what constant per-period payoff would give the same present value as this stream?”</p>
+<p>This normalization is not just cosmetic. It has a very practical consequence: the <strong>continuation value</strong> from any future period, when normalized, is directly comparable to a single period’s payoff. If the agent is considering a one-time deviation — taking a different action today and then returning to the original plan — the gain from deviating is a single-period payoff, and the loss is a change in the continuation value. Both are now measured in the same units. This is exactly the structure behind the <strong>one-shot deviation principle</strong> in dynamic games, which says that checking for profitable one-period deviations is enough to verify optimality of an entire strategy.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<hr />
+<h2 id="finite-versus-infinite-horizons">6. Finite versus infinite horizons</h2>
+<p>Why do economists so often work with infinite horizons when the real world is clearly finite?</p>
+<p>The honest answer has two parts.</p>
+<p><strong>First, infinite horizons avoid the “last period” problem.</strong> In a finite-horizon repeated game, the last period has no future. So there is no incentive to cooperate in the last period. But then the second-to-last period is effectively the last period with future incentives… and by backward induction, cooperation unravels all the way to the beginning. An infinite horizon eliminates this unraveling because there is no last period.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><strong>Second, infinite horizons have a stationarity property that makes them mathematically tractable.</strong> The problem “starting from period <span class="math inline">\(t\)</span>” looks exactly like the problem “starting from period <span class="math inline">\(0\)</span>,” just with different initial conditions. This self-similarity is what allows recursive methods to work: instead of solving a problem with infinitely many variables, we solve a single-period problem that references its own solution.</p>
+<p>This is the key insight that connects this topic to Topic <a href="Topic11.html">11</a> (dynamic programming). The infinite horizon is not a complication — it is a simplification. Finite horizons, paradoxically, often require more work because the structure changes as you approach the end.</p>
+<hr />
+<h2 id="stationarity-and-the-recursive-structure">7. Stationarity and the recursive structure</h2>
+<p>Let us make the stationarity observation precise, using the normalized formulation from Section 5.</p>
+<p>The normalized value of a stream starting at period <span class="math inline">\(0\)</span> is <span class="math display">\[\bar{V}_0 = (1-\delta)\sum_{t=0}^{\infty} \delta^t x_t.\]</span></p>
+<p>Now look at the normalized value of the same stream starting from period <span class="math inline">\(1\)</span>: <span class="math display">\[\bar{V}_1 = (1-\delta)\sum_{t=1}^{\infty} \delta^{t-1} x_t.\]</span></p>
+<p>The relationship between the two is <span class="math display">\[\bar{V}_0 = (1-\delta) x_0 + \delta \bar{V}_1.\]</span></p>
+<blockquote>
+<p>“Today’s normalized value is a weighted average of today’s payoff and the continuation value, with weights <span class="math inline">\((1-\delta)\)</span> and <span class="math inline">\(\delta\)</span>.”</p>
+</blockquote>
+<p>This is a <strong>recursive decomposition</strong>. It says: the infinite-horizon problem can be split into “what happens today” and “the value of the future,” and the weights on the two parts sum to one. If the environment is stationary — the same structure repeats every period — then <span class="math inline">\(\bar{V}_1\)</span> solves the same problem as <span class="math inline">\(\bar{V}_0\)</span>, possibly with different state variables.</p>
+<p>In such cases, we can write <span class="math display">\[\bar{V} = (1-\delta) x + \delta \bar{V},\]</span> where <span class="math inline">\(\bar{V}\)</span> is the normalized value and <span class="math inline">\(x\)</span> is the per-period payoff (assuming stationarity). Solving: <span class="math display">\[\bar{V} = x.\]</span></p>
+<p>This is exactly the point of the normalization: a constant stream of <span class="math inline">\(x\)</span> per period has normalized value <span class="math inline">\(x\)</span>. But now we have derived this from the recursive structure rather than from summing a series. The two approaches give the same answer — and they must, by the uniqueness of limits.</p>
+<p>The recursive approach generalizes: when the per-period payoff depends on a state variable that evolves over time, we get a <strong>functional equation</strong> (the Bellman equation). That is the subject of Topic <a href="Topic11.html">11</a>.</p>
+<hr />
+<h2 id="a-brief-look-at-continuous-time">8. A brief look at continuous time</h2>
+<p>Everything so far has been in discrete time: periods <span class="math inline">\(t = 0, 1, 2, \dots\)</span>, with a discount factor <span class="math inline">\(\delta\)</span> applied once per period. But economists sometimes work in continuous time, where decisions happen not at integer dates but at every instant <span class="math inline">\(t \in [0, \infty)\)</span>.</p>
+<p>In continuous time, the discount factor <span class="math inline">\(\delta^t\)</span> is replaced by <span class="math inline">\(e^{-rt}\)</span>, where <span class="math inline">\(r &gt; 0\)</span> is the <strong>discount rate</strong> (or interest rate). The present value of a payoff stream <span class="math inline">\(x(t)\)</span> becomes <span class="math display">\[V = \int_0^{\infty} e^{-rt} x(t) \, \mathrm{d}t\]</span> instead of a sum. The integral plays the same role as the geometric series: it aggregates future payoffs, weighting earlier ones more heavily.</p>
+<p>The two formulations are closely related. If we set <span class="math inline">\(\delta = e^{-r}\)</span> (or equivalently <span class="math inline">\(r = -\ln \delta\)</span>), then evaluating the continuous formula at integer dates recovers the discrete one. So the mathematics is not fundamentally different — it is the same idea expressed in a different language.</p>
+<h3 id="what-gets-simpler">What gets simpler</h3>
+<p>Continuous time has genuine advantages. Derivatives replace difference equations: instead of writing <span class="math inline">\(V_{t+1} - V_t\)</span> and worrying about discrete jumps, we write <span class="math inline">\(\dot{V}(t)\)</span> and use calculus. For models where timing is flexible — when does the firm invest? when does the worker quit? — continuous time provides a clean framework because there is no need to artificially discretize the decision.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Many equilibrium conditions also take simpler forms: the Hamilton-Jacobi-Bellman equation (the continuous-time counterpart of the Bellman equation) is often a differential equation, and differential equations have a very well-developed solution theory.</p>
+<h3 id="what-gets-harder">What gets harder</h3>
+<p>The cost is technical. Sums become integrals, difference equations become differential equations, and the probability theory needed for continuous-time stochastic models (Brownian motion, Itô calculus) is substantially more demanding than the discrete-time counterpart. Convergence arguments that are straightforward in discrete time — like the bounded payoffs argument we used above — require measure-theoretic care in continuous time.</p>
+<p>For strategic interaction, continuous time also introduces subtleties about what “simultaneous” means when time is a continuum. In discrete time, “both players move in period <span class="math inline">\(t\)</span>” is unambiguous. In continuous time, the order of actions within an instant can matter, and formalizing strategies requires more care.</p>
+<h3 id="why-economists-use-both">Why economists use both</h3>
+<p>The choice between discrete and continuous time is usually a modeling convenience, not a deep commitment. Roughly:</p>
+<ul>
+<li><p><strong>Discrete time</strong> is the default for game theory, repeated interaction, contracting, and mechanism design. The strategic structure is clearer when periods are distinct, and the recursive machinery (Topic <a href="Topic11.html">11</a>) is easier to set up.</p></li>
+<li><p><strong>Continuous time</strong> is common in finance, macroeconomics, search theory, and dynamic optimization with flexible timing. The calculus tools are often more powerful, and closed-form solutions are sometimes available where the discrete case only gives numerical answers.</p></li>
+</ul>
+<p>Many results have exact counterparts in both settings. The folk theorem, dynamic programming, and optimal stopping all have discrete-time and continuous-time versions. For this pre-course and the PhD microeconomics course that follows, we work in discrete time. But knowing that continuous time exists — and that the economic ideas translate — prevents confusion when you encounter it in other courses.</p>
+<hr />
+<h2 id="an-economic-example-sustaining-cooperation">9. An economic example: sustaining cooperation</h2>
+<p>Consider two firms that interact every period. In each period, each firm can either <strong>cooperate</strong> (keep prices high) or <strong>defect</strong> (undercut).</p>
+<p>Per-period payoffs: - if both cooperate, each earns <span class="math inline">\(\pi_C\)</span>, - if both defect, each earns <span class="math inline">\(\pi_D &lt; \pi_C\)</span>, - if one defects while the other cooperates, the defector earns <span class="math inline">\(\pi_H &gt; \pi_C\)</span> and the cooperator earns <span class="math inline">\(\pi_L &lt; \pi_D\)</span>.</p>
+<p>Consider the <strong>trigger strategy</strong>: cooperate as long as the other firm cooperates; if the other firm ever defects, defect forever.</p>
+<p>Under this strategy, the normalized payoff from cooperating forever is <span class="math inline">\(\pi_C\)</span>.</p>
+<p>The temptation to deviate is: earn <span class="math inline">\(\pi_H\)</span> today (the one-period gain from undercutting), but suffer <span class="math inline">\(\pi_D\)</span> forever after (because the other firm switches to permanent defection). The normalized payoff from deviating is <span class="math display">\[(1-\delta)\pi_H + \delta \pi_D.\]</span></p>
+<p>Cooperation is sustainable if <span class="math display">\[\pi_C \geq (1-\delta)\pi_H + \delta \pi_D,\]</span> which rearranges to <span class="math display">\[\delta \geq \frac{\pi_H - \pi_C}{\pi_H - \pi_D}.\]</span></p>
+<blockquote>
+<p>“Cooperation is sustainable if the firms are patient enough. The more tempting the short-run gain from defection (higher <span class="math inline">\(\pi_H - \pi_C\)</span>), the more patience is required.”</p>
+</blockquote>
+<p>Notice how the normalization made the comparison clean: a per-period cooperation payoff on the left, a weighted average of a one-period deviation gain and a permanent punishment on the right. Without normalization, both sides would carry factors of <span class="math inline">\(1/(1-\delta)\)</span> that obscure the economics.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">10. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>Discounting and infinite horizons are not developed as a standalone mathematical topic in MWG. They appear implicitly in:</p>
+<ul>
+<li><strong>MWG, Chapter 20</strong> (equilibrium and time, intertemporal choice),</li>
+<li><strong>MWG, Chapters 12 and 13</strong> (repeated games, where discounting is a primitive).</li>
+</ul>
+<p>The geometric series itself is assumed as background knowledge. These notes make the economic logic behind the calculation explicit.</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">11. Why this matters for microeconomics</h2>
+<p>Discounting is the language of time in economic theory.</p>
+<p>It appears in: - repeated games (where <span class="math inline">\(\delta\)</span> determines whether cooperation can be sustained), - dynamic contracting (where continuation values serve as incentive instruments), - asset pricing (where prices are present values of dividend streams), - dynamic mechanism design (where future transfers and allocations are discounted).</p>
+<p>The recursive structure — “today plus the discounted future” — is what makes infinite-dimensional problems manageable. Without it, every dynamic model would require solving for infinitely many variables simultaneously.</p>
+<p>Understanding discounting now means that when the course introduces trigger strategies, continuation values, or Bellman equations, the mathematical objects will already be familiar. The economic ideas can then take center stage.</p>
+<hr />
+<h2 id="what-you-should-take-away">12. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - computing present values using geometric series, - interpreting the discount factor as patience, interest, or continuation probability, - understanding why the normalized payoff is a weighted average and why it makes continuation values comparable to per-period payoffs, - seeing why infinite horizons create stationarity rather than complexity, - recognizing the recursive decomposition <span class="math inline">\(\bar{V} = (1-\delta)x + \delta \bar{V}\)</span> as the seed of dynamic programming, - and knowing that continuous time is an alternative formulation with the same economic ideas but different technical tools.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>We do not develop the one-shot deviation principle here, but the normalization is what makes it work cleanly. Without it, the comparison between a one-period gain and a multi-period loss requires carrying around factors of <span class="math inline">\((1-\delta)\)</span> everywhere.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This is the core of why the folk theorem requires an infinite (or indefinitely repeated) horizon. With a known finite horizon, backward induction often forces very different — and less cooperative — behavior.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Optimal stopping problems, real options, and search models are natural examples where continuous time simplifies the analysis.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic9.html" class="nav-prev">← Previous</a><a href="Topic11.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 11: Dynamic Programming and Recursive Thinking</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic10.html" class="nav-prev">← Previous</a><a href="Topic12.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic11.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-11-dynamic-programming-and-recursive-thinking">Topic 11: Dynamic Programming and Recursive Thinking</h1>
+<p><em>(How to solve infinite-dimensional problems one step at a time)</em></p>
+<hr />
+<h2 id="why-dynamic-programming-enters-now">1. Why dynamic programming enters now</h2>
+<p>Topic <a href="Topic10.html">10</a> introduced discounting, infinite horizons, and the recursive decomposition <span class="math display">\[\bar{V} = (1-\delta) x + \delta \bar{V}.\]</span></p>
+<p>That decomposition was for a constant payoff stream. But in most economic problems, payoffs are not constant — they depend on the <strong>state</strong> of the world, and on the <strong>actions</strong> of the agents. Often, those actions affect the future state as well.</p>
+<p>For example, a firm’s profit depends on its capital stock, which depends on past investment. A consumer’s utility depends on her wealth, which depends on past savings decisions. A player’s continuation payoff in a repeated game depends on the history of play, which determines the current “state” of the relationship.</p>
+<p>In all these cases, the agent faces the same question every period: given the current state, what should I do today, knowing that my choice affects not only today’s payoff but also tomorrow’s state?</p>
+<p>Dynamic programming is the method that turns this infinite-dimensional problem —choosing a full program of state-dependent choices—into a manageable one-step problem. The key idea is to find a <strong>value function</strong> that summarizes the future, so that the agent can optimize one period at a time.</p>
+<hr />
+<h2 id="the-ingredients">2. The ingredients</h2>
+<p>A dynamic optimization problem has three components:</p>
+<ol type="1">
+<li><p><strong>State variable</strong> <span class="math inline">\(\theta \in \Theta\)</span>: a summary of everything from the past that matters for the future. The state might be a capital stock, a wealth level, a vector of past actions, or a belief.</p></li>
+<li><p><strong>Action</strong> <span class="math inline">\(a \in A(\theta)\)</span>: what the agent chooses in the current period, given the state. The feasible set may depend on the state (you cannot invest more than your current wealth).</p></li>
+<li><p><strong>Transition</strong>: a rule that determines the next state <span class="math inline">\(\theta&#39;\)</span> given the current state <span class="math inline">\(\theta\)</span> and action <span class="math inline">\(a\)</span>. In the deterministic case this is a function <span class="math inline">\(\theta&#39; = g(\theta,a)\)</span>. In the stochastic case, <span class="math inline">\(\theta&#39;\)</span> is drawn from a distribution that depends on <span class="math inline">\((\theta,a)\)</span>.</p></li>
+</ol>
+<p>The agent’s per-period payoff is <span class="math inline">\(u(\theta,a)\)</span>, and she discounts the future with discount factor <span class="math inline">\(\delta \in (0,1)\)</span>.</p>
+<p>The agent’s problem is to choose a sequence of actions <span class="math inline">\((a_0, a_1, a_2, \dots)\)</span> to maximize the normalized present value <span class="math display">\[(1-\delta) \sum_{t=0}^{\infty} \delta^t u(\theta_t, a_t),\]</span> where <span class="math inline">\(\theta_{t+1} = g(\theta_t, a_t)\)</span> and <span class="math inline">\(\theta_0\)</span> is given.</p>
+<p>This is, in principle, a problem with infinitely many choice variables. Dynamic programming reduces it to one.</p>
+<hr />
+<h2 id="the-principle-of-optimality">3. The principle of optimality</h2>
+<p>The key insight is due to Bellman:</p>
+<blockquote>
+<p>“If a plan is optimal from period <span class="math inline">\(0\)</span> onward, then its continuation from period <span class="math inline">\(1\)</span> onward must be optimal given the state at period <span class="math inline">\(1\)</span>.”</p>
+</blockquote>
+<p>This sounds obvious, but it is powerful. It says that optimal behavior has a recursive structure: you cannot be doing the best thing overall without also doing the best thing going forward from every intermediate point.</p>
+<p>The contrapositive makes the logic clear: if the continuation were not optimal from period <span class="math inline">\(1\)</span>, you could improve the overall plan by swapping in a better continuation — contradicting optimality of the original plan.</p>
+<p>The principle of optimality is what justifies reducing the infinite-horizon problem to a one-period problem. Instead of choosing an entire sequence, the agent asks: “given the current state <span class="math inline">\(\theta\)</span>, what action <span class="math inline">\(a\)</span> maximizes today’s payoff plus the discounted value of being in state <span class="math inline">\(\theta&#39;\)</span> tomorrow?” If we know the value of being in each state, the problem is solved.</p>
+<hr />
+<h2 id="the-bellman-equation">4. The Bellman equation</h2>
+<p>The <strong>value function</strong> <span class="math inline">\(V: \Theta \to \mathbb{R}\)</span> assigns to each state <span class="math inline">\(\theta\)</span> the normalized value of behaving optimally from <span class="math inline">\(\theta\)</span> onward.</p>
+<p>By the principle of optimality, <span class="math inline">\(V\)</span> must satisfy the <strong>Bellman equation</strong>: <span class="math display">\[V(\theta) = \max_{a \in A(\theta)} \left\{ (1-\delta)\, u(\theta,a) + \delta\, V(g(\theta,a)) \right\}.\]</span></p>
+<blockquote>
+<p>“The value of being in state <span class="math inline">\(\theta\)</span> is the best you can do today — choosing an action that maximizes the weighted sum of today’s payoff and the discounted value of tomorrow’s state.”</p>
+</blockquote>
+<p>Although the Bellman equation does simplify the problem enormously, it, depending on the eye of the beholder, it is (un)fortunately not yet trivial. Why? Because the Bellman equation is a <strong>functional equation</strong>: the unknown is not a number but a <em>function</em> <span class="math inline">\(V\)</span>. The value function appears on both sides of the equation, because the value of today’s state depends on the value of tomorrow’s state, which is itself determined by <span class="math inline">\(V\)</span>.</p>
+<p>Compare this to the simple recursive decomposition in Topic <a href="Topic10.html">10</a>. There, the “state” was trivial (the payoff was the same every period), so <span class="math inline">\(V\)</span> was just a number. Now <span class="math inline">\(V\)</span> is a function of the state, and the Bellman equation tells us what this function must look like.</p>
+<hr />
+<h2 id="the-bellman-equation-as-a-fixed-point-problem">5. The Bellman equation as a fixed-point problem</h2>
+<p>The next step is now to solve this equation. In Topic <a href="Topic9.html">9</a>, we studied fixed points: a point <span class="math inline">\(x^\ast\)</span> such that <span class="math inline">\(f(x^\ast) = x^\ast\)</span>. The Bellman equation has exactly this structure, but in a different space.</p>
+<p>Define an <em>operator</em> <span class="math inline">\(T\)</span> that takes a function <span class="math inline">\(W: \Theta \to \mathbb{R}\)</span> and produces a new function <span class="math inline">\(TW: \Theta \to \mathbb{R}\)</span> by <span class="math display">\[(TW)(\theta) = \max_{a \in A(\theta)} \left\{ (1-\delta)\, u(\theta,a) + \delta\, W(g(\theta,a)) \right\}.\]</span></p>
+<p>Then the Bellman equation says: <span class="math inline">\(V = TV\)</span>.</p>
+<blockquote>
+<p>“The value function is a fixed point of the Bellman operator. It is a function that, when you plug it into the right-hand side, you get back the same function on the left.”</p>
+</blockquote>
+<p>Let’s reiterate how we get there.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<ol type="1">
+<li>First, we notice that the agent’s problem is described by the principle of optimality. She does whatever is best for her which means assuming that wherever she ends up tomorrow she will do what is best from tomorrow onward. Knowing that, today’s choice boils down to choosing what happens today and where to end up tomorrow.</li>
+<li>Second, using this “truth” we can determine what describes the value of starting at a particular state <span class="math inline">\(\theta\)</span>. It is the best that can come out from wherever we are. If we want to describe that <strong>for all</strong> possible states, we get the value function.</li>
+<li>But then, this is <em>one single function</em>, completely pinned down by our inputs (state space, action space, transition function).</li>
+<li>Finally, this means we can write the right hand side as a <em>function over functions</em> that for each value function <span class="math inline">\(W\)</span> we pick on the right hand side (optimal or not) gives us the best action for today, that is, <span class="math display">\[T(W,\theta)= \max_{a \in A(\theta)} \left\{ (1-\delta)\, u(\theta,a) + \delta\, W(g(\theta,a)) \right\}\]</span></li>
+</ol>
+<p>Notice that on the right hand side <span class="math inline">\(a\)</span> is already pinned down by the <span class="math inline">\(\max\)</span>. So we are left with <span class="math inline">\(\theta\)</span> which enters through <span class="math inline">\(W(g())\)</span> and <span class="math inline">\(u()\)</span>. So the only “choice” we have is that of <span class="math inline">\(W\)</span>. If we can find a <span class="math inline">\(W: \Theta \to \mathbb{R}\)</span> such that <span class="math inline">\(W(\theta) = T(W,\theta)\)</span> for all <span class="math inline">\(\theta\)</span>, then we know that for this <span class="math inline">\(W\)</span> the agent always takes the correct decision. But because <span class="math inline">\(\theta\)</span> is still an element here, we have to find our fixed point in the space of functions, not just numbers. This is what makes it a functional equation.</p>
+<p>Our function space is the space of all (bounded) functions from <span class="math inline">\(\Theta\)</span> to <span class="math inline">\(\mathbb{R}\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The question is: does such a fixed point exist? Is it unique? And can we find it? The answer to all three is yes, thanks to a new fixed-point theorem.</p>
+<hr />
+<h2 id="the-contraction-mapping-theorem">6. The contraction mapping theorem</h2>
+<p>The fixed-point theorems in Topic <a href="Topic9.html">9</a> — Brouwer, Kakutani, Tarski — guarantee existence but not uniqueness (except Tarski for extremal fixed points). For the Bellman equation, we construct something stronger: a result that gives both existence and uniqueness, and tells us how to compute the solution.</p>
+<p>The right tool is the <strong>contraction mapping theorem</strong> (also called the Banach fixed-point theorem).</p>
+<h3 id="complete-metric-spaces">Complete metric spaces</h3>
+<p>To state it, we need one concept. A <strong>complete metric space</strong> is a set <span class="math inline">\(X\)</span> with a metric <span class="math inline">\(d\)</span> (recall the remark in Topic <a href="Topic4.html">4</a>) where every Cauchy sequence converges.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> The real line <span class="math inline">\(\mathbb{R}\)</span> is complete (this is a fundamental property of the reals). The space of bounded functions from <span class="math inline">\(\Theta\)</span> to <span class="math inline">\(\mathbb{R}\)</span>, equipped with the “sup metric” <span class="math inline">\(d(f,g) = \sup_{\theta \in \Theta} |f(\theta) - g(\theta)|\)</span>, is also complete.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<h3 id="the-theorem">The theorem</h3>
+<hr />
+<p><strong>Theorem (Contraction Mapping / Banach).</strong> Let <span class="math inline">\((X, d)\)</span> be a complete metric space and let <span class="math inline">\(T: X \to X\)</span> be a <strong>contraction</strong>: there exists <span class="math inline">\(\beta \in (0,1)\)</span> such that <span class="math display">\[d(T(x), T(y)) \leq \beta \, d(x, y) \quad \text{for all } x, y \in X.\]</span> Then <span class="math inline">\(T\)</span> has exactly one fixed point <span class="math inline">\(x^\ast\)</span>, and for any starting point <span class="math inline">\(x_0 \in X\)</span>, the sequence <span class="math inline">\(x_0, T(x_0), T(T(x_0)), \dots\)</span> converges to <span class="math inline">\(x^\ast\)</span>.</p>
+<hr />
+<blockquote>
+<p>“A contraction squeezes points closer together. If you keep applying it, everything collapses to a single fixed point.”</p>
+</blockquote>
+<h3 id="proof-sketch">Proof sketch</h3>
+<p>The argument is constructive. Start anywhere: pick any <span class="math inline">\(x_0 \in X\)</span>. Define <span class="math inline">\(x_1 = T(x_0)\)</span>, <span class="math inline">\(x_2 = T(x_1)\)</span>, and so on.</p>
+<p>Because <span class="math inline">\(T\)</span> is a contraction, <span class="math display">\[d(x_1, x_2) = d(T(x_0), T(x_1)) \leq \beta \, d(x_0, x_1).\]</span> Repeating, <span class="math display">\[d(x_n, x_{n+1}) \leq \beta^n \, d(x_0, x_1).\]</span></p>
+<p>Since <span class="math inline">\(\beta &lt; 1\)</span>, these distances shrink geometrically — exactly like the geometric series from Topic <a href="Topic10.html">10</a>. For any <span class="math inline">\(m &gt; n\)</span>, the triangle inequality gives <span class="math display">\[d(x_n, x_m) \leq d(x_n, x_{n+1}) + d(x_{n+1}, x_{n+2}) + \cdots \leq \beta^n \, d(x_0, x_1) \cdot \frac{1}{1-\beta}.\]</span></p>
+<p>As <span class="math inline">\(n \to \infty\)</span>, the right hand side goes to <span class="math inline">\(0\)</span>, because <span class="math inline">\(d(x_0,x_1)\)</span> is bounded, because the functions are bounded, <span class="math inline">\(1-\beta&gt;0\)</span> and <span class="math inline">\(\beta^n \to 0\)</span> because <span class="math inline">\(\beta&lt;1\)</span>, so the sequence is Cauchy. By completeness, it converges to some <span class="math inline">\(x^\ast\)</span>.</p>
+<p>To see that <span class="math inline">\(x^\ast\)</span> is a fixed point: <span class="math inline">\(T\)</span> is continuous (any contraction is), so <span class="math inline">\(T(x^\ast) = T(\lim x_n) = \lim T(x_n) = \lim x_{n+1} = x^\ast\)</span>.</p>
+<p>Uniqueness: if there were two fixed points <span class="math inline">\(x^\ast\)</span> and <span class="math inline">\(y^\ast\)</span>, then <span class="math inline">\(d(x^\ast, y^\ast) = d(T(x^\ast), T(y^\ast)) \leq \beta \, d(x^\ast, y^\ast)\)</span>. Since <span class="math inline">\(\beta &lt; 1\)</span>, this implies <span class="math inline">\(d(x^\ast, y^\ast) = 0\)</span>, so <span class="math inline">\(x^\ast = y^\ast\)</span> because in every metric <span class="math inline">\(d(x,y)=0 \Leftrightarrow x=y\)</span>.</p>
+<blockquote>
+<p>“Start anywhere, keep applying the contraction, and you converge to the unique fixed point. The proof is the algorithm.”</p>
+</blockquote>
+<h3 id="comparison-with-topic-9">Comparison with Topic <a href="Topic9.html">9</a></h3>
+<p>The contraction mapping theorem has a very different character from Brouwer, Kakutani, and Tarski: - it requires no convexity and no lattice structure, - it requires a metric and completeness (topological structure that the others did not need), - it gives <strong>uniqueness</strong> (the others generally do not), - it is <strong>constructive</strong> (the iteration <span class="math inline">\(x, T(x), T(T(x)), \dots\)</span> converges to the solution).</p>
+<p>The price is the contraction property: the mapping must strictly squeeze distances. This is a strong requirement, but one that the Bellman operator naturally satisfies.</p>
+<p>Another practical limitation is that value function iteration is often not very elegant. You can solve the problem, but the solution is often not closed-form, and — I am out of my depth here, but at least in my days — it is not very computationally efficient. That’s why in Macro you often use other methods than value function iteration to determine the optimum. See more on this below.</p>
+<hr />
+<h2 id="why-the-bellman-operator-is-a-contraction">7. Why the Bellman operator is a contraction</h2>
+<p>This is the result that makes everything work. Under standard assumptions — bounded payoffs, <span class="math inline">\(\delta &lt; 1\)</span> — the Bellman operator <span class="math inline">\(T\)</span> is a contraction on the space of bounded functions, with contraction factor <span class="math inline">\(\beta = \delta\)</span>.</p>
+<p>The intuition is direct. Suppose two candidate value functions <span class="math inline">\(W\)</span> and <span class="math inline">\(W&#39;\)</span> differ by at most <span class="math inline">\(\varepsilon\)</span> everywhere: <span class="math inline">\(\sup_\theta |W(\theta) - W&#39;(\theta)| \leq \varepsilon\)</span>. Now compute <span class="math inline">\(TW\)</span> and <span class="math inline">\(TW&#39;\)</span>. The only way <span class="math inline">\(W\)</span> and <span class="math inline">\(W&#39;\)</span> enter the Bellman equation is through the continuation value, which is multiplied by <span class="math inline">\(\delta\)</span>. So the difference between <span class="math inline">\(TW\)</span> and <span class="math inline">\(TW&#39;\)</span> is at most <span class="math inline">\(\delta \varepsilon\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>This means: <span class="math display">\[d(TW, TW&#39;) \leq \delta \, d(W, W&#39;).\]</span></p>
+<p>Since <span class="math inline">\(\delta &lt; 1\)</span>, the operator <span class="math inline">\(T\)</span> is a contraction. The contraction mapping theorem then guarantees: - the Bellman equation has a <strong>unique</strong> solution <span class="math inline">\(V\)</span>, - starting from any initial guess <span class="math inline">\(W_0\)</span> and iterating <span class="math inline">\(W_{n+1} = TW_n\)</span> converges to <span class="math inline">\(V\)</span>.</p>
+<blockquote>
+<p>“Discounting is what makes the Bellman operator a contraction. Because the future is worth less than the present, disagreements about continuation values get squeezed by <span class="math inline">\(\delta\)</span> every time you iterate.”</p>
+</blockquote>
+<hr />
+<h2 id="value-iteration-and-policy-functions">8. Value iteration and policy functions</h2>
+<p>The constructive nature of the contraction mapping theorem gives us an algorithm: <strong>value iteration</strong>.</p>
+<ol type="1">
+<li>Start with any bounded function <span class="math inline">\(W_0\)</span> (a common choice is <span class="math inline">\(W_0 = 0\)</span>).</li>
+<li>Compute <span class="math inline">\(W_1 = TW_0\)</span>, then <span class="math inline">\(W_2 = TW_1\)</span>, and so on.</li>
+<li>The sequence <span class="math inline">\(W_0, W_1, W_2, \dots\)</span> converges to the true value function <span class="math inline">\(V\)</span>.</li>
+</ol>
+<p>At each step, computing <span class="math inline">\(TW_n\)</span> requires solving a static optimization problem — maximizing over today’s action — for each state. This is where the single-agent tools from Topics <a href="Topic2.html">2</a>–<a href="Topic6.html">6</a> come in: for each state, we solve a one-period problem.</p>
+<p>Once we have the value function <span class="math inline">\(V\)</span>, the <strong>policy function</strong> (or policy correspondence) is the argmax of the Bellman equation: <span class="math display">\[a^\ast(\theta) = \operatorname{argmax}_{a \in A(\theta)} \left\{ (1-\delta)\, u(\theta,a) + \delta\, V(g(\theta,a)) \right\}.\]</span></p>
+<blockquote>
+<p>“The policy function tells the agent what to do in each state. It is the decision rule that, together with the value function, solves the entire infinite-horizon problem.”</p>
+</blockquote>
+<p>This connects directly to Topic <a href="Topic5.html">5</a>: the argmax is in general a correspondence (set-valued), and its properties — upper hemicontinuity, convexity of values — depend on the same assumptions that Berge’s Maximum Theorem requires.</p>
+<hr />
+<h2 id="an-economic-example-optimal-savings">9. An economic example: optimal savings</h2>
+<p>Consider a consumer with wealth <span class="math inline">\(\theta\)</span> who must split it between consumption <span class="math inline">\(c\)</span> and savings <span class="math inline">\(\theta - c\)</span> each period. She earns a gross return <span class="math inline">\(R &gt; 0\)</span> on savings, so next period’s wealth is <span class="math inline">\((\theta-c) \cdot R\)</span>. Her per-period utility from consumption is <span class="math inline">\(u(c)\)</span>, increasing and concave.</p>
+<p>The state is wealth <span class="math inline">\(\theta\)</span>. The action is how much to consume, <span class="math inline">\(c \in [0, \theta]\)</span>. The transition is <span class="math inline">\(\theta&#39; = (\theta-c)R\)</span>.</p>
+<p>The Bellman equation spells this out: <span class="math display">\[V(\theta) = \max_{0 \leq c \leq \theta} \left\{ (1-\delta)\, u(c) + \delta\, V((\theta-c)R) \right\}.\]</span></p>
+<p>The consumer’s trade-off is transparent: consuming more today (higher <span class="math inline">\(u(c)\)</span>) means saving less and arriving at a lower wealth state tomorrow (lower <span class="math inline">\(V((\theta-c)R)\)</span>). The weights <span class="math inline">\((1-\delta)\)</span> and <span class="math inline">\(\delta\)</span> govern how she balances present enjoyment against future wealth.</p>
+<p>Under standard assumptions (<span class="math inline">\(u\)</span> bounded and continuous, <span class="math inline">\(\delta R &lt; 1\)</span> to ensure the problem is well-behaved), the contraction mapping theorem guarantees a unique value function <span class="math inline">\(V\)</span>, and the policy function <span class="math inline">\(c^\ast(\theta)\)</span> tells us how much to consume at each wealth level.</p>
+<p>This example shows dynamic programming in its most natural habitat: the consumer does not need to plan her entire life’s consumption at once. She just needs to know <span class="math inline">\(V\)</span> and solve a one-period problem. The value function encodes everything about the future that matters for today’s decision.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">10. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>Dynamic programming is not developed as a standalone topic in MWG’s mathematical appendices. It appears in the economic chapters:</p>
+<ul>
+<li><strong>MWG, Chapter 20</strong> (intertemporal choice and dynamic optimization),</li>
+<li><strong>MWG, Chapters 12 and 13</strong> (repeated games, where continuation values play the role of the value function).</li>
+</ul>
+<p>The contraction mapping theorem is stated in <strong>MWG, Mathematical Appendix C</strong>. The connection between the Bellman equation and the contraction mapping theorem is typically developed in more specialized references.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">11. Why this matters for microeconomics</h2>
+<p>Dynamic programming is how economists tame infinite-horizon problems.</p>
+<p>It matters because: - it converts infinite-dimensional optimization into a sequence of one-period problems, - it provides both existence and uniqueness of optimal behavior (via the contraction mapping theorem), - it gives a computational method (value iteration), - and it underlies the recursive formulation of repeated games, dynamic contracts, and mechanism design.</p>
+<p>In the PhD course, you will see continuation values used as incentive instruments — a principal can promise future rewards or threaten future punishments to influence behavior today. The Bellman equation is what makes “the value of the future” a precise, well-defined object that can be manipulated and optimized over.</p>
+<hr />
+<h2 id="what-you-should-take-away">12. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - reading Bellman equations and understanding what the value function represents, - seeing the Bellman equation as a fixed-point problem in function space, - knowing what the contraction mapping theorem says and why it gives both existence and uniqueness, - understanding that <span class="math inline">\(\delta &lt; 1\)</span> is what makes the Bellman operator a contraction, - and recognizing that dynamic programming reduces infinite-horizon problems to sequences of static problems.</p>
+<p>This is the last major mathematical tool. From here, the remaining topics refine and extend what we have already built.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>My macro professor in the PhD classified people in two intelligence levels: Those that can solve Bellman equations and those that cannot. I do not subscribe to his view, but maybe it is still worth it to invest into understanding them, if only to impress a Macro Economist.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If <span class="math inline">\(u\)</span> is bounded, and <span class="math inline">\(\delta&lt;1\)</span>, then any solution sequence is going to yield a bounded payoff, thus any function that could work must be a function that is bounded too.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>A Cauchy sequence is a sequence where the terms get arbitrarily close to each other as the sequence progresses: for every <span class="math inline">\(\varepsilon &gt; 0\)</span>, there exists <span class="math inline">\(N\)</span> such that <span class="math inline">\(d(x_m, x_n) &lt; \varepsilon\)</span> for all <span class="math inline">\(m, n \geq N\)</span>. Completeness means such sequences actually have a limit in <span class="math inline">\(X\)</span> — they don’t “converge to a hole.”<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The sup metric measures the largest pointwise difference between two functions. Two functions are close under this metric if they are close <em>everywhere</em>. An exercise to work with metrics is to prove that the sup metric is indeed a metric.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>More precisely: for any state <span class="math inline">\(\theta\)</span> and any action <span class="math inline">\(a\)</span>, <span class="math inline">\(|(1-\delta)u(\theta,a) + \delta W(g(\theta,a)) - (1-\delta)u(\theta,a) - \delta W&#39;(g(\theta,a))| = \delta |W(g(\theta,a)) - W&#39;(g(\theta,a))| \leq \delta \varepsilon\)</span>. Taking the max over <span class="math inline">\(a\)</span> on each side and then the sup over <span class="math inline">\(\theta\)</span> gives <span class="math inline">\(d(TW, TW&#39;) \leq \delta \, d(W, W&#39;)\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Stokey, Lucas, and Prescott, “Recursive Methods in Economic Dynamics” (1989), is the standard reference for economists. It develops the contraction mapping approach to dynamic programming in detail. Kreps (1995), “A Course in Microeconomic Theory,” has a more micro oriented treatment.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic10.html" class="nav-prev">← Previous</a><a href="Topic12.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

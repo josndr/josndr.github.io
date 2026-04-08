@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 8: Probability and Expectations</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic7.html" class="nav-prev">← Previous</a><a href="Topic9.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic8.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-8-probability-and-expectations">Topic 8: Probability and Expectations</h1>
+<p><em>(How economists talk about uncertainty, types, and randomization)</em></p>
+<hr />
+<h2 id="why-probability-enters-now">1. Why probability enters now</h2>
+<p>Up to now, the pre-course has built a toolkit for: - sets and mappings, - preferences and utility, - convexity and geometry, - continuity, closedness, and existence, - optimization and correspondences, - differentiability and marginal reasoning, - order, lattices, and monotone comparative statics.</p>
+<p>All of these tools were developed in a world of certainty. The agent knows her choice set, she knows her utility function, and she knows the parameters of the problem. The only question was: given all this information, what does she choose, and how does that choice change when the environment changes?</p>
+<p>But a large part of microeconomics does not live in such a world.</p>
+<p>Agents often face: - uncertainty about payoffs (will this investment pay off?), - uncertainty about other agents’ characteristics (what is the other bidder’s valuation?), - uncertainty about signals (what does this test result mean?), - or deliberate randomization (a player who mixes between strategies).</p>
+<p>So before we can talk cleanly about auctions, Bayesian games, or mixed strategies, we need a minimal probability language.</p>
+<p>The point of this topic is not to turn you into a probability theorist. It is to make sure that when economists write “expected payoff” or “distribution over types,” those words are no longer mysterious.</p>
+<hr />
+<h2 id="the-state-space-what-might-happen">2. The state space: what might happen</h2>
+<p>Start with the most primitive object: the set of things that could happen.</p>
+<p>We call this set <span class="math inline">\(\Omega\)</span> and refer to it as the <strong>state space</strong>. Each element <span class="math inline">\(\omega \in \Omega\)</span> is a <strong>state of the world</strong> – a complete description of everything that is uncertain.</p>
+<p>In economics, the state space might describe: - which of several possible cost realizations occurs, - which type each player in a game has, - which signal each agent observes.</p>
+<blockquote>
+<p>“<span class="math inline">\(\Omega\)</span> is the set of all possible states of the world. An element <span class="math inline">\(\omega\)</span> is one particular resolution of uncertainty.”</p>
+</blockquote>
+<p>Mathematically, this is just a set like any other. It becomes interesting only once we start measuring how likely different parts of it are.</p>
+<hr />
+<h2 id="events-and-probabilities">3. Events and probabilities</h2>
+<p>An <strong>event</strong> is a subset of the state space: <span class="math inline">\(A \subseteq \Omega\)</span>.</p>
+<blockquote>
+<p>“An event is a collection of states. The event <span class="math inline">\(A\)</span> occurs if the realized state <span class="math inline">\(\omega\)</span> happens to lie in <span class="math inline">\(A\)</span>.”</p>
+</blockquote>
+<p>A <strong>probability</strong> is a rule that assigns a number to events in a coherent way. Formally, a probability (often written <span class="math inline">\(\Pr\)</span> or <span class="math inline">\(P\)</span>) satisfies three properties:</p>
+<ol type="1">
+<li><p><strong>Nonnegativity</strong>: for every event <span class="math inline">\(A\)</span>, <span class="math display">\[\Pr(A) \geq 0.\]</span></p></li>
+<li><p><strong>Normalization</strong>: the probability that <em>something</em> happens is one, <span class="math display">\[\Pr(\Omega) = 1.\]</span></p></li>
+<li><p><strong>Additivity</strong>: if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint events (they share no states), then <span class="math display">\[\Pr(A \cup B) = \Pr(A) + \Pr(B).\]</span></p></li>
+</ol>
+<blockquote>
+<p>“Probability is a coherent way of assigning weights to events. The weights are nonnegative, the total is one, and non-overlapping events add up.”</p>
+</blockquote>
+<p>These three properties are sometimes called the <strong>Kolmogorov axioms</strong>. They are the foundation on which everything else rests.</p>
+<p>Note that we said nothing about <em>where</em> probabilities come from. In some models they represent objective frequencies (how often something happens if we repeat the experiment). In others they represent subjective beliefs (how confident the agent is). The mathematics is the same either way. Microeconomics uses both interpretations depending on the context.</p>
+<hr />
+<h2 id="random-variables">4. Random variables</h2>
+<p>A <strong>random variable</strong> is a mapping from states of the world into numbers: <span class="math display">\[X: \Omega \to \mathbb{R}.\]</span></p>
+<blockquote>
+<p>“A random variable turns uncertainty about states into uncertainty about a number.”</p>
+</blockquote>
+<p>This is just a function in the sense of Topic <a href="Topic1.html">1</a>. The domain is the state space <span class="math inline">\(\Omega\)</span>, the codomain is <span class="math inline">\(\mathbb{R}\)</span>. What makes it “random” is that we do not know which <span class="math inline">\(\omega\)</span> will occur, and therefore we do not know what value <span class="math inline">\(X(\omega)\)</span> will take.</p>
+<p>In economics, random variables represent objects like: - a consumer’s income (uncertain because it depends on the state of the economy), - a bidder’s valuation in an auction (uncertain because it is private information), - a firm’s cost (uncertain because of technological shocks), - a player’s type in a game of incomplete information.</p>
+<p>Why does this matter? Because once uncertainty is encoded as a random variable, we can use all the tools of analysis – integration, optimization, comparison – to study it systematically.</p>
+<hr />
+<h2 id="distributions">5. Distributions</h2>
+<p>Knowing that <span class="math inline">\(X\)</span> is a random variable is not enough. We also need to know <em>how likely</em> different values of <span class="math inline">\(X\)</span> are. This is what a <strong>distribution</strong> tells us.</p>
+<h3 id="discrete-distributions">Discrete distributions</h3>
+<p>If <span class="math inline">\(X\)</span> takes finitely many values <span class="math inline">\(x_1, \dots, x_n\)</span>, the distribution is simply a list of probabilities: <span class="math display">\[p_i = \Pr(X = x_i), \quad i = 1, \dots, n.\]</span></p>
+<p>The probabilities are nonnegative and sum to one: <span class="math display">\[\sum_{i=1}^n p_i = 1.\]</span></p>
+<p>This is the simplest case. It covers situations like: a firm faces two possible cost levels, or a buyer’s type is drawn from a finite set.</p>
+<h3 id="continuous-distributions-and-the-cdf">Continuous distributions and the CDF</h3>
+<p>In many economic models, the random variable takes a continuum of values. We do that because it makes our lives often much much easier. In that case, the probability that <span class="math inline">\(X\)</span> equals any single value is typically zero, so we need a different way to describe the distribution.</p>
+<p>The <strong>cumulative distribution function</strong> (CDF) is defined as <span class="math display">\[F(x) = \Pr(X \leq x).\]</span></p>
+<blockquote>
+<p>“The CDF at <span class="math inline">\(x\)</span> is the probability that the random variable takes a value no larger than <span class="math inline">\(x\)</span>.”</p>
+</blockquote>
+<p>Properties of the CDF: - <span class="math inline">\(F\)</span> is nondecreasing (higher <span class="math inline">\(x\)</span> means weakly more probability accumulated), - <span class="math inline">\(\lim_{x \to -\infty} F(x) = 0\)</span> and <span class="math inline">\(\lim_{x \to +\infty} F(x) = 1\)</span>, - <span class="math inline">\(F\)</span> is right-continuous.</p>
+<p>If the CDF is differentiable, we can define the <strong>probability density function</strong> (PDF) as <span class="math display">\[f(x) = F&#39;(x).\]</span></p>
+<p>The density tells us how “concentrated” probability is near <span class="math inline">\(x\)</span>. A higher density means more probability mass near that value.</p>
+<p>Economists often write things like “let <span class="math inline">\(v\)</span> be drawn from <span class="math inline">\(F\)</span>” or “types are distributed according to <span class="math inline">\(F\)</span>.” This simply means: <span class="math inline">\(v\)</span> is a random variable with cumulative distribution function <span class="math inline">\(F\)</span>.</p>
+<hr />
+<h2 id="expectation-the-probability-weighted-average">6. Expectation: the probability-weighted average</h2>
+<p>The <strong>expectation</strong> (or <strong>expected value</strong>) of a random variable is its probability-weighted average.</p>
+<p>For a discrete random variable with values <span class="math inline">\(x_1, \dots, x_n\)</span> and probabilities <span class="math inline">\(p_1, \dots, p_n\)</span>, <span class="math display">\[\mathbb{E}[X] = \sum_{i=1}^n p_i \, x_i.\]</span></p>
+<p>For a continuous random variable with density <span class="math inline">\(f\)</span>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[\mathbb{E}[X] = \int_{-\infty}^{\infty} x \, f(x) \, \mathrm{d}x.\]</span></p>
+<blockquote>
+<p>“Expectation is the weighted average value you would get if the uncertainty were resolved many times.”</p>
+</blockquote>
+<h3 id="why-economists-care-about-expectation">Why economists care about expectation</h3>
+<p>Expectation is the central bridge between probability and optimization. Whenever an agent faces uncertainty and must choose <em>before</em> the uncertainty resolves, the standard approach in economics is to evaluate choices by their <strong>expected payoff</strong>.</p>
+<p>This appears as: - <strong>expected utility</strong> in consumer theory under risk, - <strong>expected profit</strong> in a firm’s production decision, - <strong>expected revenue</strong> in auction design, - <strong>expected continuation payoff</strong> in dynamic games.</p>
+<h3 id="linearity-of-expectation">Linearity of expectation</h3>
+<p>One of the most useful properties of expectation is <strong>linearity</strong>: <span class="math display">\[\mathbb{E}[aX + bY] = a\,\mathbb{E}[X] + b\,\mathbb{E}[Y]\]</span> for any constants <span class="math inline">\(a, b\)</span> and random variables <span class="math inline">\(X, Y\)</span>.</p>
+<blockquote>
+<p>“The expected value of a sum is the sum of the expected values, regardless of whether the random variables are related.”</p>
+</blockquote>
+<p>This property holds even when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent. It is one of the reasons expectation is so tractable.</p>
+<hr />
+<h2 id="conditional-probability-and-bayes-rule">7. Conditional probability and Bayes’ rule</h2>
+<p>Sometimes new information arrives. A bidder observes a signal. A firm learns a partial cost estimate. An agent sees another agent’s action.</p>
+<p>When information arrives, beliefs must be updated. This is where <strong>conditional probability</strong> enters.</p>
+<h3 id="conditional-probability">Conditional probability</h3>
+<p>The probability of an event <span class="math inline">\(A\)</span> conditional on observing that event <span class="math inline">\(B\)</span> has occurred is <span class="math display">\[\Pr(A \mid B) = \frac{\Pr(A \cap B)}{\Pr(B)},\]</span> provided <span class="math inline">\(\Pr(B) &gt; 0\)</span>.</p>
+<p>In English the above equation says:</p>
+<blockquote>
+<p>“The conditional probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the probability that both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur, divided by the probability that <span class="math inline">\(B\)</span> occurs.”</p>
+</blockquote>
+<p>Think of it as zooming in on the world where <span class="math inline">\(B\)</span> happened and asking: within that world, how likely is <span class="math inline">\(A\)</span>?</p>
+<h3 id="bayes-rule">Bayes’ rule</h3>
+<p>Bayes’ rule is a way to represent the previous equation as a relation between conditional probabilities. It thus follow directly from the above rule</p>
+<p><span class="math display">\[\Pr(A \mid B) = \frac{\Pr(B \mid A) \, \Pr(A)}{\Pr(B)}.\]</span></p>
+<blockquote>
+<p>“Bayes’ rule says that when we observe <span class="math inline">\(B\)</span>, the probability of <span class="math inline">\(A\)</span> is the probability that <span class="math inline">\(B\)</span> has occurred <em>because</em> <span class="math inline">\(A\)</span> is true, times the relative liklihod of <span class="math inline">\(A\)</span> occurring in the first place, all divided by the overall probability of <span class="math inline">\(B\)</span>.”</p>
+</blockquote>
+<p>This formula is the formal engine behind belief updating in microeconomics. The components have names: - <span class="math inline">\(\Pr(A)\)</span> is the <strong>prior</strong> – what we believed before seeing <span class="math inline">\(B\)</span>, - <span class="math inline">\(\Pr(B \mid A)\)</span> is the <strong>likelihood</strong> – how probable the evidence <span class="math inline">\(B\)</span> is if <span class="math inline">\(A\)</span> were true, - <span class="math inline">\(\Pr(A \mid B)\)</span> is the <strong>posterior</strong> – what we believe after seeing <span class="math inline">\(B\)</span>.</p>
+<p>Bayes’ rule is used everywhere in information economics. Whenever you read “the agent updates beliefs,” the formal content behind that phrase is Bayes’ rule.</p>
+<hr />
+<h2 id="independence">8. Independence</h2>
+<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>independent</strong> if <span class="math display">\[\Pr(A \cap B) = \Pr(A) \cdot \Pr(B).\]</span></p>
+<p>So the probability that both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur is just the product of their individual probabilities.</p>
+<p>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <strong>independent</strong> if learning the value of one tells you nothing about the other. Formally, this means that for all values <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, <span class="math display">\[\Pr(X \leq x \text{ and } Y \leq y) = \Pr(X \leq x) \cdot \Pr(Y \leq y).\]</span></p>
+<blockquote>
+<p>“Independence means that observing one thing does not change your beliefs about the other.”</p>
+</blockquote>
+<p>Independence is a simplifying assumption that appears constantly in economic models. For instance: - in auctions, bidders’ valuations are often assumed to be independently drawn, - in mechanism design, agents’ types are frequently independent, - in repeated games, stage-game shocks may be independent across periods.</p>
+<p><strong>Important:</strong> Independence is substantive. It is not a default. In reality, everything is connected with everything and many economically interesting situations involve correlation (e.g., common-value auctions, correlated types). When independence is assumed, it should be recognized as a modeling choice, not a law of nature.</p>
+<hr />
+<h2 id="conditional-expectation">9. Conditional expectation</h2>
+<p>When we combine expectation with conditional probability, we get <strong>conditional expectation</strong>: <span class="math display">\[\mathbb{E}[X \mid B] = \sum_{i} x_i \, \Pr(X = x_i \mid B)\]</span> in the discrete case.</p>
+<blockquote>
+<p>“The conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\(B\)</span> is the expected value of <span class="math inline">\(X\)</span> knowing that <span class="math inline">\(B\)</span> is true.”</p>
+</blockquote>
+<p>In economics, conditional expectations appear naturally whenever agents form beliefs: - a buyer’s expected valuation given a signal, - a principal’s expected output given the agent’s reported type, - a player’s expected payoff given the other players’ strategies.</p>
+<p>A useful property that connects conditional and unconditional expectation is the <strong>law of iterated expectations</strong> (sometimes called the law of total expectation): <span class="math display">\[\mathbb{E}[X] = \mathbb{E}\big[\mathbb{E}[X \mid Y]\big].\]</span></p>
+<blockquote>
+<p>“If I first compute the expected value of <span class="math inline">\(X\)</span> for each possible value of <span class="math inline">\(Y\)</span>, and then average those conditional expectations over the distribution of <span class="math inline">\(Y\)</span>, I recover the unconditional expectation of <span class="math inline">\(X\)</span>.”</p>
+</blockquote>
+<p>This property is extremely useful in sequential models where information is revealed gradually.</p>
+<p>It is also super important for consistency and tells us one way to think about distributions (that will show up in other settings, too). We could think of a larger sate space <span class="math inline">\(\Omega\)</span> that has two dimensional elements <span class="math inline">\((x,y)\)</span> and a probability distribution over those <span class="math inline">\((x,y)\)</span>. Now, we are in the end only interested in <span class="math inline">\(x\)</span>, but <span class="math inline">\(y\)</span> carries some information about <span class="math inline">\(x\)</span>.</p>
+<p>So, if we learn <span class="math inline">\(y\)</span>, we update about <span class="math inline">\(x\)</span>. But: it has to be the case that if we don’t know <span class="math inline">\(y\)</span> yet, we cannot learn anything about <span class="math inline">\(x\)</span>, so our expectations on <span class="math inline">\(x\)</span> are just <span class="math inline">\(E[X]\)</span>. But, we do know how likely all thedifferent <span class="math inline">\(y\)</span> will show up and we know what we would do then in our beliefs about <span class="math inline">\(x\)</span>, so we do know all <span class="math inline">\(E[X|Y].\)</span> But if we are consistent, then this information does not tell us anything about <span class="math inline">\(x\)</span> yet (because we haven’t seen <span class="math inline">\(y\)</span> yet), so we have to have that <span class="math inline">\(E[X]=E[E[X|Y]]\)</span>.</p>
+<hr />
+<h2 id="an-economic-example-first-price-auction-with-private-values">10. An economic example: first-price auction with private values</h2>
+<p>Consider two bidders in a sealed-bid first-price auction. Each bidder has a private valuation <span class="math inline">\(v_i\)</span> drawn independently from a distribution <span class="math inline">\(F\)</span> on <span class="math inline">\([0,1]\)</span>. Each bidder submits a bid <span class="math inline">\(b_i\)</span>, the highest bid wins, and the winner pays her bid.</p>
+<p>Bidder 1’s expected payoff from bidding <span class="math inline">\(b\)</span> when her valuation is <span class="math inline">\(v\)</span> and the other bidder uses a bidding strategy <span class="math inline">\(\beta(\cdot)\)</span> is <span class="math display">\[\mathbb{E}[\text{payoff}] = (v - b) \cdot \Pr(\text{win}).\]</span></p>
+<p>The probability of winning depends on the other bidder’s bid, which depends on her valuation, which is random. So <span class="math display">\[\Pr(\text{win}) = \Pr(\beta(v_2) &lt; b) = \Pr(v_2 &lt; \beta^{-1}(b)) = F(\beta^{-1}(b)),\]</span> where the second equality uses the fact that <span class="math inline">\(\beta\)</span> is (typically) increasing.</p>
+<p>This example uses almost everything from this topic: - a random variable (<span class="math inline">\(v_2\)</span>, the other bidder’s type), - a distribution (<span class="math inline">\(F\)</span>), - expectation (the expected payoff), - independence (valuations are independently drawn).</p>
+<p>Without the probability language, writing down and solving this problem would be impossible.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>Probability is used throughout MWG but is not developed as a standalone mathematical appendix topic in the same way as convexity or correspondences.</p>
+<p>The most relevant places where probability language is used heavily include: - <strong>MWG, Chapter 6</strong> (choice under uncertainty, expected utility), - <strong>MWG, Chapter 8</strong> (competitive markets with uncertainty), - <strong>MWG, Chapter 13</strong> (adverse selection), - <strong>MWG, Chapter 23</strong> (mechanism design and auctions).</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">12. Why this matters for microeconomics</h2>
+<p>Probability gives us the language to treat uncertainty as part of the model rather than as narrative.</p>
+<p>Without it: - expected utility cannot be defined, - Bayesian equilibrium cannot be formulated, - mixed strategies appear as magic rather than precise objects, - information economics loses its formal language, - mechanism design under incomplete information becomes inaccessible.</p>
+<p>The tools in this topic are modest – we have not touched measure theory, stochastic processes, or advanced convergence results. But they are exactly what is needed to read the core microeconomics curriculum without stumbling over probabilistic language. And they already get us a long way into the heart of modern microeconomic theory.</p>
+<hr />
+<h2 id="what-you-should-take-away">13. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - reading statements about random variables and distributions, - computing and interpreting expectations as weighted averages, - using conditional probability and Bayes’ rule to update beliefs, - recognizing independence as a substantive modeling assumption, - and seeing why uncertainty is unavoidable in modern microeconomics.</p>
+<p>You should also see how this topic connects back to earlier material: random variables are functions (Topic <a href="Topic1.html">1</a>), distributions live on sets (Topic <a href="Topic1.html">1</a>), expected utility combines preferences (Topic <a href="Topic2.html">2</a>) with probability, and optimization under uncertainty (Topics <a href="Topic4.html">4</a> and <a href="Topic5.html">5</a>) evaluates choices by expected payoffs.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>I usually claim that integrals <span class="math inline">\(\int\)</span> are nothing but a fast way of writing a sum <span class="math inline">\(\sum\)</span>. Although mathematically there is a difference and the laws are a bit different, this intuition is often good for <em>economic</em> purposes. In reality people have a hard time thinking in terms of continuous state spaces, so even if they were they behave as if things were discrete. If you result relies on one of the tricks where the integral behaves different from the sum, there may be an issue in what you are modeling.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic7.html" class="nav-prev">← Previous</a><a href="Topic9.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

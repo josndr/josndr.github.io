@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 12: Linear Constraints and Incentives as Geometry</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic11.html" class="nav-prev">← Previous</a><a href="Topic13.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic12.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-12-linear-constraints-and-incentives-as-geometry">Topic 12: Linear Constraints and Incentives as Geometry</h1>
+<p><em>(Why prices are perpendicular and constraints have shape)</em></p>
+<hr />
+<h2 id="why-geometry-enters-now">1. Why geometry enters now</h2>
+<p>Much of what we have done so far has been algebraic or analytic: writing down objective functions, taking derivatives, applying fixed-point theorems. But many of the most important ideas in microeconomics have a clean geometric interpretation that makes them easier to understand and harder to forget.</p>
+<p>This topic develops the geometry of linear constraints. The central objects are <strong>hyperplanes</strong> and <strong>half-spaces</strong> — the building blocks of budget sets, feasibility constraints, and incentive conditions. The central results are the <strong>separating</strong> and <strong>supporting hyperplane theorems</strong>, which are the geometric engine behind the welfare theorems, the existence of prices, and the structure of mechanism design.</p>
+<p>The connection to earlier material is direct: convexity (Topic <a href="Topic3.html">3</a>) is what makes separation possible, and optimization (Topics <a href="Topic5.html">5</a>–<a href="Topic6.html">6</a>) is what supporting hyperplanes formalize.</p>
+<hr />
+<h2 id="hyperplanes-and-half-spaces">2. Hyperplanes and half-spaces</h2>
+<p>Hyperplanes and half-spaces are very simple and intuitive concepts. It turns out however that they are also very powerful. Notation wise they look much more scary than they actually are, the picture in 2-D essentially tells it all and the great thing about is, is that it generalizes to arbitrary dimensions (the machinery behind is the Hahn-Banach extension theorem—a theorem we won’t discuss here in detail).</p>
+<h3 id="hyperplanes">Hyperplanes</h3>
+<p>A <strong>hyperplane</strong> in <span class="math inline">\(\mathbb{R}^n\)</span> is a set of the form <span class="math display">\[H = \{ x \in \mathbb{R}^n : p \cdot x = c \},\]</span> where <span class="math inline">\(p \in \mathbb{R}^n\)</span> is a nonzero vector and <span class="math inline">\(c \in \mathbb{R}\)</span> is a scalar.</p>
+<blockquote>
+<p>“A hyperplane is a flat surface of dimension <span class="math inline">\(n-1\)</span> that divides the space into two sides.”</p>
+</blockquote>
+<p>In <span class="math inline">\(\mathbb{R}^2\)</span>, a hyperplane is a line. In <span class="math inline">\(\mathbb{R}^3\)</span>, it is a plane. In general, it is the set of points whose inner product with a fixed direction <span class="math inline">\(p\)</span> equals a constant, so in <span class="math inline">\(\mathbb{R}^2\)</span> these are all points <span class="math inline">\((x,y)\)</span> such that <span class="math inline">\(a x + b y =c\)</span> for some given <span class="math inline">\(p=(a,b)\)</span> and <span class="math inline">\(c\)</span>, e.g., if <span class="math inline">\(a=1,b=2,c=3\)</span> we need to find <span class="math inline">\(x+2y=3 \Leftrightarrow x= 3-2y \Rightarrow\)</span> a line.</p>
+<p>An interesting property is that the vector <span class="math inline">\(p\)</span> is the <strong>normal</strong> to the hyperplane: it is perpendicular to <span class="math inline">\(H\)</span> and points in the direction of increasing <span class="math inline">\(p \cdot x\)</span>.</p>
+<p>In our notation choice you see the tight connection to a budget set. If <span class="math inline">\(c\)</span> is the budget, and <span class="math inline">\((x,y)\)</span> is the bundle of goods, than <span class="math inline">\(p=(a,b)\)</span> is the price vector. The hyperplane is then the set of points the consumer may buy if she usses <em>all</em> her budget. If there are more than 2 goods (like, e.g., in reality), your choice set has more dimensions, and so has the hyperplane. Because the hyperplane is a linear equation with <span class="math inline">\(n\)</span> unknowns, we can solve for <span class="math inline">\(1\)</span> of those unknowns, leading to a sphere in <span class="math inline">\(n-1\)</span> dimensions. However, if we allow points to be <em>negative</em>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> then there is a whole space of <span class="math inline">\(n-1\)</span> dimensions floating around in the <span class="math inline">\(n\)</span> dimensions.</p>
+<p>Another way to think of this is to say. Let’s start with the an <span class="math inline">\(n\)</span> dimensional space and consider all points <span class="math inline">\((x_i)_{i=1}^n\)</span> such that <span class="math inline">\(x_n=0\)</span>. Here it is (I hope) clear to see that we get an <span class="math inline">\(n-1\)</span> dimensional space because there are no restrictions on <span class="math inline">\((x_i)_{i=1}^{n}\)</span>. But then that space is the hypeplane that we get from selecting <span class="math inline">\(p=(0,0,...,1)\)</span> and <span class="math inline">\(c=0\)</span>. Now, let’s imagine the <span class="math inline">\(x_n\)</span> dimension is the one going straight up. Then changing <span class="math inline">\(c\neq 0\)</span> while keeping <span class="math inline">\(p\)</span> implies we shift our hyperplane up and down. Changing <span class="math inline">\(p\)</span> on the other hand means we rotate it.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<figure>
+<img src="../figures/fig1_hyperplane.png" alt="Figure 1" />
+<figcaption aria-hidden="true">Figure 1</figcaption>
+</figure>
+<h3 id="half-spaces">Half-spaces</h3>
+<p>A hyperplane cuts <span class="math inline">\(\mathbb{R}^n\)</span> into two <strong>half-spaces</strong>: <span class="math display">\[H^- = \{ x : p \cdot x \leq c \} \quad \text{and} \quad H^+ = \{ x : p \cdot x \geq c \}.\]</span></p>
+<blockquote>
+<p>“A half-space is everything on one side of a hyperplane, including the hyperplane itself.”</p>
+</blockquote>
+<p>Again, think about the budget interpretation. The hyperplane (the budget line) divides the set of possibilities into those that you can afford given budget <span class="math inline">\(c\)</span> (<span class="math inline">\(H^-\)</span>) and those in which leaves you with no money leftover <span class="math inline">\((H^+)\)</span>.</p>
+<p>Half-spaces are convex sets (Topic <a href="Topic3.html">3</a>). This is immediate: if <span class="math inline">\(p \cdot x \leq c\)</span> and <span class="math inline">\(p \cdot y \leq c\)</span>, then for any <span class="math inline">\(\lambda \in [0,1]\)</span>, <span class="math display">\[p \cdot (\lambda x + (1-\lambda)y) = \lambda (p \cdot x) + (1-\lambda)(p \cdot y) \leq c.\]</span></p>
+<p>Intersections of half-spaces are also convex (the intersection of convex sets is convex). This means that any set defined by a system of linear inequalities is convex. Such sets are called <strong>polyhedra</strong>, and they are everywhere in economics.</p>
+<hr />
+<h2 id="budget-sets-as-half-spaces">3. Budget sets as half-spaces</h2>
+<p>Let’s now discuss the budget set a bit more structured. The budget set is probably the most familiar linear constraint in economics is the <strong>budget set</strong>: <span class="math display">\[B(p, w) = \{ x \in \mathbb{R}^n_+ : p \cdot x \leq w \}.\]</span></p>
+<p>This is the intersection of a half-space (<span class="math inline">\(p \cdot x \leq w\)</span>) with the nonnegative orthant (<span class="math inline">\(x \geq 0\)</span>). The <strong>budget line</strong> is the hyperplane <span class="math inline">\(p \cdot x = w\)</span> intersected with the half space defined by <span class="math inline">\(x \geq 0\)</span>; the boundary of the budget set.</p>
+<figure>
+<img src="../figures/fig2_budget.png" alt="Budget Set" />
+<figcaption aria-hidden="true">Budget Set</figcaption>
+</figure>
+<p>The geometry makes several things visible that algebra obscures: - The price vector <span class="math inline">\(p\)</span> is <strong>perpendicular</strong> to the budget line. Moving along the budget line (spending the same amount) means moving perpendicular to <span class="math inline">\(p\)</span>. Moving in the direction of <span class="math inline">\(p\)</span> means spending more without change the relative proportions. - The <strong>slope</strong> of the budget line is <span class="math inline">\(-p_1/p_2\)</span>: the rate at which the market allows you to trade good 1 for good 2. - A change in prices <strong>rotates</strong> the budget line. A change in wealth <strong>shifts</strong> it.</p>
+<p>This geometric perspective is not just a visualization aid. It is the basis for understanding why Walrasian equilibrium prices exist and why they have the structure they do.</p>
+<hr />
+<h2 id="the-separating-hyperplane-theorem">4. The separating hyperplane theorem</h2>
+<p>The most important geometric result for economics is the <strong>separating hyperplane theorem</strong>. It says: two disjoint convex sets<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> can always be separated by a hyperplane. This sounds trivial and to some extend it is. So don’t try to read more into it than there is. Often the difficulty is defining the hyperplanes.</p>
+<hr />
+<p><strong>Theorem (Separating Hyperplane).</strong> Let <span class="math inline">\(A, B \subseteq \mathbb{R}^n\)</span> be nonempty, disjoint, convex sets. Then there exists a nonzero vector <span class="math inline">\(p \in \mathbb{R}^n\)</span> and a scalar <span class="math inline">\(c \in \mathbb{R}\)</span> such that <span class="math display">\[p \cdot a \leq c \quad \text{for all } a \in A, \qquad p \cdot b \geq c \quad \text{for all } b \in B.\]</span></p>
+<hr />
+<blockquote>
+<p>“If two convex sets don’t touch, there is a flat surface that passes between them, putting each set entirely on one side.”</p>
+</blockquote>
+<p>A corollary to the separating hyperplane theorem is that we can always find a halfspaces <span class="math inline">\(H\)</span> such that <span class="math inline">\(A\)</span> is entirely in <span class="math inline">\(H\)</span> and <span class="math inline">\(B\)</span> is entirely in the complement to it <span class="math inline">\(H\)</span>.</p>
+<figure>
+<img src="../figures/fig3_separating.png" alt="Separating Hyperplane" />
+<figcaption aria-hidden="true">Separating Hyperplane</figcaption>
+</figure>
+<p>The vector <span class="math inline">\(p\)</span> defines the separating hyperplane <span class="math inline">\(\{x : p \cdot x = c\}\)</span>. The set <span class="math inline">\(A\)</span> lies in the half-space <span class="math inline">\(p \cdot x \leq c\)</span> and <span class="math inline">\(B\)</span> lies in <span class="math inline">\(p \cdot x \geq c\)</span>.</p>
+<p>We do not prove this result here. But the geometric content is intuitive: if two convex blobs don’t overlap, you can always slide a flat surface between them. If one wants to prove separating hyperplanes there are two roads. One is to restrict oneself to finite dimensions as we do up here. In that case the separating hyperplanes can be proven using the <em>supporting hyperplane</em> theorem below—we will come back to that road.</p>
+<p>Alternatively, if one wants to go for infinite dimension, one would need to restrict to <em>compact</em> sets, too. Otherwise, the theorem does not hold. Then there is proof that uses the <a href="https://en.wikipedia.org/wiki/Hahn%E2%80%93Banach_theorem">Hahn-Banach theorem</a>. We will not push in that dimension further here.</p>
+<h3 id="why-separation-matters-for-economics">Why separation matters for economics</h3>
+<p>The separating hyperplane theorem is the mathematical engine behind:</p>
+<p><strong>The Second Welfare Theorem.</strong> Any Pareto efficient allocation can be supported as a competitive equilibrium with appropriate transfers. The proof works by separating the “better-than” set of one consumer from the aggregate production set. The separating hyperplane gives us the <strong>prices</strong>.</p>
+<p><strong>The existence of supporting prices.</strong> When we say “an efficient allocation can be decentralized by prices,” we are saying: there exists a hyperplane (defined by prices) that separates the sets of preferred allocations from what is feasible. The prices are literally the normal vector of the separating hyperplane.</p>
+<p><strong>Duality in optimization.</strong> The connection between primal and dual problems in constrained optimization is fundamentally about separating hyperplanes. The dual variables (Lagrange multipliers, shadow prices) are the normals of hyperplanes that separate the feasible set from the “better” set.</p>
+<hr />
+<h2 id="the-supporting-hyperplane-theorem">5. The supporting hyperplane theorem</h2>
+<p>A closely related result is the <strong>supporting hyperplane theorem</strong>. Instead of separating two disjoint sets, it finds a hyperplane that “touches” a convex set at a boundary point without cutting into it.</p>
+<hr />
+<p><strong>Theorem (Supporting Hyperplane).</strong> Let <span class="math inline">\(C \subseteq \mathbb{R}^n\)</span> be a nonempty, convex set, and let <span class="math inline">\(x^\ast\)</span> be a point on the boundary of <span class="math inline">\(C\)</span>. Then there exists a nonzero vector <span class="math inline">\(p\neq 0\)</span> such that <span class="math display">\[p \cdot x \leq p \cdot x^\ast \quad \text{for all } x \in C.\]</span></p>
+<hr />
+<blockquote>
+<p>“At any boundary point of a convex set, there is a flat surface that touches the set without entering its interior. The entire set lies on one side.”</p>
+</blockquote>
+<figure>
+<img src="../figures/fig4_supporting.png" alt="Supporting Hyperplane" />
+<figcaption aria-hidden="true">Supporting Hyperplane</figcaption>
+</figure>
+<p>The supporting hyperplane <span class="math inline">\(\{x : p \cdot x = p \cdot x^\ast\}\)</span> is tangent to <span class="math inline">\(C\)</span> at <span class="math inline">\(x^\ast\)</span>. The normal vector <span class="math inline">\(p\)</span> points “outward” — away from the interior of <span class="math inline">\(C\)</span>.</p>
+<p>The proof uses one geometric fact that is both intuitive and powerful: if you stand outside a closed convex set, there is a unique closest point in the set, and the line connecting you to that closest point defines a separating direction.</p>
+<h3 id="proving-supporting-hyperplanes-and-with-it-separating-ones">Proving supporting hyperplanes and with it separating ones</h3>
+<p>We prove things here for a closed convex set. It doesn’t matter though really, because the closure of <span class="math inline">\(C\)</span> is also convex and the smallest closed set containing <span class="math inline">\(C\)</span>. So if the result holds for a closed <span class="math inline">\(C\)</span>, it holds for any convex set whose closure is <span class="math inline">\(C\)</span>.</p>
+<p><strong>Step 0: The closest-point property.</strong> Let <span class="math inline">\(C\)</span> be a closed convex set and <span class="math inline">\(y \notin C\)</span>. Then there exists a unique point <span class="math inline">\(z \in C\)</span> that is closest to <span class="math inline">\(y\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>Now set <span class="math inline">\(p = y - z\)</span>. We claim that <span class="math inline">\(p \cdot x \leq p \cdot z\)</span> for all <span class="math inline">\(x \in C\)</span>. In words: the hyperplane through <span class="math inline">\(z\)</span> with normal <span class="math inline">\(p\)</span> puts all of <span class="math inline">\(C\)</span> on one side and <span class="math inline">\(y\)</span> on the other.</p>
+<p>Why? Suppose some <span class="math inline">\(x \in C\)</span> had <span class="math inline">\(p \cdot x &gt; p \cdot z\)</span>. Then look at the point <span class="math inline">\(z_t = z + t(x - z)\)</span> for small <span class="math inline">\(t &gt; 0\)</span>. By convexity of <span class="math inline">\(C\)</span>, <span class="math inline">\(z_t \in C\)</span>. A direct calculation gives <span class="math display">\[\|y - z_t\|^2 = \|y - z\|^2 - 2t\, p \cdot (x - z) + t^2 \|x - z\|^2.\]</span> The second term is <span class="math inline">\(-2t(p \cdot x - p \cdot z) &lt; 0\)</span> for small enough <span class="math inline">\(t\)</span> (because we assumed <span class="math inline">\(p \cdot x &gt; p \cdot z\)</span>), and the third term is bounded by <span class="math inline">\(t^2\)</span>, or <span class="math inline">\(O(t^2)\)</span>, so for small <span class="math inline">\(t\)</span> the whole expression is less than <span class="math inline">\(\|y - z\|^2\)</span>. But that means <span class="math inline">\(z_t\)</span> is closer to <span class="math inline">\(y\)</span> than <span class="math inline">\(z\)</span> is, contradicting the fact that <span class="math inline">\(z\)</span> is the closest point. So <span class="math inline">\(p \cdot x \leq p \cdot z\)</span> for all <span class="math inline">\(x \in C\)</span>.</p>
+<p>Here is the geometric intuition for step 0:</p>
+<blockquote>
+<p>“Drop a perpendicular from <span class="math inline">\(y\)</span> to the convex set. The foot of the perpendicular is the closest point, and the hyperplane at the foot separates <span class="math inline">\(y\)</span> from <span class="math inline">\(C\)</span>.”</p>
+</blockquote>
+<p><strong>Step 1: From separation to support.</strong> Now we use the closest-point property to prove the supporting hyperplane theorem. Take <span class="math inline">\(x^\ast\)</span> on the boundary of <span class="math inline">\(C\)</span>. Because <span class="math inline">\(x^\ast\)</span> is a boundary point, there exist points outside <span class="math inline">\(C\)</span> that are arbitrarily close to it. Of those we now take a sequence <span class="math inline">\(y_k \notin C\)</span> with <span class="math inline">\(y_k \to x^\ast\)</span>.</p>
+<p>For each <span class="math inline">\(y_k\)</span>, let <span class="math inline">\(z_k = \text{proj}_C(y_k)\)</span> be the closest point in <span class="math inline">\(C\)</span>, and define the unit normal <span class="math display">\[p_k = \frac{y_k - z_k}{\|y_k - z_k\|}.\]</span></p>
+<p>By Step 0, we know that <span class="math inline">\(p_k \cdot x \leq p_k \cdot z_k\)</span> for all <span class="math inline">\(x \in C\)</span>.</p>
+<p><strong>Step 2: Extract a limit.</strong> By construction, each <span class="math inline">\(p_k\)</span> is a unit vector (it lives on the unit sphere in <span class="math inline">\(\mathbb{R}^n\)</span>). In finite dimensions, the unit sphere is compact (Topic <a href="Topic4.html">4</a>), so the sequence <span class="math inline">\((p_k)\)</span> has a convergent subsequence with limit <span class="math inline">\(p\)</span> satisfying <span class="math inline">\(\|p\| = 1\)</span> (in particular, therefore, <span class="math inline">\(p \neq 0\)</span>).</p>
+<p>Along this subsequence, <span class="math inline">\(z_k \to x^\ast\)</span> (because <span class="math inline">\(z_k\)</span> is between <span class="math inline">\(y_k\)</span> and <span class="math inline">\(C\)</span>, and <span class="math inline">\(y_k \to x^\ast\)</span>, which lies on the boundary of <span class="math inline">\(C\)</span>, the closest points must approach <span class="math inline">\(x^\ast\)</span> as well).</p>
+<p>Taking the limit in the inequality <span class="math inline">\(p_k \cdot x \leq p_k \cdot z_k\)</span> gives <span class="math display">\[p \cdot x \leq p \cdot x^\ast \quad \text{for all } x \in C.\]</span></p>
+<p>That is the supporting hyperplane.</p>
+<blockquote>
+<p>“Approach the boundary from outside, project onto the set at each step, and take a limit. The limit of the projection directions is the normal to the supporting hyperplane.”</p>
+</blockquote>
+<p>Every ingredient in this proof comes from the course: convexity gives us the closest point and keeps the set well-behaved (Topic <a href="Topic3.html">3</a>), compactness of the unit sphere gives us the convergent subsequence (Topic <a href="Topic4.html">4</a>), and the limit argument uses continuity of the inner product.</p>
+<h3 id="from-supporting-to-separating">From supporting to separating</h3>
+<p>The separating hyperplane theorem then follows from the supporting one. The construction is worth seeing because it is a beautiful example of reducing one problem to another.</p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint convex sets, form the so-called <strong>Minkowski difference</strong> <span class="math display">\[A - B = \{a - b : a \in A,\; b \in B\}.\]</span></p>
+<p>This set is convex (the “sum” of two convex sets is convex, and <span class="math inline">\(A - B = A + (-B)\)</span>). Because <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint, <span class="math inline">\(0 \notin A - B\)</span> (if <span class="math inline">\(0 = a - b\)</span> for some <span class="math inline">\(a \in A, b \in B\)</span>, then <span class="math inline">\(a = b \in A \cap B\)</span>, contradicting disjointness).</p>
+<p>So <span class="math inline">\(0\)</span> is a point outside the convex set <span class="math inline">\(\overline{A - B}\)</span>. Find the closest point <span class="math inline">\(z^\ast \in \overline{A - B}\)</span> to the origin, and set <span class="math inline">\(p = -z^\ast\)</span> (the direction from <span class="math inline">\(z^\ast\)</span> toward the origin). By the closest-point property (Step 0), <span class="math inline">\(p \cdot z \leq p \cdot z^\ast\)</span> for all <span class="math inline">\(z \in \overline{A - B}\)</span>. Moreover, <span class="math inline">\(p \cdot z^\ast = -\|z^\ast\|^2 &lt; 0 = p \cdot 0\)</span>, so the origin is strictly on the other side.</p>
+<p>In particular, for every <span class="math inline">\(a \in A\)</span> and <span class="math inline">\(b \in B\)</span>, the element <span class="math inline">\(a - b \in A - B\)</span> satisfies <span class="math inline">\(p \cdot (a-b) \leq p \cdot z^\ast &lt; 0\)</span>, which gives <span class="math display">\[p \cdot a &lt; p \cdot b \quad \text{for all } a \in A,\; b \in B.\]</span></p>
+<p>Setting <span class="math inline">\(c = \sup_{a \in A} p \cdot a\)</span>, the hyperplane <span class="math inline">\(\{x : p \cdot x = c\}\)</span> separates <span class="math inline">\(A\)</span> from <span class="math inline">\(B\)</span>.</p>
+<figure>
+<img src="../figures/fig5_sep_from_support.png" alt="Separating from supporting" />
+<figcaption aria-hidden="true">Separating from supporting</figcaption>
+</figure>
+<blockquote>
+<p>“To separate two convex sets: subtract one from the other, support the difference at the origin, read off the separating direction. Then shift it toward the set you want to separate from.”</p>
+</blockquote>
+<h3 id="why-support-matters-for-economics">Why support matters for economics</h3>
+<p>Supporting hyperplanes formalize what happens at an optimum. If an agent maximizes a linear objective over a convex constraint set, the optimal point is on the boundary, and the objective’s gradient defines a supporting hyperplane there.</p>
+<p>This is the geometric content of the <strong>first-order conditions</strong>. When we write <span class="math inline">\(\nabla u(x^\ast) = \lambda p\)</span> at a consumer’s optimum, we are saying: the indifference surface through <span class="math inline">\(x^\ast\)</span> is tangent to the budget hyperplane. The price vector <span class="math inline">\(p\)</span> is the normal of the supporting hyperplane, and <span class="math inline">\(\lambda\)</span> is a scaling factor.</p>
+<p>In welfare economics, the supporting hyperplane theorem is used in the <strong>First Welfare Theorem direction</strong>: at a Walrasian equilibrium, the price hyperplane supports each consumer’s “at least as good” set at their chosen bundle.</p>
+<hr />
+<h2 id="incentive-constraints-as-geometry">6. Incentive constraints as geometry</h2>
+<p>The geometric perspective extends naturally to mechanism design, where constraints are often linear in transfers and allocations.</p>
+<p>Consider a simple mechanism design problem: a principal offers a menu of contracts <span class="math inline">\((q, t)\)</span> — a quality level <span class="math inline">\(q\)</span> and a transfer <span class="math inline">\(t\)</span> — to an agent whose type <span class="math inline">\(\theta\)</span> is private information. The agent’s utility from a contract is <span class="math display">\[u(\theta) = \theta q - t.\]</span></p>
+<h3 id="incentive-compatibility-as-half-spaces">Incentive compatibility as half-spaces</h3>
+<p>The <strong>incentive compatibility</strong> (IC) constraint says: each type must prefer her own contract to any other type’s contract. If there are two types <span class="math inline">\(\theta_H &gt; \theta_L\)</span> with contracts <span class="math inline">\((q_H, t_H)\)</span> and <span class="math inline">\((q_L, t_L)\)</span>, the IC constraints are: <span class="math display">\[\theta_H q_H - t_H \geq \theta_H q_L - t_L \quad \text{(high type doesn&#39;t mimic low type)},\]</span> <span class="math display">\[\theta_L q_L - t_L \geq \theta_L q_H - t_H \quad \text{(low type doesn&#39;t mimic high type)}.\]</span></p>
+<p>Each of these is a linear inequality in the contract variables <span class="math inline">\((q_H, t_H, q_L, t_L)\)</span>. Each defines a half-space. The set of incentive-compatible contracts is the intersection of these half-spaces — a polyhedron.</p>
+<h3 id="individual-rationality-as-half-spaces">Individual rationality as half-spaces</h3>
+<p>The <strong>individual rationality</strong> (IR) constraint says: each type must get at least her outside option. If the outside option is zero: <span class="math display">\[\theta_H q_H - t_H \geq 0, \qquad \theta_L q_L - t_L \geq 0.\]</span></p>
+<p>Again, linear inequalities. Again, half-spaces.</p>
+<h3 id="the-geometry-of-mechanism-design">The geometry of mechanism design</h3>
+<p>The full set of feasible mechanisms is the intersection of all IC and IR constraints — a polyhedron in the space of contracts. The principal’s problem is to maximize revenue (or another linear objective) over this polyhedron.</p>
+<p>This is a <strong>linear programming</strong> problem, and its geometry is clean: - the feasible set is a polyhedron, - the optimum is at a vertex (or a face) of this polyhedron, - the binding constraints at the optimum tell us which incentive and participation conditions are “tight.”</p>
+<p>The result that “in the optimal mechanism, the low type’s IR binds and the high type’s downward IC binds” is a statement about which faces of the polyhedron the optimum lies on. The geometric perspective makes this visible rather than mysterious.</p>
+<hr />
+<h2 id="an-economic-example-the-second-welfare-theorem">7. An economic example: the Second Welfare Theorem</h2>
+<p>Consider a two-consumer exchange economy. Consumer 1 has preferences over bundles <span class="math inline">\(x_1 \in \mathbb{R}^2_+\)</span> and consumer 2 over <span class="math inline">\(x_2 \in \mathbb{R}^2_+\)</span>, with total endowment <span class="math inline">\(\bar{\omega}\)</span>.</p>
+<p>Let <span class="math inline">\((\hat{x}_1, \hat{x}_2)\)</span> be a Pareto efficient allocation. Define: - <span class="math inline">\(A =\)</span> the set of bundles that consumer 1 strictly prefers to <span class="math inline">\(\hat{x}_1\)</span>, - <span class="math inline">\(B =\)</span> the set of aggregate bundles that are feasible: <span class="math inline">\(\{y : \bar{\omega} - y\)</span> is in consumer 2’s “at least as good as <span class="math inline">\(\hat{x}_2\)</span>” set<span class="math inline">\(\}\)</span>.</p>
+<p>Because preferences are convex, both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are convex.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Because <span class="math inline">\((\hat{x}_1, \hat{x}_2)\)</span> is Pareto efficient, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint (there is no bundle that is strictly better for 1 and still feasible for 2).</p>
+<p>By the separating hyperplane theorem, there exists a price vector <span class="math inline">\(p\)</span> that separates <span class="math inline">\(A\)</span> from <span class="math inline">\(B\)</span>. This <span class="math inline">\(p\)</span> is the vector of Walrasian equilibrium prices.</p>
+<blockquote>
+<p>“The Second Welfare Theorem says: efficient allocations can be decentralized by prices. The proof is: use the separating hyperplane theorem. The prices are the normal vector of the separating hyperplane.”</p>
+</blockquote>
+<p>This is perhaps the cleanest example of how geometry does real economic work.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">8. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<ul>
+<li><strong>MWG, Chapter 3</strong> (budget sets and consumer choice — budget sets as half-spaces),</li>
+<li><strong>MWG, Chapter 16</strong> (the Second Welfare Theorem — separating hyperplane argument),</li>
+<li><strong>MWG, Mathematical Appendix A</strong> (convexity, separation theorems).</li>
+</ul>
+<p>The geometric approach to mechanism design is not developed extensively in MWG but is standard in the mechanism design literature.</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">9. Why this matters for microeconomics</h2>
+<p>Linear constraints and separation theorems are the geometric foundation of: - consumer theory (budget sets, demand, Slutsky), - welfare economics (the First and Second Welfare Theorems), - general equilibrium (existence of prices, Walrasian equilibrium), - mechanism design (incentive and participation constraints as polyhedra), - duality (shadow prices, Lagrange multipliers as supporting hyperplane normals).</p>
+<p>The key insight running through all of this is: <strong>convexity makes separation possible, and separation gives us prices</strong>. This is why convexity assumptions (Topic <a href="Topic3.html">3</a>) are not just technical convenience — they are what allows the price system to work.</p>
+<hr />
+<h2 id="what-you-should-take-away">10. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - reading hyperplanes, half-spaces, and polyhedra as geometric objects, - seeing budget sets as half-spaces with the price vector as the normal, - understanding the separating and supporting hyperplane theorems and their economic content, - recognizing that incentive and participation constraints in mechanism design define polyhedra, - and seeing prices as normal vectors of separating or supporting hyperplanes.</p>
+<p>The geometry in this topic is not decoration. It is the language in which the deepest results of welfare economics and mechanism design are stated and proved.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>For example because you could sell them on the market at market price, or, as in financial markets go short on an assest without even owning it.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>One should note that <span class="math inline">\(p\)</span> is not unique for a given direction (a fact you may remember from highschool algebra), we can scale it, by any scalar <span class="math inline">\(m\neq 0\)</span> without changing the direction.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Sets are disjoint if their intersection is empty.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Existence follows from closedness and boundedness of the relevant sublevel set (the same logic as the Weierstrass theorem in Topic <a href="Topic4.html">4</a>). Uniqueness follows from strict convexity of the distance function: if two points <span class="math inline">\(z_1, z_2 \in C\)</span> were both closest, the midpoint <span class="math inline">\((z_1+z_2)/2 \in C\)</span> (by convexity) would be strictly closer — a contradiction.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Convexity of preferences ensures that the upper contour sets — the “at least as good as” sets — are convex. This is where the convexity assumptions from Topic <a href="Topic3.html">3</a> earn their place.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic11.html" class="nav-prev">← Previous</a><a href="Topic13.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

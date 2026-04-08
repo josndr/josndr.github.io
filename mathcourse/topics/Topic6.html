@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 6: Differentiability and Marginal Reasoning</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic5.html" class="nav-prev">← Previous</a><a href="Topic7.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic6.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-6-differentiability-and-marginal-reasoning">Topic 6: Differentiability and Marginal Reasoning</h1>
+<p><em>(Why economists care about slopes, not just optima)</em></p>
+<hr />
+<h2 id="why-differentiability-enters-now">1. Why differentiability enters now</h2>
+<p>Up to now, we have focused on two fundamental questions:</p>
+<ol type="1">
+<li><strong>Does an optimal choice exist?</strong></li>
+<li><strong>What does the set of optimal choices look like?</strong></li>
+</ol>
+<p>We now turn to a different question:</p>
+<blockquote>
+<p><strong>How do optimal choices change when the environment changes?</strong></p>
+</blockquote>
+<p>This is the core question of <strong>comparative statics</strong>.</p>
+<p>To answer it, economists often rely on <em>local approximations</em>: - small changes in prices, - small changes in income, - small changes in parameters.</p>
+<p>Differentiability is the mathematical structure that makes such reasoning precise.</p>
+<hr />
+<h2 id="from-global-behavior-to-local-behavior">2. From global behavior to local behavior</h2>
+<p>Recall the generic optimization problem</p>
+<p><span class="math display">\[
+\max_{x \in X} f(x).
+\]</span></p>
+<p>So far, our analysis has been <strong>global</strong>: - existence relies on compactness, - uniqueness relies on strict concavity, - stability relies on hemicontinuity.</p>
+<p>Differentiability allows us to zoom in and ask:</p>
+<blockquote>
+<p>What happens to <span class="math inline">\(f(x)\)</span> when we move <span class="math inline">\(x\)</span> <em>a little bit</em>?</p>
+</blockquote>
+<p>This shift — from global structure to local behavior — is what makes marginal analysis possible.</p>
+<hr />
+<h2 id="differentiability-the-basic-idea">3. Differentiability: the basic idea</h2>
+<p>Let <span class="math inline">\(f:\mathbb{R}^n \to \mathbb{R}\)</span>.</p>
+<hr />
+<p>We say that <span class="math inline">\(f\)</span> is <strong>differentiable at <span class="math inline">\(x\)</span></strong> if there exists a linear map<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math display">\[
+\mathrm{D}f(x)\colon \mathbb{R}^n \to \mathbb{R}
+\]</span></p>
+<p>such that</p>
+<p><span class="math display">\[
+f(x+h) \approx f(x) + Df(x)[h]
+\]</span></p>
+<p>for small vectors <span class="math inline">\(h\)</span>.</p>
+<hr />
+<p>What does it mean:</p>
+<blockquote>
+<p><span class="math inline">\(Df(x)[h]\)</span> is the predicted change in <span class="math inline">\(f\)</span> if I take a small step <span class="math inline">\(h\)</span> away from <span class="math inline">\(x\)</span>.</p>
+</blockquote>
+<p>This definition, however, uses a vector <span class="math inline">\(h\)</span> which is important. So it says, basically: If you give me a direction in which to walk, and (what we will later call) the <em>gradient</em> (the linear extrapolation of the change in the function value in our desired direction) at your starting point, then I can tell you where you end up in ‘’height’’ <strong>relative to your starting point</strong> even without knowing the precise function or the starting point.</p>
+<p><strong>Important:</strong> Differentiability does <em>not</em> mean that the function is linear. It means that <strong>locally</strong>, it can be well approximated by something linear.</p>
+<p><em>Sidenote</em>: The relation <span class="math inline">\(\approx\)</span> is one that is used in various ways in mathematics always trying to mean something like the left hand side is close to the right hand side. You may correctly ask, ‘’what is the metric in which we should measure that closeness?’ And in general I have no answer. In this particular case, the notion of closeness we have in mind behind this is that as we let <span class="math inline">\(h\to 0\)</span> the error we are making vanishes somewhat continuously. The more classical (and also more precise) definition of differentiability would be that <span class="math inline">\(f:U\to \mathbb{R}\)</span> is differentiable at <span class="math inline">\(x\in U\)</span> if</p>
+<p><span class="math display">\[
+f&#39;(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
+\]</span></p>
+<p>exists. However, the one we have works for multidimensions<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and carries more economic meaning, and once we talk about it, the notion of <span class="math inline">\(\approx\)</span> we mean here, will be clear.</p>
+<hr />
+<h2 id="partial-derivatives-and-gradients">4. Partial derivatives and gradients</h2>
+<p>When <span class="math inline">\(f\)</span> is differentiable, the linear map <span class="math inline">\(Df(x)\)</span> can be represented by a vector of <strong>partial derivatives</strong></p>
+<p><span class="math display">\[
+\nabla f(x)
+=
+\left(
+\frac{\partial f}{\partial x_1}(x),
+\dots,
+\frac{\partial f}{\partial x_n}(x)
+\right).
+\]</span></p>
+<p>The gradient vector encodes: - the direction of steepest ascent, - the marginal effect of each component.</p>
+<p>What is a partial derivative?</p>
+<blockquote>
+<p>The partial derivative with respect to <span class="math inline">\(x_i\)</span> measures how the objective changes when we increase <span class="math inline">\(x_i\)</span> slightly, holding all other components fixed.</p>
+</blockquote>
+<blockquote>
+<p>The gradient collects all partial derivatives, that is the changes in each direction.</p>
+</blockquote>
+<p>From the gradient we know how we would walk on the landscape given by the function in each direction by making <em>linear combinations</em> of the partial derivatives.</p>
+<p>The ‘’holding everything else fixed’’ language the gradient encapsulates is fundamental in economic reasoning (we often call it ceteris paribus or c.p. reasoning).</p>
+<hr />
+<h2 id="marginal-interpretation-in-economics">5. Marginal interpretation in economics</h2>
+<p>Marginal reasoning appears everywhere in microeconomics:</p>
+<ul>
+<li><strong>Marginal utility</strong>: how utility changes with one more unit of a good,</li>
+<li><strong>Marginal cost</strong>: how cost changes with one more unit of output,</li>
+<li><strong>Marginal willingness to pay</strong>: how much an agent is willing to give up for a small increase.</li>
+</ul>
+<p>All of these are formalized using partial derivatives. In fact, often that is a shortcut we take because differentiability implies continuity which means that ‘small changes’ are possible in the first place. As economists we have decided to often assume continuity, because it makes the statements clearer and the error in translating back to economics is not too big. However, one has to, of course, always be vigilant whether such an assumption that only serves the economist, is costly in terms of the interpretation.</p>
+<p><em>Why is it great to have differentiability?</em> It gives us a disciplined way to talk about ‘’small changes’’ without ambiguity.</p>
+<hr />
+<h2 id="first-order-conditions-interior-solutions">6. First-order conditions (interior solutions)</h2>
+<p>Suppose: - <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is open, - <span class="math inline">\(f\)</span> is differentiable, - <span class="math inline">\(x^\ast\)</span> is an interior maximizer.</p>
+<p>Then a necessary condition for optimality is</p>
+<p><span class="math display">\[
+\nabla f(x^\ast) = 0.
+\]</span></p>
+<p>What this means:</p>
+<blockquote>
+<p>If the function has our differentiability properties, then at an optimum, we must be in a (locally) flat area.</p>
+</blockquote>
+<p>The reason is (hopefully) clear: If we are at the hill top, anywhere we go, we must go down. However, any path that <em>crosses</em> the hilltop from somewhere lower to somewhere lower must first go up and then down again. Differentiability gives us that everywhere we can ‘think linearly’ if our next step is small enough. But then, it must be that when switching from going uphill to downhill, we eventually pass a part where the linear approximation is flat (even if only for very short). And this passing must happen exactly at the hill top.</p>
+<p>The condition above is called a <strong>first-order condition</strong>.</p>
+<p>It does <em>not</em> guarantee optimality by itself.<br />
+It identifies <strong>candidates</strong> for optimality (so called critical points).</p>
+<p>So if we are looking for an optimum in a smooth problem like the one described above, it is <em>first order</em> for us to find points that satisfy that condition. Once we have those, we can worry about which of those to eliminate.</p>
+<hr />
+<h2 id="why-first-order-conditions-are-not-enough">7. Why first-order conditions are not enough</h2>
+<p>A point where <span class="math inline">\(\nabla f(x)=0\)</span> could be: - a maximum, - a minimum, - a saddle point.</p>
+<p>A Maximum is what we want, a hill top. A minimum is the lowest point in the valley and the opposite of what we want. A saddle point is something tricky. It is the lowest point of a valley in some direction, but the hill top in another. So standing on the saddle point, means it goes down in some direction, and up in others (like at that one point at the back of a saddle), in some it may be even flat. It is, however, clearly not a hill top.</p>
+<p>Moreover, we need to distinguish between local and global optimality. If we are on a hill top in a mountain range, that means we are at a maximum (it goes down in all directions, locally), but nothing says that this is the highest hill top.</p>
+<p>The first-order condition tells us nothing about these things.</p>
+<p>This is why first-order conditions must be combined with <strong>global structure</strong>: - concavity of the objective ensures that any critical point is a global maximum, - differentiability ensures that no jumps or kinks occur that bring about points that can trump the critical points without being critical points themselves - convexity of the choice set ensures that no local traps exist where we are not allowed to go to.</p>
+<p>This connects directly back to Topics <a href="Topic3.html">3</a> and <a href="Topic4.html">4</a>.</p>
+<hr />
+<h2 id="second-order-intuition-informal">8. Second-order intuition (informal)</h2>
+<p>Second-order information captures <strong>curvature</strong>.</p>
+<p>If <span class="math inline">\(f\)</span> is twice differentiable, curvature is summarized by the <strong>Hessian matrix</strong></p>
+<p><span class="math display">\[
+D^2 f(x).
+\]</span></p>
+<p>We will not work with Hessians explicitly here, but with help of the Hessian one can verify optimality of a critical point (yet often this is not very elegant).</p>
+<p>The key intuition is:</p>
+<blockquote>
+<p>Concavity means the function bends downward everywhere.</p>
+</blockquote>
+<p>Under global concavity of the objective: - first-order conditions become sufficient, - local optima are global.</p>
+<hr />
+<h2 id="differentiability-and-constraints-preview">9. Differentiability and constraints (preview)</h2>
+<p>Most economic problems involve constraints:</p>
+<p><span class="math display">\[
+\max_{x \in X} f(x).
+\]</span></p>
+<p>When constraints bind, optimality conditions involve: - trade-offs, - shadow prices, - Lagrange multipliers.</p>
+<p>We will introduce this machinery later.</p>
+<p>For now, the key message is:</p>
+<blockquote>
+<p>Differentiability allows us to express trade-offs precisely.</p>
+</blockquote>
+<hr />
+<h2 id="an-economic-example-marginal-utility">10. An economic example: marginal utility</h2>
+<p>Consider a utility function <span class="math inline">\(u(x_1,x_2)\)</span>.</p>
+<p>The <strong>partial derivative</strong></p>
+<p><span class="math display">\[
+\frac{\partial u}{\partial x_1}(x)
+\]</span></p>
+<p>measures the marginal utility of good 1 at bundle <span class="math inline">\(x\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Comparing marginal utilities across goods explains: - substitution, - demand responses, - interior versus corner solutions.</p>
+<p>Without differentiability, these ideas lose precision.</p>
+<p>There is another form of differentiation, which is the <strong>total derivative</strong>. The way to think about this is to think about the partial derivative as exactly what it is, the change in one direction of the choice vector. So in the above example, <span class="math inline">\(\frac{\partial u}{\partial x_1}(x)\)</span> means we keep <span class="math inline">\(x_2\)</span> unchanged and only change <span class="math inline">\(x_1\)</span> (marginally). But of course, there are many ways to change things “slightly.” We could walk in direction 1, in direction 2 or any weighted combination of it. The <em>total derivative</em> tells us what that means for our function. And it is (because of the linear map we defined in the beginning) a remarkably simple object. So here it is<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><span class="math display">\[
+\mathrm{d} u(x) = \frac{\partial u}{\partial x_1}(x) \mathrm{d}x_1 + \frac{\partial u}{\partial x_2}(x) \mathrm{d}x_2
+\]</span></p>
+<p>The <span class="math inline">\(\mathrm{d}\)</span> here is a way to think about small changes which (however) have a relative size. So if we go in the <span class="math inline">\(x_1\)</span> direction only, then <span class="math inline">\(\mathrm{d} x_2=0\)</span> is <span class="math inline">\(0\)</span> and <span class="math inline">\(\mathrm{d}x_1=1\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<hr />
+<h2 id="why-this-matters-for-comparative-statics">11. Why this matters for comparative statics</h2>
+<p>Differentiability underlies a bunch of concepts we will see in Microeconomics: - Slutsky decompositions, - envelope theorems, - local comparative statics.</p>
+<p>It allows us to replace</p>
+<blockquote>
+<p>‘’What happens when something changes?’’</p>
+</blockquote>
+<p>with</p>
+<blockquote>
+<p>‘’What is the derivative with respect to that change?’’</p>
+</blockquote>
+<p>This is a powerful simplification — but one that rests on strong assumptions.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">12. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>The main references are:</p>
+<ul>
+<li><strong>MWG, Chapter 3</strong> (consumer theory)</li>
+<li><strong>MWG, Mathematical Appendix B</strong> (differentiation)</li>
+<li><strong>MWG, Chapter 5</strong> (duality and marginal conditions)</li>
+</ul>
+<p>Differentiability is often used implicitly; these notes make the logic explicit.</p>
+<hr />
+<h2 id="what-you-should-take-away">13. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - interpreting derivatives as local approximations, - reading gradients as vectors of marginal effects, - understanding when first-order conditions apply, - seeing how differentiability complements convexity.</p>
+<p>Differentiability does not replace global reasoning.<br />
+It refines it.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>A linear map is a function that has the following property: <span class="math inline">\(L(ax+by)=aL(x)+bL(y)\)</span> for any vectors <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> and scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Look up Frechet derivatives for the more precise definition of the unidimensional one I have given in this sidenote<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>These are the standard derivatives we know from undergraduates and school.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>This is just spelling out the definition of derivative!!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Important: While <span class="math inline">\(\mathrm{d}x_1\)</span> is an object we can move around (multiply by <span class="math inline">\(\mathrm{d}x_1\)</span>) for example, <span class="math inline">\(\partial x_1\)</span> is <strong>not,</strong> instead, here the object is the entire <span class="math inline">\(\frac{\partial u}{\partial x_1}(x)\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic5.html" class="nav-prev">← Previous</a><a href="Topic7.html" class="nav-next">Next →</a></nav>
+</body>
+</html>

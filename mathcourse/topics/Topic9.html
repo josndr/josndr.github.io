@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 9: Fixed Points and Equilibrium Existence</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="topic-page">
+<nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic8.html" class="nav-prev">← Previous</a><a href="Topic10.html" class="nav-next">Next →</a></nav>
+<main class="topic-content">
+<a href="../pdfs/Topic9.pdf" class="pdf-download" download>⬇ Download PDF</a>
+<h1 id="topic-9-fixed-points-and-equilibrium-existence">Topic 9: Fixed Points and Equilibrium Existence</h1>
+<p><em>(Why equilibrium is a mathematical object, not a metaphor)</em></p>
+<hr />
+<h2 id="why-fixed-points-enter-now">1. Why fixed points enter now</h2>
+<p>The pre-course has so far given us the tools to talk about: - how agents choose (optimization, Topics <a href="Topic2.html">2</a>–<a href="Topic6.html">6</a>), - how those choices depend on the environment (comparative statics, Topics <a href="Topic6.html">6</a>–<a href="Topic7.html">7</a>), - how to deal with uncertainty (probability, Topic <a href="Topic8.html">8</a>).</p>
+<p>But microeconomics is not just about a single agent choosing in isolation. Most of the interesting questions involve <strong>interaction</strong>: consumers react to prices, firms react to competitors, bidders react to other bidders’ strategies.</p>
+<p>In such settings, the fundamental question is no longer “what does the agent choose?” but rather:</p>
+<blockquote>
+<p>“Is there a situation where everyone’s behavior is mutually consistent?”</p>
+</blockquote>
+<p>That situation is what economists call an <strong>equilibrium</strong>. And mathematically, an equilibrium is almost always a <strong>fixed point</strong>.</p>
+<p>This topic introduces fixed points as the formal backbone of equilibrium existence results. It connects directly back to Topics <a href="Topic4.html">4</a> and <a href="Topic5.html">5</a> (existence, compactness, correspondences) and Topic <a href="Topic7.html">7</a> (lattices and order), and it sets the stage for everything in the PhD course that involves strategic interaction.</p>
+<hr />
+<h2 id="what-is-a-fixed-point">2. What is a fixed point?</h2>
+<p>Let <span class="math inline">\(f: X \to X\)</span> be a function that maps a set into itself.</p>
+<p>A point <span class="math inline">\(x^\ast \in X\)</span> is a <strong>fixed point</strong> of <span class="math inline">\(f\)</span> if <span class="math display">\[f(x^\ast) = x^\ast.\]</span></p>
+<blockquote>
+<p>“A fixed point is a point that the function leaves unchanged. You plug it in, you get it back.”</p>
+</blockquote>
+<p>This sounds simple, but it is the key idea behind equilibrium. Here is why.</p>
+<p>Think about a game. Each player has a <strong>best response</strong>: given what the others do, what is optimal for her? A best response is a mapping from the other players’ strategies to one’s own. Now, a <strong>Nash equilibrium</strong> is a strategy profile where every player is already playing a best response to everyone else. Nobody wants to deviate.</p>
+<p>But that means: if we collect all best responses into a single mapping from strategy profiles to strategy profiles, an equilibrium is exactly a point where this mapping sends the profile back to itself. That is a fixed point.</p>
+<p>So the question “does an equilibrium exist?” becomes: “does this mapping have a fixed point?”</p>
+<hr />
+<h2 id="brouwers-fixed-point-theorem">3. Brouwer’s fixed-point theorem</h2>
+<p>The most classical fixed-point result is due to Brouwer.</p>
+<hr />
+<p><strong>Theorem (Brouwer).</strong> Let <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> be nonempty, compact, and convex, and let <span class="math inline">\(f: X \to X\)</span> be continuous. Then <span class="math inline">\(f\)</span> has a fixed point.</p>
+<hr />
+<blockquote>
+<p>“If you continuously map a compact convex set into itself, at least one point stays put.”</p>
+</blockquote>
+<p>The conditions matter: - <strong>Compact</strong>: the set is closed and bounded, so sequences cannot escape (Topic <a href="Topic4.html">4</a>). - <strong>Convex</strong>: the set has no holes or missing pieces (Topic <a href="Topic3.html">3</a>). - <strong>Continuous</strong>: the mapping does not jump (Topic <a href="Topic4.html">4</a>). - <strong>Into itself</strong>: the function sends every point in <span class="math inline">\(X\)</span> back into <span class="math inline">\(X\)</span>.</p>
+<p><strong>Proof sketch</strong> A one-dimensional version is easy to see. Take <span class="math inline">\(X = [0,1]\)</span> and <span class="math inline">\(f: [0,1] \to [0,1]\)</span> continuous. Consider the function <span class="math inline">\(g(x) = f(x) - x\)</span>. We know <span class="math inline">\(g(0) = f(0) \geq 0\)</span> (because <span class="math inline">\(f\)</span> maps into <span class="math inline">\([0,1]\)</span>) and <span class="math inline">\(g(1) = f(1) - 1 \leq 0\)</span>. By the intermediate value theorem, there exists some <span class="math inline">\(x^\ast\)</span> where <span class="math inline">\(g(x^\ast) = 0\)</span>, which means <span class="math inline">\(f(x^\ast) = x^\ast\)</span>. Done.</p>
+<hr />
+<p>In one dimension, the argument is clean because we can use the Intermediate Value Theorem (Topic <a href="Topic4.html">4</a>). In higher dimensions, the IVT is no longer available, and the proof requires a genuinely different idea. The classical geometric route goes through a result by Borsuk (1931).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<h3 id="the-idea-of-the-proof">The idea of the proof</h3>
+<p>In higher dimensions, we prove Brouwer by contradiction. Suppose <span class="math inline">\(f: B^n \to B^n\)</span> is continuous and has <em>no</em> fixed point, where <span class="math inline">\(B^n\)</span> is the closed unit ball in <span class="math inline">\(\mathbb{R}^n\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> We will show that this leads to an impossible geometric construction.</p>
+<p>Before we start, some <em>notation</em>. The <strong>boundary</strong> of <span class="math inline">\(B^n\)</span> is the set of points that are exactly at distance 1 from the origin. This is the sphere <span class="math inline">\(S^{n-1}\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> In our usual 1-D world of functions mapping scalars into scalars, the unit ball is the interval <span class="math inline">\([-1,1]\)</span>, and the sphere is just the two endpoints <span class="math inline">\(\{-1,1\}\)</span>. In two dimensions, <span class="math inline">\(B^2\)</span> is a disk and <span class="math inline">\(S^1\)</span> is the unit circle around it. In three dimensions, <span class="math inline">\(B^3\)</span> is the solid ball and <span class="math inline">\(S^2\)</span> is its surface. We will also use <em>rays</em>. A <strong>ray</strong> from a point <span class="math inline">\(a\)</span> through a point <span class="math inline">\(b\)</span> is the (half-)line that starts at <span class="math inline">\(a\)</span>, passes through <span class="math inline">\(b\)</span>, and continues beyond <span class="math inline">\(b\)</span> indefinitely.</p>
+<p>Now to the argument. Because we are looking at a self-map both the domain and the image are in the same space. That means, in particular, if <span class="math inline">\(f(x) \neq x\)</span> for every <span class="math inline">\(x\)</span>, then for each <span class="math inline">\(x \in B^n\)</span> we can draw a ray starting at <span class="math inline">\(f(x)\)</span> and passing through <span class="math inline">\(x\)</span>. Because <span class="math inline">\(f(x) \neq x\)</span>, this ray has a well-defined direction.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Since <span class="math inline">\(x\)</span> is inside the ball (or on its boundary), and the ray continues beyond <span class="math inline">\(x\)</span>, it must eventually hit the boundary sphere <span class="math inline">\(S^{n-1}\)</span> at some unique point.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Call that point <span class="math inline">\(r(x)\)</span>.</p>
+<p>The map <span class="math inline">\(r: B^n \to S^{n-1}\)</span> is continuous (because <span class="math inline">\(f\)</span> is continuous and the ray construction depends continuously on <span class="math inline">\(x\)</span>). Moreover, if <span class="math inline">\(x\)</span> is already on the boundary <span class="math inline">\(S^{n-1}\)</span>, the ray from <span class="math inline">\(f(x)\)</span> through <span class="math inline">\(x\)</span> hits the sphere at <span class="math inline">\(x\)</span> itself, so <span class="math inline">\(r(x) = x\)</span> for all <span class="math inline">\(x \in S^{n-1}\)</span>.</p>
+<p>A continuous map from <span class="math inline">\(B^n\)</span> onto <span class="math inline">\(S^{n-1}\)</span> that fixes every point of <span class="math inline">\(S^{n-1}\)</span> is called a <strong>retraction</strong>. So our no-fixed-point assumption has produced a retraction of the ball onto its boundary sphere.</p>
+<p>But Borsuk (1931) proved that no such retraction can exist: <em><span class="math inline">\(S^{n-1}\)</span> is not a retract of <span class="math inline">\(B^n\)</span></em>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>This is a contradiction. So our assumption was wrong, and <span class="math inline">\(f\)</span> must have a fixed point.</p>
+<blockquote>
+<p>“If a continuous function on the ball had no fixed point, we could use it to continuously retract the ball onto its boundary sphere. But that is geometrically impossible – you cannot flatten a ball onto its skin without tearing. So a fixed point must exist.”</p>
+</blockquote>
+<p>The intuition behind Borsuk’s result is worth pausing on. Think about the two-dimensional case: try to continuously push every point of a disk onto its boundary circle, while keeping the boundary points fixed. You will find that no matter what you do, some interior point gets “stuck.” The ball is simply too full to be compressed onto its boundary without a discontinuity. This is a topological obstruction, and it is what ultimately powers Brouwer’s theorem.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>What matters for economics is the punchline: if your model gives you a continuous self-map on a compact convex set, a fixed point is guaranteed. The geometry takes care of the rest.</p>
+<h3 id="why-brouwer-is-not-enough-for-economics">Why Brouwer is not enough for economics</h3>
+<p>Brouwer requires the mapping to be a <strong>function</strong> – single-valued. But as we saw in Topic <a href="Topic5.html">5</a>, optimal behavior is often set-valued. Best responses are typically correspondences, not functions. So we need a fixed-point theorem for correspondences.</p>
+<hr />
+<h2 id="kakutanis-fixed-point-theorem">4. Kakutani’s fixed-point theorem</h2>
+<p>Kakutani generalizes Brouwer to correspondences.</p>
+<hr />
+<p><strong>Theorem (Kakutani).</strong> Let <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> be nonempty, compact, and convex, and let <span class="math inline">\(F: X \rightrightarrows X\)</span> be an upper hemicontinuous correspondence with nonempty, convex values.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> Then <span class="math inline">\(F\)</span> has a fixed point: there exists <span class="math inline">\(x^\ast \in X\)</span> such that <span class="math inline">\(x^\ast \in F(x^\ast)\)</span>.</p>
+<hr />
+<blockquote>
+<p>“If you map a compact convex set into itself using a well-behaved correspondence with convex values, at least one point is contained in its own image.”</p>
+</blockquote>
+<p>Compare this with Brouwer: - the mapping is now a correspondence (set-valued), - instead of continuity, we need upper hemicontinuity (Topic <a href="Topic5.html">5</a>), - instead of the mapping being single-valued, we need the image sets to be convex.</p>
+<p>The convexity-of-values condition is the new ingredient. It says: for any given <span class="math inline">\(x\)</span>, the set of “responses” <span class="math inline">\(F(x)\)</span> has no gaps. This is often ensured by concavity of the objective function (which makes the set of optimizers convex, as we discussed in Topic <a href="Topic5.html">5</a>).</p>
+<h3 id="why-this-is-the-workhorse-theorem-for-equilibrium">Why this is the workhorse theorem for equilibrium</h3>
+<p>Kakutani’s theorem is behind the existence of: - <strong>Nash equilibrium</strong> (in mixed strategies), - <strong>Walrasian equilibrium</strong> (in general equilibrium theory), - <strong>Bayesian Nash equilibrium</strong> (in games of incomplete information).</p>
+<p>The logic is always the same: 1. define a correspondence that collects all agents’ best responses, 2. verify the conditions (compact convex domain, upper hemicontinuity, convex values), 3. apply Kakutani to conclude that a fixed point – an equilibrium – exists.</p>
+<p>This is why Topics <a href="Topic3.html">3</a>, <a href="Topic4.html">4</a>, and <a href="Topic5.html">5</a> spent so much time on convexity, compactness, and upper hemicontinuity. They were preparing exactly these conditions.</p>
+<h3 id="how-kakutani-follows-from-brouwer-sketch">How Kakutani follows from Brouwer (sketch)</h3>
+<p>The idea behind Kakutani’s theorem is to reduce it to Brouwer. The correspondence <span class="math inline">\(F\)</span> is set-valued, but we can try to “approximate” it by functions and then take a limit. The formal tool behind this construction is known as Cellina’s approximation theorem.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p><strong>Step 1: Approximate the correspondence by functions.</strong> Cover our set <span class="math inline">\(X\)</span> with a grid of mesh size <span class="math inline">\(1/n\)</span> (think of dividing <span class="math inline">\(X\)</span> into small cells). At each grid point <span class="math inline">\(x_k\)</span>, pick some element <span class="math inline">\(y_k \in F(x_k)\)</span>.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Now, we know that <span class="math inline">\(f_n(x_k) \in F(x_k)\)</span> for any grid point <span class="math inline">\(x_k\)</span>. For <span class="math inline">\(x\)</span> that is not a grid point, we define <span class="math inline">\(f_n(x)\)</span> by taking a weighted average (convex combination) of the selected <span class="math inline">\(y_k\)</span>’s at nearby grid points, with weights depending on how close <span class="math inline">\(x\)</span> is to each grid point.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> The result is a continuous (in fact piecewise linear) function <span class="math inline">\(f_n: X \to X\)</span>.</p>
+<p><strong>Step 2: Apply Brouwer to each approximation.</strong> Each <span class="math inline">\(f_n\)</span> is a continuous function from the compact convex set <span class="math inline">\(X\)</span> into itself. So by Brouwer, each <span class="math inline">\(f_n\)</span> has a fixed point <span class="math inline">\(x_n\)</span>: <span class="math display">\[f_n(x_n) = x_n.\]</span></p>
+<p><strong>Step 3: Take a limit.</strong> We now have a sequence <span class="math inline">\((x_n)\)</span> in the compact set <span class="math inline">\(X\)</span>. By compactness, this sequence has a convergent subsequence with some limit <span class="math inline">\(x^\ast\)</span> (this is the Bolzano-Weierstrass property from Topic <a href="Topic4.html">4</a>).</p>
+<p>Now, here is the key subtlety. As the grid becomes finer (<span class="math inline">\(n\)</span> grows), the fixed point <span class="math inline">\(x_n\)</span> comes closer and closer to satisfying <span class="math inline">\(x_n \in F(x_n)\)</span>, but it may never quite get there, because <span class="math inline">\(f_n\)</span> is a function, not a correspondence. So each <span class="math inline">\(x_n\)</span> is an <em>approximate</em> fixed point of <span class="math inline">\(F\)</span>, not an exact one.</p>
+<p>What saves us is the closed graph property. If a sequence of points <span class="math inline">\((x_n, f_n(x_n))\)</span> converges and each <span class="math inline">\(f_n(x_n)\)</span> is close to <span class="math inline">\(F(x_n)\)</span>, then the limit point <span class="math inline">\((x^\ast, x^\ast)\)</span> lies in the graph of <span class="math inline">\(F\)</span>. The graph of <span class="math inline">\(F\)</span> is closed (which follows from upper hemicontinuity and compact values – recall Topic <a href="Topic5.html">5</a>), so it contains its limit points. “Almost in” becomes “actually in.”</p>
+<p>That gives us <span class="math display">\[x^\ast \in F(x^\ast).\]</span></p>
+<p>That is our fixed point.</p>
+<blockquote>
+<p>“Kakutani is Brouwer in the limit: approximate the correspondence by functions, use Brouwer on each approximation, and let the approximation quality go to infinity. Compactness keeps the sequence from escaping, and the closed graph turns approximate fixed points into an exact one.”</p>
+</blockquote>
+<p>This sketch shows why <em>every</em> assumption in Kakutani earns its place: - compactness of <span class="math inline">\(X\)</span> gives us the convergent subsequence, - convexity of <span class="math inline">\(X\)</span> keeps us inside <span class="math inline">\(X\)</span> throughout, - convexity of <span class="math inline">\(F(x)\)</span> allows the continuous approximations to exist (we need to take weighted averages), - upper hemicontinuity (closed graph) ensures that the limit of approximate fixed points is an actual fixed point.</p>
+<hr />
+<h2 id="tarskis-fixed-point-theorem">5. Tarski’s fixed-point theorem</h2>
+<p>There is a completely different route to fixed points that does not use convexity or continuity at all. Instead, it uses <strong>order</strong>.</p>
+<hr />
+<p><strong>Theorem (Tarski).</strong> Let <span class="math inline">\((X, \preceq)\)</span> be a nonempty complete lattice and let <span class="math inline">\(f: X \to X\)</span> be monotone increasing. Then the set of fixed points of <span class="math inline">\(f\)</span> is nonempty and itself forms a complete lattice.</p>
+<hr />
+<blockquote>
+<p>“If the choice space is a complete lattice and the mapping is monotone, then fixed points exist – and the set of fixed points has the same lattice structure.”</p>
+</blockquote>
+<p>This connects directly to Topic <a href="Topic7.html">7</a>. Recall: - a complete lattice is a partially ordered set where every subset has a least upper bound and a greatest lower bound, - monotone increasing means: higher input, higher output (<span class="math inline">\(x \preceq x&#39;\)</span> implies <span class="math inline">\(f(x) \preceq f(x&#39;)\)</span>).</p>
+<p>No convexity, no continuity, no topological assumptions at all. Just order and monotonicity.</p>
+<h3 id="when-is-tarski-useful">When is Tarski useful?</h3>
+<p>Tarski is the right tool when: - the action space is discrete or has natural lattice structure, - best responses are monotone (strategic complements, as in Topic <a href="Topic7.html">7</a>), - you want existence without mixed strategies.</p>
+<p>For example, in a game where each firm chooses a price and higher rival prices make higher own prices optimal (strategic complements), Tarski gives existence of a pure-strategy equilibrium directly. No need to convexify or randomize.</p>
+<p>The fact that the fixed-point set is itself a lattice is a bonus: it means there is a largest and a smallest equilibrium, which is often useful for comparative statics.</p>
+<h3 id="why-tarski-works-constructive-sketch">Why Tarski works (constructive sketch)</h3>
+<p>Unlike Brouwer and Kakutani, Tarski’s theorem has a remarkably direct proof. It is constructive: we can <em>find</em> the fixed points, not just prove they exist.</p>
+<p>Here is the argument for the greatest fixed point. Start at the top of the lattice, <span class="math inline">\(\bar{x} = \sup X\)</span> (which exists because <span class="math inline">\(X\)</span> is a complete lattice). Since <span class="math inline">\(f\)</span> maps <span class="math inline">\(X\)</span> into <span class="math inline">\(X\)</span>, we know <span class="math inline">\(f(\bar{x}) \in X\)</span>, so <span class="math inline">\(f(\bar{x}) \preceq \bar{x}\)</span>.</p>
+<p>Now apply <span class="math inline">\(f\)</span> to both sides. Because <span class="math inline">\(f\)</span> is monotone increasing, <span class="math inline">\(f(\bar{x}) \preceq \bar{x}\)</span> implies <span class="math inline">\(f(f(\bar{x})) \preceq f(\bar{x})\)</span>. So the sequence <span class="math display">\[\bar{x} \succeq f(\bar{x}) \succeq f(f(\bar{x})) \succeq \cdots\]</span> is decreasing. In a complete lattice, every decreasing sequence (in fact, every subset) has a greatest lower bound. Call it <span class="math inline">\(x^\ast\)</span>.</p>
+<p>One can then show that <span class="math inline">\(f(x^\ast) = x^\ast\)</span>.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<p>The argument for the least fixed point is symmetric: start at <span class="math inline">\(\inf X\)</span> and iterate upward.</p>
+<blockquote>
+<p>“Start at the top, apply the monotone function, and walk downward. In a complete lattice, you cannot fall forever – you must land on a fixed point. The same works from the bottom, walking up.”</p>
+</blockquote>
+<p>This is why Tarski requires no topological assumptions. There is no limit-taking in the topological sense, no continuity, no convexity. The lattice structure and monotonicity do all the work. The “convergence” here is order-theoretic, not metric.</p>
+<p>The constructive nature of Tarski is practically useful, too. In games with strategic complements, you can often <em>compute</em> the largest and smallest equilibria by starting at the extremes of the strategy space and iterating best responses. If best responses are monotone, this procedure converges to equilibrium.</p>
+<hr />
+<h2 id="comparing-the-three-theorems">6. Comparing the three theorems</h2>
+<p>The three fixed-point theorems serve different purposes:</p>
+<p><strong>Brouwer</strong> requires a continuous function on a compact convex set. It is the simplest result and the one closest to geometric intuition. It works when the mapping is single-valued.</p>
+<p><strong>Kakutani</strong> extends Brouwer to correspondences. It is the standard tool for proving equilibrium existence in games and markets when best responses are set-valued. It requires convexity of the domain and of the image sets, plus upper hemicontinuity.</p>
+<p><strong>Tarski</strong> replaces all topological assumptions with order-theoretic ones. It is the right tool when the environment has lattice structure and monotonicity, especially in games with strategic complements.</p>
+<p>Each theorem has assumptions that the others do not need. None dominates the others. The choice depends on which structure the economic model provides.</p>
+<hr />
+<h2 id="an-economic-example-nash-equilibrium-existence">7. An economic example: Nash equilibrium existence</h2>
+<p>Consider a finite game: <span class="math inline">\(n\)</span> players, each with a finite set of pure strategies <span class="math inline">\(S_i\)</span>.</p>
+<p>A <strong>mixed strategy</strong> for player <span class="math inline">\(i\)</span> is a probability distribution <span class="math inline">\(\sigma_i\)</span> over <span class="math inline">\(S_i\)</span> (Topic <a href="Topic8.html">8</a>). The set of mixed strategies is <span class="math display">\[\Delta(S_i) = \left\{ \sigma_i \in \mathbb{R}^{|S_i|}_+ \;\middle|\; \sum_{s_i \in S_i} \sigma_i(s_i) = 1 \right\}.\]</span></p>
+<p>This set is compact and convex (it is a simplex).</p>
+<p>The product of all players’ mixed-strategy sets, <span class="math display">\[\Sigma = \Delta(S_1) \times \cdots \times \Delta(S_n),\]</span> is also compact and convex (Cartesian product of compact convex sets).</p>
+<p>Now define the <strong>best-response correspondence</strong> <span class="math inline">\(BR: \Sigma \rightrightarrows \Sigma\)</span> that maps each strategy profile to the set of profiles in which every player is playing a best response.</p>
+<p>Under standard assumptions: - <span class="math inline">\(BR\)</span> is upper hemicontinuous (because payoffs are continuous in mixed strategies and the constraint set is well-behaved – this is Berge’s Maximum Theorem from Topic <a href="Topic5.html">5</a>), - <span class="math inline">\(BR\)</span> has convex values (because if two mixed strategies are both best responses, any mixture of them is also a best response – expected payoff is linear in one’s own mixing probabilities).</p>
+<p>Kakutani applies. A fixed point exists. That fixed point is a Nash equilibrium.</p>
+<p>This is Nash’s theorem (1950), and the proof is exactly the logic above.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> Notice how it pulls together compactness, convexity, upper hemicontinuity, Berge’s theorem, and mixed strategies – essentially everything from Topics <a href="Topic3.html">3</a> through <a href="Topic8.html">8</a>.</p>
+<hr />
+<h2 id="why-existence-matters-even-if-we-cannot-compute">8. Why existence matters (even if we cannot compute)</h2>
+<p>A common reaction is: “So we know an equilibrium exists. But we still don’t know what it is. What’s the point?”</p>
+<p>The point is that existence is a minimal consistency check on the model. If an equilibrium does not exist, the model is making contradictory assumptions. Agents are supposed to optimize, but no configuration of choices is mutually consistent. That means the model is broken, not the world.</p>
+<p>Beyond that, existence results often come with structure: - Kakutani tells us fixed points exist in a compact convex set, - Tarski tells us the fixed-point set is a lattice with largest and smallest elements, - Berge’s theorem tells us solutions vary continuously with parameters.</p>
+<p>This structure is what makes comparative statics, welfare analysis, and mechanism design possible. We do not always need to <em>find</em> the equilibrium. We often just need to know it <em>exists</em> and <em>behaves well</em>.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">9. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>Fixed-point theorems are used at several points in MWG:</p>
+<ul>
+<li><strong>MWG, Chapter 8</strong> (Nash equilibrium existence, via Kakutani),</li>
+<li><strong>MWG, Chapter 17</strong> (existence of Walrasian equilibrium),</li>
+<li><strong>MWG, Mathematical Appendix C</strong> (fixed-point theorems stated).</li>
+</ul>
+<p>Tarski’s theorem is not developed in MWG but is standard in the monotone comparative statics literature that builds on the lattice methods introduced in Topic <a href="Topic7.html">7</a>.</p>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">10. Why this matters for microeconomics</h2>
+<p>Fixed-point theorems are the mathematical engine behind equilibrium.</p>
+<p>They explain: - why Nash equilibria exist in finite games, - why competitive equilibria exist under standard assumptions, - why mechanism design problems have solutions, - why games with strategic complements have well-structured equilibrium sets.</p>
+<p>Without fixed-point results, “equilibrium” would be a word without guaranteed content. These theorems are what turn it into a precise and operational concept.</p>
+<hr />
+<h2 id="what-you-should-take-away">11. What you should take away</h2>
+<p>After this topic, you should be comfortable with: - reading “equilibrium as fixed point” without it feeling like a metaphor, - knowing the conditions of Brouwer, Kakutani, and Tarski and which model features they require, - seeing how the pre-course machinery (convexity, compactness, upper hemicontinuity, lattices) feeds directly into equilibrium existence, - and understanding why existence is the first question economists ask, even before uniqueness or characterization.</p>
+<p>From here on, equilibrium is not an assumption. It is a consequence of structure.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The proof is in fact pretty involved. For a bit more discussion, see Ok, “Real Analysis with Economic Applications” (2007, chapters D.8.2 and D.8.3). Franklin (1980), “Methods of Mathematical Economics” provides 3 proofs of Brouwer. One is combinatorial, something we haven’t looked at here, so the tools are a little unfamiliar. One is somewhat indirect (yet very elegant) and one is brute force. That one implicitly constructs the Borsuk observation.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>That is, a ball of radius 1 around the origin.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>That means, it is one dimension lower than the ball.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>If <span class="math inline">\(f(x) = x\)</span>, the “ray from <span class="math inline">\(f(x)\)</span> through <span class="math inline">\(x\)</span>” has no direction because every line starting at <span class="math inline">\(x\)</span> goes, trivially, also through <span class="math inline">\(f(x)\)</span>. But if there is no fixed point, then the direction of the line is pinned down.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The ball is convex, so if we connect two points in the ball with each other by a line, that line segment does not leave the ball. Moreover, the sphere is strictly curved in the sense that no straight line segment lies entirely on it, so a ray through an interior point can intersect <span class="math inline">\(S^{n-1}\)</span> at most twice – and since the ray continues beyond <span class="math inline">\(x\)</span>, it must exit the ball and hit <span class="math inline">\(S^{n-1}\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>For <span class="math inline">\(n = 1\)</span>, this is easy to see directly. The ball <span class="math inline">\(B^1 = [-1,1]\)</span> is connected, but a retraction onto <span class="math inline">\(S^0 = \{-1, 1\}\)</span> would be a continuous surjection from a connected set onto a disconnected one, which is impossible. For <span class="math inline">\(n \geq 2\)</span>, the argument is harder and typically uses tools from algebraic topology, but the geometric content is the same: you cannot continuously flatten a ball onto its boundary without tearing something.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>For the empiricists among you: a retraction is a continuous map from a set onto a subset that leaves the subset’s points fixed – the same idea as a projection, but with a continuity requirement. So Borsuk’s result says that there is no continuous projection from a ball onto its boundary sphere.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Convex values means: for each <span class="math inline">\(x \in X\)</span>, the set <span class="math inline">\(F(x)\)</span> is convex. In our setting – a correspondence on a compact subset of <span class="math inline">\(\mathbb{R}^n\)</span> – upper hemicontinuity with compact values implies that <span class="math inline">\(F\)</span> has a closed graph (recall Topic <a href="Topic5.html">5</a>, Section 10). The proof sketch below uses the closed graph property, which is thus a consequence of the assumptions stated here, not an additional requirement.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>For the details in an economics-oriented presentation, see Ok, “Real Analysis with Economic Applications” (2007), Chapter E.5.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Note that <span class="math inline">\(y_k\)</span> need not be a grid point, but is <em>any one point</em> in <span class="math inline">\(F(x_k)\)</span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>This is where we use convexity of <span class="math inline">\(F(x)\)</span>. Because each <span class="math inline">\(F(x)\)</span> is convex, and the values <span class="math inline">\(y_k\)</span> come from nearby images of <span class="math inline">\(F\)</span>, these weighted averages remain close to <span class="math inline">\(F(x)\)</span>. Without convex values, we could not average and stay “near” the correspondence.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>The details require checking that <span class="math inline">\(f(x^\ast)\)</span> is both <span class="math inline">\(\preceq x^\ast\)</span> and <span class="math inline">\(\succeq x^\ast\)</span>. For <span class="math inline">\(\preceq\)</span>: since <span class="math inline">\(x^\ast \preceq f^k(\bar{x})\)</span> for all <span class="math inline">\(k\)</span> (it is the greatest lower bound), monotonicity gives <span class="math inline">\(f(x^\ast) \preceq f^{k+1}(\bar{x})\)</span> for all <span class="math inline">\(k\)</span>, so <span class="math inline">\(f(x^\ast)\)</span> is also a lower bound of the sequence, hence <span class="math inline">\(f(x^\ast) \preceq x^\ast\)</span>. For <span class="math inline">\(\succeq\)</span>: applying <span class="math inline">\(f\)</span> to <span class="math inline">\(f(x^\ast) \preceq x^\ast\)</span> gives <span class="math inline">\(f(f(x^\ast)) \preceq f(x^\ast)\)</span> by monotonicity, so <span class="math inline">\(f(x^\ast)\)</span> is itself a lower bound that <span class="math inline">\(x^\ast\)</span> must be at least as large as – but <span class="math inline">\(x^\ast\)</span> is the <em>greatest</em> lower bound, so <span class="math inline">\(x^\ast \preceq f(x^\ast)\)</span>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Nash’s original proof used Brouwer rather than Kakutani, constructing a particular continuous function whose fixed points are Nash equilibria. The Kakutani route is the more standard modern presentation.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic8.html" class="nav-prev">← Previous</a><a href="Topic10.html" class="nav-next">Next →</a></nav>
+</body>
+</html>
