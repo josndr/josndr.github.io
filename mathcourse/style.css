@@ -257,6 +257,8 @@ body.topic-page .topic-nav.bottom {
   margin-bottom: 0.25rem;
 }
 
+.topic-content p { text-align: justify; }
+
 .topic-content h2 { font-size: 1.35rem; margin-top: 2rem; }
 .topic-content h3 { font-size: 1.1rem; margin-top: 1.5rem; }
 
