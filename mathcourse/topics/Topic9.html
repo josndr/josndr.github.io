@@ -19,13 +19,24 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic8.html" class="nav-prev">← Previous</a><a href="Topic10.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-fixed-points-enter-now">1. Why fixed points enter now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-is-a-fixed-point">2. What is a fixed point?</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#brouwers-fixed-point-theorem">3. Brouwer’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-of-the-proof">The idea of the proof</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-brouwer-is-not-enough-for-economics">Why Brouwer is not enough for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#kakutanis-fixed-point-theorem">4. Kakutani’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-this-is-the-workhorse-theorem-for-equilibrium">Why this is the workhorse theorem for equilibrium</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#how-kakutani-follows-from-brouwer-sketch">How Kakutani follows from Brouwer (sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#tarskis-fixed-point-theorem">5. Tarski’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#when-is-tarski-useful">When is Tarski useful?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-tarski-works-constructive-sketch">Why Tarski works (constructive sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#comparing-the-three-theorems">6. Comparing the three theorems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-nash-equilibrium-existence">7. An economic example: Nash equilibrium existence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-existence-matters-even-if-we-cannot-compute">8. Why existence matters (even if we cannot compute)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">9. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">10. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">11. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic9.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-9-fixed-points-and-equilibrium-existence">Topic 9: Fixed Points and Equilibrium Existence</h1>
 <p><em>(Why equilibrium is a mathematical object, not a metaphor)</em></p>
 <hr />
 <h2 id="why-fixed-points-enter-now">1. Why fixed points enter now</h2>
-<p>The pre-course has so far given us the tools to talk about: - how agents choose (optimization, Topics <a href="Topic2.html">2</a>–<a href="Topic6.html">6</a>), - how those choices depend on the environment (comparative statics, Topics <a href="Topic6.html">6</a>–<a href="Topic7.html">7</a>), - how to deal with uncertainty (probability, Topic <a href="Topic8.html">8</a>).</p>
+<p>The pre-course has so far given us the tools to talk about:</p>
+<ul>
+<li>how agents choose (optimization, Topics <a href="Topic2.html">2</a>–<a href="Topic6.html">6</a>),</li>
+<li>how those choices depend on the environment (comparative statics, Topics <a href="Topic6.html">6</a>–<a href="Topic7.html">7</a>),</li>
+<li>how to deal with uncertainty (probability, Topic <a href="Topic8.html">8</a>).</li>
+</ul>
 <p>But microeconomics is not just about a single agent choosing in isolation. Most of the interesting questions involve <strong>interaction</strong>: consumers react to prices, firms react to competitors, bidders react to other bidders’ strategies.</p>
 <p>In such settings, the fundamental question is no longer “what does the agent choose?” but rather:</p>
 <blockquote>
@@ -53,7 +64,13 @@ MathJax = {
 <blockquote>
 <p>“If you continuously map a compact convex set into itself, at least one point stays put.”</p>
 </blockquote>
-<p>The conditions matter: - <strong>Compact</strong>: the set is closed and bounded, so sequences cannot escape (Topic <a href="Topic4.html">4</a>). - <strong>Convex</strong>: the set has no holes or missing pieces (Topic <a href="Topic3.html">3</a>). - <strong>Continuous</strong>: the mapping does not jump (Topic <a href="Topic4.html">4</a>). - <strong>Into itself</strong>: the function sends every point in <span class="math inline">\(X\)</span> back into <span class="math inline">\(X\)</span>.</p>
+<p>The conditions matter:</p>
+<ul>
+<li><strong>Compact</strong>: the set is closed and bounded, so sequences cannot escape (Topic <a href="Topic4.html">4</a>).</li>
+<li><strong>Convex</strong>: the set has no holes or missing pieces (Topic <a href="Topic3.html">3</a>).</li>
+<li><strong>Continuous</strong>: the mapping does not jump (Topic <a href="Topic4.html">4</a>).</li>
+<li><strong>Into itself</strong>: the function sends every point in <span class="math inline">\(X\)</span> back into <span class="math inline">\(X\)</span>.</li>
+</ul>
 <p><strong>Proof sketch</strong> A one-dimensional version is easy to see. Take <span class="math inline">\(X = [0,1]\)</span> and <span class="math inline">\(f: [0,1] \to [0,1]\)</span> continuous. Consider the function <span class="math inline">\(g(x) = f(x) - x\)</span>. We know <span class="math inline">\(g(0) = f(0) \geq 0\)</span> (because <span class="math inline">\(f\)</span> maps into <span class="math inline">\([0,1]\)</span>) and <span class="math inline">\(g(1) = f(1) - 1 \leq 0\)</span>. By the intermediate value theorem, there exists some <span class="math inline">\(x^\ast\)</span> where <span class="math inline">\(g(x^\ast) = 0\)</span>, which means <span class="math inline">\(f(x^\ast) = x^\ast\)</span>. Done.</p>
 <hr />
 <p>In one dimension, the argument is clean because we can use the Intermediate Value Theorem (Topic <a href="Topic4.html">4</a>). In higher dimensions, the IVT is no longer available, and the proof requires a genuinely different idea. The classical geometric route goes through a result by Borsuk (1931).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
@@ -81,11 +98,26 @@ MathJax = {
 <blockquote>
 <p>“If you map a compact convex set into itself using a well-behaved correspondence with convex values, at least one point is contained in its own image.”</p>
 </blockquote>
-<p>Compare this with Brouwer: - the mapping is now a correspondence (set-valued), - instead of continuity, we need upper hemicontinuity (Topic <a href="Topic5.html">5</a>), - instead of the mapping being single-valued, we need the image sets to be convex.</p>
+<p>Compare this with Brouwer:</p>
+<ul>
+<li>the mapping is now a correspondence (set-valued),</li>
+<li>instead of continuity, we need upper hemicontinuity (Topic <a href="Topic5.html">5</a>),</li>
+<li>instead of the mapping being single-valued, we need the image sets to be convex.</li>
+</ul>
 <p>The convexity-of-values condition is the new ingredient. It says: for any given <span class="math inline">\(x\)</span>, the set of “responses” <span class="math inline">\(F(x)\)</span> has no gaps. This is often ensured by concavity of the objective function (which makes the set of optimizers convex, as we discussed in Topic <a href="Topic5.html">5</a>).</p>
 <h3 id="why-this-is-the-workhorse-theorem-for-equilibrium">Why this is the workhorse theorem for equilibrium</h3>
-<p>Kakutani’s theorem is behind the existence of: - <strong>Nash equilibrium</strong> (in mixed strategies), - <strong>Walrasian equilibrium</strong> (in general equilibrium theory), - <strong>Bayesian Nash equilibrium</strong> (in games of incomplete information).</p>
-<p>The logic is always the same: 1. define a correspondence that collects all agents’ best responses, 2. verify the conditions (compact convex domain, upper hemicontinuity, convex values), 3. apply Kakutani to conclude that a fixed point – an equilibrium – exists.</p>
+<p>Kakutani’s theorem is behind the existence of:</p>
+<ul>
+<li><strong>Nash equilibrium</strong> (in mixed strategies),</li>
+<li><strong>Walrasian equilibrium</strong> (in general equilibrium theory),</li>
+<li><strong>Bayesian Nash equilibrium</strong> (in games of incomplete information).</li>
+</ul>
+<p>The logic is always the same:</p>
+<ol type="1">
+<li>define a correspondence that collects all agents’ best responses,</li>
+<li>verify the conditions (compact convex domain, upper hemicontinuity, convex values),</li>
+<li>apply Kakutani to conclude that a fixed point – an equilibrium – exists.</li>
+</ol>
 <p>This is why Topics <a href="Topic3.html">3</a>, <a href="Topic4.html">4</a>, and <a href="Topic5.html">5</a> spent so much time on convexity, compactness, and upper hemicontinuity. They were preparing exactly these conditions.</p>
 <h3 id="how-kakutani-follows-from-brouwer-sketch">How Kakutani follows from Brouwer (sketch)</h3>
 <p>The idea behind Kakutani’s theorem is to reduce it to Brouwer. The correspondence <span class="math inline">\(F\)</span> is set-valued, but we can try to “approximate” it by functions and then take a limit. The formal tool behind this construction is known as Cellina’s approximation theorem.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
@@ -99,7 +131,13 @@ MathJax = {
 <blockquote>
 <p>“Kakutani is Brouwer in the limit: approximate the correspondence by functions, use Brouwer on each approximation, and let the approximation quality go to infinity. Compactness keeps the sequence from escaping, and the closed graph turns approximate fixed points into an exact one.”</p>
 </blockquote>
-<p>This sketch shows why <em>every</em> assumption in Kakutani earns its place: - compactness of <span class="math inline">\(X\)</span> gives us the convergent subsequence, - convexity of <span class="math inline">\(X\)</span> keeps us inside <span class="math inline">\(X\)</span> throughout, - convexity of <span class="math inline">\(F(x)\)</span> allows the continuous approximations to exist (we need to take weighted averages), - upper hemicontinuity (closed graph) ensures that the limit of approximate fixed points is an actual fixed point.</p>
+<p>This sketch shows why <em>every</em> assumption in Kakutani earns its place:</p>
+<ul>
+<li>compactness of <span class="math inline">\(X\)</span> gives us the convergent subsequence,</li>
+<li>convexity of <span class="math inline">\(X\)</span> keeps us inside <span class="math inline">\(X\)</span> throughout,</li>
+<li>convexity of <span class="math inline">\(F(x)\)</span> allows the continuous approximations to exist (we need to take weighted averages),</li>
+<li>upper hemicontinuity (closed graph) ensures that the limit of approximate fixed points is an actual fixed point.</li>
+</ul>
 <hr />
 <h2 id="tarskis-fixed-point-theorem">5. Tarski’s fixed-point theorem</h2>
 <p>There is a completely different route to fixed points that does not use convexity or continuity at all. Instead, it uses <strong>order</strong>.</p>
@@ -109,10 +147,19 @@ MathJax = {
 <blockquote>
 <p>“If the choice space is a complete lattice and the mapping is monotone, then fixed points exist – and the set of fixed points has the same lattice structure.”</p>
 </blockquote>
-<p>This connects directly to Topic <a href="Topic7.html">7</a>. Recall: - a complete lattice is a partially ordered set where every subset has a least upper bound and a greatest lower bound, - monotone increasing means: higher input, higher output (<span class="math inline">\(x \preceq x&#39;\)</span> implies <span class="math inline">\(f(x) \preceq f(x&#39;)\)</span>).</p>
+<p>This connects directly to Topic <a href="Topic7.html">7</a>. Recall:</p>
+<ul>
+<li>a complete lattice is a partially ordered set where every subset has a least upper bound and a greatest lower bound,</li>
+<li>monotone increasing means: higher input, higher output (<span class="math inline">\(x \preceq x&#39;\)</span> implies <span class="math inline">\(f(x) \preceq f(x&#39;)\)</span>).</li>
+</ul>
 <p>No convexity, no continuity, no topological assumptions at all. Just order and monotonicity.</p>
 <h3 id="when-is-tarski-useful">When is Tarski useful?</h3>
-<p>Tarski is the right tool when: - the action space is discrete or has natural lattice structure, - best responses are monotone (strategic complements, as in Topic <a href="Topic7.html">7</a>), - you want existence without mixed strategies.</p>
+<p>Tarski is the right tool when:</p>
+<ul>
+<li>the action space is discrete or has natural lattice structure,</li>
+<li>best responses are monotone (strategic complements, as in Topic <a href="Topic7.html">7</a>),</li>
+<li>you want existence without mixed strategies.</li>
+</ul>
 <p>For example, in a game where each firm chooses a price and higher rival prices make higher own prices optimal (strategic complements), Tarski gives existence of a pure-strategy equilibrium directly. No need to convexify or randomize.</p>
 <p>The fact that the fixed-point set is itself a lattice is a bonus: it means there is a largest and a smallest equilibrium, which is often useful for comparative statics.</p>
 <h3 id="why-tarski-works-constructive-sketch">Why Tarski works (constructive sketch)</h3>
@@ -140,14 +187,23 @@ MathJax = {
 <p>This set is compact and convex (it is a simplex).</p>
 <p>The product of all players’ mixed-strategy sets, <span class="math display">\[\Sigma = \Delta(S_1) \times \cdots \times \Delta(S_n),\]</span> is also compact and convex (Cartesian product of compact convex sets).</p>
 <p>Now define the <strong>best-response correspondence</strong> <span class="math inline">\(BR: \Sigma \rightrightarrows \Sigma\)</span> that maps each strategy profile to the set of profiles in which every player is playing a best response.</p>
-<p>Under standard assumptions: - <span class="math inline">\(BR\)</span> is upper hemicontinuous (because payoffs are continuous in mixed strategies and the constraint set is well-behaved – this is Berge’s Maximum Theorem from Topic <a href="Topic5.html">5</a>), - <span class="math inline">\(BR\)</span> has convex values (because if two mixed strategies are both best responses, any mixture of them is also a best response – expected payoff is linear in one’s own mixing probabilities).</p>
+<p>Under standard assumptions:</p>
+<ul>
+<li><span class="math inline">\(BR\)</span> is upper hemicontinuous (because payoffs are continuous in mixed strategies and the constraint set is well-behaved – this is Berge’s Maximum Theorem from Topic <a href="Topic5.html">5</a>),</li>
+<li><span class="math inline">\(BR\)</span> has convex values (because if two mixed strategies are both best responses, any mixture of them is also a best response – expected payoff is linear in one’s own mixing probabilities).</li>
+</ul>
 <p>Kakutani applies. A fixed point exists. That fixed point is a Nash equilibrium.</p>
 <p>This is Nash’s theorem (1950), and the proof is exactly the logic above.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> Notice how it pulls together compactness, convexity, upper hemicontinuity, Berge’s theorem, and mixed strategies – essentially everything from Topics <a href="Topic3.html">3</a> through <a href="Topic8.html">8</a>.</p>
 <hr />
 <h2 id="why-existence-matters-even-if-we-cannot-compute">8. Why existence matters (even if we cannot compute)</h2>
 <p>A common reaction is: “So we know an equilibrium exists. But we still don’t know what it is. What’s the point?”</p>
 <p>The point is that existence is a minimal consistency check on the model. If an equilibrium does not exist, the model is making contradictory assumptions. Agents are supposed to optimize, but no configuration of choices is mutually consistent. That means the model is broken, not the world.</p>
-<p>Beyond that, existence results often come with structure: - Kakutani tells us fixed points exist in a compact convex set, - Tarski tells us the fixed-point set is a lattice with largest and smallest elements, - Berge’s theorem tells us solutions vary continuously with parameters.</p>
+<p>Beyond that, existence results often come with structure:</p>
+<ul>
+<li>Kakutani tells us fixed points exist in a compact convex set,</li>
+<li>Tarski tells us the fixed-point set is a lattice with largest and smallest elements,</li>
+<li>Berge’s theorem tells us solutions vary continuously with parameters.</li>
+</ul>
 <p>This structure is what makes comparative statics, welfare analysis, and mechanism design possible. We do not always need to <em>find</em> the equilibrium. We often just need to know it <em>exists</em> and <em>behaves well</em>.</p>
 <hr />
 <h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">9. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
@@ -161,11 +217,23 @@ MathJax = {
 <hr />
 <h2 id="why-this-matters-for-microeconomics">10. Why this matters for microeconomics</h2>
 <p>Fixed-point theorems are the mathematical engine behind equilibrium.</p>
-<p>They explain: - why Nash equilibria exist in finite games, - why competitive equilibria exist under standard assumptions, - why mechanism design problems have solutions, - why games with strategic complements have well-structured equilibrium sets.</p>
+<p>They explain:</p>
+<ul>
+<li>why Nash equilibria exist in finite games,</li>
+<li>why competitive equilibria exist under standard assumptions,</li>
+<li>why mechanism design problems have solutions,</li>
+<li>why games with strategic complements have well-structured equilibrium sets.</li>
+</ul>
 <p>Without fixed-point results, “equilibrium” would be a word without guaranteed content. These theorems are what turn it into a precise and operational concept.</p>
 <hr />
 <h2 id="what-you-should-take-away">11. What you should take away</h2>
-<p>After this topic, you should be comfortable with: - reading “equilibrium as fixed point” without it feeling like a metaphor, - knowing the conditions of Brouwer, Kakutani, and Tarski and which model features they require, - seeing how the pre-course machinery (convexity, compactness, upper hemicontinuity, lattices) feeds directly into equilibrium existence, - and understanding why existence is the first question economists ask, even before uniqueness or characterization.</p>
+<p>After this topic, you should be comfortable with:</p>
+<ul>
+<li>reading “equilibrium as fixed point” without it feeling like a metaphor,</li>
+<li>knowing the conditions of Brouwer, Kakutani, and Tarski and which model features they require,</li>
+<li>seeing how the pre-course machinery (convexity, compactness, upper hemicontinuity, lattices) feeds directly into equilibrium existence,</li>
+<li>and understanding why existence is the first question economists ask, even before uniqueness or characterization.</li>
+</ul>
 <p>From here on, equilibrium is not an assumption. It is a consequence of structure.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
@@ -187,6 +255,94 @@ MathJax = {
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic9.html" aria-current="page">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-fixed-points-enter-now">1. Why fixed points enter now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-is-a-fixed-point">2. What is a fixed point?</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#brouwers-fixed-point-theorem">3. Brouwer’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-of-the-proof">The idea of the proof</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-brouwer-is-not-enough-for-economics">Why Brouwer is not enough for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#kakutanis-fixed-point-theorem">4. Kakutani’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-this-is-the-workhorse-theorem-for-equilibrium">Why this is the workhorse theorem for equilibrium</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#how-kakutani-follows-from-brouwer-sketch">How Kakutani follows from Brouwer (sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#tarskis-fixed-point-theorem">5. Tarski’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#when-is-tarski-useful">When is Tarski useful?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-tarski-works-constructive-sketch">Why Tarski works (constructive sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#comparing-the-three-theorems">6. Comparing the three theorems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-nash-equilibrium-existence">7. An economic example: Nash equilibrium existence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-existence-matters-even-if-we-cannot-compute">8. Why existence matters (even if we cannot compute)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">9. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">10. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">11. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic8.html" class="nav-prev">← Previous</a><a href="Topic10.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

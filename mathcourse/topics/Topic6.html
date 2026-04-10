@@ -19,6 +19,12 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic5.html" class="nav-prev">← Previous</a><a href="Topic7.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-differentiability-enters-now">1. Why differentiability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#from-global-behavior-to-local-behavior">2. From global behavior to local behavior</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-the-basic-idea">3. Differentiability: the basic idea</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partial-derivatives-and-gradients">4. Partial derivatives and gradients</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#marginal-interpretation-in-economics">5. Marginal interpretation in economics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#first-order-conditions-interior-solutions">6. First-order conditions (interior solutions)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-first-order-conditions-are-not-enough">7. Why first-order conditions are not enough</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#second-order-intuition-informal">8. Second-order intuition (informal)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-and-constraints-preview">9. Differentiability and constraints (preview)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-marginal-utility">10. An economic example: marginal utility</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-comparative-statics">11. Why this matters for comparative statics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">12. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic6.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-6-differentiability-and-marginal-reasoning">Topic 6: Differentiability and Marginal Reasoning</h1>
@@ -35,7 +41,12 @@ MathJax = {
 <p><strong>How do optimal choices change when the environment changes?</strong></p>
 </blockquote>
 <p>This is the core question of <strong>comparative statics</strong>.</p>
-<p>To answer it, economists often rely on <em>local approximations</em>: - small changes in prices, - small changes in income, - small changes in parameters.</p>
+<p>To answer it, economists often rely on <em>local approximations</em>:</p>
+<ul>
+<li>small changes in prices,</li>
+<li>small changes in income,</li>
+<li>small changes in parameters.</li>
+</ul>
 <p>Differentiability is the mathematical structure that makes such reasoning precise.</p>
 <hr />
 <h2 id="from-global-behavior-to-local-behavior">2. From global behavior to local behavior</h2>
@@ -43,7 +54,12 @@ MathJax = {
 <p><span class="math display">\[
 \max_{x \in X} f(x).
 \]</span></p>
-<p>So far, our analysis has been <strong>global</strong>: - existence relies on compactness, - uniqueness relies on strict concavity, - stability relies on hemicontinuity.</p>
+<p>So far, our analysis has been <strong>global</strong>:</p>
+<ul>
+<li>existence relies on compactness,</li>
+<li>uniqueness relies on strict concavity,</li>
+<li>stability relies on hemicontinuity.</li>
+</ul>
 <p>Differentiability allows us to zoom in and ask:</p>
 <blockquote>
 <p>What happens to <span class="math inline">\(f(x)\)</span> when we move <span class="math inline">\(x\)</span> <em>a little bit</em>?</p>
@@ -86,7 +102,11 @@ f&#39;(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
 \frac{\partial f}{\partial x_n}(x)
 \right).
 \]</span></p>
-<p>The gradient vector encodes: - the direction of steepest ascent, - the marginal effect of each component.</p>
+<p>The gradient vector encodes:</p>
+<ul>
+<li>the direction of steepest ascent,</li>
+<li>the marginal effect of each component.</li>
+</ul>
 <p>What is a partial derivative?</p>
 <blockquote>
 <p>The partial derivative with respect to <span class="math inline">\(x_i\)</span> measures how the objective changes when we increase <span class="math inline">\(x_i\)</span> slightly, holding all other components fixed.</p>
@@ -108,7 +128,12 @@ f&#39;(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
 <p><em>Why is it great to have differentiability?</em> It gives us a disciplined way to talk about ‘’small changes’’ without ambiguity.</p>
 <hr />
 <h2 id="first-order-conditions-interior-solutions">6. First-order conditions (interior solutions)</h2>
-<p>Suppose: - <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is open, - <span class="math inline">\(f\)</span> is differentiable, - <span class="math inline">\(x^\ast\)</span> is an interior maximizer.</p>
+<p>Suppose:</p>
+<ul>
+<li><span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is open,</li>
+<li><span class="math inline">\(f\)</span> is differentiable,</li>
+<li><span class="math inline">\(x^\ast\)</span> is an interior maximizer.</li>
+</ul>
 <p>Then a necessary condition for optimality is</p>
 <p><span class="math display">\[
 \nabla f(x^\ast) = 0.
@@ -124,11 +149,21 @@ It identifies <strong>candidates</strong> for optimality (so called critical poi
 <p>So if we are looking for an optimum in a smooth problem like the one described above, it is <em>first order</em> for us to find points that satisfy that condition. Once we have those, we can worry about which of those to eliminate.</p>
 <hr />
 <h2 id="why-first-order-conditions-are-not-enough">7. Why first-order conditions are not enough</h2>
-<p>A point where <span class="math inline">\(\nabla f(x)=0\)</span> could be: - a maximum, - a minimum, - a saddle point.</p>
+<p>A point where <span class="math inline">\(\nabla f(x)=0\)</span> could be:</p>
+<ul>
+<li>a maximum,</li>
+<li>a minimum,</li>
+<li>a saddle point.</li>
+</ul>
 <p>A Maximum is what we want, a hill top. A minimum is the lowest point in the valley and the opposite of what we want. A saddle point is something tricky. It is the lowest point of a valley in some direction, but the hill top in another. So standing on the saddle point, means it goes down in some direction, and up in others (like at that one point at the back of a saddle), in some it may be even flat. It is, however, clearly not a hill top.</p>
 <p>Moreover, we need to distinguish between local and global optimality. If we are on a hill top in a mountain range, that means we are at a maximum (it goes down in all directions, locally), but nothing says that this is the highest hill top.</p>
 <p>The first-order condition tells us nothing about these things.</p>
-<p>This is why first-order conditions must be combined with <strong>global structure</strong>: - concavity of the objective ensures that any critical point is a global maximum, - differentiability ensures that no jumps or kinks occur that bring about points that can trump the critical points without being critical points themselves - convexity of the choice set ensures that no local traps exist where we are not allowed to go to.</p>
+<p>This is why first-order conditions must be combined with <strong>global structure</strong>:</p>
+<ul>
+<li>concavity of the objective ensures that any critical point is a global maximum,</li>
+<li>differentiability ensures that no jumps or kinks occur that bring about points that can trump the critical points without being critical points themselves</li>
+<li>convexity of the choice set ensures that no local traps exist where we are not allowed to go to.</li>
+</ul>
 <p>This connects directly back to Topics <a href="Topic3.html">3</a> and <a href="Topic4.html">4</a>.</p>
 <hr />
 <h2 id="second-order-intuition-informal">8. Second-order intuition (informal)</h2>
@@ -142,14 +177,23 @@ D^2 f(x).
 <blockquote>
 <p>Concavity means the function bends downward everywhere.</p>
 </blockquote>
-<p>Under global concavity of the objective: - first-order conditions become sufficient, - local optima are global.</p>
+<p>Under global concavity of the objective:</p>
+<ul>
+<li>first-order conditions become sufficient,</li>
+<li>local optima are global.</li>
+</ul>
 <hr />
 <h2 id="differentiability-and-constraints-preview">9. Differentiability and constraints (preview)</h2>
 <p>Most economic problems involve constraints:</p>
 <p><span class="math display">\[
 \max_{x \in X} f(x).
 \]</span></p>
-<p>When constraints bind, optimality conditions involve: - trade-offs, - shadow prices, - Lagrange multipliers.</p>
+<p>When constraints bind, optimality conditions involve:</p>
+<ul>
+<li>trade-offs,</li>
+<li>shadow prices,</li>
+<li>Lagrange multipliers.</li>
+</ul>
 <p>We will introduce this machinery later.</p>
 <p>For now, the key message is:</p>
 <blockquote>
@@ -163,7 +207,12 @@ D^2 f(x).
 \frac{\partial u}{\partial x_1}(x)
 \]</span></p>
 <p>measures the marginal utility of good 1 at bundle <span class="math inline">\(x\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>Comparing marginal utilities across goods explains: - substitution, - demand responses, - interior versus corner solutions.</p>
+<p>Comparing marginal utilities across goods explains:</p>
+<ul>
+<li>substitution,</li>
+<li>demand responses,</li>
+<li>interior versus corner solutions.</li>
+</ul>
 <p>Without differentiability, these ideas lose precision.</p>
 <p>There is another form of differentiation, which is the <strong>total derivative</strong>. The way to think about this is to think about the partial derivative as exactly what it is, the change in one direction of the choice vector. So in the above example, <span class="math inline">\(\frac{\partial u}{\partial x_1}(x)\)</span> means we keep <span class="math inline">\(x_2\)</span> unchanged and only change <span class="math inline">\(x_1\)</span> (marginally). But of course, there are many ways to change things “slightly.” We could walk in direction 1, in direction 2 or any weighted combination of it. The <em>total derivative</em> tells us what that means for our function. And it is (because of the linear map we defined in the beginning) a remarkably simple object. So here it is<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <p><span class="math display">\[
@@ -172,7 +221,12 @@ D^2 f(x).
 <p>The <span class="math inline">\(\mathrm{d}\)</span> here is a way to think about small changes which (however) have a relative size. So if we go in the <span class="math inline">\(x_1\)</span> direction only, then <span class="math inline">\(\mathrm{d} x_2=0\)</span> is <span class="math inline">\(0\)</span> and <span class="math inline">\(\mathrm{d}x_1=1\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <hr />
 <h2 id="why-this-matters-for-comparative-statics">11. Why this matters for comparative statics</h2>
-<p>Differentiability underlies a bunch of concepts we will see in Microeconomics: - Slutsky decompositions, - envelope theorems, - local comparative statics.</p>
+<p>Differentiability underlies a bunch of concepts we will see in Microeconomics:</p>
+<ul>
+<li>Slutsky decompositions,</li>
+<li>envelope theorems,</li>
+<li>local comparative statics.</li>
+</ul>
 <p>It allows us to replace</p>
 <blockquote>
 <p>‘’What happens when something changes?’’</p>
@@ -193,7 +247,13 @@ D^2 f(x).
 <p>Differentiability is often used implicitly; these notes make the logic explicit.</p>
 <hr />
 <h2 id="what-you-should-take-away">13. What you should take away</h2>
-<p>After this topic, you should be comfortable with: - interpreting derivatives as local approximations, - reading gradients as vectors of marginal effects, - understanding when first-order conditions apply, - seeing how differentiability complements convexity.</p>
+<p>After this topic, you should be comfortable with:</p>
+<ul>
+<li>interpreting derivatives as local approximations,</li>
+<li>reading gradients as vectors of marginal effects,</li>
+<li>understanding when first-order conditions apply,</li>
+<li>seeing how differentiability complements convexity.</li>
+</ul>
 <p>Differentiability does not replace global reasoning.<br />
 It refines it.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
@@ -208,6 +268,94 @@ It refines it.</p>
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic6.html" aria-current="page">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-differentiability-enters-now">1. Why differentiability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#from-global-behavior-to-local-behavior">2. From global behavior to local behavior</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-the-basic-idea">3. Differentiability: the basic idea</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partial-derivatives-and-gradients">4. Partial derivatives and gradients</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#marginal-interpretation-in-economics">5. Marginal interpretation in economics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#first-order-conditions-interior-solutions">6. First-order conditions (interior solutions)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-first-order-conditions-are-not-enough">7. Why first-order conditions are not enough</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#second-order-intuition-informal">8. Second-order intuition (informal)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-and-constraints-preview">9. Differentiability and constraints (preview)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-marginal-utility">10. An economic example: marginal utility</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-comparative-statics">11. Why this matters for comparative statics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">12. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic5.html" class="nav-prev">← Previous</a><a href="Topic7.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

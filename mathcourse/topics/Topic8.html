@@ -19,23 +19,49 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic7.html" class="nav-prev">← Previous</a><a href="Topic9.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-probability-enters-now">1. Why probability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-state-space-what-might-happen">2. The state space: what might happen</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#events-and-probabilities">3. Events and probabilities</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#random-variables">4. Random variables</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#distributions">5. Distributions</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#discrete-distributions">Discrete distributions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#continuous-distributions-and-the-cdf">Continuous distributions and the CDF</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#expectation-the-probability-weighted-average">6. Expectation: the probability-weighted average</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-care-about-expectation">Why economists care about expectation</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#linearity-of-expectation">Linearity of expectation</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-probability-and-bayes-rule">7. Conditional probability and Bayes’ rule</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#conditional-probability">Conditional probability</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#bayes-rule">Bayes’ rule</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#independence">8. Independence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-expectation">9. Conditional expectation</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-first-price-auction-with-private-values">10. An economic example: first-price auction with private values</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">12. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic8.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-8-probability-and-expectations">Topic 8: Probability and Expectations</h1>
 <p><em>(How economists talk about uncertainty, types, and randomization)</em></p>
 <hr />
 <h2 id="why-probability-enters-now">1. Why probability enters now</h2>
-<p>Up to now, the pre-course has built a toolkit for: - sets and mappings, - preferences and utility, - convexity and geometry, - continuity, closedness, and existence, - optimization and correspondences, - differentiability and marginal reasoning, - order, lattices, and monotone comparative statics.</p>
+<p>Up to now, the pre-course has built a toolkit for:</p>
+<ul>
+<li>sets and mappings,</li>
+<li>preferences and utility,</li>
+<li>convexity and geometry,</li>
+<li>continuity, closedness, and existence,</li>
+<li>optimization and correspondences,</li>
+<li>differentiability and marginal reasoning,</li>
+<li>order, lattices, and monotone comparative statics.</li>
+</ul>
 <p>All of these tools were developed in a world of certainty. The agent knows her choice set, she knows her utility function, and she knows the parameters of the problem. The only question was: given all this information, what does she choose, and how does that choice change when the environment changes?</p>
 <p>But a large part of microeconomics does not live in such a world.</p>
-<p>Agents often face: - uncertainty about payoffs (will this investment pay off?), - uncertainty about other agents’ characteristics (what is the other bidder’s valuation?), - uncertainty about signals (what does this test result mean?), - or deliberate randomization (a player who mixes between strategies).</p>
+<p>Agents often face:</p>
+<ul>
+<li>uncertainty about payoffs (will this investment pay off?),</li>
+<li>uncertainty about other agents’ characteristics (what is the other bidder’s valuation?),</li>
+<li>uncertainty about signals (what does this test result mean?),</li>
+<li>or deliberate randomization (a player who mixes between strategies).</li>
+</ul>
 <p>So before we can talk cleanly about auctions, Bayesian games, or mixed strategies, we need a minimal probability language.</p>
 <p>The point of this topic is not to turn you into a probability theorist. It is to make sure that when economists write “expected payoff” or “distribution over types,” those words are no longer mysterious.</p>
 <hr />
 <h2 id="the-state-space-what-might-happen">2. The state space: what might happen</h2>
 <p>Start with the most primitive object: the set of things that could happen.</p>
 <p>We call this set <span class="math inline">\(\Omega\)</span> and refer to it as the <strong>state space</strong>. Each element <span class="math inline">\(\omega \in \Omega\)</span> is a <strong>state of the world</strong> – a complete description of everything that is uncertain.</p>
-<p>In economics, the state space might describe: - which of several possible cost realizations occurs, - which type each player in a game has, - which signal each agent observes.</p>
+<p>In economics, the state space might describe:</p>
+<ul>
+<li>which of several possible cost realizations occurs,</li>
+<li>which type each player in a game has,</li>
+<li>which signal each agent observes.</li>
+</ul>
 <blockquote>
 <p>“<span class="math inline">\(\Omega\)</span> is the set of all possible states of the world. An element <span class="math inline">\(\omega\)</span> is one particular resolution of uncertainty.”</p>
 </blockquote>
@@ -64,7 +90,13 @@ MathJax = {
 <p>“A random variable turns uncertainty about states into uncertainty about a number.”</p>
 </blockquote>
 <p>This is just a function in the sense of Topic <a href="Topic1.html">1</a>. The domain is the state space <span class="math inline">\(\Omega\)</span>, the codomain is <span class="math inline">\(\mathbb{R}\)</span>. What makes it “random” is that we do not know which <span class="math inline">\(\omega\)</span> will occur, and therefore we do not know what value <span class="math inline">\(X(\omega)\)</span> will take.</p>
-<p>In economics, random variables represent objects like: - a consumer’s income (uncertain because it depends on the state of the economy), - a bidder’s valuation in an auction (uncertain because it is private information), - a firm’s cost (uncertain because of technological shocks), - a player’s type in a game of incomplete information.</p>
+<p>In economics, random variables represent objects like:</p>
+<ul>
+<li>a consumer’s income (uncertain because it depends on the state of the economy),</li>
+<li>a bidder’s valuation in an auction (uncertain because it is private information),</li>
+<li>a firm’s cost (uncertain because of technological shocks),</li>
+<li>a player’s type in a game of incomplete information.</li>
+</ul>
 <p>Why does this matter? Because once uncertainty is encoded as a random variable, we can use all the tools of analysis – integration, optimization, comparison – to study it systematically.</p>
 <hr />
 <h2 id="distributions">5. Distributions</h2>
@@ -79,7 +111,12 @@ MathJax = {
 <blockquote>
 <p>“The CDF at <span class="math inline">\(x\)</span> is the probability that the random variable takes a value no larger than <span class="math inline">\(x\)</span>.”</p>
 </blockquote>
-<p>Properties of the CDF: - <span class="math inline">\(F\)</span> is nondecreasing (higher <span class="math inline">\(x\)</span> means weakly more probability accumulated), - <span class="math inline">\(\lim_{x \to -\infty} F(x) = 0\)</span> and <span class="math inline">\(\lim_{x \to +\infty} F(x) = 1\)</span>, - <span class="math inline">\(F\)</span> is right-continuous.</p>
+<p>Properties of the CDF:</p>
+<ul>
+<li><span class="math inline">\(F\)</span> is nondecreasing (higher <span class="math inline">\(x\)</span> means weakly more probability accumulated),</li>
+<li><span class="math inline">\(\lim_{x \to -\infty} F(x) = 0\)</span> and <span class="math inline">\(\lim_{x \to +\infty} F(x) = 1\)</span>,</li>
+<li><span class="math inline">\(F\)</span> is right-continuous.</li>
+</ul>
 <p>If the CDF is differentiable, we can define the <strong>probability density function</strong> (PDF) as <span class="math display">\[f(x) = F&#39;(x).\]</span></p>
 <p>The density tells us how “concentrated” probability is near <span class="math inline">\(x\)</span>. A higher density means more probability mass near that value.</p>
 <p>Economists often write things like “let <span class="math inline">\(v\)</span> be drawn from <span class="math inline">\(F\)</span>” or “types are distributed according to <span class="math inline">\(F\)</span>.” This simply means: <span class="math inline">\(v\)</span> is a random variable with cumulative distribution function <span class="math inline">\(F\)</span>.</p>
@@ -93,7 +130,13 @@ MathJax = {
 </blockquote>
 <h3 id="why-economists-care-about-expectation">Why economists care about expectation</h3>
 <p>Expectation is the central bridge between probability and optimization. Whenever an agent faces uncertainty and must choose <em>before</em> the uncertainty resolves, the standard approach in economics is to evaluate choices by their <strong>expected payoff</strong>.</p>
-<p>This appears as: - <strong>expected utility</strong> in consumer theory under risk, - <strong>expected profit</strong> in a firm’s production decision, - <strong>expected revenue</strong> in auction design, - <strong>expected continuation payoff</strong> in dynamic games.</p>
+<p>This appears as:</p>
+<ul>
+<li><strong>expected utility</strong> in consumer theory under risk,</li>
+<li><strong>expected profit</strong> in a firm’s production decision,</li>
+<li><strong>expected revenue</strong> in auction design,</li>
+<li><strong>expected continuation payoff</strong> in dynamic games.</li>
+</ul>
 <h3 id="linearity-of-expectation">Linearity of expectation</h3>
 <p>One of the most useful properties of expectation is <strong>linearity</strong>: <span class="math display">\[\mathbb{E}[aX + bY] = a\,\mathbb{E}[X] + b\,\mathbb{E}[Y]\]</span> for any constants <span class="math inline">\(a, b\)</span> and random variables <span class="math inline">\(X, Y\)</span>.</p>
 <blockquote>
@@ -117,7 +160,12 @@ MathJax = {
 <blockquote>
 <p>“Bayes’ rule says that when we observe <span class="math inline">\(B\)</span>, the probability of <span class="math inline">\(A\)</span> is the probability that <span class="math inline">\(B\)</span> has occurred <em>because</em> <span class="math inline">\(A\)</span> is true, times the relative liklihod of <span class="math inline">\(A\)</span> occurring in the first place, all divided by the overall probability of <span class="math inline">\(B\)</span>.”</p>
 </blockquote>
-<p>This formula is the formal engine behind belief updating in microeconomics. The components have names: - <span class="math inline">\(\Pr(A)\)</span> is the <strong>prior</strong> – what we believed before seeing <span class="math inline">\(B\)</span>, - <span class="math inline">\(\Pr(B \mid A)\)</span> is the <strong>likelihood</strong> – how probable the evidence <span class="math inline">\(B\)</span> is if <span class="math inline">\(A\)</span> were true, - <span class="math inline">\(\Pr(A \mid B)\)</span> is the <strong>posterior</strong> – what we believe after seeing <span class="math inline">\(B\)</span>.</p>
+<p>This formula is the formal engine behind belief updating in microeconomics. The components have names:</p>
+<ul>
+<li><span class="math inline">\(\Pr(A)\)</span> is the <strong>prior</strong> – what we believed before seeing <span class="math inline">\(B\)</span>,</li>
+<li><span class="math inline">\(\Pr(B \mid A)\)</span> is the <strong>likelihood</strong> – how probable the evidence <span class="math inline">\(B\)</span> is if <span class="math inline">\(A\)</span> were true,</li>
+<li><span class="math inline">\(\Pr(A \mid B)\)</span> is the <strong>posterior</strong> – what we believe after seeing <span class="math inline">\(B\)</span>.</li>
+</ul>
 <p>Bayes’ rule is used everywhere in information economics. Whenever you read “the agent updates beliefs,” the formal content behind that phrase is Bayes’ rule.</p>
 <hr />
 <h2 id="independence">8. Independence</h2>
@@ -127,7 +175,12 @@ MathJax = {
 <blockquote>
 <p>“Independence means that observing one thing does not change your beliefs about the other.”</p>
 </blockquote>
-<p>Independence is a simplifying assumption that appears constantly in economic models. For instance: - in auctions, bidders’ valuations are often assumed to be independently drawn, - in mechanism design, agents’ types are frequently independent, - in repeated games, stage-game shocks may be independent across periods.</p>
+<p>Independence is a simplifying assumption that appears constantly in economic models. For instance:</p>
+<ul>
+<li>in auctions, bidders’ valuations are often assumed to be independently drawn,</li>
+<li>in mechanism design, agents’ types are frequently independent,</li>
+<li>in repeated games, stage-game shocks may be independent across periods.</li>
+</ul>
 <p><strong>Important:</strong> Independence is substantive. It is not a default. In reality, everything is connected with everything and many economically interesting situations involve correlation (e.g., common-value auctions, correlated types). When independence is assumed, it should be recognized as a modeling choice, not a law of nature.</p>
 <hr />
 <h2 id="conditional-expectation">9. Conditional expectation</h2>
@@ -135,7 +188,12 @@ MathJax = {
 <blockquote>
 <p>“The conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\(B\)</span> is the expected value of <span class="math inline">\(X\)</span> knowing that <span class="math inline">\(B\)</span> is true.”</p>
 </blockquote>
-<p>In economics, conditional expectations appear naturally whenever agents form beliefs: - a buyer’s expected valuation given a signal, - a principal’s expected output given the agent’s reported type, - a player’s expected payoff given the other players’ strategies.</p>
+<p>In economics, conditional expectations appear naturally whenever agents form beliefs:</p>
+<ul>
+<li>a buyer’s expected valuation given a signal,</li>
+<li>a principal’s expected output given the agent’s reported type,</li>
+<li>a player’s expected payoff given the other players’ strategies.</li>
+</ul>
 <p>A useful property that connects conditional and unconditional expectation is the <strong>law of iterated expectations</strong> (sometimes called the law of total expectation): <span class="math display">\[\mathbb{E}[X] = \mathbb{E}\big[\mathbb{E}[X \mid Y]\big].\]</span></p>
 <blockquote>
 <p>“If I first compute the expected value of <span class="math inline">\(X\)</span> for each possible value of <span class="math inline">\(Y\)</span>, and then average those conditional expectations over the distribution of <span class="math inline">\(Y\)</span>, I recover the unconditional expectation of <span class="math inline">\(X\)</span>.”</p>
@@ -148,20 +206,46 @@ MathJax = {
 <p>Consider two bidders in a sealed-bid first-price auction. Each bidder has a private valuation <span class="math inline">\(v_i\)</span> drawn independently from a distribution <span class="math inline">\(F\)</span> on <span class="math inline">\([0,1]\)</span>. Each bidder submits a bid <span class="math inline">\(b_i\)</span>, the highest bid wins, and the winner pays her bid.</p>
 <p>Bidder 1’s expected payoff from bidding <span class="math inline">\(b\)</span> when her valuation is <span class="math inline">\(v\)</span> and the other bidder uses a bidding strategy <span class="math inline">\(\beta(\cdot)\)</span> is <span class="math display">\[\mathbb{E}[\text{payoff}] = (v - b) \cdot \Pr(\text{win}).\]</span></p>
 <p>The probability of winning depends on the other bidder’s bid, which depends on her valuation, which is random. So <span class="math display">\[\Pr(\text{win}) = \Pr(\beta(v_2) &lt; b) = \Pr(v_2 &lt; \beta^{-1}(b)) = F(\beta^{-1}(b)),\]</span> where the second equality uses the fact that <span class="math inline">\(\beta\)</span> is (typically) increasing.</p>
-<p>This example uses almost everything from this topic: - a random variable (<span class="math inline">\(v_2\)</span>, the other bidder’s type), - a distribution (<span class="math inline">\(F\)</span>), - expectation (the expected payoff), - independence (valuations are independently drawn).</p>
+<p>This example uses almost everything from this topic:</p>
+<ul>
+<li>a random variable (<span class="math inline">\(v_2\)</span>, the other bidder’s type),</li>
+<li>a distribution (<span class="math inline">\(F\)</span>),</li>
+<li>expectation (the expected payoff),</li>
+<li>independence (valuations are independently drawn).</li>
+</ul>
 <p>Without the probability language, writing down and solving this problem would be impossible.</p>
 <hr />
 <h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
 <p>Probability is used throughout MWG but is not developed as a standalone mathematical appendix topic in the same way as convexity or correspondences.</p>
-<p>The most relevant places where probability language is used heavily include: - <strong>MWG, Chapter 6</strong> (choice under uncertainty, expected utility), - <strong>MWG, Chapter 8</strong> (competitive markets with uncertainty), - <strong>MWG, Chapter 13</strong> (adverse selection), - <strong>MWG, Chapter 23</strong> (mechanism design and auctions).</p>
+<p>The most relevant places where probability language is used heavily include:</p>
+<ul>
+<li><strong>MWG, Chapter 6</strong> (choice under uncertainty, expected utility),</li>
+<li><strong>MWG, Chapter 8</strong> (competitive markets with uncertainty),</li>
+<li><strong>MWG, Chapter 13</strong> (adverse selection),</li>
+<li><strong>MWG, Chapter 23</strong> (mechanism design and auctions).</li>
+</ul>
 <hr />
 <h2 id="why-this-matters-for-microeconomics">12. Why this matters for microeconomics</h2>
 <p>Probability gives us the language to treat uncertainty as part of the model rather than as narrative.</p>
-<p>Without it: - expected utility cannot be defined, - Bayesian equilibrium cannot be formulated, - mixed strategies appear as magic rather than precise objects, - information economics loses its formal language, - mechanism design under incomplete information becomes inaccessible.</p>
+<p>Without it:</p>
+<ul>
+<li>expected utility cannot be defined,</li>
+<li>Bayesian equilibrium cannot be formulated,</li>
+<li>mixed strategies appear as magic rather than precise objects,</li>
+<li>information economics loses its formal language,</li>
+<li>mechanism design under incomplete information becomes inaccessible.</li>
+</ul>
 <p>The tools in this topic are modest – we have not touched measure theory, stochastic processes, or advanced convergence results. But they are exactly what is needed to read the core microeconomics curriculum without stumbling over probabilistic language. And they already get us a long way into the heart of modern microeconomic theory.</p>
 <hr />
 <h2 id="what-you-should-take-away">13. What you should take away</h2>
-<p>After this topic, you should be comfortable with: - reading statements about random variables and distributions, - computing and interpreting expectations as weighted averages, - using conditional probability and Bayes’ rule to update beliefs, - recognizing independence as a substantive modeling assumption, - and seeing why uncertainty is unavoidable in modern microeconomics.</p>
+<p>After this topic, you should be comfortable with:</p>
+<ul>
+<li>reading statements about random variables and distributions,</li>
+<li>computing and interpreting expectations as weighted averages,</li>
+<li>using conditional probability and Bayes’ rule to update beliefs,</li>
+<li>recognizing independence as a substantive modeling assumption,</li>
+<li>and seeing why uncertainty is unavoidable in modern microeconomics.</li>
+</ul>
 <p>You should also see how this topic connects back to earlier material: random variables are functions (Topic <a href="Topic1.html">1</a>), distributions live on sets (Topic <a href="Topic1.html">1</a>), expected utility combines preferences (Topic <a href="Topic2.html">2</a>) with probability, and optimization under uncertainty (Topics <a href="Topic4.html">4</a> and <a href="Topic5.html">5</a>) evaluates choices by expected payoffs.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
@@ -171,6 +255,94 @@ MathJax = {
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic8.html" aria-current="page">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-probability-enters-now">1. Why probability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-state-space-what-might-happen">2. The state space: what might happen</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#events-and-probabilities">3. Events and probabilities</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#random-variables">4. Random variables</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#distributions">5. Distributions</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#discrete-distributions">Discrete distributions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#continuous-distributions-and-the-cdf">Continuous distributions and the CDF</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#expectation-the-probability-weighted-average">6. Expectation: the probability-weighted average</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-care-about-expectation">Why economists care about expectation</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#linearity-of-expectation">Linearity of expectation</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-probability-and-bayes-rule">7. Conditional probability and Bayes’ rule</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#conditional-probability">Conditional probability</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#bayes-rule">Bayes’ rule</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#independence">8. Independence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-expectation">9. Conditional expectation</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-first-price-auction-with-private-values">10. An economic example: first-price auction with private values</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">12. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic7.html" class="nav-prev">← Previous</a><a href="Topic9.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

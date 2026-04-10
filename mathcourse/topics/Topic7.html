@@ -19,6 +19,12 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic6.html" class="nav-prev">← Previous</a><a href="Topic8.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-order-shows-up-in-economic-theory">1. Why order shows up in economic theory</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#excursion-the-implicit-function-theorem">2. Excursion: The Implicit Function Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#back-to-general-problems">3. Back to general problems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partially-ordered-sets">4. Partially ordered sets</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#total-orders">Total orders</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#two-orders-economists-use-all-the-time">5. Two orders economists use all the time</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-usual-order-on-mathbbr">5.1 The usual order on \(\mathbb{R}\)</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-product-order-on-mathbbrn">5.2 The product order on \(\mathbb{R}^n\)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#monotone-maps">6. Monotone maps</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lattices-when-any-two-points-have-a-meet-and-a-join">7. Lattices: when any two points have a meet and a join</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#example-mathbbrn-with-the-product-order">Example: \(\mathbb{R}^n\) with the product order</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#complete-lattices-and-why-you-might-care-later">8. Complete lattices (and why you might care later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#increasing-differences-the-core-monotonicity-condition">9. Increasing differences: the core monotonicity condition</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-quick-differentiable-sanity-check-only-as-intuition">A quick differentiable sanity check (only as intuition)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#supermodularity-complementarity-inside-the-choice-vector">10. Supermodularity: complementarity inside the choice vector</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#topkis-theorem-monotone-comparative-statics-without-derivatives">11. Topkis’ theorem: monotone comparative statics without derivatives</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-single-agent-economic-example-effort-choice-with-a-bonus-parameter">12. A single-agent economic example: effort choice with a bonus parameter</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#outlook-why-this-matters-for-micro-and-for-games-later">13. Outlook: why this matters for micro (and for games later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg-and-where-it-does-not">14. Where this appears in MWG (and where it does not)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic7.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-7-order-lattices-and-monotonicity">Topic 7: Order, Lattices, and Monotonicity</h1>
@@ -29,7 +35,12 @@ MathJax = {
 <blockquote>
 <p>“If an exogenous parameter goes up, does the optimal choice also go up?”</p>
 </blockquote>
-<p>Examples: - If income rises, does the consumer buy more of a good? - If a bonus becomes more powerful, does effort increase? - If one firm becomes more aggressive, do other firms respond by becoming more aggressive too?</p>
+<p>Examples:</p>
+<ul>
+<li>If income rises, does the consumer buy more of a good?</li>
+<li>If a bonus becomes more powerful, does effort increase?</li>
+<li>If one firm becomes more aggressive, do other firms respond by becoming more aggressive too?</li>
+</ul>
 <p>Now as long as things are smooth enough, there is a straightforward way to deal with these questions (it still may not be an easy one, of course). We will briefly discuss that and then move on to the more general case which often is, unfortunately, also the more relevant one.</p>
 <hr />
 <h2 id="excursion-the-implicit-function-theorem">2. Excursion: The Implicit Function Theorem</h2>
@@ -70,7 +81,13 @@ x e^{\theta x}-3=0
 <p>via the implicit function theorem.</p>
 <hr />
 <h2 id="back-to-general-problems">3. Back to general problems</h2>
-<p>The above works nicely under great simplifying assumptions, but they can fail for reasons we have already seen: - the choice may be multidimensional, - the solution may be a set, not a point, - the objective may not be smooth (kinks are common), - the action space may be discrete (“choose a technology” is not a calculus problem).</p>
+<p>The above works nicely under great simplifying assumptions, but they can fail for reasons we have already seen:</p>
+<ul>
+<li>the choice may be multidimensional,</li>
+<li>the solution may be a set, not a point,</li>
+<li>the objective may not be smooth (kinks are common),</li>
+<li>the action space may be discrete (“choose a technology” is not a calculus problem).</li>
+</ul>
 <p>The order-theoretic approach we will now discuss is the alternative. It is designed for exactly the situations where you do not want (or cannot) to lean on calculus.</p>
 <p>The punchline of this topic is:</p>
 <blockquote>
@@ -152,7 +169,11 @@ x\preceq_X x&#39; \;\Rightarrow\; g(x&#39;)\preceq_Y g(x).
 <li><p><span class="math inline">\(x\wedge y \preceq x\)</span> and <span class="math inline">\(x\wedge y \preceq y\)</span> (it is a lower bound), and if <span class="math inline">\(z\)</span> is any lower bound of both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then <span class="math inline">\(z \preceq x\wedge y\)</span> (it is the greatest lower bound).</p></li>
 </ol>
 <hr />
-<p>In English: - <span class="math inline">\(x\vee y\)</span> (the least upper bound) is “the smallest element that is above both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>,” - <span class="math inline">\(x\wedge y\)</span> (the greatest lower bound) is “the largest element that is below both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.”</p>
+<p>In English:</p>
+<ul>
+<li><span class="math inline">\(x\vee y\)</span> (the least upper bound) is “the smallest element that is above both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>,”</li>
+<li><span class="math inline">\(x\wedge y\)</span> (the greatest lower bound) is “the largest element that is below both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.”</li>
+</ul>
 <p>What does it mean, practically? It means in particular, that any element <span class="math inline">\(z\)</span> in <span class="math inline">\(X\)</span> that is (under our order) larger than both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then it has to be ranked with (and larger than) a single, defined <em>join</em>. And analogously for the meet. Important, this does <em>not</em> imply a total order, as we will see in this (often relevant) example.</p>
 <h3 id="example-mathbbrn-with-the-product-order">Example: <span class="math inline">\(\mathbb{R}^n\)</span> with the product order</h3>
 <p>Under the product order on <span class="math inline">\(\mathbb{R}^n\)</span>,</p>
@@ -165,7 +186,11 @@ x\preceq_X x&#39; \;\Rightarrow\; g(x&#39;)\preceq_Y g(x).
 <hr />
 <h2 id="complete-lattices-and-why-you-might-care-later">8. Complete lattices (and why you might care later)</h2>
 <hr />
-<p>A lattice <span class="math inline">\((X,\preceq)\)</span> is a <strong>complete lattice</strong> if every subset <span class="math inline">\(A\subseteq X\)</span> has: - a least upper bound, and - a greatest lower bound.</p>
+<p>A lattice <span class="math inline">\((X,\preceq)\)</span> is a <strong>complete lattice</strong> if every subset <span class="math inline">\(A\subseteq X\)</span> has:</p>
+<ul>
+<li>a least upper bound, and</li>
+<li>a greatest lower bound.</li>
+</ul>
 <hr />
 <p><em>“A lattice is complete if we not only can take joins and meets of two points; but we can take them for any collection of points.”</em></p>
 <p>Why this matters (preview): complete lattices are the right environment for fixed-point results like <strong>Tarski’s fixed-point theorem</strong>, which is a workhorse in monotone equilibrium arguments.</p>
@@ -188,7 +213,12 @@ f(x&#39;,t&#39;)-f(x,t&#39;) \geq f(x&#39;,t)-f(x,t).
 <blockquote>
 <p>“<span class="math inline">\(f\)</span> has increasing differences if, when the parameter <span class="math inline">\(t\)</span> is higher, increasing <span class="math inline">\(x\)</span> becomes (weakly) more attractive.”</p>
 </blockquote>
-<p>There is a very concrete way to think about it: - fix two actions <span class="math inline">\(x\preceq x&#39;\)</span>, - compare the advantage of choosing <span class="math inline">\(x&#39;\)</span> rather than <span class="math inline">\(x\)</span>, - increasing differences says that this advantage does not fall when <span class="math inline">\(t\)</span> rises.</p>
+<p>There is a very concrete way to think about it:</p>
+<ul>
+<li>fix two actions <span class="math inline">\(x\preceq x&#39;\)</span>,</li>
+<li>compare the advantage of choosing <span class="math inline">\(x&#39;\)</span> rather than <span class="math inline">\(x\)</span>,</li>
+<li>increasing differences says that this advantage does not fall when <span class="math inline">\(t\)</span> rises.</li>
+</ul>
 <h3 id="a-quick-differentiable-sanity-check-only-as-intuition">A quick differentiable sanity check (only as intuition)</h3>
 <p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span> are intervals in <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(f\)</span> is twice differentiable, increasing differences corresponds to a nonnegative cross-partial:</p>
 <p><span class="math display">\[
@@ -232,7 +262,12 @@ X^\ast(t)=\operatorname{argmax}_{x\in X} f(x,t).
 <blockquote>
 <p>“Higher parameters do not force optimal choices to move down. Even if the optimizer is not unique, you can choose maximizers consistently so that they move upward.”</p>
 </blockquote>
-<p>This is why the lattice approach is so useful: you can get monotone comparative statics even when: - the solution is set-valued, - the objective is not differentiable, - you do not want to solve the model explicitly.</p>
+<p>This is why the lattice approach is so useful: you can get monotone comparative statics even when:</p>
+<ul>
+<li>the solution is set-valued,</li>
+<li>the objective is not differentiable,</li>
+<li>you do not want to solve the model explicitly.</li>
+</ul>
 <hr />
 <h2 id="a-single-agent-economic-example-effort-choice-with-a-bonus-parameter">12. A single-agent economic example: effort choice with a bonus parameter</h2>
 <p>An agent chooses effort <span class="math inline">\(e\)</span> from an interval <span class="math inline">\(X=[0,1]\)</span> (ordered by <span class="math inline">\(\leq\)</span>). A principal chooses a bonus level <span class="math inline">\(b\in T=\mathbb{R}_+\)</span>.</p>
@@ -241,7 +276,11 @@ X^\ast(t)=\operatorname{argmax}_{x\in X} f(x,t).
 f(e,b)= b\cdot e - c(e),
 \]</span></p>
 <p>where <span class="math inline">\(c\)</span> is increasing and convex.</p>
-<p>Interpretation: - <span class="math inline">\(b\cdot e\)</span> is the marginal reward from effort, - <span class="math inline">\(c(e)\)</span> is the cost.</p>
+<p>Interpretation:</p>
+<ul>
+<li><span class="math inline">\(b\cdot e\)</span> is the marginal reward from effort,</li>
+<li><span class="math inline">\(c(e)\)</span> is the cost.</li>
+</ul>
 <p>Now check increasing differences.</p>
 <p>Take <span class="math inline">\(e&#39;&gt;e\)</span> and <span class="math inline">\(b&#39;&gt;b\)</span>. Then</p>
 <p><span class="math display">\[
@@ -259,7 +298,11 @@ b&#39;(e&#39;-e)\geq b(e&#39;-e),
 <p>“A higher bonus makes higher effort relatively more attractive.”</p>
 </blockquote>
 <p>So the optimal effort correspondence <span class="math inline">\(E^\ast(b)=\operatorname{argmax}_{e\in[0,1]} f(e,b)\)</span> is (weakly) increasing in <span class="math inline">\(b\)</span>.</p>
-<p>Notice what we did not use: - no first-order conditions, <!-- - no envelope theorem, --> - no differentiation of a solution function.</p>
+<p>Notice what we did not use:</p>
+<ul>
+<li><p>no first-order conditions, <!-- - no envelope theorem, --></p></li>
+<li><p>no differentiation of a solution function.</p></li>
+</ul>
 <p>We only used the order structure and a simple algebraic inequality.</p>
 <hr />
 <h2 id="outlook-why-this-matters-for-micro-and-for-games-later">13. Outlook: why this matters for micro (and for games later)</h2>
@@ -305,6 +348,94 @@ When players’ best responses are increasing, equilibrium sets often have latti
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic7.html" aria-current="page">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-order-shows-up-in-economic-theory">1. Why order shows up in economic theory</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#excursion-the-implicit-function-theorem">2. Excursion: The Implicit Function Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#back-to-general-problems">3. Back to general problems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partially-ordered-sets">4. Partially ordered sets</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#total-orders">Total orders</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#two-orders-economists-use-all-the-time">5. Two orders economists use all the time</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-usual-order-on-mathbbr">5.1 The usual order on \(\mathbb{R}\)</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-product-order-on-mathbbrn">5.2 The product order on \(\mathbb{R}^n\)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#monotone-maps">6. Monotone maps</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lattices-when-any-two-points-have-a-meet-and-a-join">7. Lattices: when any two points have a meet and a join</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#example-mathbbrn-with-the-product-order">Example: \(\mathbb{R}^n\) with the product order</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#complete-lattices-and-why-you-might-care-later">8. Complete lattices (and why you might care later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#increasing-differences-the-core-monotonicity-condition">9. Increasing differences: the core monotonicity condition</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-quick-differentiable-sanity-check-only-as-intuition">A quick differentiable sanity check (only as intuition)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#supermodularity-complementarity-inside-the-choice-vector">10. Supermodularity: complementarity inside the choice vector</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#topkis-theorem-monotone-comparative-statics-without-derivatives">11. Topkis’ theorem: monotone comparative statics without derivatives</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-single-agent-economic-example-effort-choice-with-a-bonus-parameter">12. A single-agent economic example: effort choice with a bonus parameter</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#outlook-why-this-matters-for-micro-and-for-games-later">13. Outlook: why this matters for micro (and for games later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg-and-where-it-does-not">14. Where this appears in MWG (and where it does not)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic6.html" class="nav-prev">← Previous</a><a href="Topic8.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

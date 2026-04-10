@@ -19,6 +19,12 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic11.html" class="nav-prev">← Previous</a><a href="Topic13.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-geometry-enters-now">1. Why geometry enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#hyperplanes-and-half-spaces">2. Hyperplanes and half-spaces</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#hyperplanes">Hyperplanes</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#half-spaces">Half-spaces</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#budget-sets-as-half-spaces">3. Budget sets as half-spaces</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-separating-hyperplane-theorem">4. The separating hyperplane theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-separation-matters-for-economics">Why separation matters for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-supporting-hyperplane-theorem">5. The supporting hyperplane theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#proving-supporting-hyperplanes-and-with-it-separating-ones">Proving supporting hyperplanes and with it separating ones</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#from-supporting-to-separating">From supporting to separating</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-support-matters-for-economics">Why support matters for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#incentive-constraints-as-geometry">6. Incentive constraints as geometry</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#incentive-compatibility-as-half-spaces">Incentive compatibility as half-spaces</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#individual-rationality-as-half-spaces">Individual rationality as half-spaces</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-geometry-of-mechanism-design">The geometry of mechanism design</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-the-second-welfare-theorem">7. An economic example: the Second Welfare Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">8. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">9. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">10. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic12.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-12-linear-constraints-and-incentives-as-geometry">Topic 12: Linear Constraints and Incentives as Geometry</h1>
@@ -60,7 +66,12 @@ MathJax = {
 <img src="../figures/fig2_budget.png" alt="Budget Set" />
 <figcaption aria-hidden="true">Budget Set</figcaption>
 </figure>
-<p>The geometry makes several things visible that algebra obscures: - The price vector <span class="math inline">\(p\)</span> is <strong>perpendicular</strong> to the budget line. Moving along the budget line (spending the same amount) means moving perpendicular to <span class="math inline">\(p\)</span>. Moving in the direction of <span class="math inline">\(p\)</span> means spending more without change the relative proportions. - The <strong>slope</strong> of the budget line is <span class="math inline">\(-p_1/p_2\)</span>: the rate at which the market allows you to trade good 1 for good 2. - A change in prices <strong>rotates</strong> the budget line. A change in wealth <strong>shifts</strong> it.</p>
+<p>The geometry makes several things visible that algebra obscures:</p>
+<ul>
+<li>The price vector <span class="math inline">\(p\)</span> is <strong>perpendicular</strong> to the budget line. Moving along the budget line (spending the same amount) means moving perpendicular to <span class="math inline">\(p\)</span>. Moving in the direction of <span class="math inline">\(p\)</span> means spending more without change the relative proportions.</li>
+<li>The <strong>slope</strong> of the budget line is <span class="math inline">\(-p_1/p_2\)</span>: the rate at which the market allows you to trade good 1 for good 2.</li>
+<li>A change in prices <strong>rotates</strong> the budget line. A change in wealth <strong>shifts</strong> it.</li>
+</ul>
 <p>This geometric perspective is not just a visualization aid. It is the basis for understanding why Walrasian equilibrium prices exist and why they have the structure they do.</p>
 <hr />
 <h2 id="the-separating-hyperplane-theorem">4. The separating hyperplane theorem</h2>
@@ -149,12 +160,21 @@ MathJax = {
 <p>Again, linear inequalities. Again, half-spaces.</p>
 <h3 id="the-geometry-of-mechanism-design">The geometry of mechanism design</h3>
 <p>The full set of feasible mechanisms is the intersection of all IC and IR constraints — a polyhedron in the space of contracts. The principal’s problem is to maximize revenue (or another linear objective) over this polyhedron.</p>
-<p>This is a <strong>linear programming</strong> problem, and its geometry is clean: - the feasible set is a polyhedron, - the optimum is at a vertex (or a face) of this polyhedron, - the binding constraints at the optimum tell us which incentive and participation conditions are “tight.”</p>
+<p>This is a <strong>linear programming</strong> problem, and its geometry is clean:</p>
+<ul>
+<li>the feasible set is a polyhedron,</li>
+<li>the optimum is at a vertex (or a face) of this polyhedron,</li>
+<li>the binding constraints at the optimum tell us which incentive and participation conditions are “tight.”</li>
+</ul>
 <p>The result that “in the optimal mechanism, the low type’s IR binds and the high type’s downward IC binds” is a statement about which faces of the polyhedron the optimum lies on. The geometric perspective makes this visible rather than mysterious.</p>
 <hr />
 <h2 id="an-economic-example-the-second-welfare-theorem">7. An economic example: the Second Welfare Theorem</h2>
 <p>Consider a two-consumer exchange economy. Consumer 1 has preferences over bundles <span class="math inline">\(x_1 \in \mathbb{R}^2_+\)</span> and consumer 2 over <span class="math inline">\(x_2 \in \mathbb{R}^2_+\)</span>, with total endowment <span class="math inline">\(\bar{\omega}\)</span>.</p>
-<p>Let <span class="math inline">\((\hat{x}_1, \hat{x}_2)\)</span> be a Pareto efficient allocation. Define: - <span class="math inline">\(A =\)</span> the set of bundles that consumer 1 strictly prefers to <span class="math inline">\(\hat{x}_1\)</span>, - <span class="math inline">\(B =\)</span> the set of aggregate bundles that are feasible: <span class="math inline">\(\{y : \bar{\omega} - y\)</span> is in consumer 2’s “at least as good as <span class="math inline">\(\hat{x}_2\)</span>” set<span class="math inline">\(\}\)</span>.</p>
+<p>Let <span class="math inline">\((\hat{x}_1, \hat{x}_2)\)</span> be a Pareto efficient allocation. Define:</p>
+<ul>
+<li><span class="math inline">\(A =\)</span> the set of bundles that consumer 1 strictly prefers to <span class="math inline">\(\hat{x}_1\)</span>,</li>
+<li><span class="math inline">\(B =\)</span> the set of aggregate bundles that are feasible: <span class="math inline">\(\{y : \bar{\omega} - y\)</span> is in consumer 2’s “at least as good as <span class="math inline">\(\hat{x}_2\)</span>” set<span class="math inline">\(\}\)</span>.</li>
+</ul>
 <p>Because preferences are convex, both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are convex.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Because <span class="math inline">\((\hat{x}_1, \hat{x}_2)\)</span> is Pareto efficient, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint (there is no bundle that is strictly better for 1 and still feasible for 2).</p>
 <p>By the separating hyperplane theorem, there exists a price vector <span class="math inline">\(p\)</span> that separates <span class="math inline">\(A\)</span> from <span class="math inline">\(B\)</span>. This <span class="math inline">\(p\)</span> is the vector of Walrasian equilibrium prices.</p>
 <blockquote>
@@ -171,11 +191,25 @@ MathJax = {
 <p>The geometric approach to mechanism design is not developed extensively in MWG but is standard in the mechanism design literature.</p>
 <hr />
 <h2 id="why-this-matters-for-microeconomics">9. Why this matters for microeconomics</h2>
-<p>Linear constraints and separation theorems are the geometric foundation of: - consumer theory (budget sets, demand, Slutsky), - welfare economics (the First and Second Welfare Theorems), - general equilibrium (existence of prices, Walrasian equilibrium), - mechanism design (incentive and participation constraints as polyhedra), - duality (shadow prices, Lagrange multipliers as supporting hyperplane normals).</p>
+<p>Linear constraints and separation theorems are the geometric foundation of:</p>
+<ul>
+<li>consumer theory (budget sets, demand, Slutsky),</li>
+<li>welfare economics (the First and Second Welfare Theorems),</li>
+<li>general equilibrium (existence of prices, Walrasian equilibrium),</li>
+<li>mechanism design (incentive and participation constraints as polyhedra),</li>
+<li>duality (shadow prices, Lagrange multipliers as supporting hyperplane normals).</li>
+</ul>
 <p>The key insight running through all of this is: <strong>convexity makes separation possible, and separation gives us prices</strong>. This is why convexity assumptions (Topic <a href="Topic3.html">3</a>) are not just technical convenience — they are what allows the price system to work.</p>
 <hr />
 <h2 id="what-you-should-take-away">10. What you should take away</h2>
-<p>After this topic, you should be comfortable with: - reading hyperplanes, half-spaces, and polyhedra as geometric objects, - seeing budget sets as half-spaces with the price vector as the normal, - understanding the separating and supporting hyperplane theorems and their economic content, - recognizing that incentive and participation constraints in mechanism design define polyhedra, - and seeing prices as normal vectors of separating or supporting hyperplanes.</p>
+<p>After this topic, you should be comfortable with:</p>
+<ul>
+<li>reading hyperplanes, half-spaces, and polyhedra as geometric objects,</li>
+<li>seeing budget sets as half-spaces with the price vector as the normal,</li>
+<li>understanding the separating and supporting hyperplane theorems and their economic content,</li>
+<li>recognizing that incentive and participation constraints in mechanism design define polyhedra,</li>
+<li>and seeing prices as normal vectors of separating or supporting hyperplanes.</li>
+</ul>
 <p>The geometry in this topic is not decoration. It is the language in which the deepest results of welfare economics and mechanism design are stated and proved.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
@@ -189,6 +223,94 @@ MathJax = {
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic12.html" aria-current="page">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-geometry-enters-now">1. Why geometry enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#hyperplanes-and-half-spaces">2. Hyperplanes and half-spaces</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#hyperplanes">Hyperplanes</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#half-spaces">Half-spaces</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#budget-sets-as-half-spaces">3. Budget sets as half-spaces</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-separating-hyperplane-theorem">4. The separating hyperplane theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-separation-matters-for-economics">Why separation matters for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-supporting-hyperplane-theorem">5. The supporting hyperplane theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#proving-supporting-hyperplanes-and-with-it-separating-ones">Proving supporting hyperplanes and with it separating ones</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#from-supporting-to-separating">From supporting to separating</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-support-matters-for-economics">Why support matters for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#incentive-constraints-as-geometry">6. Incentive constraints as geometry</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#incentive-compatibility-as-half-spaces">Incentive compatibility as half-spaces</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#individual-rationality-as-half-spaces">Individual rationality as half-spaces</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-geometry-of-mechanism-design">The geometry of mechanism design</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-the-second-welfare-theorem">7. An economic example: the Second Welfare Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">8. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">9. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">10. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic11.html" class="nav-prev">← Previous</a><a href="Topic13.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

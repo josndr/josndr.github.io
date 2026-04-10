@@ -19,13 +19,25 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic4.html" class="nav-prev">← Previous</a><a href="Topic6.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-topic-sits-where-it-does">1. Why this topic sits where it does</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#optimization-problems-revisited">2. Optimization problems revisited</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#linear-versus-convex-problems">3. Linear versus convex problems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#convex-concave-objectives-and-non-uniqueness">4. Convex (concave) objectives and non-uniqueness</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-argmax-leads-to-a-correspondence">5. The argmax leads to a correspondence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-are-correspondences-unavoidable">6. Why are correspondences unavoidable?</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#regularity-of-solution-correspondences">7. Regularity of solution correspondences</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#upper-hemicontinuity-definition">8. Upper hemicontinuity (definition)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lower-hemicontinuity-definition">9. Lower hemicontinuity (definition)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#hemicontinuity-taken-together">10. Hemicontinuity taken together</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#closed-graphs">Closed Graphs</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#berges-maximum-theorem-economic-reading">11. Berge’s Maximum Theorem (economic reading)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#economic-example-demand-as-a-correspondence">12. Economic example: demand as a correspondence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-prepares-equilibrium-analysis">13. Why this prepares equilibrium analysis</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">14. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic5.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-5-optimization-correspondences-and-existence-of-solutions">Topic 5: Optimization, Correspondences, and Existence of Solutions</h1>
 <p><em>(Why optimal behavior is rarely a point and often a set)</em></p>
 <hr />
 <h2 id="why-this-topic-sits-where-it-does">1. Why this topic sits where it does</h2>
-<p>By now we have introduced: - sets and mappings, - preferences and utility, - convexity and geometry, - continuity, closedness, compactness, and existence.</p>
+<p>By now we have introduced:</p>
+<ul>
+<li>sets and mappings,</li>
+<li>preferences and utility,</li>
+<li>convexity and geometry,</li>
+<li>continuity, closedness, compactness, and existence.</li>
+</ul>
 <p>What we have <em>not</em> yet done is put all of this together in a single place.</p>
 <p>This topic does exactly that. It explains how optimization problems in economics actually behave once we take all previous structure seriously.</p>
 <p>The key message is simple but important:</p>
@@ -39,20 +51,44 @@ MathJax = {
 <p><span class="math display">\[
 \max_{x \in X} f(x),
 \]</span></p>
-<p>where: - <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is a feasible set, - <span class="math inline">\(f: X \to \mathbb{R}\)</span> is an objective function.</p>
-<p>From Topics <a href="Topic3.html">3</a> and <a href="Topic4.html">4</a> we know that: - convexity of <span class="math inline">\(X\)</span> simplifies geometry, - continuity of <span class="math inline">\(f\)</span> and compactness of <span class="math inline">\(X\)</span> guarantee existence.</p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is a feasible set,</li>
+<li><span class="math inline">\(f: X \to \mathbb{R}\)</span> is an objective function.</li>
+</ul>
+<p>From Topics <a href="Topic3.html">3</a> and <a href="Topic4.html">4</a> we know that:</p>
+<ul>
+<li>convexity of <span class="math inline">\(X\)</span> simplifies geometry,</li>
+<li>continuity of <span class="math inline">\(f\)</span> and compactness of <span class="math inline">\(X\)</span> guarantee existence.</li>
+</ul>
 <p>What these assumptions do <em>not</em> guarantee is <strong>uniqueness</strong>.</p>
 <hr />
 <h2 id="linear-versus-convex-problems">3. Linear versus convex problems</h2>
-<p>An important special case is when: - <span class="math inline">\(X\)</span> is convex, - <span class="math inline">\(f\)</span> is <strong>linear</strong>.</p>
+<p>An important special case is when:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> is convex,</li>
+<li><span class="math inline">\(f\)</span> is <strong>linear</strong>.</li>
+</ul>
 <p>In this case, if a maximum exists, it is always attained at an <strong>extreme point</strong> of <span class="math inline">\(X\)</span>.</p>
-<p>So the message is &gt; “Linear objectives on convex sets push solutions to the boundary.”</p>
+<p>So the message is</p>
+<blockquote>
+<p>“Linear objectives on convex sets push solutions to the boundary.”</p>
+</blockquote>
 <p>Why is that the case? If a function is linear, that means if we walk a little bit in any given direction in <span class="math inline">\(X\)</span>, then <span class="math inline">\(f\)</span> changes the same, no matter where we start. In the 1-dimensional case this is obvious because linear functions have a constant slope. But then, whatever direction we take, this function either goes up or down everywhere (or is flat throughout). In each of these cases, picking a point at the boundary of <span class="math inline">\(X\)</span> in that dimension is optimal. Because <span class="math inline">\(X\)</span> is compact, that boundary exists.</p>
-<p>This observation explains why: - prices support extreme allocations, - corner solutions are common, - incentive constraints in mechanism design are linear.</p>
+<p>This observation explains why:</p>
+<ul>
+<li>prices support extreme allocations,</li>
+<li>corner solutions are common,</li>
+<li>incentive constraints in mechanism design are linear.</li>
+</ul>
 <p>However, in a more general world linearity is a knife-edge case.</p>
 <hr />
 <h2 id="convex-concave-objectives-and-non-uniqueness">4. Convex (concave) objectives and non-uniqueness</h2>
-<p>Now suppose instead: - <span class="math inline">\(X\)</span> is convex, - <span class="math inline">\(f\)</span> is strictly<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <strong>concave</strong>.</p>
+<p>Now suppose instead:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> is convex,</li>
+<li><span class="math inline">\(f\)</span> is strictly<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <strong>concave</strong>.</li>
+</ul>
 <p>Now what do we know then? As we walk along the slope diminishes. So if we are at a point where in all directions the slope (in the intuitive sense) goes down, then this is the unique hill top on our landscape, because concavity tells us we will never recover.</p>
 <p>If we give up on strict concavity, there may be flat regions, so although every top is a global <span class="math inline">\(\max\)</span>, there may be plateau so the set of optima may not be a single point.</p>
 <hr />
@@ -74,12 +110,20 @@ Linear objectives on convex sets produce faces of maximizers.</p></li>
 <li><p><strong>Symmetry</strong><br />
 Different choices may be payoff-equivalent.</p></li>
 </ol>
-<p>Recognizing this early prevents confusion later when: - demand is a correspondence, - best responses are sets, - equilibria are not unique.</p>
+<p>Recognizing this early prevents confusion later when:</p>
+<ul>
+<li>demand is a correspondence,</li>
+<li>best responses are sets,</li>
+<li>equilibria are not unique.</li>
+</ul>
 <hr />
 <h2 id="regularity-of-solution-correspondences">7. Regularity of solution correspondences</h2>
 <p>Existence alone is not enough. We also want solution sets to behave <em>stably</em> when the problem changes.</p>
 <p>Theory’s purpose is to deliver guidance and predictions on how to think about a changing world. So we want to know what happens when institutions change, prices change, players’ types change. All these things are embedded in <span class="math inline">\(f\)</span>.</p>
-<p>At least for small changes we want to know whether solutions change drastically, which is why we ask: &gt; “Does the <strong>set of solutions</strong> vary in a controlled way?”</p>
+<p>At least for small changes we want to know whether solutions change drastically, which is why we ask:</p>
+<blockquote>
+<p>“Does the <strong>set of solutions</strong> vary in a controlled way?”</p>
+</blockquote>
 <p>In functions, continuity helps with that. We now need to understand what continuity means when facing correspondences.</p>
 <hr />
 <h2 id="upper-hemicontinuity-definition">8. Upper hemicontinuity (definition)</h2>
@@ -131,9 +175,21 @@ Different choices may be payoff-equivalent.</p></li>
 <h2 id="berges-maximum-theorem-economic-reading">11. Berge’s Maximum Theorem (economic reading)</h2>
 <p>Berge’s Maximum Theorem connects all previous ideas.</p>
 <p>Informally:</p>
-<p>If: - the objective function is continuous, - the feasible set correspondence is compact-valued and upper hemicontinuous,</p>
-<p>then: - the argmax correspondence is non-empty (there is a solution), - compact-valued, - and upper hemicontinuous.</p>
-<p>Or in short: &gt; “Well-behaved problems have well-behaved solution sets.”</p>
+<p>If:</p>
+<ul>
+<li>the objective function is continuous,</li>
+<li>the feasible set correspondence is compact-valued and upper hemicontinuous,</li>
+</ul>
+<p>then:</p>
+<ul>
+<li>the argmax correspondence is non-empty (there is a solution),</li>
+<li>compact-valued,</li>
+<li>and upper hemicontinuous.</li>
+</ul>
+<p>Or in short:</p>
+<blockquote>
+<p>“Well-behaved problems have well-behaved solution sets.”</p>
+</blockquote>
 <p>This theorem explains why demand, best responses, and equilibrium correspondences exist and vary regularly.</p>
 <hr />
 <h2 id="economic-example-demand-as-a-correspondence">12. Economic example: demand as a correspondence</h2>
@@ -141,13 +197,32 @@ Different choices may be payoff-equivalent.</p></li>
 <p><span class="math display">\[
 \max_{x \in B(p,w)} u(x),
 \]</span></p>
-<p>where: - <span class="math inline">\(u\)</span> is continuous, - <span class="math inline">\(B(p,w)\)</span> is the budget correspondence.</p>
-<p>Under standard assumptions: - <span class="math inline">\(B(p,w)\)</span> is compact-valued and upper hemicontinuous, - the demand correspondence is non-empty, - and it is upper hemicontinuous in <span class="math inline">\((p,w)\)</span>.</p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(u\)</span> is continuous,</li>
+<li><span class="math inline">\(B(p,w)\)</span> is the budget correspondence.</li>
+</ul>
+<p>Under standard assumptions:</p>
+<ul>
+<li><span class="math inline">\(B(p,w)\)</span> is compact-valued and upper hemicontinuous,</li>
+<li>the demand correspondence is non-empty,</li>
+<li>and it is upper hemicontinuous in <span class="math inline">\((p,w)\)</span>.</li>
+</ul>
 <p>Comparative statics rely on exactly this structure.</p>
 <hr />
 <h2 id="why-this-prepares-equilibrium-analysis">13. Why this prepares equilibrium analysis</h2>
-<p>Equilibrium concepts are defined as: - fixed points of correspondences, - intersections of best-response sets, - solutions to systems of optimization problems.</p>
-<p>Without the machinery developed here: - existence arguments collapse, - comparative statics break down, - equilibrium becomes fragile.</p>
+<p>Equilibrium concepts are defined as:</p>
+<ul>
+<li>fixed points of correspondences,</li>
+<li>intersections of best-response sets,</li>
+<li>solutions to systems of optimization problems.</li>
+</ul>
+<p>Without the machinery developed here:</p>
+<ul>
+<li>existence arguments collapse,</li>
+<li>comparative statics break down,</li>
+<li>equilibrium becomes fragile.</li>
+</ul>
 <p>This topic is the last step before equilibrium theory proper.</p>
 <hr />
 <h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">14. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
@@ -161,7 +236,13 @@ Different choices may be payoff-equivalent.</p></li>
 <p>The technical tools introduced here are used repeatedly and often implicitly.</p>
 <hr />
 <h2 id="what-you-should-take-away">15. What you should take away</h2>
-<p>After this topic, you should be comfortable with: - viewing optimization solutions as correspondences, - understanding why non-uniqueness is normal, - reading upper hemicontinuity statements, - and seeing how existence and stability interact.</p>
+<p>After this topic, you should be comfortable with:</p>
+<ul>
+<li>viewing optimization solutions as correspondences,</li>
+<li>understanding why non-uniqueness is normal,</li>
+<li>reading upper hemicontinuity statements,</li>
+<li>and seeing how existence and stability interact.</li>
+</ul>
 <p>From here on, equilibrium and strategic interaction can be treated without apology.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
@@ -173,6 +254,94 @@ Different choices may be payoff-equivalent.</p></li>
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic5.html" aria-current="page">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-topic-sits-where-it-does">1. Why this topic sits where it does</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#optimization-problems-revisited">2. Optimization problems revisited</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#linear-versus-convex-problems">3. Linear versus convex problems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#convex-concave-objectives-and-non-uniqueness">4. Convex (concave) objectives and non-uniqueness</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-argmax-leads-to-a-correspondence">5. The argmax leads to a correspondence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-are-correspondences-unavoidable">6. Why are correspondences unavoidable?</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#regularity-of-solution-correspondences">7. Regularity of solution correspondences</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#upper-hemicontinuity-definition">8. Upper hemicontinuity (definition)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lower-hemicontinuity-definition">9. Lower hemicontinuity (definition)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#hemicontinuity-taken-together">10. Hemicontinuity taken together</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#closed-graphs">Closed Graphs</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#berges-maximum-theorem-economic-reading">11. Berge’s Maximum Theorem (economic reading)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#economic-example-demand-as-a-correspondence">12. Economic example: demand as a correspondence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-prepares-equilibrium-analysis">13. Why this prepares equilibrium analysis</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">14. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic4.html" class="nav-prev">← Previous</a><a href="Topic6.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

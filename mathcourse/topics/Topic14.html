@@ -19,6 +19,12 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic13.html" class="nav-prev">← Previous</a><a href="Topic15.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-measure-theory-enters-now">1. Why measure theory enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#sigma-algebras-which-subsets-can-we-measure">2. Sigma-algebras: which subsets can we measure?</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-these-three-properties">Why these three properties?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-leading-example-the-borel-sigma-algebra">The leading example: the Borel \(\sigma\)-algebra</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#two-trivial-sigma-algebras">Two trivial \(\sigma\)-algebras</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#connection-to-topologies">Connection to topologies</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-not-just-use-the-power-set">Why not just use the power set?</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#measures-and-probability-measures">3. Measures and probability measures</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#probability-measures">Probability measures</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-countable-additivity">Why countable additivity?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#three-examples-that-cover-the-course">Three examples that cover the course</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#measurable-functions-which-functions-can-we-integrate">4. Measurable functions: which functions can we integrate?</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-concrete-example">A concrete example</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-measurability-matters">Why measurability matters</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-random-variable-upgraded">A random variable, upgraded</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-lebesgue-integral-motivation-and-construction">5. The Lebesgue integral: motivation and construction</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#what-is-wrong-with-the-riemann-integral">What is wrong with the Riemann integral?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-partition-the-range-not-the-domain">The idea: partition the range, not the domain</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-construction-from-the-simplest-case-to-the-general-one">The construction: from the simplest case to the general one</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#recovering-the-familiar-cases">Recovering the familiar cases</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#key-properties-of-the-integral">6. Key properties of the integral</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#convergence-theorems-passing-limits-through-integrals">7. Convergence theorems: passing limits through integrals</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#monotone-convergence-theorem">Monotone Convergence Theorem</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#fatous-lemma">Fatou’s Lemma</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#dominated-convergence-theorem">Dominated Convergence Theorem</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-need-dominated-convergence">Why economists need dominated convergence</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-expectation-revisited">8. Conditional expectation, revisited</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-averaging-over-information">The idea: averaging over information</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-this-generalizes-topic-8">Why this generalizes Topic 8</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-projection-interpretation">The projection interpretation</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lp-spaces-briefly">9. \(L^p\) spaces (briefly)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#weak-convergence-of-probability-measures">10. Weak convergence of probability measures</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-the-kolmogorov-metric-fails">Why the Kolmogorov metric fails</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#weak-convergence-testing-with-continuous-functions">Weak convergence: testing with continuous functions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-it-works">Why it works</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-portmanteau-theorem">The Portmanteau theorem</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-prokhorov-metric">The Prokhorov metric</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#prokhorovs-theorem-compactness-of-deltatheta">11. Prokhorov’s theorem: compactness of \(\Delta(\Theta)\)</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#completeness">Completeness</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#application-1-mechanism-design-and-type-spaces">12. Application 1: mechanism design and type spaces</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-setup">The setup</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-compactness-of-deltatheta-matters">Why compactness of \(\Delta(\Theta)\) matters</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#hierarchies-of-beliefs">Hierarchies of beliefs</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#application-2-bayesian-nash-equilibrium-existence">13. Application 2: Bayesian Nash equilibrium existence</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-setup-1">The setup</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-existence-argument">The existence argument</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg">14. Where this appears in MWG</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">15. Why this matters for microeconomics</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic14.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-14-measurability-and-integration">Topic 14: Measurability and Integration</h1>
@@ -112,9 +118,15 @@ MathJax = {
 <li>if <span class="math inline">\(A_1, A_2, \ldots \in \mathcal{F}\)</span> are pairwise disjoint, then <span class="math display">\[\mu\!\left(\bigcup_{n=1}^\infty A_n\right) = \sum_{n=1}^\infty \mu(A_n)\]</span> (<strong>countable additivity</strong>).</li>
 </ol>
 <p>The triple <span class="math inline">\((\Omega, \mathcal{F}, \mu)\)</span> is called a <strong>measure space</strong>.</p>
-<p>The measure is pretty intuitive; it only says the following: &gt; “A measure is a way of assigning sizes to sets that respects basic algebra: the size of a disjoint union is the sum of the sizes.”</p>
+<p>The measure is pretty intuitive; it only says the following:</p>
+<blockquote>
+<p>“A measure is a way of assigning sizes to sets that respects basic algebra: the size of a disjoint union is the sum of the sizes.”</p>
+</blockquote>
 <h3 id="probability-measures">Probability measures</h3>
-<p>There are several types of measures. But the most relevant for us is the probability measure. Here is the definition: &gt; A measure <span class="math inline">\(\mu\)</span> is a <strong>probability measure</strong> if <span class="math inline">\(\mu(\Omega) = 1\)</span>.</p>
+<p>There are several types of measures. But the most relevant for us is the probability measure. Here is the definition:</p>
+<blockquote>
+<p>A measure <span class="math inline">\(\mu\)</span> is a <strong>probability measure</strong> if <span class="math inline">\(\mu(\Omega) = 1\)</span>.</p>
+</blockquote>
 <p>In that case, <span class="math inline">\(\mu(A)\)</span> is the probability of the event <span class="math inline">\(A\)</span>, and we recover the Kolmogorov axioms from Topic <a href="Topic8.html">8</a>—except now we have countable additivity rather than just finite additivity, and the events are required to come from a <span class="math inline">\(\sigma\)</span>-algebra.</p>
 <p>The notation <span class="math inline">\(\Pr\)</span> or <span class="math inline">\(P\)</span> from Topic <a href="Topic8.html">8</a> is just a probability measure in the present language. The upgrade is that we now know precisely which sets <span class="math inline">\(\Pr\)</span> is defined on (namely, the sets in <span class="math inline">\(\mathcal{F}\)</span>), and the additivity extends to countable collections.</p>
 <h3 id="why-countable-additivity">Why countable additivity?</h3>
@@ -221,7 +233,11 @@ MathJax = {
 <p>“If a sequence of functions converges pointwise and is uniformly bounded by an integrable function, then the limit passes through the integral.”</p>
 </blockquote>
 <p><strong>Proof sketch.</strong> The functions <span class="math inline">\(g + f_n \geq 0\)</span> and <span class="math inline">\(g - f_n \geq 0\)</span>. Apply Fatou’s lemma to each: <span class="math display">\[\int (g + f)\, d\mu \leq \liminf \int (g + f_n)\, d\mu, \qquad \int (g - f)\, d\mu \leq \liminf \int (g - f_n)\, d\mu.\]</span> Since <span class="math inline">\(\int g\, d\mu &lt; \infty\)</span>, cancel it. The first gives <span class="math inline">\(\int f\, d\mu \leq \liminf \int f_n\, d\mu\)</span>. The second gives <span class="math inline">\(-\int f\, d\mu \leq \liminf(-\int f_n\, d\mu) = -\limsup \int f_n\, d\mu\)</span>, i.e., <span class="math inline">\(\limsup \int f_n\, d\mu \leq \int f\, d\mu\)</span>. Together: <span class="math inline">\(\lim \int f_n\, d\mu\)</span> exists and equals <span class="math inline">\(\int f\, d\mu\)</span>.</p>
-<p><strong>Where each assumption is used:</strong> - <em>Pointwise convergence</em> defines the limit <span class="math inline">\(f\)</span>. - <em>The dominating function <span class="math inline">\(g\)</span></em> prevents the “escaping mass” problem. In the counterexample above (<span class="math inline">\(f_n = n \cdot \mathbf{1}_{(0,1/n]}\)</span>), no integrable <span class="math inline">\(g\)</span> dominates all <span class="math inline">\(f_n\)</span> because their heights grow without bound.</p>
+<p><strong>Where each assumption is used:</strong></p>
+<ul>
+<li><em>Pointwise convergence</em> defines the limit <span class="math inline">\(f\)</span>.</li>
+<li><em>The dominating function <span class="math inline">\(g\)</span></em> prevents the “escaping mass” problem. In the counterexample above (<span class="math inline">\(f_n = n \cdot \mathbf{1}_{(0,1/n]}\)</span>), no integrable <span class="math inline">\(g\)</span> dominates all <span class="math inline">\(f_n\)</span> because their heights grow without bound.</li>
+</ul>
 <p>The result is geometrically very intuitive. If there is a cap on how high <span class="math inline">\(f_n\)</span> can go (given by <span class="math inline">\(g\)</span>) and <span class="math inline">\(g\)</span> is integrable (i.e. not disappearing into infinity), then of course <span class="math inline">\(f_n\)</span> cannot disappear to infinity either. That means laying bricks to approximate the area while not requiring parts of the wall to be infinitely high.</p>
 <h3 id="why-economists-need-dominated-convergence">Why economists need dominated convergence</h3>
 <p>In mechanism design, we often need to show that a functional like expected revenue <span class="math inline">\(\int_0^1 R(\theta, \mu_n)\, d\theta\)</span> converges to <span class="math inline">\(\int_0^1 R(\theta, \mu)\, d\theta\)</span> when a sequence of mechanisms (which correspond to distributions over revenues, i.e. measures) converges. If payoffs are bounded — say <span class="math inline">\(|R| \leq M\)</span> because types and payments live in compact sets — then the constant function <span class="math inline">\(g = M\)</span> dominates everything, and dominated convergence applies immediately. This is why “bounded payoffs on a compact type space” is the standing assumption throughout mechanism design: it is precisely the condition that makes dominated convergence available.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
@@ -332,7 +348,14 @@ MathJax = {
 <h2 id="application-2-bayesian-nash-equilibrium-existence">13. Application 2: Bayesian Nash equilibrium existence</h2>
 <p>We can now also prove the existence result that Topic <a href="Topic9.html">9</a> (Nash equilibrium in finite games) did not cover: existence of Bayesian Nash equilibrium in games with continuous type spaces.</p>
 <h3 id="the-setup-1">The setup</h3>
-<p>Consider a Bayesian game: - <span class="math inline">\(n\)</span> players, - type spaces <span class="math inline">\(\Theta_i\)</span> (compact metric spaces), - action spaces <span class="math inline">\(A_i\)</span> (compact metric spaces), - utility functions <span class="math inline">\(u_i: A \times \Theta \to \mathbb{R}\)</span> (continuous and bounded), - a common prior <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\Theta = \Theta_1 \times \cdots \times \Theta_n\)</span>.</p>
+<p>Consider a Bayesian game:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> players,</li>
+<li>type spaces <span class="math inline">\(\Theta_i\)</span> (compact metric spaces),</li>
+<li>action spaces <span class="math inline">\(A_i\)</span> (compact metric spaces),</li>
+<li>utility functions <span class="math inline">\(u_i: A \times \Theta \to \mathbb{R}\)</span> (continuous and bounded),</li>
+<li>a common prior <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\Theta = \Theta_1 \times \cdots \times \Theta_n\)</span>.</li>
+</ul>
 <p>A <strong>(behavioral) strategy</strong> for player <span class="math inline">\(i\)</span> is a measurable mapping <span class="math inline">\(\sigma_i: \Theta_i \to \Delta(A_i)\)</span>—for each type, a distribution over actions. Equivalently, it is an element of <span class="math inline">\(\Delta(A_i)^{\Theta_i}\)</span>, or after appropriate identification, an element of the space of all probability-measure-valued measurable functions.</p>
 <h3 id="the-existence-argument">The existence argument</h3>
 <p>The proof follows the same Kakutani logic as in Topic <a href="Topic9.html">9</a>, but now on an infinite-dimensional space. There are several routes in the literature; the cleanest for our purposes uses the “distributional strategy” formulation due to Milgrom and Weber (1985).<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></p>
@@ -395,6 +418,94 @@ MathJax = {
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic14.html" aria-current="page">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-measure-theory-enters-now">1. Why measure theory enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#sigma-algebras-which-subsets-can-we-measure">2. Sigma-algebras: which subsets can we measure?</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-these-three-properties">Why these three properties?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-leading-example-the-borel-sigma-algebra">The leading example: the Borel \(\sigma\)-algebra</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#two-trivial-sigma-algebras">Two trivial \(\sigma\)-algebras</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#connection-to-topologies">Connection to topologies</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-not-just-use-the-power-set">Why not just use the power set?</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#measures-and-probability-measures">3. Measures and probability measures</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#probability-measures">Probability measures</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-countable-additivity">Why countable additivity?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#three-examples-that-cover-the-course">Three examples that cover the course</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#measurable-functions-which-functions-can-we-integrate">4. Measurable functions: which functions can we integrate?</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-concrete-example">A concrete example</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-measurability-matters">Why measurability matters</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-random-variable-upgraded">A random variable, upgraded</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-lebesgue-integral-motivation-and-construction">5. The Lebesgue integral: motivation and construction</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#what-is-wrong-with-the-riemann-integral">What is wrong with the Riemann integral?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-partition-the-range-not-the-domain">The idea: partition the range, not the domain</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-construction-from-the-simplest-case-to-the-general-one">The construction: from the simplest case to the general one</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#recovering-the-familiar-cases">Recovering the familiar cases</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#key-properties-of-the-integral">6. Key properties of the integral</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#convergence-theorems-passing-limits-through-integrals">7. Convergence theorems: passing limits through integrals</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#monotone-convergence-theorem">Monotone Convergence Theorem</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#fatous-lemma">Fatou’s Lemma</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#dominated-convergence-theorem">Dominated Convergence Theorem</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-need-dominated-convergence">Why economists need dominated convergence</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-expectation-revisited">8. Conditional expectation, revisited</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-averaging-over-information">The idea: averaging over information</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-this-generalizes-topic-8">Why this generalizes Topic 8</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-projection-interpretation">The projection interpretation</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lp-spaces-briefly">9. \(L^p\) spaces (briefly)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#weak-convergence-of-probability-measures">10. Weak convergence of probability measures</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-the-kolmogorov-metric-fails">Why the Kolmogorov metric fails</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#weak-convergence-testing-with-continuous-functions">Weak convergence: testing with continuous functions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-it-works">Why it works</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-portmanteau-theorem">The Portmanteau theorem</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-prokhorov-metric">The Prokhorov metric</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#prokhorovs-theorem-compactness-of-deltatheta">11. Prokhorov’s theorem: compactness of \(\Delta(\Theta)\)</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#completeness">Completeness</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#application-1-mechanism-design-and-type-spaces">12. Application 1: mechanism design and type spaces</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-setup">The setup</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-compactness-of-deltatheta-matters">Why compactness of \(\Delta(\Theta)\) matters</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#hierarchies-of-beliefs">Hierarchies of beliefs</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#application-2-bayesian-nash-equilibrium-existence">13. Application 2: Bayesian Nash equilibrium existence</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-setup-1">The setup</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-existence-argument">The existence argument</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg">14. Where this appears in MWG</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">15. Why this matters for microeconomics</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic13.html" class="nav-prev">← Previous</a><a href="Topic15.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

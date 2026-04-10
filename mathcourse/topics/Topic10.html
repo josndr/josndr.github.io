@@ -19,6 +19,12 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic9.html" class="nav-prev">← Previous</a><a href="Topic11.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-discounting-enters-now">1. Why discounting enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-discount-factor">2. The discount factor</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#geometric-series-the-basic-calculation">3. Geometric series: the basic calculation</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#finite-geometric-series">Finite geometric series</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#infinite-geometric-series">Infinite geometric series</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#shifted-series">Shifted series</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#present-value-of-a-stream">4. Present value of a stream</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-normalized-average-payoff">5. The normalized (average) payoff</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#finite-versus-infinite-horizons">6. Finite versus infinite horizons</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#stationarity-and-the-recursive-structure">7. Stationarity and the recursive structure</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-brief-look-at-continuous-time">8. A brief look at continuous time</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#what-gets-simpler">What gets simpler</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#what-gets-harder">What gets harder</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-use-both">Why economists use both</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-sustaining-cooperation">9. An economic example: sustaining cooperation</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">10. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">11. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">12. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic10.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-10-discounting-and-infinite-horizons">Topic 10: Discounting and Infinite Horizons</h1>
@@ -26,7 +32,12 @@ MathJax = {
 <hr />
 <h2 id="why-discounting-enters-now">1. Why discounting enters now</h2>
 <p>The pre-course has so far been mostly static. Agents choose, they optimize, they interact — but everything happens at a single point in time.</p>
-<p>In much of microeconomics, however, decisions have consequences that unfold over time: - a firm invests today and earns returns tomorrow, - a player cooperates now in exchange for future cooperation, - a consumer saves part of her income for later.</p>
+<p>In much of microeconomics, however, decisions have consequences that unfold over time:</p>
+<ul>
+<li>a firm invests today and earns returns tomorrow,</li>
+<li>a player cooperates now in exchange for future cooperation,</li>
+<li>a consumer saves part of her income for later.</li>
+</ul>
 <p>Once time enters, we need to compare payoffs that arrive at different dates. A euro today is not the same as a euro next year. This is not a psychological claim — it is an assumption that economists encode with <strong>discounting</strong>.</p>
 <p>This topic introduces discounting and the infinite horizon as mathematical objects. The goal is to make two things precise: how economists aggregate payoffs over time, and why infinite-horizon problems are often <em>easier</em> than finite-horizon ones.</p>
 <hr />
@@ -36,7 +47,12 @@ MathJax = {
 <p>“The discount factor <span class="math inline">\(\delta\)</span> captures how much the agent values tomorrow relative to today. A payoff of <span class="math inline">\(x\)</span> received one period from now is worth <span class="math inline">\(\delta x\)</span> today.”</p>
 </blockquote>
 <p>If <span class="math inline">\(\delta\)</span> is close to 1, the agent is <strong>patient</strong>: she treats the future almost like the present. If <span class="math inline">\(\delta\)</span> is close to 0, the agent is <strong>impatient</strong>: the future is heavily discounted.</p>
-<p>Where does <span class="math inline">\(\delta\)</span> come from? In different models it has different interpretations: - a pure time preference (the agent simply prefers earlier consumption), - an interest rate (<span class="math inline">\(\delta = 1/(1+r)\)</span>, where <span class="math inline">\(r\)</span> is the rate of return on savings), - a probability of continuation (in each period, the game continues with probability <span class="math inline">\(\delta\)</span> and ends with probability <span class="math inline">\(1-\delta\)</span>).</p>
+<p>Where does <span class="math inline">\(\delta\)</span> come from? In different models it has different interpretations:</p>
+<ul>
+<li>a pure time preference (the agent simply prefers earlier consumption),</li>
+<li>an interest rate (<span class="math inline">\(\delta = 1/(1+r)\)</span>, where <span class="math inline">\(r\)</span> is the rate of return on savings),</li>
+<li>a probability of continuation (in each period, the game continues with probability <span class="math inline">\(\delta\)</span> and ends with probability <span class="math inline">\(1-\delta\)</span>).</li>
+</ul>
 <p>The third interpretation is worth flagging because it shows up in repeated games: discounting and random termination are mathematically the same thing. A patient player is one whose game is likely to continue.</p>
 <p>The key restriction is <span class="math inline">\(\delta &lt; 1\)</span>. If <span class="math inline">\(\delta \geq 1\)</span>, the agent values the future at least as much as the present, and infinite sums of payoffs will (generically) diverge. Everything in this topic depends on <span class="math inline">\(\delta &lt; 1\)</span>.</p>
 <hr />
@@ -112,7 +128,12 @@ MathJax = {
 <hr />
 <h2 id="an-economic-example-sustaining-cooperation">9. An economic example: sustaining cooperation</h2>
 <p>Consider two firms that interact every period. In each period, each firm can either <strong>cooperate</strong> (keep prices high) or <strong>defect</strong> (undercut).</p>
-<p>Per-period payoffs: - if both cooperate, each earns <span class="math inline">\(\pi_C\)</span>, - if both defect, each earns <span class="math inline">\(\pi_D &lt; \pi_C\)</span>, - if one defects while the other cooperates, the defector earns <span class="math inline">\(\pi_H &gt; \pi_C\)</span> and the cooperator earns <span class="math inline">\(\pi_L &lt; \pi_D\)</span>.</p>
+<p>Per-period payoffs:</p>
+<ul>
+<li>if both cooperate, each earns <span class="math inline">\(\pi_C\)</span>,</li>
+<li>if both defect, each earns <span class="math inline">\(\pi_D &lt; \pi_C\)</span>,</li>
+<li>if one defects while the other cooperates, the defector earns <span class="math inline">\(\pi_H &gt; \pi_C\)</span> and the cooperator earns <span class="math inline">\(\pi_L &lt; \pi_D\)</span>.</li>
+</ul>
 <p>Consider the <strong>trigger strategy</strong>: cooperate as long as the other firm cooperates; if the other firm ever defects, defect forever.</p>
 <p>Under this strategy, the normalized payoff from cooperating forever is <span class="math inline">\(\pi_C\)</span>.</p>
 <p>The temptation to deviate is: earn <span class="math inline">\(\pi_H\)</span> today (the one-period gain from undercutting), but suffer <span class="math inline">\(\pi_D\)</span> forever after (because the other firm switches to permanent defection). The normalized payoff from deviating is <span class="math display">\[(1-\delta)\pi_H + \delta \pi_D.\]</span></p>
@@ -132,12 +153,26 @@ MathJax = {
 <hr />
 <h2 id="why-this-matters-for-microeconomics">11. Why this matters for microeconomics</h2>
 <p>Discounting is the language of time in economic theory.</p>
-<p>It appears in: - repeated games (where <span class="math inline">\(\delta\)</span> determines whether cooperation can be sustained), - dynamic contracting (where continuation values serve as incentive instruments), - asset pricing (where prices are present values of dividend streams), - dynamic mechanism design (where future transfers and allocations are discounted).</p>
+<p>It appears in:</p>
+<ul>
+<li>repeated games (where <span class="math inline">\(\delta\)</span> determines whether cooperation can be sustained),</li>
+<li>dynamic contracting (where continuation values serve as incentive instruments),</li>
+<li>asset pricing (where prices are present values of dividend streams),</li>
+<li>dynamic mechanism design (where future transfers and allocations are discounted).</li>
+</ul>
 <p>The recursive structure — “today plus the discounted future” — is what makes infinite-dimensional problems manageable. Without it, every dynamic model would require solving for infinitely many variables simultaneously.</p>
 <p>Understanding discounting now means that when the course introduces trigger strategies, continuation values, or Bellman equations, the mathematical objects will already be familiar. The economic ideas can then take center stage.</p>
 <hr />
 <h2 id="what-you-should-take-away">12. What you should take away</h2>
-<p>After this topic, you should be comfortable with: - computing present values using geometric series, - interpreting the discount factor as patience, interest, or continuation probability, - understanding why the normalized payoff is a weighted average and why it makes continuation values comparable to per-period payoffs, - seeing why infinite horizons create stationarity rather than complexity, - recognizing the recursive decomposition <span class="math inline">\(\bar{V} = (1-\delta)x + \delta \bar{V}\)</span> as the seed of dynamic programming, - and knowing that continuous time is an alternative formulation with the same economic ideas but different technical tools.</p>
+<p>After this topic, you should be comfortable with:</p>
+<ul>
+<li>computing present values using geometric series,</li>
+<li>interpreting the discount factor as patience, interest, or continuation probability,</li>
+<li>understanding why the normalized payoff is a weighted average and why it makes continuation values comparable to per-period payoffs,</li>
+<li>seeing why infinite horizons create stationarity rather than complexity,</li>
+<li>recognizing the recursive decomposition <span class="math inline">\(\bar{V} = (1-\delta)x + \delta \bar{V}\)</span> as the seed of dynamic programming,</li>
+<li>and knowing that continuous time is an alternative formulation with the same economic ideas but different technical tools.</li>
+</ul>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
@@ -148,6 +183,94 @@ MathJax = {
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic10.html" aria-current="page">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-discounting-enters-now">1. Why discounting enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-discount-factor">2. The discount factor</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#geometric-series-the-basic-calculation">3. Geometric series: the basic calculation</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#finite-geometric-series">Finite geometric series</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#infinite-geometric-series">Infinite geometric series</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#shifted-series">Shifted series</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#present-value-of-a-stream">4. Present value of a stream</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-normalized-average-payoff">5. The normalized (average) payoff</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#finite-versus-infinite-horizons">6. Finite versus infinite horizons</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#stationarity-and-the-recursive-structure">7. Stationarity and the recursive structure</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-brief-look-at-continuous-time">8. A brief look at continuous time</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#what-gets-simpler">What gets simpler</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#what-gets-harder">What gets harder</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-use-both">Why economists use both</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-sustaining-cooperation">9. An economic example: sustaining cooperation</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">10. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">11. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">12. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic9.html" class="nav-prev">← Previous</a><a href="Topic11.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>

@@ -19,37 +19,68 @@ MathJax = {
 </head>
 <body class="topic-page">
 <nav class="topic-nav top"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic3.html" class="nav-prev">← Previous</a><a href="Topic5.html" class="nav-next">Next →</a></nav>
+<div class="topic-shell">
+<button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
+<aside class="topic-outline-left" aria-label="On this page">
+<h2 class="outline-title">On This Page</h2>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-continuity-and-closedness-matter">1. Why continuity and closedness matter</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#open-and-closed-sets-intuition-first">2. Open and closed sets: intuition first</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-closedness-is-economically-important">3. Why closedness is economically important</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#example-a-failure-of-existence">4. Example: A failure of existence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#compactness-putting-everything-together">5. Compactness: putting everything together</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#continuity-of-functions">6. Continuity of functions</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-remark-on-metrics">A remark on metrics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-intermediate-value-theorem">7. The Intermediate Value Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-weierstrass-theorem-existence-of-maxima">8. The Weierstrass Theorem (existence of maxima)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-economists-care-about-continuity">9. Why economists care about continuity</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#continuity-of-preferences-and-utility-representations">10. Continuity of preferences and utility representations</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#existence-of-optimal-choices">12. Existence of optimal choices</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#another-economic-example-non-existence-of-demand">12. Another economic example: non-existence of demand</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">13. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">14. What you should take away</a></li></ul>
+</aside>
 <main class="topic-content">
 <a href="../pdfs/Topic4.pdf" class="pdf-download" download>⬇ Download PDF</a>
 <h1 id="topic-4-continuity-closed-sets-and-existence">Topic 4: Continuity, Closed Sets, and Existence</h1>
 <p><em>(Why solutions exist — and when they do not)</em></p>
 <hr />
 <h2 id="why-continuity-and-closedness-matter">1. Why continuity and closedness matter</h2>
-<p>Up to now, we have talked about: - sets of feasible alternatives, - preferences over those alternatives, - and geometric structure such as convexity.</p>
+<p>Up to now, we have talked about:</p>
+<ul>
+<li>sets of feasible alternatives,</li>
+<li>preferences over those alternatives,</li>
+<li>and geometric structure such as convexity.</li>
+</ul>
 <p>But we have carefully avoided a fundamental question:</p>
 <blockquote>
 <p>Does an optimal choice actually exist?</p>
 </blockquote>
 <p>This question is not rhetorical. Many economic models are internally consistent, well-motivated, and intuitive — and yet fail to have solutions.</p>
-<p>The reason is usually not a lack of convexity, but a lack of <strong>topological regularity</strong>:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> - sets that are not closed, - preferences that jump discontinuously, - or objective functions that approach a maximum without ever reaching it.</p>
+<p>The reason is usually not a lack of convexity, but a lack of <strong>topological regularity</strong>:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<ul>
+<li>sets that are not closed,</li>
+<li>preferences that jump discontinuously,</li>
+<li>or objective functions that approach a maximum without ever reaching it.</li>
+</ul>
 <p>This topic introduces the minimal tools needed to understand what later we will call <strong>existence</strong>.</p>
 <hr />
 <h2 id="open-and-closed-sets-intuition-first">2. Open and closed sets: intuition first</h2>
 <p>Again, let’s think about Euclidean spaces and let <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span>.</p>
-<p>Informally we say that <span class="math inline">\(X\)</span> is - an <strong>open</strong> set if wherever you start in the set, you can move a little in any direction and stay inside the set, - a <strong>closed</strong> set if it contains all its boundary points.</p>
+<p>Informally we say that <span class="math inline">\(X\)</span> is</p>
+<ul>
+<li>an <strong>open</strong> set if wherever you start in the set, you can move a little in any direction and stay inside the set,</li>
+<li>a <strong>closed</strong> set if it contains all its boundary points.</li>
+</ul>
 <p>At first glance, this sounds like two mutually exclusive notions. If the set contains the boundary, then walking away from the boundary will make me leave the set at least in one direction. It turns out, this intuition is often true, but not always.</p>
 <p>First, let us be a bit more precise:</p>
 <ul>
-<li><span class="math inline">\(X\)</span> is <strong>open</strong> if for every <span class="math inline">\(x \in X\)</span> there exists <span class="math inline">\(\varepsilon &gt; 0\)</span> such that <span class="math display">\[ B_\varepsilon(x) \subseteq X, \]</span> where <span class="math inline">\(B_\varepsilon(x)\)</span> denotes the open ball of radius <span class="math inline">\(\varepsilon\)</span> around <span class="math inline">\(x\)</span>.</li>
-<li><span class="math inline">\(X\)</span> is <strong>closed</strong> if its complement is an open set.</li>
+<li><p><span class="math inline">\(X\)</span> is <strong>open</strong> if for every <span class="math inline">\(x \in X\)</span> there exists <span class="math inline">\(\varepsilon &gt; 0\)</span> such that <span class="math display">\[ B_\varepsilon(x) \subseteq X, \]</span> where <span class="math inline">\(B_\varepsilon(x)\)</span> denotes the open ball of radius <span class="math inline">\(\varepsilon\)</span> around <span class="math inline">\(x\)</span>.</p></li>
+<li><p><span class="math inline">\(X\)</span> is <strong>closed</strong> if its complement is an open set.</p></li>
 </ul>
 <p>The notion of the ball <span class="math inline">\(B_\varepsilon(x)\)</span> may be unfamiliar at first glance, but it basically means that around <span class="math inline">\(x\)</span> we can form some form of ‘’aura’’ so that if we want to stand at <span class="math inline">\(x\)</span> we miss slightly (in the slightest way of slightly) we will at least be in that ball. If the set is open and we miss in the slightest way of slightly the point <span class="math inline">\(x\)</span> we wanted to be at, we will at least still be in the set.</p>
-<p>Now, let us go back on the notions. It turns out they are really independent notions. - a set can be open but not closed, - closed but not open, - both, - or neither.</p>
+<p>Now, let us go back on the notions. It turns out they are really independent notions.</p>
+<ul>
+<li>a set can be open but not closed,</li>
+<li>closed but not open,</li>
+<li>both,</li>
+<li>or neither.</li>
+</ul>
 <p>Intervals in <span class="math inline">\(\mathbb{R}\)</span> make that very clear. The interval <span class="math inline">\([1,2]\)</span> is a closed set, but not open, the interval <span class="math inline">\((1,2)\)</span> is open but not closed. The interval <span class="math inline">\((1,2]\)</span> is neither. The emptyset, <span class="math inline">\(\emptyset\)</span> is by definition open,<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> thus the entire underlying space—which is the complement to <span class="math inline">\(\emptyset\)</span> (here <span class="math inline">\(\mathbb{R}\)</span>)—must be closed. However that space is also open, because if we slightly miss, we remain in <span class="math inline">\(\mathbb{R}\)</span>. That means <span class="math inline">\(\emptyset\)</span> has to be closed too.</p>
 <hr />
 <h2 id="why-closedness-is-economically-important">3. Why closedness is economically important</h2>
 <p>Closedness matters because <strong>maxima</strong> are typically on boundaries. They are the largest point there is (in some direction). So, they have to live on the boundary.</p>
-<p>Consider a consumer choosing <span class="math inline">\(x\)</span> from a feasible set <span class="math inline">\(X\)</span> to maximize utility. Even if preferences are continuous and well-behaved, the optimal choice may lie: - at a corner, - on a constraint, - or exactly at the boundary of feasibility.</p>
+<p>Consider a consumer choosing <span class="math inline">\(x\)</span> from a feasible set <span class="math inline">\(X\)</span> to maximize utility. Even if preferences are continuous and well-behaved, the optimal choice may lie:</p>
+<ul>
+<li>at a corner,</li>
+<li>on a constraint,</li>
+<li>or exactly at the boundary of feasibility.</li>
+</ul>
 <p>If the boundary is not included, the optimum may be <em>approached</em> but never <em>attained</em>, so the problem would have no solution.</p>
 <hr />
 <h2 id="example-a-failure-of-existence">4. Example: A failure of existence</h2>
@@ -60,18 +91,28 @@ MathJax = {
 <p>The objective function is continuous. The feasible set is convex. Preferences are trivial.</p>
 <p>And yet: <strong>there is no solution</strong>.</p>
 <p>The supremum is <span class="math inline">\(1\)</span>, but <span class="math inline">\(1 \notin (0,1)\)</span>.</p>
-<p>This example shows: &gt; Convexity alone does not guarantee existence.</p>
+<p>This example shows:</p>
+<blockquote>
+<p>Convexity alone does not guarantee existence.</p>
+</blockquote>
 <p>Closedness is essential.</p>
 <hr />
 <h2 id="compactness-putting-everything-together">5. Compactness: putting everything together</h2>
 <p>In finite-dimensional spaces, existence results are often driven by <strong>compactness</strong>.</p>
-<p>A set <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is <strong>compact</strong> if it is: - closed, - and bounded.</p>
+<p>A set <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is <strong>compact</strong> if it is:</p>
+<ul>
+<li>closed,</li>
+<li>and bounded.</li>
+</ul>
 <p>This characterization is specific to <span class="math inline">\(\mathbb{R}^n\)</span> and is known as the <strong>Heine–Borel property</strong>.</p>
 <p>Compactness is powerful because it ensures that sequences cannot ‘’escape to infinity’’ and that limits stay inside the set.</p>
 <hr />
 <h2 id="continuity-of-functions">6. Continuity of functions</h2>
 <p>Let <span class="math inline">\(f: X \to \mathbb{R}\)</span> be a function.</p>
-<p>Informally, <span class="math inline">\(f\)</span> is <strong>continuous</strong> if: &gt; small changes in the input lead to small changes in the output.</p>
+<p>Informally, <span class="math inline">\(f\)</span> is <strong>continuous</strong> if:</p>
+<blockquote>
+<p>small changes in the input lead to small changes in the output.</p>
+</blockquote>
 <p>Formally, <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span> if for every <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists <span class="math inline">\(\delta &gt; 0\)</span> such that</p>
 <p><span class="math display">\[
 \|x - x&#39;\| &lt; \delta \Rightarrow |f(x) - f(x&#39;)| &lt; \varepsilon.
@@ -119,21 +160,50 @@ If <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is compact and 
 <p>This theorem is the backbone of existence results in microeconomics.</p>
 <hr />
 <h2 id="why-economists-care-about-continuity">9. Why economists care about continuity</h2>
-<p>Continuity is not a technical luxury. It encodes economically meaningful assumptions: - small changes in prices do not cause jumps in demand, - small changes in endowments do not cause discontinuous behavior, - incentives vary smoothly with parameters.</p>
-<p>Discontinuities often signal: - indivisibilities, - threshold effects, - or institutional constraints.</p>
+<p>Continuity is not a technical luxury. It encodes economically meaningful assumptions:</p>
+<ul>
+<li>small changes in prices do not cause jumps in demand,</li>
+<li>small changes in endowments do not cause discontinuous behavior,</li>
+<li>incentives vary smoothly with parameters.</li>
+</ul>
+<p>Discontinuities often signal:</p>
+<ul>
+<li>indivisibilities,</li>
+<li>threshold effects,</li>
+<li>or institutional constraints.</li>
+</ul>
 <p>These can be important—but they require different tools.</p>
 <hr />
 <h2 id="continuity-of-preferences-and-utility-representations">10. Continuity of preferences and utility representations</h2>
 <p>Preferences are <strong>continuous</strong> if small changes in alternatives do not flip rankings abruptly.</p>
-<p>Formally, continuity of preferences means that for any <span class="math inline">\(x\)</span>: - the better set <span class="math inline">\(\{y \mid y \succeq x\}\)</span> is closed, - and the <em>worse set</em> (or lower contour set) <span class="math inline">\(\{y \mid x \succeq y\}\)</span> is closed.</p>
+<p>Formally, continuity of preferences means that for any <span class="math inline">\(x\)</span>:</p>
+<ul>
+<li>the better set <span class="math inline">\(\{y \mid y \succeq x\}\)</span> is closed,</li>
+<li>and the <em>worse set</em> (or lower contour set) <span class="math inline">\(\{y \mid x \succeq y\}\)</span> is closed.</li>
+</ul>
 <p>When preferences admit a utility representation, continuity of preferences corresponds to continuity of the representing utility function.</p>
 <p>If we have that, our lives are simple. If not, they require other tools.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <hr />
 <h2 id="existence-of-optimal-choices">12. Existence of optimal choices</h2>
 <p>Putting everything together:</p>
-<p>If: - preferences are complete and transitive, - preferences are continuous, - the feasible set is compact,</p>
-<p>then: - an optimal choice exists, - and the choice correspondence is non-empty.</p>
-<p>This result will be used repeatedly: - in consumer theory, - in mechanism design, - in equilibrium analysis, - and later in dynamic models.</p>
+<p>If:</p>
+<ul>
+<li>preferences are complete and transitive,</li>
+<li>preferences are continuous,</li>
+<li>the feasible set is compact,</li>
+</ul>
+<p>then:</p>
+<ul>
+<li>an optimal choice exists,</li>
+<li>and the choice correspondence is non-empty.</li>
+</ul>
+<p>This result will be used repeatedly:</p>
+<ul>
+<li>in consumer theory,</li>
+<li>in mechanism design,</li>
+<li>in equilibrium analysis,</li>
+<li>and later in dynamic models.</li>
+</ul>
 <hr />
 <h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
 <p>The relevant material appears in:</p>
@@ -147,17 +217,33 @@ If <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is compact and 
 <hr />
 <h2 id="another-economic-example-non-existence-of-demand">12. Another economic example: non-existence of demand</h2>
 <p>Consider a consumer with utility <span class="math inline">\(u(x)=x\)</span> and feasible set <span class="math inline">\(X=(0,1)\)</span>.</p>
-<p>Even though preferences are continuous and convex, demand is empty. Which of course does not make much economic sense. Often, if a model fails to produce existence, it is a bad model. It is not useful to think about situation where we don’t know what is happening, and often they are not applicable to the real world in which things typically tend to happen. But, it is a useful example, because it explains why economists insist on (in their models): - closed budget sets, - local nonsatiation, - and sometimes artificial bounds.</p>
+<p>Even though preferences are continuous and convex, demand is empty. Which of course does not make much economic sense. Often, if a model fails to produce existence, it is a bad model. It is not useful to think about situation where we don’t know what is happening, and often they are not applicable to the real world in which things typically tend to happen. But, it is a useful example, because it explains why economists insist on (in their models):</p>
+<ul>
+<li>closed budget sets,</li>
+<li>local nonsatiation,</li>
+<li>and sometimes artificial bounds.</li>
+</ul>
 <p>Existence is not automatic — it is engineered.</p>
 <hr />
 <h2 id="why-this-matters-for-microeconomics">13. Why this matters for microeconomics</h2>
 <p>Much of microeconomic theory is concerned with <strong>existence before uniqueness</strong>.</p>
-<p>Before we ask: - how many equilibria exist, - how they compare, - how they change with parameters,</p>
+<p>Before we ask:</p>
+<ul>
+<li>how many equilibria exist,</li>
+<li>how they compare,</li>
+<li>how they change with parameters,</li>
+</ul>
 <p>we must first ensure that <em>something exists at all</em>.</p>
 <p>Continuity and closedness are the quiet assumptions that make the rest of the theory possible.</p>
 <hr />
 <h2 id="what-you-should-take-away">14. What you should take away</h2>
-<p>After this topic, you should be comfortable with: - distinguishing open and closed sets, - understanding why compactness matters, - seeing continuity as an economic assumption, - and recognizing when existence arguments apply.</p>
+<p>After this topic, you should be comfortable with:</p>
+<ul>
+<li>distinguishing open and closed sets,</li>
+<li>understanding why compactness matters,</li>
+<li>seeing continuity as an economic assumption,</li>
+<li>and recognizing when existence arguments apply.</li>
+</ul>
 <p>These tools will soon be used implicitly. Knowing where they come from will help you spot when they fail.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
@@ -170,6 +256,94 @@ If <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is compact and 
 </section>
 
 </main>
+<aside class="course-outline-right" aria-label="Course outline">
+<h2 class="outline-title">Course Outline</h2>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic4.html" aria-current="page">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+</aside>
+</div>
+<div id="outline-backdrop" class="outline-backdrop"></div>
+<aside id="outline-drawer" class="outline-drawer" aria-hidden="true" aria-label="On this page">
+  <div class="outline-drawer-header">
+    <h2 class="outline-title">On This Page</h2>
+    <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
+  </div>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-continuity-and-closedness-matter">1. Why continuity and closedness matter</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#open-and-closed-sets-intuition-first">2. Open and closed sets: intuition first</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-closedness-is-economically-important">3. Why closedness is economically important</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#example-a-failure-of-existence">4. Example: A failure of existence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#compactness-putting-everything-together">5. Compactness: putting everything together</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#continuity-of-functions">6. Continuity of functions</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-remark-on-metrics">A remark on metrics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-intermediate-value-theorem">7. The Intermediate Value Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-weierstrass-theorem-existence-of-maxima">8. The Weierstrass Theorem (existence of maxima)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-economists-care-about-continuity">9. Why economists care about continuity</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#continuity-of-preferences-and-utility-representations">10. Continuity of preferences and utility representations</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#existence-of-optimal-choices">12. Existence of optimal choices</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#another-economic-example-non-existence-of-demand">12. Another economic example: non-existence of demand</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">13. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">14. What you should take away</a></li></ul>
+</aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic3.html" class="nav-prev">← Previous</a><a href="Topic5.html" class="nav-next">Next →</a></nav>
+
+<script>
+(() => {
+  const body = document.body;
+  const toggle = document.getElementById('outline-toggle');
+  const closeBtn = document.getElementById('outline-close');
+  const backdrop = document.getElementById('outline-backdrop');
+  const drawer = document.getElementById('outline-drawer');
+  const links = Array.from(document.querySelectorAll('.outline-link'));
+
+  const setOpen = (isOpen) => {
+    body.classList.toggle('outline-open', isOpen);
+    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  if (toggle) toggle.addEventListener('click', () => setOpen(!body.classList.contains('outline-open')));
+  if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+  if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('outline-open')) setOpen(false);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const sectionMap = links
+    .map((link) => {
+      const hash = link.getAttribute('href') || '';
+      const id = hash.startsWith('#') ? hash.slice(1) : '';
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, link, section } : null;
+    })
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const row of sectionMap) {
+      const active = row.id === id;
+      row.link.classList.toggle('active', active);
+      if (active) {
+        row.link.setAttribute('aria-current', 'location');
+      } else {
+        row.link.removeAttribute('aria-current');
+      }
+    }
+  };
+
+  if ('IntersectionObserver' in window && sectionMap.length) {
+    let fallbackId = sectionMap[0].id;
+    const observer = new IntersectionObserver((entries) => {
+      let best = null;
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+      }
+      if (best) {
+        const id = best.target.id;
+        fallbackId = id;
+        setActive(id);
+      } else {
+        setActive(fallbackId);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.1, 0.35, 0.6] });
+
+    sectionMap.forEach((row) => observer.observe(row.section));
+    setActive(fallbackId);
+  }
+})();
+</script>
+
 </body>
 </html>
