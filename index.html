@@ -1,374 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Johannes Schneider --- Professor of Economics at JKU"/>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathematical Tools for Econ PhD</title>
+<link rel="stylesheet" href="style.css">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="landing-page">
+<header class="site-header">
+  <h1 class="site-title">Mathematical Tools for Econ PhD</h1>
+  <div class="course-description"><p>This course is a handbook–precourse hybrid intended to walk (prospective) PhD students through the math concepts needed for (at least) the Micro sequence of the PhD. Each topic aims at introducing a key concept and fleshes out its relation to economic ideas and why it is important.</p><details class="preface-more"><summary>Show Full Preface</summary><div class="preface-body"><h2 id="style-and-tone">Style and Tone</h2>
+<p>The course is deliberately chatty in an attempt to stand apart from the mathematical appendices of economic textbooks. It also tries not to lose sight of the economic problem, in the hope of keeping on board those who care less about the beauty of the concept discussed and more about its application.</p>
+<p>It is always a fine line between being comprehensive and complete, yet not losing track of the intuition. For the purposes I imagine with this course, I have chosen to sometimes not discuss things to the finest detail, but to leave that to a point in one’s career when motivation is already built up sufficiently to have the stamina to survive (seemingly) unrelated lemmata. At the same time, I have tried to be precise and consistent and to flag any hand-wavy part. The hope is that this way the reader can at least see when we are using some magic to get us halfway there.</p>
+<p>One thing that I aim at with these notes is to deliver stories behind concepts that capture at least the main intuition behind our topic. The goal is to have easy-to-remember items that deliver the gist of some buzz word. I am aware that there are slippery slopes on this road. Yet, I think it is sometimes better to have some idea before going back to the textbook.</p>
+<h2 id="relation-to-textbooks">Relation to Textbooks</h2>
+<p>One frustration I felt in my days as a PhD student was that basic math seemed either scattered across random mathematical appendices — all with different notation, many requiring you to read the textbook itself first — or buried in pure math books where it was unclear what the prerequisites were. This led to inefficient rabbit-holing at times (not to be confused with the efficient kind of rabbit hole which, I firmly believe, is key to surviving a PhD core sequence).</p>
+<p>I believe that with AI at one’s fingertips a new alternative arises: asking the machine every time to explain things — which, for many reasons, at least right now, leads to unpredictable outcomes because conveying for what purpose we are interested in these topics is hard for the machine to grasp, and difficult for the learner to explain to it.</p>
+<p>So what I did here is curate a set of concepts in a language I like, at a precision level I can tolerate, and with a particular goal (the PhD core sequence) in mind. None of what happens here is new, but it comes together in one place and with limited noise surrounding it. Ideally, that makes it a useful tool.</p>
+<p>Ideally for me, it also makes my life easier when teaching Microeconomics, because we do not get side tracked too much in discussions about who knows which math concepts and how well, but can focus on the <strong>purpose</strong> of the concept in the <strong>economic</strong> problem.</p>
+<p>However, textbooks serve a purpose still, and Mas-Colell, Whinston, and Green (1995, MWG henceforth) remains incredibly powerful despite being older than most PhD students. Therefore, I aim to relate each topic to the relevant literature and in particular to MWG, hoping that readers can also use these topics as a guide through the many excellent textbooks out there.</p>
+<p>Other books I refer to are Ok (2007), Aliprantis and Border (2006), and Mailath and Samuelson (2006). Kreps’s writing style is always in the background, and all his books are worth getting into.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Aliprantis, C. D. and Border, K. C. (2006). <em>Infinite Dimensional Analysis: A Hitchhiker’s Guide</em>, 3rd ed. Springer, Berlin.</li>
+<li>Kreps, D. M. (1988). <em>Notes on the Theory of Choice</em>. Westview Press, Boulder.</li>
+<li>Kreps, D. M. (1990). <em>A Course in Microeconomic Theory</em>. Princeton University Press, Princeton.</li>
+<li>Kreps, D. M. (2012). <em>Microeconomic Foundations I: Choice and Competitive Markets</em>. Princeton University Press, Princeton.</li>
+<li>Mailath, G. J. and Samuelson, L. (2006). <em>Repeated Games and Reputations: Long-Run Relationships</em>. Oxford University Press, Oxford.</li>
+<li>Mas-Colell, A., Whinston, M. D., and Green, J. R. (1995). <em>Microeconomic Theory</em>. Oxford University Press, Oxford.</li>
+<li>Ok, E. A. (2007). <em>Real Analysis with Economic Applications</em>. Princeton University Press, Princeton.</li>
+</ul></div></details></div>
+</header>
+<main class="topic-list">
 
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Johannes Schneider - JKU Linz - Department of Economics </title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="main.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-        <!-- <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-65546929-1', 'auto');
-      ga('send', 'pageview');
-
-    </script> -->
-  </head>
-
-
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Johannes Schneider</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a  class="page-scroll" href="#home">Home</a></li>
-              <li><a class="page-scroll" href="#research">Research</a></li>
-              <li><a class="page-scroll" href="SchneiderCV.pdf" target="_blank">Curriculum Vitae</a></li>
-              <!-- <li><a class="page-scroll" href="#teaching">Teaching</a></li> -->
-              <!-- <li><a class="page-scroll" href="#references">References</a></li> -->
-              <li><a class="page-scroll" href="#contact">Contact</a></li>
-            </ul>
-
-          </div>
-        </div>
-      </nav>
-
-    <section id="home" class="home-section">
-    	<div class="container-fluid">
-    	<div class="col-md-9 col-lg-7 col-xl-5">
-          <div class="welcome"> 
-            <div class="container-fluid ">
-             <div class="row vertical-align">
-              <div class="col-md-9 col-lg-7 col-xl-5">
-               <h1>Welcome</h1>
-                <h2><small>I am a Professor of Economics at JKU Linz.<br><br> I work on Economic Theory and applications to Innovation, Technological Change, and the Law.<br><br> </small></h2><p> </p>
-              </div>
-              <div class="col-lg-5 hidden-md hidden-sm hidden-xs col centered" >
-              <img src="new.JPG" class="img-responsive" style="padding:0%">
-              </div>
-            </div></div>
-            </div>
-			</div></div></section>
-  <section id="research" class="research-section">
-      <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-9 col-lg-7 col-xl-5">
-        <div class="page-header text-center">
-          <h1>Research</h1> 
-          <h2 class="symbolline text-center">
-            <span class="glyphicon-folder-open" aria-hidden="true"></span>
-          </h2>
-        </div></div></div>
-        
-        <div class="row">
-          <div class="col-md-9 col-lg-7 col-xl-5">
-            
-              <h3>science of science</h3>
-            <h4 style="color:black"> <a href="https://doi.org/10.3982/ECTA22144" style="color:white">A Quest for Knowledge </a> <small style="color:black;">(with <a target="_blank" href="http://carnehl.github.io">Christoph Carnehl</a>)</small><br>  <i style="color:black;">&mdash; Econometrica, 93(2), 2025</i></h4>
-              <p style="text-align:justify"><p style="text-align:justify"> A researcher is standing on the shoulders of giants and selects a research question. Which one will she pick? How invested is she to find an answer? How does knowledge evolve? Can we improve on that evolution? <a href="https://www.econometricsociety.org/publications/econometrica/browse/2025/03/01/A-Quest-for-Knowledge/file/ecta200746.pdf" style="color:white">[ecma  (open access)]</a>,<a href="https://arxiv.org/abs/2102.13434" style="color:white"">[arXiv]</a>,<a href="QfK_presentation.pdf" style="color:white"> [slides]</a>,<a href="https://www.youtube.com/watch?v=Zk9Osb_0BYo" style="color:white" target="_blank"> [video (earlier version)]</a>, <a href="https://twitter.com/jsndr/status/1366764321494228993?s=20" style="color:white" target="_blank"> [twttr]</a>,<a href="https://uc3nomics.uc3m.es/moonshots-and-milestones/" style="color: white" target="_blank">[blog]</a>,<a href="QfK_Matlab.zip" download style="color:black" target="_blank">[matlab]</a></p>  <br>
-
-               <h3>firms and organization</h3>
-               <h4 style="color:black"><a href="https://arxiv.org/abs/2406.09734" style="color:white" target="_blank">Embracing the Enemy </a> <small style="color:black;">(with <a target="_blank" href="https://sites.google.com/view/alvarodelgadovega/">Álvaro Delgado-Vega</a>)</small><br><i>&mdash; Review of Economic Studies (accepted)</i></small></h4>
-               <p style="text-align:justify"> Groups in an organization compete about the <em>who</em> and the <em>how</em>. A third party can partially influence the who and cares about the how. Whom should it support?<a href="https://arxiv.org/pdf/2406.09734" style="color:white" target="_blank">[pdf]</a>,<a href="Presentation_ETE.pdf" style="color:white" target="_blank"> [slides]</a>,<a href="https://x.com/jsndr/status/1818751153716486532" style="color:white" target="_blank">[twttr]</a>,<a href="Code_Graphs.zip" style="color:black">[GraphPackage]</a>
-                </p><br>
-
-            <h4><a href="https://doi.org/10.1093/jeea/jvac027" style="color:white">On Risk and Time Pressure: When to Think and When to Do </a><small style="color:black;">(with <a target="_blank" href="http://carnehl.github.io">Christoph Carnehl)</a> </small><br>  <i style="color:black;">&mdash; Journal of the European Economic Association, 21, 2023</i></h4>
-            <p style="text-align:justify">You have a deadline to solve a problem. When should you use whatever you have available, when should you think about new things? How often should you switch between approaches? <a href="https://arxiv.org/pdf/2111.07451v2.pdf" style="color:white" target="_blank">[arXiv]</a>,<a href="AIP_presentation.pdf" style="color:white" target="_blank">[slides]</a><a href="https://twitter.com/jsndr/status/1532698384078934017" style="color:white" target="_blank">, [twttr]</a></p><br>
-
-             <h4><a href="https://doi.org/10.1016/j.ijindorg.2021.102764" style="color:white">  Persuading to Participate: Coordination on a Standard </a> <small style="color:black;">(with <a target="_blank" href="https://sites.google.com/site/bennibalzer1/">Benjamin Balzer</a>)</small><br><i style="color:black;">&mdash; International Journal of Industrial Organization, 78, 2021</i><br><b><small style="margin-left:20px;color:black"> IJIO Best Paper Award (Best Theoretical Paper 2021)</small></b></h4>
-            <p style="text-align:justify">Coordination on standards is hard if firms have private information on the quality of their innovations. A firm can persuade a competitor to join the SSO by credibly threatening to release information about its own quality. Vaporware, Newsleakage, and Beta versions are potential business strategies to exercise the threat. <a href="InfoPunishment.pdf" style="color:white">[pdf]</a>, <a href="https://twitter.com/jsndr/status/1564183128566030336" style="color:white"> [twttr]</a> </p><br>  
-
-
-
-
-            <h3>law and economics</h3>
-              <h4><a href="https://onlinelibrary.wiley.com/doi/10.1111/1756-2171.12440" style="color:white"> The Wrong Kind of Information</a> <small style="color:black;">(with <a target="_blank" href="https://sites.google.com/view/adityakuvalekar">Aditya Kuvalekar</a> and <a target="_blank" href="https://www.joaoaramos.com/">Jo&atilde;o Ramos)</a></small><br>  <i style="color:black;">&mdash; RAND Journal of Eonomics, 54(2), 2023</i></h4><p style="text-align:justify"> An agent decides whether to approve a project based on his information, only a part of which is verifiable in court. Is more precise (un)verifiable information always better?  <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/1756-2171.12440" style="color:white">[rand (open access)]</a>,<a href="https://arxiv.org/pdf/2111.04172" style="color:white">[arXiv]</a>,<a href="twki_presentation.pdf" style="color:white">[slides]</a>,<a href="https://twitter.com/adikuva/status/1561679290827034625" style="color:white">[twttr]</a>,<a href="https://uc3nomics.uc3m.es/the-wrong-kind-of-information/" style="color:white">[blog]</a></p><br>
-
-             <h4><a href="https://onlinelibrary.wiley.com/doi/10.1111/1756-2171.12374" style="color:white"> Managing a Conflict: Optimal Alternative Dispute Resolution</a> <small style="color:black;">(with <a target="_blank" href="https://sites.google.com/site/bennibalzer1/">Benjamin Balzer)</a></small><br>  <i style="color:black;">&mdash; RAND Journal of Economics, 52, 2021</i></h4>
-             <p style="text-align:justify"> Suppose some private information is relevant in a law suit only: How should we design ADR to settle outside the court?<br>
-              <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/1756-2171.12374" style="color:white">[rand  (open access)]</a>,<a href="OptimalADR.pdf" style="color:white">[wp]</a><a href="Constraint_Optimization.m" download style="color:black"><a href="https://twitter.com/jsndr/status/1408395768965255177" style="color:white" target="_blank">, [twttr]</a>, [matlab]</a></p><br>
-                    
-            
-             
-            <h4> Bankruptcy Laws and Debt Roll-Over (work in progress) <small style="color:black;">(with <a target="_blank" href="https://sites.google.com/site/floexler/research">Florian Exler</a>)</small><br><small style="color:black;font-weight:bold"></small></h4>
-              <p style="text-align:justify"> If a borrower is in financial distress, he has better information whether this due to a (shorter) dry spell or because his investment is fundamentally rotten. That information is valuable to banks who have to decide whether to roll-over credit or to foreclose. Bankruptcy laws affect banks decisions and thus prices in the credit market.
-               </p><br><br>
-
-              
-        
-            
-
-                  
-
-           
-
-            <h3>conflict management</h3>
-            <h4><a href="https://doi.org/10.1016/j.geb.2023.03.012" style="color:white">  Mechanism Design with Informational Punishment </a><small style="color:black;">(with <a target="_blank" href="https://sites.google.com/site/bennibalzer1/">Benjamin Balzer)</a></small><br> <i style="color:black;">&mdash; Games and Economic Behavior, 40, 2023</i></h4>
-            <p style="text-align:justify">
-              A single veto can make a proposed mechanism void and enforce the play of a default game instead. When public vetoes are signals, is the threat to retaliate through information release enough to deter the deviator?  <a href="https://www.sciencedirect.com/science/article/pii/S0899825623000441/pdfft?md5=b997e7534fdd7028af9a392141a65cbb&pid=1-s2.0-S0899825623000441-main.pdf" style="color:white">[geb (open access)]</a>,<a href="https://arxiv.org/pdf/2201.01149" style="color:white">[arXiv]</a></p><br>
-
-            <h4><a href="" style="color:white">  Belief Management in Conflict Resolution (Substantive Revision in progress) </a><small style="color:black;">(with <a target="_blank" href="https://sites.google.com/site/bennibalzer1/">Benjamin Balzer</a>&mdash; dormant)</small></h4>
-            <p style="text-align:justify">
-              Arbitration problems boil down to information design problems. The arbitrator always has to solve the information design problem, once she has done that, designing the arbitration problem is mechanical.  <a href="https://josndr.github.io" style="color:white">[pdf]</a></p><br>
-
-            <h4> <a href="Sequential_Proposal_draft.pdf" style="color:white"> Persuasion, Pandering, and Sequential Proposal </a></h4>
-            <p style="text-align:justify"><p style="text-align:justify"> How would an agent decide on the order of proposing projects to a principal? An accepted proposal forces the agent to work on it, once rejected it is hard to convince the principal to take up the project again. Is it wise to propose the agent-preferred project early on? Should she wait to signal that this truly is a good project? </p>  <br><br>
-
-            
-            
-            <!-- <h3>learning in games</h3>
-            <h4>Discriminating between Models of Learning - An Experimental Study with Intra-Team Communication (work in progress) <small style="color:black;">(with <a target="_blank" href="http://www.penczynski.de/">Stefan Penczynski</a>)</small></h4> -->
-          </div>
-        </div></div>
-    </section>     
-<!--     <section id="cv" class="cv-section">
-      <div class="container-fluid">
-      <div class="row">
-      <div class="col-md-9">
-      <div class="page-header text-center">
-        <h1>Curriculum Vitae</h1> 
-        <h2 class="symbolline text-center">
-          <span class="glyphicon-education" aria-hidden="true"></span>
-        </h2>
-      </div></div></div>
-      <div class="row">
-
-        <div class="col-md-9">
-        <br><br>
-            <div class="table-responsive center">
-                <table class="table-striped cv-table col-md-9, col-sm-9">
-                  <tbody>
-                    <tr>
-                      <th>
-                        2016-
-                      </th>
-                      <td><h4>Assistant Professor of Economics</h4>
-                      Universidad Carlos III de Madrid</td>
-                    </tr>
-                    <caption style="caption-side:bottom;"><h4 style="color:black"> <br>Education</h4></caption>
-                  </tbody>
-                  </table>
-                  <table class="table-striped cv-table col-md-9 col-sm-9">
-                  
-                  <tbody>
-                  <tr>
-                    <th>
-                      2016
-                    </th> -->
-                   <!--  <td></td> -->
- <!--                    <td>
-                      <h4>Ph.D. in Economics</h4>
-                      University of Mannheim
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      2011 
-                    </th> -->
-                    <!-- <td></td> -->
-<!--                     <td>
-                      <h4>Diploma (M.Sc. equivalent) in Economics</h4>
-                      University of Freiburg
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      2008-2009 
-                    </th> -->
-                    <!-- <td></td> -->
-<!--                     <td>
-                      <h4>Visiting Graduate Student </h4>
-                      University of Bologna, Economics and  Political Sciences
-                    </td>
-                  </tr>
-                  <tr></td></tr>
-                  </tbody><caption style="caption-side:bottom;"><h4 style="color:black"> <br>Detailed CV(<a href="SchneiderCV.pdf">pdf</a>)</h4></caption>
-                </table>
-              </div>
-          </div>
-          </div>
-        </div>
-
-
-    </section> -->
-   
-<!--     <section id="teaching" class="teaching-section">
-    <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-9">
-      <div class="page-header text-center">
-        <h1>Teaching</h1> 
-        <h2 class="symbolline text-center">
-          <span class="glyphicon-blackboard" aria-hidden="true"></span>
-        </h2>
-      </div></div></div>
-    <div class="row ">
-      <div class="col-md-9 text-center">
-      <div class="col-centered">
-      <h3 style="color:black">Teaching Assistantships in Mannheim</h3>
-      <div class="table-responsive">
-        <table class="table-striped cv-table center">
-          <caption></caption>
-              <tbody>
-                <tr>
-                    <th>
-                      Spring 2016<br>
-                    </th>
-                    <td>
-                      Advanced Microeconomics III (PhD)<br>
-                      Microeconomics A (Bachelor, in German)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                      Fall 2014
-                    </th>
-                    <td>
-                      Microeconomics B (Bachelor, in German)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                      Fall 2013
-                    </th>
-                    
-                    <td>
-                      Microeconomics B (Bachelor, in German)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                      Fall 2012
-                    </th>
-                    <td>
-                      Microeconomics B (Bachelor, in English)
-                    </td>
-                </tr>
-              </tbody>
-            </table></div>
-      <h3 style="color:black">Teaching Assistantships in Freiburg</h3>
-        <div class="table-responsive">
-        <table class="table-striped cv-table center">
-          <caption></caption>
-              <tbody>
-              <tr>
-                <th>
-                  Fall 2010 
-                </th>
-                <td>
-                  Microeconomics I (Bachelor, in German)
-                </td>
-              </tr>
-              </tbody>
-            </table></div></div>
+  <article class="topic-card">
+    <span class="topic-badge">1</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic1.html">Topic 1: Sets, Mappings, and the Language of Economic Models</a></h2>
+      <p class="card-subtitle">Why economists spend so much time talking about functions</p>
+      <div class="card-actions">
+        <a href="topics/Topic1.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic1.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
     </div>
-    </div></div>
-    </section> -->
-
-    <!-- <section id="references" class="reference-section">
-   		<div class="container-fluid">
-  		<div class="row">
-      <div class="col-md-9">
-        		<div class="page-header text-center">
-          		<h1>References</h1> 
-          		<h2 class="symbolline text-center">
-            			<span class="glyphicon-envelope" aria-hidden="true"></span>
-          		</h2>
-        		</div>
-        		</div></div>
-        		<div class="row">
-      		<div class="container-fluid">
-        			<div class="col-sm-3">
-       
-        				<h3><a target="_blank" href="http://nocke.vwl.uni-mannheim.de" style="color:black">Volker Nocke</a></h3>
-        				<p>University of Mannheim</p>
-        				<p>+49 621 181 1836<br>
-        				   nocke [at] uni-mannheim.de</p>
-        			</div>
-        			<div class="col-md-3">
-      
-        				<h3><a target="_blank" href="http://peitz.vwl.uni-mannheim.de" style="color:black">Martin Peitz</a></h3>
-        				<p>University of Mannheim</p>
-        				<p>+49 621 181 1835<br>
-        				   martin.peitz [at] googlemail.com</p>
-        			</div>
-        			<div class="col-md-3">
-       
-        				<h3><a target="_blank" href="http://thomasetroger.wordpress.com" style="color:black">Thomas Tröger</a></h3>
-        				<p>University of Mannheim</p>
-        				<p>+49 621 181 3423<br>
-        				   troeger [at] uni-mannheim.de</p>
-        			</div>
-      		</div>
-      		</div>
-    		</div>
-     </section> -->
-
-
-     
-    <section id="contact" class="contact-section">
- 		<div class="container-fluid">
-      <div class="row">
-        <div class="col-md-7 col-lg-7 col-xl-5">
-        <div class="page-header text-center">
-        		<h1>Contact Details</h1> 
-        		<h2 class="symbolline text-center">
-          			<span class="glyphicon-user" aria-hidden="true"></span>
-        		</h2>
-      		</div>
-      		</div></div>
-      		<div class="row">
-          <div class="col-md-7 col-lg-7 col-xl-5 text-center">
-          <!-- <div class="col-centered"> -->
-      		<h3>Johannes Schneider</h3>
-    			<div class="textContainer">
-                   Johannes Kepler Universität Linz<br>
-                  Department of Economics<br>
-                  Altenberger Strasse 69<br>
-                  4040 Linz, Austria<br> 
-                  <!-- Phone: +34 91 624 9357<br> -->
-      		  email: johannes.schneider@jku.at</p>
-      				 </div> 
-      		</div></div></div>
-      	<!-- </div> -->
-     </section>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/scrolling-nav.js"></script>
-
-  </body>
-
-
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">2</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic2.html">Topic 2: Preferences and Utility Representation</a></h2>
+      <p class="card-subtitle">How economists talk about what people want</p>
+      <div class="card-actions">
+        <a href="topics/Topic2.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic2.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">3</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic3.html">Topic 3: Convex Sets and the Geometry of Choice</a></h2>
+      <p class="card-subtitle">Why economists care so much about "nice" shapes</p>
+      <div class="card-actions">
+        <a href="topics/Topic3.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic3.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">4</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic4.html">Topic 4: Continuity, Closed Sets, and Existence</a></h2>
+      <p class="card-subtitle">Why solutions exist — and when they do not</p>
+      <div class="card-actions">
+        <a href="topics/Topic4.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic4.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">5</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic5.html">Topic 5: Optimization, Correspondences, and Existence of Solutions</a></h2>
+      <p class="card-subtitle">Why optimal behavior is rarely a point and often a set</p>
+      <div class="card-actions">
+        <a href="topics/Topic5.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic5.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">6</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic6.html">Topic 6: Differentiability and Marginal Reasoning</a></h2>
+      <p class="card-subtitle">Why economists care about slopes, not just optima</p>
+      <div class="card-actions">
+        <a href="topics/Topic6.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic6.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">7</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic7.html">Topic 7: Envelope Theorems and Value Functions</a></h2>
+      <p class="card-subtitle">How the value of an optimal choice changes when the problem changes</p>
+      <div class="card-actions">
+        <a href="topics/Topic7.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic7.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">8</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic8.html">Topic 8: Order, Lattices, and Monotonicity</a></h2>
+      <p class="card-subtitle">How to do comparative statics without calculus</p>
+      <div class="card-actions">
+        <a href="topics/Topic8.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic8.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">9</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic9.html">Topic 9: Probability and Expectations</a></h2>
+      <p class="card-subtitle">How economists talk about uncertainty, types, and randomization</p>
+      <div class="card-actions">
+        <a href="topics/Topic9.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic9.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">10</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic10.html">Topic 10: Fixed Points and Equilibrium Existence</a></h2>
+      <p class="card-subtitle">Why equilibrium is a mathematical object, not a metaphor</p>
+      <div class="card-actions">
+        <a href="topics/Topic10.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic10.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">11</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic11.html">Topic 11: Discounting and Infinite Horizons</a></h2>
+      <p class="card-subtitle">Why the future is cheaper, and why that makes infinite problems tractable</p>
+      <div class="card-actions">
+        <a href="topics/Topic11.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic11.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">12</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic12.html">Topic 12: Dynamic Programming and Recursive Thinking</a></h2>
+      <p class="card-subtitle">How to solve infinite-dimensional problems one step at a time</p>
+      <div class="card-actions">
+        <a href="topics/Topic12.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic12.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">13</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic13.html">Topic 13: Linear Constraints and Incentives as Geometry</a></h2>
+      <p class="card-subtitle">Why prices are perpendicular and constraints have shape</p>
+      <div class="card-actions">
+        <a href="topics/Topic13.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic13.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">14</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic14.html">Topic 14: Topology in Practice</a></h2>
+      <p class="card-subtitle">How metrics structure change and space</p>
+      <div class="card-actions">
+        <a href="topics/Topic14.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic14.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">15</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic15.html">Topic 15: Measurability and Integration</a></h2>
+      <p class="card-subtitle">Giving \(\int f\, d\mu\) a rigorous home</p>
+      <div class="card-actions">
+        <a href="topics/Topic15.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic15.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+  <article class="topic-card">
+    <span class="topic-badge">16</span>
+    <div class="card-body">
+      <h2 class="card-title"><a href="topics/Topic16.html">Topic 16: Proof Techniques in Economic Theory</a></h2>
+      <p class="card-subtitle">Making conscious what you have been doing all along</p>
+      <div class="card-actions">
+        <a href="topics/Topic16.html" class="btn btn-view">Read →</a>
+        <a href="pdfs/Topic16.pdf" class="btn btn-pdf" download>PDF</a>
+      </div>
+    </div>
+  </article>
+</main>
+<footer class="site-footer"><span class="footer-label">Course updates</span><a href="changelog.html" class="changelog-link">Open changelog</a></footer>
+</body>
 </html>
