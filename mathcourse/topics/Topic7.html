@@ -429,6 +429,7 @@ u(x)\geq\bar{u}.
 p\cdot x+\mu\bigl(\bar{u}-u(x)\bigr),
 \qquad \mu\geq0.
 \]</span></p>
+<p>Suppose the expenditure minimizer is regular and unique and the expenditure function is differentiable at <span class="math inline">\((p,\bar{u})\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>Prices enter only through <span class="math inline">\(p\cdot x\)</span>. Therefore</p>
 <p><span class="math display">\[
 \frac{\partial e(p,\bar{u})}{\partial p_\ell}
@@ -461,6 +462,7 @@ w-p\cdot x\geq0.
 =
 u(x)+\lambda(w-p\cdot x).
 \]</span></p>
+<p>Suppose the optimum is regular, the budget binds, and <span class="math inline">\(v\)</span> is differentiable at <span class="math inline">\((p,w)\)</span>. Local nonsatiation is a standard condition ensuring that the budget binds. If demand is unique, write it as <span class="math inline">\(x(p,w)\)</span>.</p>
 <p>The constrained envelope theorem gives</p>
 <p><span class="math display">\[
 \frac{\partial v}{\partial w}=\lambda^\ast,
@@ -612,7 +614,7 @@ f_t(1,0)=1.
 <p><span class="math display">\[
 V(t)-V(s)=\int_s^t V&#39;(r)\,\mathrm{d}r.
 \]</span></p>
-<p>Differentiability almost everywhere is not, by itself, enough for this identity. Even continuity is not enough.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Differentiability almost everywhere is not, by itself, enough for this identity. Even continuity is not enough.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>We need two pieces of language.</p>
 <h3 id="almost-everywhere">Almost everywhere</h3>
 <p>A subset <span class="math inline">\(N\subseteq[0,1]\)</span> has <strong>measure zero</strong> if, for every <span class="math inline">\(\varepsilon&gt;0\)</span>, it can be covered by countably many intervals whose total length is less than <span class="math inline">\(\varepsilon\)</span>. A statement holds <strong>almost everywhere</strong> if it can fail only on a set of measure zero.</p>
@@ -639,22 +641,23 @@ F(t)=F(0)+\int_0^t F&#39;(s)\,\mathrm{d}s.
 <p>We now add conditions that make the value function absolutely continuous.</p>
 <hr />
 <p><strong>Theorem (Milgrom–Segal integral envelope theorem).</strong><br />
-Let <span class="math inline">\(X\)</span> be arbitrary and</p>
+Let <span class="math inline">\(X\)</span> be nonempty and</p>
 <p><span class="math display">\[
 V(t)=\sup_{x\in X}f(x,t),
 \qquad t\in[0,1].
 \]</span></p>
 <p>Suppose:</p>
 <ol type="1">
+<li><p><span class="math inline">\(V(0)&lt;\infty\)</span>;</p></li>
 <li><p><span class="math inline">\(f(x,\cdot)\)</span> is absolutely continuous for every <span class="math inline">\(x\in X\)</span>;</p></li>
-<li><p>there exists an integrable function <span class="math inline">\(b:[0,1]\to\mathbb{R}_+\)</span> such that</p>
+<li><p>there exists an integrable function <span class="math inline">\(b:[0,1]\to\mathbb{R}_+\)</span> such that, for almost every <span class="math inline">\(t\)</span>,</p>
 <p><span class="math display">\[
 |f_t(x,t)|\leq b(t)
 \]</span></p>
-<p>for every <span class="math inline">\(x\in X\)</span> and almost every <span class="math inline">\(t\)</span>.</p></li>
+<p>for every <span class="math inline">\(x\in X\)</span>. Thus, the exceptional measure-zero set does not depend on the choice <span class="math inline">\(x\)</span>.</p></li>
 </ol>
-<p>Then <span class="math inline">\(V\)</span> is absolutely continuous.</p>
-<p>If, in addition, <span class="math inline">\(f(x,\cdot)\)</span> is differentiable for every <span class="math inline">\(x\)</span> and an optimizer exists almost everywhere, then for any selection <span class="math inline">\(x^\ast(t)\in X^\ast(t)\)</span>,</p>
+<p>Then <span class="math inline">\(V\)</span> is finite-valued and absolutely continuous.</p>
+<p>If, in addition, <span class="math inline">\(f(x,\cdot)\)</span> is differentiable for every <span class="math inline">\(x\)</span> and <span class="math inline">\(X^\ast(t)\)</span> is nonempty almost everywhere, choose <span class="math inline">\(x^\ast(t)\in X^\ast(t)\)</span> wherever the optimizer set is nonempty and choose any element of <span class="math inline">\(X\)</span> on the remaining measure-zero set. Then</p>
 <p><span class="math display">\[
 V(t)
 =
@@ -667,6 +670,18 @@ V(0)
 <p>“Even if optimal choices jump, the value function can be recovered by integrating the direct parameter effect along any optimal selection.”</p>
 </blockquote>
 <h3 id="where-the-bound-is-used">Where the bound is used</h3>
+<p>Because <span class="math inline">\(V(0)&lt;\infty\)</span>, the uniform bound first guarantees that <span class="math inline">\(V(t)\)</span> is finite for every <span class="math inline">\(t\)</span>. Indeed, for every <span class="math inline">\(x\)</span>,</p>
+<p><span class="math display">\[
+f(x,t)
+\leq
+f(x,0)+\int_0^t b(s)\,\mathrm{d}s,
+\]</span></p>
+<p>so taking suprema gives</p>
+<p><span class="math display">\[
+V(t)
+\leq
+V(0)+\int_0^t b(s)\,\mathrm{d}s&lt;\infty.
+\]</span></p>
 <p>For <span class="math inline">\(t&#39;&lt;t&#39;&#39;\)</span>,</p>
 <p><span class="math display">\[
 |V(t&#39;&#39;)-V(t&#39;)|
@@ -776,8 +791,8 @@ f(b,t)=(t-b)G(b),
 <p>where <span class="math inline">\(G(b)\)</span> is the probability of winning with bid <span class="math inline">\(b\)</span>. The direct type derivative is <span class="math inline">\(G(b)\)</span>. Therefore the derivative of the bidder’s optimized payoff is her equilibrium winning probability, even though the optimal bid itself changes with type.</p>
 <hr />
 <h2 id="value-functions-beyond-static-demand">15. Value functions beyond static demand</h2>
-<p>The same structure reappears in dynamic programming. There, the “choice” can be an entire feasible continuation plan, and the parameter can be the initial state. The value function is the supremum of the payoff delivered by each plan.</p>
-<p>The smooth envelope theorem says: if the optimal plan and value function are differentiable, differentiate the primitive payoff with respect to the initial state while holding the plan fixed. Milgrom–Segal says something more robust: the envelope formula may remain valid at differentiability points even if the identity of the optimal plan changes discontinuously.</p>
+<p>The same structure reappears in dynamic programming. There, the “choice” can be an entire continuation plan, and the parameter can be the initial state. The direct Milgrom–Segal formulation requires a common plan set across initial states. This is available when feasibility is parameter-independent or when the problem can be reparameterized over a common set of plans. If changing the initial state changes which plans are feasible, the parameter enters the constraints and the constrained-envelope formula—including its multiplier terms—is the appropriate version.</p>
+<p>With that qualification, the smooth envelope theorem says: if the optimal plan and value function are differentiable, differentiate the primitive payoff with respect to the initial state while holding the plan fixed. Milgrom–Segal says something more robust: the envelope formula may remain valid at differentiability points even if the identity of the optimal plan changes discontinuously.</p>
 <p>This is why envelope arguments appear in:</p>
 <ul>
 <li>Bellman equations and comparative statics of value functions;</li>
@@ -833,14 +848,15 @@ U(t)=U(\underline{t})+\int_{\underline{t}}^t q(s)\,\mathrm{d}s
 <hr />
 <ol>
 <li id="fn1"><p>Sign conventions differ across books. If a maximization constraint is instead written as <span class="math inline">\(q_j(x,\theta)\leq0\)</span>, the corresponding term is <span class="math inline">\(-\lambda_j q_j\)</span> with <span class="math inline">\(\lambda_j\geq0\)</span>. Nothing economic changes. Pick one convention and use it consistently.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>The Cantor function is continuous, has derivative zero almost everywhere, and yet rises from <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>. Therefore it cannot be recovered by integrating its derivative. The missing property is absolute continuity.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Uniqueness is a convenient sufficient condition for the gradient formula, not the most general one. With several Hicksian bundles and a nondifferentiable expenditure function, the corresponding statement is set-valued and uses supergradients.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The Cantor function is continuous, has derivative zero almost everywhere, and yet rises from <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>. Therefore it cannot be recovered by integrating its derivative. The missing property is absolute continuity.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
 </main>
 <aside class="course-outline-right" aria-label="Course outline">
 <h2 class="outline-title">Course Outline</h2>
-<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic7.html" aria-current="page">7. Topic 7: Envelope Theorems and Value Functions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Measurability and Integration</a></li></ul>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic7.html" aria-current="page">7. Topic 7: Envelope Theorems and Value Functions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic16.html">16. Topic 16: Proof Techniques in Economic Theory</a></li></ul>
 </aside>
 </div>
 <div id="outline-backdrop" class="outline-backdrop"></div>
