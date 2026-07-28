@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Topic 9: Fixed Points and Equilibrium Existence</title>
+<title>Topic 9: Probability and Expectations</title>
 <link rel="stylesheet" href="../style.css">
 <script>
 MathJax = {
@@ -23,241 +23,242 @@ MathJax = {
 <button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
 <aside class="topic-outline-left" aria-label="On this page">
 <h2 class="outline-title">On This Page</h2>
-<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-fixed-points-enter-now">1. Why fixed points enter now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-is-a-fixed-point">2. What is a fixed point?</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#brouwers-fixed-point-theorem">3. Brouwer’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-of-the-proof">The idea of the proof</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-brouwer-is-not-enough-for-economics">Why Brouwer is not enough for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#kakutanis-fixed-point-theorem">4. Kakutani’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-this-is-the-workhorse-theorem-for-equilibrium">Why this is the workhorse theorem for equilibrium</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#how-kakutani-follows-from-brouwer-sketch">How Kakutani follows from Brouwer (sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#tarskis-fixed-point-theorem">5. Tarski’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#when-is-tarski-useful">When is Tarski useful?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-tarski-works-constructive-sketch">Why Tarski works (constructive sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#comparing-the-three-theorems">6. Comparing the three theorems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-nash-equilibrium-existence">7. An economic example: Nash equilibrium existence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-existence-matters-even-if-we-cannot-compute">8. Why existence matters (even if we cannot compute)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">9. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">10. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">11. What you should take away</a></li></ul>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-probability-enters-now">1. Why probability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-state-space-what-might-happen">2. The state space: what might happen</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#events-and-probabilities">3. Events and probabilities</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#random-variables">4. Random variables</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#distributions">5. Distributions</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#discrete-distributions">Discrete distributions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#continuous-distributions-and-the-cdf">Continuous distributions and the CDF</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#expectation-the-probability-weighted-average">6. Expectation: the probability-weighted average</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-care-about-expectation">Why economists care about expectation</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#linearity-of-expectation">Linearity of expectation</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-probability-and-bayes-rule">7. Conditional probability and Bayes’ rule</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#conditional-probability">Conditional probability</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#bayes-rule">Bayes’ rule</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#independence">8. Independence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-expectation">9. Conditional expectation</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-first-price-auction-with-private-values">10. An economic example: first-price auction with private values</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">12. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
 </aside>
 <main class="topic-content">
 <a href="../pdfs/Topic9.pdf" class="pdf-download" download>⬇ Download PDF</a>
-<h1 id="topic-9-fixed-points-and-equilibrium-existence">Topic 9: Fixed Points and Equilibrium Existence</h1>
-<p><em>(Why equilibrium is a mathematical object, not a metaphor)</em></p>
+<h1 id="topic-9-probability-and-expectations">Topic 9: Probability and Expectations</h1>
+<p><em>(How economists talk about uncertainty, types, and randomization)</em></p>
 <hr />
-<h2 id="why-fixed-points-enter-now">1. Why fixed points enter now</h2>
-<p>The pre-course has so far given us the tools to talk about:</p>
+<h2 id="why-probability-enters-now">1. Why probability enters now</h2>
+<p>Up to now, the pre-course has built a toolkit for:</p>
 <ul>
-<li>how agents choose (optimization, Topics <a href="Topic2.html">2</a>–<a href="Topic6.html">6</a>),</li>
-<li>how those choices depend on the environment (comparative statics, Topics <a href="Topic6.html">6</a>–<a href="Topic7.html">7</a>),</li>
-<li>how to deal with uncertainty (probability, Topic <a href="Topic8.html">8</a>).</li>
+<li>sets and mappings,</li>
+<li>preferences and utility,</li>
+<li>convexity and geometry,</li>
+<li>continuity, closedness, and existence,</li>
+<li>optimization and correspondences,</li>
+<li>differentiability and marginal reasoning,</li>
+<li>envelope theorems and value functions,</li>
+<li>order, lattices, and monotone comparative statics.</li>
 </ul>
-<p>But microeconomics is not just about a single agent choosing in isolation. Most of the interesting questions involve <strong>interaction</strong>: consumers react to prices, firms react to competitors, bidders react to other bidders’ strategies.</p>
-<p>In such settings, the fundamental question is no longer “what does the agent choose?” but rather:</p>
-<blockquote>
-<p>“Is there a situation where everyone’s behavior is mutually consistent?”</p>
-</blockquote>
-<p>That situation is what economists call an <strong>equilibrium</strong>. And mathematically, an equilibrium is almost always a <strong>fixed point</strong>.</p>
-<p>This topic introduces fixed points as the formal backbone of equilibrium existence results. It connects directly back to Topics <a href="Topic4.html">4</a> and <a href="Topic5.html">5</a> (existence, compactness, correspondences) and Topic <a href="Topic7.html">7</a> (lattices and order), and it sets the stage for everything in the PhD course that involves strategic interaction.</p>
-<hr />
-<h2 id="what-is-a-fixed-point">2. What is a fixed point?</h2>
-<p>Let <span class="math inline">\(f: X \to X\)</span> be a function that maps a set into itself.</p>
-<p>A point <span class="math inline">\(x^\ast \in X\)</span> is a <strong>fixed point</strong> of <span class="math inline">\(f\)</span> if <span class="math display">\[f(x^\ast) = x^\ast.\]</span></p>
-<blockquote>
-<p>“A fixed point is a point that the function leaves unchanged. You plug it in, you get it back.”</p>
-</blockquote>
-<p>This sounds simple, but it is the key idea behind equilibrium. Here is why.</p>
-<p>Think about a game. Each player has a <strong>best response</strong>: given what the others do, what is optimal for her? A best response is a mapping from the other players’ strategies to one’s own. Now, a <strong>Nash equilibrium</strong> is a strategy profile where every player is already playing a best response to everyone else. Nobody wants to deviate.</p>
-<p>But that means: if we collect all best responses into a single mapping from strategy profiles to strategy profiles, an equilibrium is exactly a point where this mapping sends the profile back to itself. That is a fixed point.</p>
-<p>So the question “does an equilibrium exist?” becomes: “does this mapping have a fixed point?”</p>
-<hr />
-<h2 id="brouwers-fixed-point-theorem">3. Brouwer’s fixed-point theorem</h2>
-<p>The most classical fixed-point result is due to Brouwer.</p>
-<hr />
-<p><strong>Theorem (Brouwer).</strong> Let <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> be nonempty, compact, and convex, and let <span class="math inline">\(f: X \to X\)</span> be continuous. Then <span class="math inline">\(f\)</span> has a fixed point.</p>
-<hr />
-<blockquote>
-<p>“If you continuously map a compact convex set into itself, at least one point stays put.”</p>
-</blockquote>
-<p>The conditions matter:</p>
+<p>All of these tools were developed in a world of certainty. The agent knows her choice set, she knows her utility function, and she knows the parameters of the problem. The only question was: given all this information, what does she choose, and how does that choice change when the environment changes?</p>
+<p>But a large part of microeconomics does not live in such a world.</p>
+<p>Agents often face:</p>
 <ul>
-<li><strong>Compact</strong>: the set is closed and bounded, so sequences cannot escape (Topic <a href="Topic4.html">4</a>).</li>
-<li><strong>Convex</strong>: the set has no holes or missing pieces (Topic <a href="Topic3.html">3</a>).</li>
-<li><strong>Continuous</strong>: the mapping does not jump (Topic <a href="Topic4.html">4</a>).</li>
-<li><strong>Into itself</strong>: the function sends every point in <span class="math inline">\(X\)</span> back into <span class="math inline">\(X\)</span>.</li>
+<li>uncertainty about payoffs (will this investment pay off?),</li>
+<li>uncertainty about other agents’ characteristics (what is the other bidder’s valuation?),</li>
+<li>uncertainty about signals (what does this test result mean?),</li>
+<li>or deliberate randomization (a player who mixes between strategies).</li>
 </ul>
-<p><strong>Proof sketch</strong> A one-dimensional version is easy to see. Take <span class="math inline">\(X = [0,1]\)</span> and <span class="math inline">\(f: [0,1] \to [0,1]\)</span> continuous. Consider the function <span class="math inline">\(g(x) = f(x) - x\)</span>. We know <span class="math inline">\(g(0) = f(0) \geq 0\)</span> (because <span class="math inline">\(f\)</span> maps into <span class="math inline">\([0,1]\)</span>) and <span class="math inline">\(g(1) = f(1) - 1 \leq 0\)</span>. By the intermediate value theorem, there exists some <span class="math inline">\(x^\ast\)</span> where <span class="math inline">\(g(x^\ast) = 0\)</span>, which means <span class="math inline">\(f(x^\ast) = x^\ast\)</span>. Done.</p>
+<p>So before we can talk cleanly about auctions, Bayesian games, or mixed strategies, we need a minimal probability language.</p>
+<p>The point of this topic is not to turn you into a probability theorist. It is to make sure that when economists write “expected payoff” or “distribution over types,” those words are no longer mysterious.</p>
 <hr />
-<p>In one dimension, the argument is clean because we can use the Intermediate Value Theorem (Topic <a href="Topic4.html">4</a>). In higher dimensions, the IVT is no longer available, and the proof requires a genuinely different idea. The classical geometric route goes through a result by Borsuk (1931).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<h3 id="the-idea-of-the-proof">The idea of the proof</h3>
-<p>In higher dimensions, we prove Brouwer by contradiction. Suppose <span class="math inline">\(f: B^n \to B^n\)</span> is continuous and has <em>no</em> fixed point, where <span class="math inline">\(B^n\)</span> is the closed unit ball in <span class="math inline">\(\mathbb{R}^n\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> We will show that this leads to an impossible geometric construction.</p>
-<p>Before we start, some <em>notation</em>. The <strong>boundary</strong> of <span class="math inline">\(B^n\)</span> is the set of points that are exactly at distance 1 from the origin. This is the sphere <span class="math inline">\(S^{n-1}\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> In our usual 1-D world of functions mapping scalars into scalars, the unit ball is the interval <span class="math inline">\([-1,1]\)</span>, and the sphere is just the two endpoints <span class="math inline">\(\{-1,1\}\)</span>. In two dimensions, <span class="math inline">\(B^2\)</span> is a disk and <span class="math inline">\(S^1\)</span> is the unit circle around it. In three dimensions, <span class="math inline">\(B^3\)</span> is the solid ball and <span class="math inline">\(S^2\)</span> is its surface. We will also use <em>rays</em>. A <strong>ray</strong> from a point <span class="math inline">\(a\)</span> through a point <span class="math inline">\(b\)</span> is the (half-)line that starts at <span class="math inline">\(a\)</span>, passes through <span class="math inline">\(b\)</span>, and continues beyond <span class="math inline">\(b\)</span> indefinitely.</p>
-<p>Now to the argument. Because we are looking at a self-map both the domain and the image are in the same space. That means, in particular, if <span class="math inline">\(f(x) \neq x\)</span> for every <span class="math inline">\(x\)</span>, then for each <span class="math inline">\(x \in B^n\)</span> we can draw a ray starting at <span class="math inline">\(f(x)\)</span> and passing through <span class="math inline">\(x\)</span>. Because <span class="math inline">\(f(x) \neq x\)</span>, this ray has a well-defined direction.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Since <span class="math inline">\(x\)</span> is inside the ball (or on its boundary), and the ray continues beyond <span class="math inline">\(x\)</span>, it must eventually hit the boundary sphere <span class="math inline">\(S^{n-1}\)</span> at some unique point.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Call that point <span class="math inline">\(r(x)\)</span>.</p>
-<p>The map <span class="math inline">\(r: B^n \to S^{n-1}\)</span> is continuous (because <span class="math inline">\(f\)</span> is continuous and the ray construction depends continuously on <span class="math inline">\(x\)</span>). Moreover, if <span class="math inline">\(x\)</span> is already on the boundary <span class="math inline">\(S^{n-1}\)</span>, the ray from <span class="math inline">\(f(x)\)</span> through <span class="math inline">\(x\)</span> hits the sphere at <span class="math inline">\(x\)</span> itself, so <span class="math inline">\(r(x) = x\)</span> for all <span class="math inline">\(x \in S^{n-1}\)</span>.</p>
-<p>A continuous map from <span class="math inline">\(B^n\)</span> onto <span class="math inline">\(S^{n-1}\)</span> that fixes every point of <span class="math inline">\(S^{n-1}\)</span> is called a <strong>retraction</strong>. So our no-fixed-point assumption has produced a retraction of the ball onto its boundary sphere.</p>
-<p>But Borsuk (1931) proved that no such retraction can exist: <em><span class="math inline">\(S^{n-1}\)</span> is not a retract of <span class="math inline">\(B^n\)</span></em>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<p>This is a contradiction. So our assumption was wrong, and <span class="math inline">\(f\)</span> must have a fixed point.</p>
-<blockquote>
-<p>“If a continuous function on the ball had no fixed point, we could use it to continuously retract the ball onto its boundary sphere. But that is geometrically impossible – you cannot flatten a ball onto its skin without tearing. So a fixed point must exist.”</p>
-</blockquote>
-<p>The intuition behind Borsuk’s result is worth pausing on. Think about the two-dimensional case: try to continuously push every point of a disk onto its boundary circle, while keeping the boundary points fixed. You will find that no matter what you do, some interior point gets “stuck.” The ball is simply too full to be compressed onto its boundary without a discontinuity. This is a topological obstruction, and it is what ultimately powers Brouwer’s theorem.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-<p>What matters for economics is the punchline: if your model gives you a continuous self-map on a compact convex set, a fixed point is guaranteed. The geometry takes care of the rest.</p>
-<h3 id="why-brouwer-is-not-enough-for-economics">Why Brouwer is not enough for economics</h3>
-<p>Brouwer requires the mapping to be a <strong>function</strong> – single-valued. But as we saw in Topic <a href="Topic5.html">5</a>, optimal behavior is often set-valued. Best responses are typically correspondences, not functions. So we need a fixed-point theorem for correspondences.</p>
-<hr />
-<h2 id="kakutanis-fixed-point-theorem">4. Kakutani’s fixed-point theorem</h2>
-<p>Kakutani generalizes Brouwer to correspondences.</p>
-<hr />
-<p><strong>Theorem (Kakutani).</strong> Let <span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> be nonempty, compact, and convex, and let <span class="math inline">\(F: X \rightrightarrows X\)</span> be an upper hemicontinuous correspondence with nonempty, convex values.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> Then <span class="math inline">\(F\)</span> has a fixed point: there exists <span class="math inline">\(x^\ast \in X\)</span> such that <span class="math inline">\(x^\ast \in F(x^\ast)\)</span>.</p>
-<hr />
-<blockquote>
-<p>“If you map a compact convex set into itself using a well-behaved correspondence with convex values, at least one point is contained in its own image.”</p>
-</blockquote>
-<p>Compare this with Brouwer:</p>
+<h2 id="the-state-space-what-might-happen">2. The state space: what might happen</h2>
+<p>Start with the most primitive object: the set of things that could happen.</p>
+<p>We call this set <span class="math inline">\(\Omega\)</span> and refer to it as the <strong>state space</strong>. Each element <span class="math inline">\(\omega \in \Omega\)</span> is a <strong>state of the world</strong> – a complete description of everything that is uncertain.</p>
+<p>In economics, the state space might describe:</p>
 <ul>
-<li>the mapping is now a correspondence (set-valued),</li>
-<li>instead of continuity, we need upper hemicontinuity (Topic <a href="Topic5.html">5</a>),</li>
-<li>instead of the mapping being single-valued, we need the image sets to be convex.</li>
+<li>which of several possible cost realizations occurs,</li>
+<li>which type each player in a game has,</li>
+<li>which signal each agent observes.</li>
 </ul>
-<p>The convexity-of-values condition is the new ingredient. It says: for any given <span class="math inline">\(x\)</span>, the set of “responses” <span class="math inline">\(F(x)\)</span> has no gaps. This is often ensured by concavity of the objective function (which makes the set of optimizers convex, as we discussed in Topic <a href="Topic5.html">5</a>).</p>
-<h3 id="why-this-is-the-workhorse-theorem-for-equilibrium">Why this is the workhorse theorem for equilibrium</h3>
-<p>Kakutani’s theorem is behind the existence of:</p>
-<ul>
-<li><strong>Nash equilibrium</strong> (in mixed strategies),</li>
-<li><strong>Walrasian equilibrium</strong> (in general equilibrium theory),</li>
-<li><strong>Bayesian Nash equilibrium</strong> (in games of incomplete information).</li>
-</ul>
-<p>The logic is always the same:</p>
+<blockquote>
+<p>“<span class="math inline">\(\Omega\)</span> is the set of all possible states of the world. An element <span class="math inline">\(\omega\)</span> is one particular resolution of uncertainty.”</p>
+</blockquote>
+<p>Mathematically, this is just a set like any other. It becomes interesting only once we start measuring how likely different parts of it are.</p>
+<hr />
+<h2 id="events-and-probabilities">3. Events and probabilities</h2>
+<p>An <strong>event</strong> is a subset of the state space: <span class="math inline">\(A \subseteq \Omega\)</span>.</p>
+<blockquote>
+<p>“An event is a collection of states. The event <span class="math inline">\(A\)</span> occurs if the realized state <span class="math inline">\(\omega\)</span> happens to lie in <span class="math inline">\(A\)</span>.”</p>
+</blockquote>
+<p>A <strong>probability</strong> is a rule that assigns a number to events in a coherent way. Formally, a probability (often written <span class="math inline">\(\Pr\)</span> or <span class="math inline">\(P\)</span>) satisfies three properties:</p>
 <ol type="1">
-<li>define a correspondence that collects all agents’ best responses,</li>
-<li>verify the conditions (compact convex domain, upper hemicontinuity, convex values),</li>
-<li>apply Kakutani to conclude that a fixed point – an equilibrium – exists.</li>
+<li><p><strong>Nonnegativity</strong>: for every event <span class="math inline">\(A\)</span>, <span class="math display">\[\Pr(A) \geq 0.\]</span></p></li>
+<li><p><strong>Normalization</strong>: the probability that <em>something</em> happens is one, <span class="math display">\[\Pr(\Omega) = 1.\]</span></p></li>
+<li><p><strong>Additivity</strong>: if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint events (they share no states), then <span class="math display">\[\Pr(A \cup B) = \Pr(A) + \Pr(B).\]</span></p></li>
 </ol>
-<p>This is why Topics <a href="Topic3.html">3</a>, <a href="Topic4.html">4</a>, and <a href="Topic5.html">5</a> spent so much time on convexity, compactness, and upper hemicontinuity. They were preparing exactly these conditions.</p>
-<h3 id="how-kakutani-follows-from-brouwer-sketch">How Kakutani follows from Brouwer (sketch)</h3>
-<p>The idea behind Kakutani’s theorem is to reduce it to Brouwer. The correspondence <span class="math inline">\(F\)</span> is set-valued, but we can try to “approximate” it by functions and then take a limit. The formal tool behind this construction is known as Cellina’s approximation theorem.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
-<p><strong>Step 1: Approximate the correspondence by functions.</strong> Cover our set <span class="math inline">\(X\)</span> with a grid of mesh size <span class="math inline">\(1/n\)</span> (think of dividing <span class="math inline">\(X\)</span> into small cells). At each grid point <span class="math inline">\(x_k\)</span>, pick some element <span class="math inline">\(y_k \in F(x_k)\)</span>.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Now, we know that <span class="math inline">\(f_n(x_k) \in F(x_k)\)</span> for any grid point <span class="math inline">\(x_k\)</span>. For <span class="math inline">\(x\)</span> that is not a grid point, we define <span class="math inline">\(f_n(x)\)</span> by taking a weighted average (convex combination) of the selected <span class="math inline">\(y_k\)</span>’s at nearby grid points, with weights depending on how close <span class="math inline">\(x\)</span> is to each grid point.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> The result is a continuous (in fact piecewise linear) function <span class="math inline">\(f_n: X \to X\)</span>.</p>
-<p><strong>Step 2: Apply Brouwer to each approximation.</strong> Each <span class="math inline">\(f_n\)</span> is a continuous function from the compact convex set <span class="math inline">\(X\)</span> into itself. So by Brouwer, each <span class="math inline">\(f_n\)</span> has a fixed point <span class="math inline">\(x_n\)</span>: <span class="math display">\[f_n(x_n) = x_n.\]</span></p>
-<p><strong>Step 3: Take a limit.</strong> We now have a sequence <span class="math inline">\((x_n)\)</span> in the compact set <span class="math inline">\(X\)</span>. By compactness, this sequence has a convergent subsequence with some limit <span class="math inline">\(x^\ast\)</span> (this is the Bolzano-Weierstrass property from Topic <a href="Topic4.html">4</a>).</p>
-<p>Now, here is the key subtlety. As the grid becomes finer (<span class="math inline">\(n\)</span> grows), the fixed point <span class="math inline">\(x_n\)</span> comes closer and closer to satisfying <span class="math inline">\(x_n \in F(x_n)\)</span>, but it may never quite get there, because <span class="math inline">\(f_n\)</span> is a function, not a correspondence. So each <span class="math inline">\(x_n\)</span> is an <em>approximate</em> fixed point of <span class="math inline">\(F\)</span>, not an exact one.</p>
-<p>What saves us is the closed graph property. If a sequence of points <span class="math inline">\((x_n, f_n(x_n))\)</span> converges and each <span class="math inline">\(f_n(x_n)\)</span> is close to <span class="math inline">\(F(x_n)\)</span>, then the limit point <span class="math inline">\((x^\ast, x^\ast)\)</span> lies in the graph of <span class="math inline">\(F\)</span>. The graph of <span class="math inline">\(F\)</span> is closed (which follows from upper hemicontinuity and compact values – recall Topic <a href="Topic5.html">5</a>), so it contains its limit points. “Almost in” becomes “actually in.”</p>
-<p>That gives us <span class="math display">\[x^\ast \in F(x^\ast).\]</span></p>
-<p>That is our fixed point.</p>
 <blockquote>
-<p>“Kakutani is Brouwer in the limit: approximate the correspondence by functions, use Brouwer on each approximation, and let the approximation quality go to infinity. Compactness keeps the sequence from escaping, and the closed graph turns approximate fixed points into an exact one.”</p>
+<p>“Probability is a coherent way of assigning weights to events. The weights are nonnegative, the total is one, and non-overlapping events add up.”</p>
 </blockquote>
-<p>This sketch shows why <em>every</em> assumption in Kakutani earns its place:</p>
-<ul>
-<li>compactness of <span class="math inline">\(X\)</span> gives us the convergent subsequence,</li>
-<li>convexity of <span class="math inline">\(X\)</span> keeps us inside <span class="math inline">\(X\)</span> throughout,</li>
-<li>convexity of <span class="math inline">\(F(x)\)</span> allows the continuous approximations to exist (we need to take weighted averages),</li>
-<li>upper hemicontinuity (closed graph) ensures that the limit of approximate fixed points is an actual fixed point.</li>
-</ul>
+<p>These three properties are sometimes called the <strong>Kolmogorov axioms</strong>. They are the foundation on which everything else rests.</p>
+<p>Note that we said nothing about <em>where</em> probabilities come from. In some models they represent objective frequencies (how often something happens if we repeat the experiment). In others they represent subjective beliefs (how confident the agent is). The mathematics is the same either way. Microeconomics uses both interpretations depending on the context.</p>
 <hr />
-<h2 id="tarskis-fixed-point-theorem">5. Tarski’s fixed-point theorem</h2>
-<p>There is a completely different route to fixed points that does not use convexity or continuity at all. Instead, it uses <strong>order</strong>.</p>
-<hr />
-<p><strong>Theorem (Tarski).</strong> Let <span class="math inline">\((X, \preceq)\)</span> be a nonempty complete lattice and let <span class="math inline">\(f: X \to X\)</span> be monotone increasing. Then the set of fixed points of <span class="math inline">\(f\)</span> is nonempty and itself forms a complete lattice.</p>
-<hr />
+<h2 id="random-variables">4. Random variables</h2>
+<p>A <strong>random variable</strong> is a mapping from states of the world into numbers: <span class="math display">\[X: \Omega \to \mathbb{R}.\]</span></p>
 <blockquote>
-<p>“If the choice space is a complete lattice and the mapping is monotone, then fixed points exist – and the set of fixed points has the same lattice structure.”</p>
+<p>“A random variable turns uncertainty about states into uncertainty about a number.”</p>
 </blockquote>
-<p>This connects directly to Topic <a href="Topic7.html">7</a>. Recall:</p>
+<p>This is just a function in the sense of Topic <a href="Topic1.html">1</a>. The domain is the state space <span class="math inline">\(\Omega\)</span>, the codomain is <span class="math inline">\(\mathbb{R}\)</span>. What makes it “random” is that we do not know which <span class="math inline">\(\omega\)</span> will occur, and therefore we do not know what value <span class="math inline">\(X(\omega)\)</span> will take.</p>
+<p>In economics, random variables represent objects like:</p>
 <ul>
-<li>a complete lattice is a partially ordered set where every subset has a least upper bound and a greatest lower bound,</li>
-<li>monotone increasing means: higher input, higher output (<span class="math inline">\(x \preceq x&#39;\)</span> implies <span class="math inline">\(f(x) \preceq f(x&#39;)\)</span>).</li>
+<li>a consumer’s income (uncertain because it depends on the state of the economy),</li>
+<li>a bidder’s valuation in an auction (uncertain because it is private information),</li>
+<li>a firm’s cost (uncertain because of technological shocks),</li>
+<li>a player’s type in a game of incomplete information.</li>
 </ul>
-<p>No convexity, no continuity, no topological assumptions at all. Just order and monotonicity.</p>
-<h3 id="when-is-tarski-useful">When is Tarski useful?</h3>
-<p>Tarski is the right tool when:</p>
-<ul>
-<li>the action space is discrete or has natural lattice structure,</li>
-<li>best responses are monotone (strategic complements, as in Topic <a href="Topic7.html">7</a>),</li>
-<li>you want existence without mixed strategies.</li>
-</ul>
-<p>For example, in a game where each firm chooses a price and higher rival prices make higher own prices optimal (strategic complements), Tarski gives existence of a pure-strategy equilibrium directly. No need to convexify or randomize.</p>
-<p>The fact that the fixed-point set is itself a lattice is a bonus: it means there is a largest and a smallest equilibrium, which is often useful for comparative statics.</p>
-<h3 id="why-tarski-works-constructive-sketch">Why Tarski works (constructive sketch)</h3>
-<p>Unlike Brouwer and Kakutani, Tarski’s theorem has a remarkably direct proof. It is constructive: we can <em>find</em> the fixed points, not just prove they exist.</p>
-<p>Here is the argument for the greatest fixed point. Start at the top of the lattice, <span class="math inline">\(\bar{x} = \sup X\)</span> (which exists because <span class="math inline">\(X\)</span> is a complete lattice). Since <span class="math inline">\(f\)</span> maps <span class="math inline">\(X\)</span> into <span class="math inline">\(X\)</span>, we know <span class="math inline">\(f(\bar{x}) \in X\)</span>, so <span class="math inline">\(f(\bar{x}) \preceq \bar{x}\)</span>.</p>
-<p>Now apply <span class="math inline">\(f\)</span> to both sides. Because <span class="math inline">\(f\)</span> is monotone increasing, <span class="math inline">\(f(\bar{x}) \preceq \bar{x}\)</span> implies <span class="math inline">\(f(f(\bar{x})) \preceq f(\bar{x})\)</span>. So the sequence <span class="math display">\[\bar{x} \succeq f(\bar{x}) \succeq f(f(\bar{x})) \succeq \cdots\]</span> is decreasing. In a complete lattice, every decreasing sequence (in fact, every subset) has a greatest lower bound. Call it <span class="math inline">\(x^\ast\)</span>.</p>
-<p>One can then show that <span class="math inline">\(f(x^\ast) = x^\ast\)</span>.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
-<p>The argument for the least fixed point is symmetric: start at <span class="math inline">\(\inf X\)</span> and iterate upward.</p>
+<p>Why does this matter? Because once uncertainty is encoded as a random variable, we can use all the tools of analysis – integration, optimization, comparison – to study it systematically.</p>
+<hr />
+<h2 id="distributions">5. Distributions</h2>
+<p>Knowing that <span class="math inline">\(X\)</span> is a random variable is not enough. We also need to know <em>how likely</em> different values of <span class="math inline">\(X\)</span> are. This is what a <strong>distribution</strong> tells us.</p>
+<h3 id="discrete-distributions">Discrete distributions</h3>
+<p>If <span class="math inline">\(X\)</span> takes finitely many values <span class="math inline">\(x_1, \dots, x_n\)</span>, the distribution is simply a list of probabilities: <span class="math display">\[p_i = \Pr(X = x_i), \quad i = 1, \dots, n.\]</span></p>
+<p>The probabilities are nonnegative and sum to one: <span class="math display">\[\sum_{i=1}^n p_i = 1.\]</span></p>
+<p>This is the simplest case. It covers situations like: a firm faces two possible cost levels, or a buyer’s type is drawn from a finite set.</p>
+<h3 id="continuous-distributions-and-the-cdf">Continuous distributions and the CDF</h3>
+<p>In many economic models, the random variable takes a continuum of values. We do that because it makes our lives often much much easier. In that case, the probability that <span class="math inline">\(X\)</span> equals any single value is typically zero, so we need a different way to describe the distribution.</p>
+<p>The <strong>cumulative distribution function</strong> (CDF) is defined as <span class="math display">\[F(x) = \Pr(X \leq x).\]</span></p>
 <blockquote>
-<p>“Start at the top, apply the monotone function, and walk downward. In a complete lattice, you cannot fall forever – you must land on a fixed point. The same works from the bottom, walking up.”</p>
+<p>“The CDF at <span class="math inline">\(x\)</span> is the probability that the random variable takes a value no larger than <span class="math inline">\(x\)</span>.”</p>
 </blockquote>
-<p>This is why Tarski requires no topological assumptions. There is no limit-taking in the topological sense, no continuity, no convexity. The lattice structure and monotonicity do all the work. The “convergence” here is order-theoretic, not metric.</p>
-<p>The constructive nature of Tarski is practically useful, too. In games with strategic complements, you can often <em>compute</em> the largest and smallest equilibria by starting at the extremes of the strategy space and iterating best responses. If best responses are monotone, this procedure converges to equilibrium.</p>
-<hr />
-<h2 id="comparing-the-three-theorems">6. Comparing the three theorems</h2>
-<p>The three fixed-point theorems serve different purposes:</p>
-<p><strong>Brouwer</strong> requires a continuous function on a compact convex set. It is the simplest result and the one closest to geometric intuition. It works when the mapping is single-valued.</p>
-<p><strong>Kakutani</strong> extends Brouwer to correspondences. It is the standard tool for proving equilibrium existence in games and markets when best responses are set-valued. It requires convexity of the domain and of the image sets, plus upper hemicontinuity.</p>
-<p><strong>Tarski</strong> replaces all topological assumptions with order-theoretic ones. It is the right tool when the environment has lattice structure and monotonicity, especially in games with strategic complements.</p>
-<p>Each theorem has assumptions that the others do not need. None dominates the others. The choice depends on which structure the economic model provides.</p>
-<hr />
-<h2 id="an-economic-example-nash-equilibrium-existence">7. An economic example: Nash equilibrium existence</h2>
-<p>Consider a finite game: <span class="math inline">\(n\)</span> players, each with a finite set of pure strategies <span class="math inline">\(S_i\)</span>.</p>
-<p>A <strong>mixed strategy</strong> for player <span class="math inline">\(i\)</span> is a probability distribution <span class="math inline">\(\sigma_i\)</span> over <span class="math inline">\(S_i\)</span> (Topic <a href="Topic8.html">8</a>). The set of mixed strategies is <span class="math display">\[\Delta(S_i) = \left\{ \sigma_i \in \mathbb{R}^{|S_i|}_+ \;\middle|\; \sum_{s_i \in S_i} \sigma_i(s_i) = 1 \right\}.\]</span></p>
-<p>This set is compact and convex (it is a simplex).</p>
-<p>The product of all players’ mixed-strategy sets, <span class="math display">\[\Sigma = \Delta(S_1) \times \cdots \times \Delta(S_n),\]</span> is also compact and convex (Cartesian product of compact convex sets).</p>
-<p>Now define the <strong>best-response correspondence</strong> <span class="math inline">\(BR: \Sigma \rightrightarrows \Sigma\)</span> that maps each strategy profile to the set of profiles in which every player is playing a best response.</p>
-<p>Under standard assumptions:</p>
+<p>Properties of the CDF:</p>
 <ul>
-<li><span class="math inline">\(BR\)</span> is upper hemicontinuous (because payoffs are continuous in mixed strategies and the constraint set is well-behaved – this is Berge’s Maximum Theorem from Topic <a href="Topic5.html">5</a>),</li>
-<li><span class="math inline">\(BR\)</span> has convex values (because if two mixed strategies are both best responses, any mixture of them is also a best response – expected payoff is linear in one’s own mixing probabilities).</li>
+<li><span class="math inline">\(F\)</span> is nondecreasing (higher <span class="math inline">\(x\)</span> means weakly more probability accumulated),</li>
+<li><span class="math inline">\(\lim_{x \to -\infty} F(x) = 0\)</span> and <span class="math inline">\(\lim_{x \to +\infty} F(x) = 1\)</span>,</li>
+<li><span class="math inline">\(F\)</span> is right-continuous.</li>
 </ul>
-<p>Kakutani applies. A fixed point exists. That fixed point is a Nash equilibrium.</p>
-<p>This is Nash’s theorem (1950), and the proof is exactly the logic above.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> Notice how it pulls together compactness, convexity, upper hemicontinuity, Berge’s theorem, and mixed strategies – essentially everything from Topics <a href="Topic3.html">3</a> through <a href="Topic8.html">8</a>.</p>
+<p>If the CDF is differentiable, we can define the <strong>probability density function</strong> (PDF) as <span class="math display">\[f(x) = F&#39;(x).\]</span></p>
+<p>The density tells us how “concentrated” probability is near <span class="math inline">\(x\)</span>. A higher density means more probability mass near that value.</p>
+<p>Economists often write things like “let <span class="math inline">\(v\)</span> be drawn from <span class="math inline">\(F\)</span>” or “types are distributed according to <span class="math inline">\(F\)</span>.” This simply means: <span class="math inline">\(v\)</span> is a random variable with cumulative distribution function <span class="math inline">\(F\)</span>.</p>
 <hr />
-<h2 id="why-existence-matters-even-if-we-cannot-compute">8. Why existence matters (even if we cannot compute)</h2>
-<p>A common reaction is: “So we know an equilibrium exists. But we still don’t know what it is. What’s the point?”</p>
-<p>The point is that existence is a minimal consistency check on the model. If an equilibrium does not exist, the model is making contradictory assumptions. Agents are supposed to optimize, but no configuration of choices is mutually consistent. That means the model is broken, not the world.</p>
-<p>Beyond that, existence results often come with structure:</p>
+<h2 id="expectation-the-probability-weighted-average">6. Expectation: the probability-weighted average</h2>
+<p>The <strong>expectation</strong> (or <strong>expected value</strong>) of a random variable is its probability-weighted average.</p>
+<p>For a discrete random variable with values <span class="math inline">\(x_1, \dots, x_n\)</span> and probabilities <span class="math inline">\(p_1, \dots, p_n\)</span>, <span class="math display">\[\mathbb{E}[X] = \sum_{i=1}^n p_i \, x_i.\]</span></p>
+<p>For a continuous random variable with density <span class="math inline">\(f\)</span>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[\mathbb{E}[X] = \int_{-\infty}^{\infty} x \, f(x) \, \mathrm{d}x.\]</span></p>
+<blockquote>
+<p>“Expectation is the weighted average value you would get if the uncertainty were resolved many times.”</p>
+</blockquote>
+<h3 id="why-economists-care-about-expectation">Why economists care about expectation</h3>
+<p>Expectation is the central bridge between probability and optimization. Whenever an agent faces uncertainty and must choose <em>before</em> the uncertainty resolves, the standard approach in economics is to evaluate choices by their <strong>expected payoff</strong>.</p>
+<p>This appears as:</p>
 <ul>
-<li>Kakutani tells us fixed points exist in a compact convex set,</li>
-<li>Tarski tells us the fixed-point set is a lattice with largest and smallest elements,</li>
-<li>Berge’s theorem tells us solutions vary continuously with parameters.</li>
+<li><strong>expected utility</strong> in consumer theory under risk,</li>
+<li><strong>expected profit</strong> in a firm’s production decision,</li>
+<li><strong>expected revenue</strong> in auction design,</li>
+<li><strong>expected continuation payoff</strong> in dynamic games.</li>
 </ul>
-<p>This structure is what makes comparative statics, welfare analysis, and mechanism design possible. We do not always need to <em>find</em> the equilibrium. We often just need to know it <em>exists</em> and <em>behaves well</em>.</p>
+<h3 id="linearity-of-expectation">Linearity of expectation</h3>
+<p>One of the most useful properties of expectation is <strong>linearity</strong>: <span class="math display">\[\mathbb{E}[aX + bY] = a\,\mathbb{E}[X] + b\,\mathbb{E}[Y]\]</span> for any constants <span class="math inline">\(a, b\)</span> and random variables <span class="math inline">\(X, Y\)</span>.</p>
+<blockquote>
+<p>“The expected value of a sum is the sum of the expected values, regardless of whether the random variables are related.”</p>
+</blockquote>
+<p>This property holds even when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent. It is one of the reasons expectation is so tractable.</p>
 <hr />
-<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">9. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
-<p>Fixed-point theorems are used at several points in MWG:</p>
+<h2 id="conditional-probability-and-bayes-rule">7. Conditional probability and Bayes’ rule</h2>
+<p>Sometimes new information arrives. A bidder observes a signal. A firm learns a partial cost estimate. An agent sees another agent’s action.</p>
+<p>When information arrives, beliefs must be updated. This is where <strong>conditional probability</strong> enters.</p>
+<h3 id="conditional-probability">Conditional probability</h3>
+<p>The probability of an event <span class="math inline">\(A\)</span> conditional on observing that event <span class="math inline">\(B\)</span> has occurred is <span class="math display">\[\Pr(A \mid B) = \frac{\Pr(A \cap B)}{\Pr(B)},\]</span> provided <span class="math inline">\(\Pr(B) &gt; 0\)</span>.</p>
+<p>In English the above equation says:</p>
+<blockquote>
+<p>“The conditional probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the probability that both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur, divided by the probability that <span class="math inline">\(B\)</span> occurs.”</p>
+</blockquote>
+<p>Think of it as zooming in on the world where <span class="math inline">\(B\)</span> happened and asking: within that world, how likely is <span class="math inline">\(A\)</span>?</p>
+<h3 id="bayes-rule">Bayes’ rule</h3>
+<p>Bayes’ rule is a way to represent the previous equation as a relation between conditional probabilities. It thus follow directly from the above rule</p>
+<p><span class="math display">\[\Pr(A \mid B) = \frac{\Pr(B \mid A) \, \Pr(A)}{\Pr(B)}.\]</span></p>
+<blockquote>
+<p>“Bayes’ rule says that when we observe <span class="math inline">\(B\)</span>, the probability of <span class="math inline">\(A\)</span> is the probability that <span class="math inline">\(B\)</span> has occurred <em>because</em> <span class="math inline">\(A\)</span> is true, times the relative liklihod of <span class="math inline">\(A\)</span> occurring in the first place, all divided by the overall probability of <span class="math inline">\(B\)</span>.”</p>
+</blockquote>
+<p>This formula is the formal engine behind belief updating in microeconomics. The components have names:</p>
 <ul>
-<li><strong>MWG, Chapter 8</strong> (Nash equilibrium existence, via Kakutani),</li>
-<li><strong>MWG, Chapter 17</strong> (existence of Walrasian equilibrium),</li>
-<li><strong>MWG, Mathematical Appendix C</strong> (fixed-point theorems stated).</li>
+<li><span class="math inline">\(\Pr(A)\)</span> is the <strong>prior</strong> – what we believed before seeing <span class="math inline">\(B\)</span>,</li>
+<li><span class="math inline">\(\Pr(B \mid A)\)</span> is the <strong>likelihood</strong> – how probable the evidence <span class="math inline">\(B\)</span> is if <span class="math inline">\(A\)</span> were true,</li>
+<li><span class="math inline">\(\Pr(A \mid B)\)</span> is the <strong>posterior</strong> – what we believe after seeing <span class="math inline">\(B\)</span>.</li>
 </ul>
-<p>Tarski’s theorem is not developed in MWG but is standard in the monotone comparative statics literature that builds on the lattice methods introduced in Topic <a href="Topic7.html">7</a>.</p>
+<p>Bayes’ rule is used everywhere in information economics. Whenever you read “the agent updates beliefs,” the formal content behind that phrase is Bayes’ rule.</p>
 <hr />
-<h2 id="why-this-matters-for-microeconomics">10. Why this matters for microeconomics</h2>
-<p>Fixed-point theorems are the mathematical engine behind equilibrium.</p>
-<p>They explain:</p>
+<h2 id="independence">8. Independence</h2>
+<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>independent</strong> if <span class="math display">\[\Pr(A \cap B) = \Pr(A) \cdot \Pr(B).\]</span></p>
+<p>So the probability that both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur is just the product of their individual probabilities.</p>
+<p>Two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <strong>independent</strong> if learning the value of one tells you nothing about the other. Formally, this means that for all values <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, <span class="math display">\[\Pr(X \leq x \text{ and } Y \leq y) = \Pr(X \leq x) \cdot \Pr(Y \leq y).\]</span></p>
+<blockquote>
+<p>“Independence means that observing one thing does not change your beliefs about the other.”</p>
+</blockquote>
+<p>Independence is a simplifying assumption that appears constantly in economic models. For instance:</p>
 <ul>
-<li>why Nash equilibria exist in finite games,</li>
-<li>why competitive equilibria exist under standard assumptions,</li>
-<li>why mechanism design problems have solutions,</li>
-<li>why games with strategic complements have well-structured equilibrium sets.</li>
+<li>in auctions, bidders’ valuations are often assumed to be independently drawn,</li>
+<li>in mechanism design, agents’ types are frequently independent,</li>
+<li>in repeated games, stage-game shocks may be independent across periods.</li>
 </ul>
-<p>Without fixed-point results, “equilibrium” would be a word without guaranteed content. These theorems are what turn it into a precise and operational concept.</p>
+<p><strong>Important:</strong> Independence is substantive. It is not a default. In reality, everything is connected with everything and many economically interesting situations involve correlation (e.g., common-value auctions, correlated types). When independence is assumed, it should be recognized as a modeling choice, not a law of nature.</p>
 <hr />
-<h2 id="what-you-should-take-away">11. What you should take away</h2>
+<h2 id="conditional-expectation">9. Conditional expectation</h2>
+<p>When we combine expectation with conditional probability, we get <strong>conditional expectation</strong>: <span class="math display">\[\mathbb{E}[X \mid B] = \sum_{i} x_i \, \Pr(X = x_i \mid B)\]</span> in the discrete case.</p>
+<blockquote>
+<p>“The conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\(B\)</span> is the expected value of <span class="math inline">\(X\)</span> knowing that <span class="math inline">\(B\)</span> is true.”</p>
+</blockquote>
+<p>In economics, conditional expectations appear naturally whenever agents form beliefs:</p>
+<ul>
+<li>a buyer’s expected valuation given a signal,</li>
+<li>a principal’s expected output given the agent’s reported type,</li>
+<li>a player’s expected payoff given the other players’ strategies.</li>
+</ul>
+<p>A useful property that connects conditional and unconditional expectation is the <strong>law of iterated expectations</strong> (sometimes called the law of total expectation): <span class="math display">\[\mathbb{E}[X] = \mathbb{E}\big[\mathbb{E}[X \mid Y]\big].\]</span></p>
+<blockquote>
+<p>“If I first compute the expected value of <span class="math inline">\(X\)</span> for each possible value of <span class="math inline">\(Y\)</span>, and then average those conditional expectations over the distribution of <span class="math inline">\(Y\)</span>, I recover the unconditional expectation of <span class="math inline">\(X\)</span>.”</p>
+</blockquote>
+<p>This property is extremely useful in sequential models where information is revealed gradually.</p>
+<p>It is also super important for consistency and tells us one way to think about distributions (that will show up in other settings, too). We could think of a larger sate space <span class="math inline">\(\Omega\)</span> that has two dimensional elements <span class="math inline">\((x,y)\)</span> and a probability distribution over those <span class="math inline">\((x,y)\)</span>. Now, we are in the end only interested in <span class="math inline">\(x\)</span>, but <span class="math inline">\(y\)</span> carries some information about <span class="math inline">\(x\)</span>.</p>
+<p>So, if we learn <span class="math inline">\(y\)</span>, we update about <span class="math inline">\(x\)</span>. But: it has to be the case that if we don’t know <span class="math inline">\(y\)</span> yet, we cannot learn anything about <span class="math inline">\(x\)</span>, so our expectations on <span class="math inline">\(x\)</span> are just <span class="math inline">\(E[X]\)</span>. But, we do know how likely all thedifferent <span class="math inline">\(y\)</span> will show up and we know what we would do then in our beliefs about <span class="math inline">\(x\)</span>, so we do know all <span class="math inline">\(E[X|Y].\)</span> But if we are consistent, then this information does not tell us anything about <span class="math inline">\(x\)</span> yet (because we haven’t seen <span class="math inline">\(y\)</span> yet), so we have to have that <span class="math inline">\(E[X]=E[E[X|Y]]\)</span>.</p>
+<hr />
+<h2 id="an-economic-example-first-price-auction-with-private-values">10. An economic example: first-price auction with private values</h2>
+<p>Consider two bidders in a sealed-bid first-price auction. Each bidder has a private valuation <span class="math inline">\(v_i\)</span> drawn independently from a distribution <span class="math inline">\(F\)</span> on <span class="math inline">\([0,1]\)</span>. Each bidder submits a bid <span class="math inline">\(b_i\)</span>, the highest bid wins, and the winner pays her bid.</p>
+<p>Bidder 1’s expected payoff from bidding <span class="math inline">\(b\)</span> when her valuation is <span class="math inline">\(v\)</span> and the other bidder uses a bidding strategy <span class="math inline">\(\beta(\cdot)\)</span> is <span class="math display">\[\mathbb{E}[\text{payoff}] = (v - b) \cdot \Pr(\text{win}).\]</span></p>
+<p>The probability of winning depends on the other bidder’s bid, which depends on her valuation, which is random. So <span class="math display">\[\Pr(\text{win}) = \Pr(\beta(v_2) &lt; b) = \Pr(v_2 &lt; \beta^{-1}(b)) = F(\beta^{-1}(b)),\]</span> where the second equality uses the fact that <span class="math inline">\(\beta\)</span> is (typically) increasing.</p>
+<p>This example uses almost everything from this topic:</p>
+<ul>
+<li>a random variable (<span class="math inline">\(v_2\)</span>, the other bidder’s type),</li>
+<li>a distribution (<span class="math inline">\(F\)</span>),</li>
+<li>expectation (the expected payoff),</li>
+<li>independence (valuations are independently drawn).</li>
+</ul>
+<p>Without the probability language, writing down and solving this problem would be impossible.</p>
+<hr />
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<p>Probability is used throughout MWG but is not developed as a standalone mathematical appendix topic in the same way as convexity or correspondences.</p>
+<p>The most relevant places where probability language is used heavily include:</p>
+<ul>
+<li><strong>MWG, Chapter 6</strong> (choice under uncertainty, expected utility),</li>
+<li><strong>MWG, Chapter 8</strong> (competitive markets with uncertainty),</li>
+<li><strong>MWG, Chapter 13</strong> (adverse selection),</li>
+<li><strong>MWG, Chapter 23</strong> (mechanism design and auctions).</li>
+</ul>
+<hr />
+<h2 id="why-this-matters-for-microeconomics">12. Why this matters for microeconomics</h2>
+<p>Probability gives us the language to treat uncertainty as part of the model rather than as narrative.</p>
+<p>Without it:</p>
+<ul>
+<li>expected utility cannot be defined,</li>
+<li>Bayesian equilibrium cannot be formulated,</li>
+<li>mixed strategies appear as magic rather than precise objects,</li>
+<li>information economics loses its formal language,</li>
+<li>mechanism design under incomplete information becomes inaccessible.</li>
+</ul>
+<p>The tools in this topic are modest – we have not touched measure theory, stochastic processes, or advanced convergence results. But they are exactly what is needed to read the core microeconomics curriculum without stumbling over probabilistic language. And they already get us a long way into the heart of modern microeconomic theory.</p>
+<hr />
+<h2 id="what-you-should-take-away">13. What you should take away</h2>
 <p>After this topic, you should be comfortable with:</p>
 <ul>
-<li>reading “equilibrium as fixed point” without it feeling like a metaphor,</li>
-<li>knowing the conditions of Brouwer, Kakutani, and Tarski and which model features they require,</li>
-<li>seeing how the pre-course machinery (convexity, compactness, upper hemicontinuity, lattices) feeds directly into equilibrium existence,</li>
-<li>and understanding why existence is the first question economists ask, even before uniqueness or characterization.</li>
+<li>reading statements about random variables and distributions,</li>
+<li>computing and interpreting expectations as weighted averages,</li>
+<li>using conditional probability and Bayes’ rule to update beliefs,</li>
+<li>recognizing independence as a substantive modeling assumption,</li>
+<li>and seeing why uncertainty is unavoidable in modern microeconomics.</li>
 </ul>
-<p>From here on, equilibrium is not an assumption. It is a consequence of structure.</p>
+<p>You should also see how this topic connects back to earlier material: random variables are functions (Topic <a href="Topic1.html">1</a>), distributions live on sets (Topic <a href="Topic1.html">1</a>), expected utility combines preferences (Topic <a href="Topic2.html">2</a>) with probability, and optimization under uncertainty (Topics <a href="Topic4.html">4</a> and <a href="Topic5.html">5</a>) evaluates choices by expected payoffs.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>The proof is in fact pretty involved. For a bit more discussion, see Ok, “Real Analysis with Economic Applications” (2007, chapters D.8.2 and D.8.3). Franklin (1980), “Methods of Mathematical Economics” provides 3 proofs of Brouwer. One is combinatorial, something we haven’t looked at here, so the tools are a little unfamiliar. One is somewhat indirect (yet very elegant) and one is brute force. That one implicitly constructs the Borsuk observation.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>That is, a ball of radius 1 around the origin.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>That means, it is one dimension lower than the ball.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>If <span class="math inline">\(f(x) = x\)</span>, the “ray from <span class="math inline">\(f(x)\)</span> through <span class="math inline">\(x\)</span>” has no direction because every line starting at <span class="math inline">\(x\)</span> goes, trivially, also through <span class="math inline">\(f(x)\)</span>. But if there is no fixed point, then the direction of the line is pinned down.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>The ball is convex, so if we connect two points in the ball with each other by a line, that line segment does not leave the ball. Moreover, the sphere is strictly curved in the sense that no straight line segment lies entirely on it, so a ray through an interior point can intersect <span class="math inline">\(S^{n-1}\)</span> at most twice – and since the ray continues beyond <span class="math inline">\(x\)</span>, it must exit the ball and hit <span class="math inline">\(S^{n-1}\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>For <span class="math inline">\(n = 1\)</span>, this is easy to see directly. The ball <span class="math inline">\(B^1 = [-1,1]\)</span> is connected, but a retraction onto <span class="math inline">\(S^0 = \{-1, 1\}\)</span> would be a continuous surjection from a connected set onto a disconnected one, which is impossible. For <span class="math inline">\(n \geq 2\)</span>, the argument is harder and typically uses tools from algebraic topology, but the geometric content is the same: you cannot continuously flatten a ball onto its boundary without tearing something.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>For the empiricists among you: a retraction is a continuous map from a set onto a subset that leaves the subset’s points fixed – the same idea as a projection, but with a continuity requirement. So Borsuk’s result says that there is no continuous projection from a ball onto its boundary sphere.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>Convex values means: for each <span class="math inline">\(x \in X\)</span>, the set <span class="math inline">\(F(x)\)</span> is convex. In our setting – a correspondence on a compact subset of <span class="math inline">\(\mathbb{R}^n\)</span> – upper hemicontinuity with compact values implies that <span class="math inline">\(F\)</span> has a closed graph (recall Topic <a href="Topic5.html">5</a>, Section 10). The proof sketch below uses the closed graph property, which is thus a consequence of the assumptions stated here, not an additional requirement.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>For the details in an economics-oriented presentation, see Ok, “Real Analysis with Economic Applications” (2007), Chapter E.5.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>Note that <span class="math inline">\(y_k\)</span> need not be a grid point, but is <em>any one point</em> in <span class="math inline">\(F(x_k)\)</span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>This is where we use convexity of <span class="math inline">\(F(x)\)</span>. Because each <span class="math inline">\(F(x)\)</span> is convex, and the values <span class="math inline">\(y_k\)</span> come from nearby images of <span class="math inline">\(F\)</span>, these weighted averages remain close to <span class="math inline">\(F(x)\)</span>. Without convex values, we could not average and stay “near” the correspondence.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>The details require checking that <span class="math inline">\(f(x^\ast)\)</span> is both <span class="math inline">\(\preceq x^\ast\)</span> and <span class="math inline">\(\succeq x^\ast\)</span>. For <span class="math inline">\(\preceq\)</span>: since <span class="math inline">\(x^\ast \preceq f^k(\bar{x})\)</span> for all <span class="math inline">\(k\)</span> (it is the greatest lower bound), monotonicity gives <span class="math inline">\(f(x^\ast) \preceq f^{k+1}(\bar{x})\)</span> for all <span class="math inline">\(k\)</span>, so <span class="math inline">\(f(x^\ast)\)</span> is also a lower bound of the sequence, hence <span class="math inline">\(f(x^\ast) \preceq x^\ast\)</span>. For <span class="math inline">\(\succeq\)</span>: applying <span class="math inline">\(f\)</span> to <span class="math inline">\(f(x^\ast) \preceq x^\ast\)</span> gives <span class="math inline">\(f(f(x^\ast)) \preceq f(x^\ast)\)</span> by monotonicity, so <span class="math inline">\(f(x^\ast)\)</span> is itself a lower bound that <span class="math inline">\(x^\ast\)</span> must be at least as large as – but <span class="math inline">\(x^\ast\)</span> is the <em>greatest</em> lower bound, so <span class="math inline">\(x^\ast \preceq f(x^\ast)\)</span>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>Nash’s original proof used Brouwer rather than Kakutani, constructing a particular continuous function whose fixed points are Nash equilibria. The Kakutani route is the more standard modern presentation.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>I usually claim that integrals <span class="math inline">\(\int\)</span> are nothing but a fast way of writing a sum <span class="math inline">\(\sum\)</span>. Although mathematically there is a difference and the laws are a bit different, this intuition is often good for <em>economic</em> purposes. In reality people have a hard time thinking in terms of continuous state spaces, so even if they were they behave as if things were discrete. If you result relies on one of the tricks where the integral behaves different from the sum, there may be an issue in what you are modeling.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
 </main>
 <aside class="course-outline-right" aria-label="Course outline">
 <h2 class="outline-title">Course Outline</h2>
-<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic9.html" aria-current="page">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic7.html">7. Topic 7: Envelope Theorems and Value Functions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic9.html" aria-current="page">9. Topic 9: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Measurability and Integration</a></li></ul>
 </aside>
 </div>
 <div id="outline-backdrop" class="outline-backdrop"></div>
@@ -266,7 +267,7 @@ MathJax = {
     <h2 class="outline-title">On This Page</h2>
     <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
   </div>
-  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-fixed-points-enter-now">1. Why fixed points enter now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-is-a-fixed-point">2. What is a fixed point?</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#brouwers-fixed-point-theorem">3. Brouwer’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-idea-of-the-proof">The idea of the proof</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-brouwer-is-not-enough-for-economics">Why Brouwer is not enough for economics</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#kakutanis-fixed-point-theorem">4. Kakutani’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-this-is-the-workhorse-theorem-for-equilibrium">Why this is the workhorse theorem for equilibrium</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#how-kakutani-follows-from-brouwer-sketch">How Kakutani follows from Brouwer (sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#tarskis-fixed-point-theorem">5. Tarski’s fixed-point theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#when-is-tarski-useful">When is Tarski useful?</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-tarski-works-constructive-sketch">Why Tarski works (constructive sketch)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#comparing-the-three-theorems">6. Comparing the three theorems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-nash-equilibrium-existence">7. An economic example: Nash equilibrium existence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-existence-matters-even-if-we-cannot-compute">8. Why existence matters (even if we cannot compute)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">9. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">10. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">11. What you should take away</a></li></ul>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-probability-enters-now">1. Why probability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-state-space-what-might-happen">2. The state space: what might happen</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#events-and-probabilities">3. Events and probabilities</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#random-variables">4. Random variables</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#distributions">5. Distributions</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#discrete-distributions">Discrete distributions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#continuous-distributions-and-the-cdf">Continuous distributions and the CDF</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#expectation-the-probability-weighted-average">6. Expectation: the probability-weighted average</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-economists-care-about-expectation">Why economists care about expectation</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#linearity-of-expectation">Linearity of expectation</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-probability-and-bayes-rule">7. Conditional probability and Bayes’ rule</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#conditional-probability">Conditional probability</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#bayes-rule">Bayes’ rule</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#independence">8. Independence</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#conditional-expectation">9. Conditional expectation</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-first-price-auction-with-private-values">10. An economic example: first-price auction with private values</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">11. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-microeconomics">12. Why this matters for microeconomics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
 </aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic8.html" class="nav-prev">← Previous</a><a href="Topic10.html" class="nav-next">Next →</a></nav>
 

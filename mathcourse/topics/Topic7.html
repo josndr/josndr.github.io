@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Topic 7: Order, Lattices, and Monotonicity</title>
+<title>Topic 7: Envelope Theorems and Value Functions</title>
 <link rel="stylesheet" href="../style.css">
 <script>
 MathJax = {
@@ -23,334 +23,824 @@ MathJax = {
 <button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
 <aside class="topic-outline-left" aria-label="On this page">
 <h2 class="outline-title">On This Page</h2>
-<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-order-shows-up-in-economic-theory">1. Why order shows up in economic theory</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#excursion-the-implicit-function-theorem">2. Excursion: The Implicit Function Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#back-to-general-problems">3. Back to general problems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partially-ordered-sets">4. Partially ordered sets</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#total-orders">Total orders</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#two-orders-economists-use-all-the-time">5. Two orders economists use all the time</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-usual-order-on-mathbbr">5.1 The usual order on \(\mathbb{R}\)</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-product-order-on-mathbbrn">5.2 The product order on \(\mathbb{R}^n\)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#monotone-maps">6. Monotone maps</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lattices-when-any-two-points-have-a-meet-and-a-join">7. Lattices: when any two points have a meet and a join</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#example-mathbbrn-with-the-product-order">Example: \(\mathbb{R}^n\) with the product order</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#complete-lattices-and-why-you-might-care-later">8. Complete lattices (and why you might care later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#increasing-differences-the-core-monotonicity-condition">9. Increasing differences: the core monotonicity condition</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-quick-differentiable-sanity-check-only-as-intuition">A quick differentiable sanity check (only as intuition)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#supermodularity-complementarity-inside-the-choice-vector">10. Supermodularity: complementarity inside the choice vector</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#topkis-theorem-monotone-comparative-statics-without-derivatives">11. Topkis’ theorem: monotone comparative statics without derivatives</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-single-agent-economic-example-effort-choice-with-a-bonus-parameter">12. A single-agent economic example: effort choice with a bonus parameter</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#outlook-why-this-matters-for-micro-and-for-games-later">13. Outlook: why this matters for micro (and for games later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg-and-where-it-does-not">14. Where this appears in MWG (and where it does not)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-topic-belongs-here">1. Why this topic belongs here</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#parameterized-optimization-and-the-value-function">2. Parameterized optimization and the value function</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-differentiable-interior-envelope-theorem">3. The differentiable interior envelope theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#proof">Proof</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#vector-parameters">Vector parameters</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-the-indirect-effect-disappears">4. Why the indirect effect disappears</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-small-example">A small example</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#constrained-optimization-and-kkt">5. Constrained optimization and KKT</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-lagrangian">The Lagrangian</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-karushkuhntucker-conditions">The Karush–Kuhn–Tucker conditions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-a-constraint-qualification-appears">Why a constraint qualification appears</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#necessary-versus-sufficient">Necessary versus sufficient</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-corner-solution-example">A corner-solution example</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-constrained-envelope-theorem">6. The constrained envelope theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-the-formula-is-true">Why the formula is true</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#minimization-problems">Minimization problems</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-the-constraint-term-cannot-be-ignored">7. Why the constraint term cannot be ignored</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#three-workhorses-from-demand-and-production-theory">8. Three workhorses from demand and production theory</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#shephards-lemma">8.1 Shephard’s lemma</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#roys-identity">8.2 Roy’s identity</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#hotellings-lemma">8.3 Hotelling’s lemma</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-the-smooth-proof-becomes-fragile">9. Where the smooth proof becomes fragile</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-milgromsegal-envelope-formula">10. The Milgrom–Segal envelope formula</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#proof-freeze-the-old-optimizer">Proof: freeze the old optimizer</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#kinks-multiple-optimizers-and-directional-derivatives">11. Kinks, multiple optimizers, and directional derivatives</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-short-bridge-absolute-continuity-and-almost-everywhere">12. A short bridge: absolute continuity and “almost everywhere”</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#almost-everywhere">Almost everywhere</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#absolute-continuity">Absolute continuity</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#milgromsegals-integral-envelope-theorem">13. Milgrom–Segal’s integral envelope theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#where-the-bound-is-used">Where the bound is used</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-the-integrable-bound-is-not-cosmetic">Why the integrable bound is not cosmetic</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#mechanism-design-the-payoff-identity">14. Mechanism design: the payoff identity</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#incentive-compatibility-implies-monotonicity">Incentive compatibility implies monotonicity</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#allocation-plus-one-utility-level-pins-down-payments">Allocation plus one utility level pins down payments</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#value-functions-beyond-static-demand">15. Value functions beyond static demand</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg-and-beyond">16. Where this appears in MWG and beyond</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">17. What you should take away</a></li></ul>
 </aside>
 <main class="topic-content">
 <a href="../pdfs/Topic7.pdf" class="pdf-download" download>⬇ Download PDF</a>
-<h1 id="topic-7-order-lattices-and-monotonicity">Topic 7: Order, Lattices, and Monotonicity</h1>
-<p><em>(How to do comparative statics without calculus)</em></p>
+<h1 id="topic-7-envelope-theorems-and-value-functions">Topic 7: Envelope Theorems and Value Functions</h1>
+<p><em>(How the value of an optimal choice changes when the problem changes)</em></p>
 <hr />
-<h2 id="why-order-shows-up-in-economic-theory">1. Why order shows up in economic theory</h2>
-<p>In economics, we care about how changes in the environment change outcomes. Because we aim to work on understanding human behavior, we care about how (equilibrium) choices change when the environment changes. The simplest way to say something here is what we call a comparative static, that is an answer to this question:</p>
+<h2 id="why-this-topic-belongs-here">1. Why this topic belongs here</h2>
+<p>Topic <a href="Topic5.html">5</a> taught us to separate two objects that come out of an optimization problem:</p>
+<ul>
+<li>the <strong>argmax</strong>, which tells us which choices are optimal;</li>
+<li>the <strong>value function</strong>, which tells us how good the best attainable outcome is.</li>
+</ul>
+<p>Topic <a href="Topic6.html">6</a> then gave us derivatives, gradients, first-order conditions, and total differentiation. We used those tools to ask how an optimal <em>choice</em> changes with a parameter. The Implicit Function Theorem, which we will use in Topic <a href="Topic8.html">8</a>, follows exactly that route: differentiate the first-order condition and solve for the derivative of the optimizer.</p>
+<p>But economists often want a different object:</p>
 <blockquote>
-<p>“If an exogenous parameter goes up, does the optimal choice also go up?”</p>
+<p>“When a price, a resource, or a type changes, how does the <strong>optimized value</strong> change?”</p>
 </blockquote>
-<p>Examples:</p>
-<ul>
-<li>If income rises, does the consumer buy more of a good?</li>
-<li>If a bonus becomes more powerful, does effort increase?</li>
-<li>If one firm becomes more aggressive, do other firms respond by becoming more aggressive too?</li>
-</ul>
-<p>Now as long as things are smooth enough, there is a straightforward way to deal with these questions (it still may not be an easy one, of course). We will briefly discuss that and then move on to the more general case which often is, unfortunately, also the more relevant one.</p>
-<hr />
-<h2 id="excursion-the-implicit-function-theorem">2. Excursion: The Implicit Function Theorem</h2>
-<p>Suppose we live in a perfectly smooth world. Everything is as differentiable and concave as we want it to be. Moreover, for the sake of this argument, let’s assume we are working on a single dimension. So, what we are looking at is a function <span class="math inline">\(f(x;\theta)\)</span> where <span class="math inline">\(x\)</span> is our variable of choice, and <span class="math inline">\(\theta\)</span> is a parameter. Now, we know the necessary and sufficient condition for an optimum is that</p>
-<p><span class="math display">\[
-f&#39;(x;\theta):=\frac{\partial f(x;\theta)}{\partial x}=0.
-\]</span></p>
-<p>Solving this for <span class="math inline">\(x\)</span> gives us our optimum <span class="math inline">\(x^\ast\)</span>. Now if we change <span class="math inline">\(\theta\)</span>, that optimum is likely to change, but<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> we know that even under another <span class="math inline">\(\theta&#39;\)</span> it must be true, that <span class="math inline">\(x&#39;^\ast\)</span> solves</p>
-<p><span class="math display">\[
-f&#39;(x&#39;^\ast;\theta&#39;)=0.
-\]</span></p>
-<p>Knowing this, means, we know also how the first order condition needs to change if we change <span class="math inline">\(\theta\)</span> slightly, simply by using the fact that although <span class="math inline">\(x\)</span> is our choice and <span class="math inline">\(\theta\)</span> is a parameter (if you like the <em>state</em> of the problem), mathematically <span class="math inline">\(f\)</span> is a function of <span class="math inline">\(x\)</span> and <span class="math inline">\(\theta\)</span>. Moreover, we can (in principle at least) describe <span class="math inline">\(x(\theta)\)</span> as the choice function that describes how the optimal choice changes in <span class="math inline">\(\theta\)</span>.</p>
-<p>So in our example problem <span class="math inline">\(x(\theta)=x^\ast\)</span> and <span class="math inline">\(x(\theta&#39;)=x&#39;^\ast\)</span>. Hopefully, you now see where this is going. The object we want to understand fundamentally is <span class="math inline">\(\partial x(\theta)/\partial \theta\)</span> or in words, how does our choice <span class="math inline">\(x\)</span> change if the environment changes slightly.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p>One complication could be that if <span class="math inline">\(f\)</span> is complicated, explicitly describing <span class="math inline">\(x(\theta)\)</span> in <em>closed form</em><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> may be difficult.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<p>But, our knowledge, that <span class="math inline">\(x\)</span> (whatever it is) has to solve the first-order condition tells us <em>implicitly</em> what <span class="math inline">\(x\)</span> is, and more relevantly, it tells us <em>how it changes in <span class="math inline">\(\theta\)</span></em>. Why the latter?</p>
-<p>Well, think about the function <span class="math inline">\(f(x(\theta);\theta)\)</span>. For that function, we know that</p>
-<p><span class="math display">\[
-f&#39;(x(\theta);\theta)=0
-\]</span></p>
-<p>So if <span class="math inline">\(\hat{x}:=x(\hat{\theta})\)</span> for some <span class="math inline">\(\hat{\theta}\)</span>, then we have <span class="math inline">\(f&#39;(\hat{x},\hat{\theta})=0\)</span> and as long as we keep it this way, this is always true. Then, for small changes <span class="math inline">\(\mathrm{d} \theta\)</span>, that means<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
-<p><span class="math display">\[
-\mathrm{d} f&#39;(x;\theta) = \left(\frac{\partial f&#39;(x;\theta)}{\partial x} \frac{\partial x}{\partial \theta} + \frac{\partial f&#39;(x;\theta)}{\partial \theta}\right)\mathrm{d}\theta=0
-\]</span></p>
-<p>if we want to ensure that we stay on the “solution” part in <span class="math inline">\(x\)</span>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<p>But this can only be true if the part in the large brackets is <span class="math inline">\(0\)</span>, which in turn means that</p>
-<p><span class="math display">\[
-\frac{\partial x}{\partial \theta} = -\frac{\frac{\partial f&#39;(x;\theta)}{\partial \theta}}{\frac{\partial f&#39;(x;\theta)}{\partial x}}.
-\]</span></p>
-<p>This last relation is called the <em>implicit function theorem</em> as it tells us that just knowing the first order equation, is enough to understand how the optimal choice, <span class="math inline">\(x\)</span>, changes in the parameter <span class="math inline">\(\theta\)</span>.</p>
-<p>In the example where the first order condition is</p>
-<p><span class="math display">\[
-x e^{\theta x}-3=0
-\]</span></p>
-<p>we know there is no closed form solution <span class="math inline">\(x(\theta)\)</span>,<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> yet we can solve</p>
-<p><span class="math display">\[
-\frac{\partial x(\theta)}{\partial \theta} = -\frac{(x(\theta))^2}{1+\theta x(\theta)}
-\]</span></p>
-<p>via the implicit function theorem.</p>
-<hr />
-<h2 id="back-to-general-problems">3. Back to general problems</h2>
-<p>The above works nicely under great simplifying assumptions, but they can fail for reasons we have already seen:</p>
-<ul>
-<li>the choice may be multidimensional,</li>
-<li>the solution may be a set, not a point,</li>
-<li>the objective may not be smooth (kinks are common),</li>
-<li>the action space may be discrete (“choose a technology” is not a calculus problem).</li>
-</ul>
-<p>The order-theoretic approach we will now discuss is the alternative. It is designed for exactly the situations where you do not want (or cannot) to lean on calculus.</p>
-<p>The punchline of this topic is:</p>
+<p>That question appears almost immediately in demand theory. The indirect utility function, expenditure function, and profit function are all value functions. It appears again in mechanism design, where an agent’s equilibrium utility is the value of choosing the best report, and in dynamic programming, where the value function records the payoff from an optimal continuation plan.</p>
+<p>The <strong>envelope theorem</strong> answers this question. Its basic message is:</p>
 <blockquote>
-<p>If you can express your model using an order (“higher” versus “lower”) and you can show a certain kind of complementarity, then monotonicity results fall out cleanly.</p>
+<p>“To differentiate the optimized value, hold the optimal choice fixed and differentiate the objective directly with respect to the parameter.”</p>
 </blockquote>
+<p>That sounds surprising. The optimal choice usually changes with the parameter, so why can we ignore that change? We start with the smooth interior case, where the answer comes from the first-order condition. We then add constraints, where Lagrange multipliers record the value of moving a boundary. Finally, we turn to Milgrom and Segal’s theorem, which shows that the envelope formula can survive even when the choice set is arbitrary and the optimizer jumps.</p>
 <hr />
-<h2 id="partially-ordered-sets">4. Partially ordered sets</h2>
-<p>Let <span class="math inline">\(X\)</span> be a set. A binary relation <span class="math inline">\(\preceq\)</span> on <span class="math inline">\(X\)</span> is a subset of <span class="math inline">\(X\times X\)</span> (Topic <a href="Topic2.html">2</a> already used this viewpoint for preferences).</p>
-<hr />
-<p>We say that <span class="math inline">\((X,\preceq)\)</span> is a <strong>partially ordered set</strong> (a “poset”) if <span class="math inline">\(\preceq\)</span> satisfies:</p>
-<ol type="1">
-<li><p><strong>Reflexivity:</strong> for every <span class="math inline">\(x\in X\)</span>,</p>
+<h2 id="parameterized-optimization-and-the-value-function">2. Parameterized optimization and the value function</h2>
+<p>Let <span class="math inline">\(X\)</span> be a choice set, let <span class="math inline">\(\theta\)</span> be a parameter, and consider</p>
 <p><span class="math display">\[
-x\preceq x.
+V(\theta)=\max_{x\in X} f(x,\theta).
 \]</span></p>
-<p><em>Every element is weakly below itself.</em></p></li>
-<li><p><strong>Antisymmetry:</strong> for all <span class="math inline">\(x,y\in X\)</span>,</p>
+<p>The function <span class="math inline">\(f\)</span> is the <strong>primitive objective</strong>: it tells us the payoff from a particular choice <span class="math inline">\(x\)</span> at a particular parameter <span class="math inline">\(\theta\)</span>.</p>
+<p>The function <span class="math inline">\(V\)</span> is the <strong>value function</strong>: it tells us the best payoff attainable at each <span class="math inline">\(\theta\)</span>.</p>
+<p>The set of maximizers is</p>
 <p><span class="math display">\[
-x\preceq y \text{ and } y\preceq x \;\Rightarrow\; x=y.
+X^\ast(\theta)
+=
+\operatorname{argmax}_{x\in X} f(x,\theta).
 \]</span></p>
-<p><em>If each is weakly below the other, then they are the same element.</em></p></li>
-<li><p><strong>Transitivity:</strong> for all <span class="math inline">\(x,y,z\in X\)</span>,</p>
+<p>If the maximizer is unique, we may write it as a function <span class="math inline">\(x^\ast(\theta)\)</span>. Then</p>
 <p><span class="math display">\[
-x\preceq y \text{ and } y\preceq z \;\Rightarrow\; x\preceq z.
+V(\theta)=f(x^\ast(\theta),\theta).
 \]</span></p>
-<p><em>If <span class="math inline">\(x\)</span> is below <span class="math inline">\(y\)</span> and <span class="math inline">\(y\)</span> is below <span class="math inline">\(z\)</span>, then <span class="math inline">\(x\)</span> is below <span class="math inline">\(z\)</span>.</em></p></li>
-</ol>
-<hr />
-<p>A partial order is “partial” because not every pair can be compared under <span class="math inline">\(\preceq\)</span>.</p>
-<h3 id="total-orders">Total orders</h3>
-<hr />
-<p>A poset is a <strong>total order</strong> (sometimes called “linear order”) if any two elements can be compared: for all <span class="math inline">\(x,y\in X\)</span>,</p>
-<p><span class="math display">\[
-x\preceq y \quad\text{or}\quad y\preceq x.
-\]</span></p>
-<hr />
-<p>The real line <span class="math inline">\((\mathbb{R},\leq)\)</span> is a total order.</p>
-<hr />
-<h2 id="two-orders-economists-use-all-the-time">5. Two orders economists use all the time</h2>
-<h3 id="the-usual-order-on-mathbbr">5.1 The usual order on <span class="math inline">\(\mathbb{R}\)</span></h3>
-<p>This is the one you already know: <span class="math inline">\(x\leq y\)</span>.</p>
-<h3 id="the-product-order-on-mathbbrn">5.2 The product order on <span class="math inline">\(\mathbb{R}^n\)</span></h3>
-<p>In consumer problems, choices are usually vectors. So we need an order for vectors.</p>
-<p>For <span class="math inline">\(x,y\in\mathbb{R}^n\)</span>, define</p>
-<p><span class="math display">\[
-x \preceq y \quad\Longleftrightarrow\quad x_i \leq y_i \text{ for all } i=1,\dots,n.
-\]</span></p>
-<p><em>“<span class="math inline">\(y\)</span> is higher than <span class="math inline">\(x\)</span> if it is at least as high in every coordinate.</em></p>
-<p>This is a partial order, not a total order. For instance, in <span class="math inline">\(\mathbb{R}^2\)</span>, <span class="math inline">\((1,0)\)</span> and <span class="math inline">\((0,1)\)</span> are not comparable under <span class="math inline">\(\preceq\)</span>.</p>
-<p>Economically, the product order is the natural order when “more of every component” is interpreted as “bigger”.</p>
-<hr />
-<h2 id="monotone-maps">6. Monotone maps</h2>
-<p>Let <span class="math inline">\((X,\preceq_X)\)</span> and <span class="math inline">\((Y,\preceq_Y)\)</span> be posets.</p>
-<hr />
-<p>A function <span class="math inline">\(g:X\to Y\)</span> is <strong>monotone increasing</strong> if</p>
-<p><span class="math display">\[
-x\preceq_X x&#39; \;\Rightarrow\; g(x)\preceq_Y g(x&#39;).
-\]</span></p>
-<hr />
-<p><em>“If you increase the input, the output does not go down.”</em></p>
-<hr />
-<p>A function <span class="math inline">\(g\)</span> is <strong>monotone decreasing</strong> if</p>
-<p><span class="math display">\[
-x\preceq_X x&#39; \;\Rightarrow\; g(x&#39;)\preceq_Y g(x).
-\]</span></p>
-<hr />
-<p>These definitions are deliberately minimal. They do not require differentiability, continuity, or convexity. They only require that the words “higher” and “lower” make sense.</p>
-<hr />
-<h2 id="lattices-when-any-two-points-have-a-meet-and-a-join">7. Lattices: when any two points have a meet and a join</h2>
-<hr />
-<p>A poset <span class="math inline">\((X,\preceq)\)</span> is a <strong>lattice</strong> if for any two elements <span class="math inline">\(x,y\in X\)</span> there exist:</p>
+<p>These are different objects. The derivative <span class="math inline">\(x^{\ast\prime}(\theta)\)</span> describes <strong>choice comparative statics</strong>. The derivative <span class="math inline">\(V&#39;(\theta)\)</span> describes <strong>value comparative statics</strong>. The Implicit Function Theorem is typically used for the first. The envelope theorem is built for the second.</p>
+<p>For example, if <span class="math inline">\(x\)</span> is a firm’s input and <span class="math inline">\(\theta\)</span> is the output price, then:</p>
 <ul>
-<li>a <strong>join</strong> (least upper bound), written <span class="math inline">\(x\vee y\)</span>, and</li>
-<li>a <strong>meet</strong> (greatest lower bound), written <span class="math inline">\(x\wedge y\)</span>,</li>
+<li><span class="math inline">\(x^\ast(\theta)\)</span> tells us how input demand changes with the price;</li>
+<li><span class="math inline">\(V(\theta)\)</span> is maximized profit;</li>
+<li><span class="math inline">\(V&#39;(\theta)\)</span> tells us the marginal value of a price increase.</li>
 </ul>
-<p>such that:</p>
-<ol type="1">
-<li><p><span class="math inline">\(x\preceq x\vee y\)</span> and <span class="math inline">\(y\preceq x\vee y\)</span> (it is an upper bound), and if <span class="math inline">\(z\)</span> is any upper bound of both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then <span class="math inline">\(x\vee y \preceq z\)</span> (it is the least upper bound);</p></li>
-<li><p><span class="math inline">\(x\wedge y \preceq x\)</span> and <span class="math inline">\(x\wedge y \preceq y\)</span> (it is a lower bound), and if <span class="math inline">\(z\)</span> is any lower bound of both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then <span class="math inline">\(z \preceq x\wedge y\)</span> (it is the greatest lower bound).</p></li>
-</ol>
 <hr />
-<p>In English:</p>
-<ul>
-<li><span class="math inline">\(x\vee y\)</span> (the least upper bound) is “the smallest element that is above both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>,”</li>
-<li><span class="math inline">\(x\wedge y\)</span> (the greatest lower bound) is “the largest element that is below both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.”</li>
-</ul>
-<p>What does it mean, practically? It means in particular, that any element <span class="math inline">\(z\)</span> in <span class="math inline">\(X\)</span> that is (under our order) larger than both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then it has to be ranked with (and larger than) a single, defined <em>join</em>. And analogously for the meet. Important, this does <em>not</em> imply a total order, as we will see in this (often relevant) example.</p>
-<h3 id="example-mathbbrn-with-the-product-order">Example: <span class="math inline">\(\mathbb{R}^n\)</span> with the product order</h3>
-<p>Under the product order on <span class="math inline">\(\mathbb{R}^n\)</span>,</p>
+<h2 id="the-differentiable-interior-envelope-theorem">3. The differentiable interior envelope theorem</h2>
+<p>We begin with the cleanest version.</p>
+<hr />
+<p><strong>Theorem (Differentiable interior envelope theorem).</strong><br />
+Let</p>
 <p><span class="math display">\[
-(x\vee y)_i=\max\{x_i,y_i\},
+V(\theta)=\max_{x\in X} f(x,\theta),
+\]</span></p>
+<p>where <span class="math inline">\(X\subseteq\mathbb{R}^n\)</span> does not depend on <span class="math inline">\(\theta\)</span>. Fix an open interval of parameter values. Suppose on that interval:</p>
+<ol type="1">
+<li><p><span class="math inline">\(f\)</span> is continuously differentiable in <span class="math inline">\((x,\theta)\)</span>;</p></li>
+<li><p>the optimizer <span class="math inline">\(x^\ast(\theta)\)</span> is unique, interior, and differentiable in <span class="math inline">\(\theta\)</span>;</p></li>
+<li><p>the first-order condition characterizes the optimum:</p>
+<p><span class="math display">\[
+\nabla_x f(x^\ast(\theta),\theta)=0.
+\]</span></p></li>
+</ol>
+<p>Then <span class="math inline">\(V\)</span> is differentiable and</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+\frac{\partial f}{\partial\theta}(x^\ast(\theta),\theta).
+\]</span></p>
+<hr />
+<blockquote>
+<p>“The derivative of the optimized value equals the direct effect of the parameter on the objective, evaluated at an optimal choice. We do not need the derivative of the optimal choice.”</p>
+</blockquote>
+<h3 id="proof">Proof</h3>
+<p>Start from the identity</p>
+<p><span class="math display">\[
+V(\theta)=f(x^\ast(\theta),\theta).
+\]</span></p>
+<p>The chain rule gives</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+\nabla_x f(x^\ast(\theta),\theta)\cdot x^{\ast\prime}(\theta)
++
+\frac{\partial f}{\partial\theta}(x^\ast(\theta),\theta).
+\]</span></p>
+<p>The first term records the indirect effect of <span class="math inline">\(\theta\)</span> through the changing optimizer. But the first-order condition says</p>
+<p><span class="math display">\[
+\nabla_x f(x^\ast(\theta),\theta)=0.
+\]</span></p>
+<p>Therefore</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+0\cdot x^{\ast\prime}(\theta)
++
+\frac{\partial f}{\partial\theta}(x^\ast(\theta),\theta),
+\]</span></p>
+<p>which is the claimed formula. <span class="math inline">\(\square\)</span></p>
+<h3 id="vector-parameters">Vector parameters</h3>
+<p>If the parameter is a vector <span class="math inline">\(\theta=(\theta_1,\ldots,\theta_k)\)</span>, apply the same argument one component at a time:</p>
+<p><span class="math display">\[
+\nabla_\theta V(\theta)
+=
+\nabla_\theta f(x^\ast(\theta),\theta).
+\]</span></p>
+<p>Each entry of the gradient answers one ceteris-paribus question: how does optimized value change when that component of the environment changes slightly?</p>
+<hr />
+<h2 id="why-the-indirect-effect-disappears">4. Why the indirect effect disappears</h2>
+<p>The proof is short, but the intuition deserves more space.</p>
+<p>Suppose <span class="math inline">\(\theta\)</span> rises a little. Two things happen:</p>
+<ol type="1">
+<li><strong>Direct effect:</strong> even if the agent kept choosing the old <span class="math inline">\(x^\ast(\theta)\)</span>, the payoff <span class="math inline">\(f(x^\ast(\theta),\theta)\)</span> would change because <span class="math inline">\(\theta\)</span> entered the objective.</li>
+<li><strong>Reoptimization effect:</strong> the agent changes the choice from <span class="math inline">\(x^\ast(\theta)\)</span> to <span class="math inline">\(x^\ast(\theta+\mathrm{d}\theta)\)</span>.</li>
+</ol>
+<p>The envelope theorem says that the reoptimization effect is negligible <strong>to first order</strong>. Why? At an interior optimum, the objective is locally flat in every choice direction:</p>
+<p><span class="math display">\[
+\nabla_x f(x^\ast(\theta),\theta)=0.
+\]</span></p>
+<p>Moving the choice a small amount therefore has no first-order payoff effect. Reoptimization still matters for the level of the value function, and it may matter at second order, but it drops out of the derivative.</p>
+<p>This is sometimes summarized by saying that “the choice effect is second order.” That phrase is useful only if we remember what makes it true: the relevant first-order condition must hold. At a boundary, or when the feasible set itself moves with the parameter, the missing first-order term can return through the constraint.</p>
+<h3 id="a-small-example">A small example</h3>
+<p>Consider</p>
+<p><span class="math display">\[
+V(\theta)=\max_{x\in\mathbb{R}}\left\{\theta x-\frac{x^2}{2}\right\}.
+\]</span></p>
+<p>The first-order condition is</p>
+<p><span class="math display">\[
+\theta-x=0,
+\]</span></p>
+<p>so <span class="math inline">\(x^\ast(\theta)=\theta\)</span>. Substituting gives</p>
+<p><span class="math display">\[
+V(\theta)=\frac{\theta^2}{2},
 \qquad
-(x\wedge y)_i=\min\{x_i,y_i\}.
+V&#39;(\theta)=\theta.
 \]</span></p>
-<p>So the <span class="math inline">\(n\)</span>–dimensional Euclidean space under the product order is indeed a lattice.</p>
+<p>The envelope formula obtains the same answer without differentiating <span class="math inline">\(x^\ast\)</span>:</p>
+<p><span class="math display">\[
+\frac{\partial}{\partial\theta}
+\left(\theta x-\frac{x^2}{2}\right)
+\bigg|_{x=x^\ast(\theta)}
+=
+x^\ast(\theta)
+=
+\theta.
+\]</span></p>
+<p>For this quadratic problem, solving for <span class="math inline">\(x^\ast\)</span> was easy. In larger problems, the envelope theorem is valuable precisely because the optimizer may be difficult or impossible to write in closed form.</p>
 <hr />
-<h2 id="complete-lattices-and-why-you-might-care-later">8. Complete lattices (and why you might care later)</h2>
-<hr />
-<p>A lattice <span class="math inline">\((X,\preceq)\)</span> is a <strong>complete lattice</strong> if every subset <span class="math inline">\(A\subseteq X\)</span> has:</p>
+<h2 id="constrained-optimization-and-kkt">5. Constrained optimization and KKT</h2>
+<p>Most economic optimization problems are constrained, and the constraint may itself depend on the parameter. A consumer’s budget moves with prices and wealth. A firm’s technology may move with productivity. A mechanism must satisfy incentive and participation constraints.</p>
+<p>Consider the maximization problem</p>
+<p><span class="math display">\[
+\begin{aligned}
+V(\theta)=\max_x \quad &amp; f(x,\theta)\\
+\text{subject to}\quad
+&amp;g_j(x,\theta)\geq 0,
+\qquad j=1,\ldots,m,\\
+&amp;h_k(x,\theta)=0,
+\qquad k=1,\ldots,r.
+\end{aligned}
+\]</span></p>
+<p>An inequality constraint is <strong>binding</strong> (or active) at <span class="math inline">\(x^\ast\)</span> if <span class="math inline">\(g_j(x^\ast,\theta)=0\)</span>. It is slack if <span class="math inline">\(g_j(x^\ast,\theta)&gt;0\)</span>.</p>
+<h3 id="the-lagrangian">The Lagrangian</h3>
+<p>The <strong>Lagrangian</strong> collects the objective and the constraints in one function:</p>
+<p><span class="math display">\[
+\mathcal{L}(x,\lambda,\mu;\theta)
+=
+f(x,\theta)
++
+\sum_{j=1}^m \lambda_j g_j(x,\theta)
++
+\sum_{k=1}^r \mu_k h_k(x,\theta),
+\]</span></p>
+<p>where <span class="math inline">\(\lambda_j\geq 0\)</span> for the inequality constraints and the equality multipliers <span class="math inline">\(\mu_k\)</span> can have either sign.</p>
+<p>Why is this useful? At an unconstrained interior optimum, <span class="math inline">\(\nabla_x f=0\)</span>. At a constrained optimum this usually fails: the objective may still point uphill, but the constraint prevents us from walking in that direction. The Lagrangian asks whether the objective’s gradient can be balanced by a weighted combination of the constraint gradients.</p>
+<p>The weights are the <strong>Lagrange multipliers</strong>. They record how strongly each binding constraint pushes back against the objective. Equality constraints can push in either direction, so <span class="math inline">\(\mu_k\)</span> can have either sign. An inequality of the form <span class="math inline">\(g_j\geq0\)</span> can only prevent movement toward <span class="math inline">\(g_j&lt;0\)</span>, which is why its multiplier has the sign restriction <span class="math inline">\(\lambda_j\geq0\)</span> under our maximization convention.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<h3 id="the-karushkuhntucker-conditions">The Karush–Kuhn–Tucker conditions</h3>
+<p>Under a suitable <strong>constraint qualification</strong>, an optimum satisfies the <strong>Karush–Kuhn–Tucker (KKT) conditions</strong>:</p>
+<ol type="1">
+<li><p><strong>Stationarity</strong></p>
+<p><span class="math display">\[
+\nabla_x f
++
+\sum_j\lambda_j\nabla_x g_j
++
+\sum_k\mu_k\nabla_x h_k
+=0.
+\]</span></p></li>
+<li><p><strong>Primal feasibility</strong></p>
+<p><span class="math display">\[
+g_j(x^\ast,\theta)\geq 0,
+\qquad
+h_k(x^\ast,\theta)=0.
+\]</span></p></li>
+<li><p><strong>Dual feasibility</strong></p>
+<p><span class="math display">\[
+\lambda_j\geq 0.
+\]</span></p></li>
+<li><p><strong>Complementary slackness</strong></p>
+<p><span class="math display">\[
+\lambda_j g_j(x^\ast,\theta)=0.
+\]</span></p></li>
+</ol>
+<p>Complementary slackness says that a slack constraint has multiplier zero. A constraint can carry a positive shadow value only when it binds.</p>
+<p>Read the four conditions together:</p>
 <ul>
-<li>a least upper bound, and</li>
-<li>a greatest lower bound.</li>
+<li><strong>Stationarity:</strong> after attaching the correct shadow value to every binding constraint, there is no remaining first-order direction of improvement.</li>
+<li><strong>Primal feasibility:</strong> the candidate choice actually satisfies the original constraints.</li>
+<li><strong>Dual feasibility:</strong> inequality constraints carry multipliers with the correct sign.</li>
+<li><strong>Complementary slackness:</strong> either a constraint binds or its multiplier is zero (possibly both); a slack constraint has no marginal value.</li>
 </ul>
-<hr />
-<p><em>“A lattice is complete if we not only can take joins and meets of two points; but we can take them for any collection of points.”</em></p>
-<p>Why this matters (preview): complete lattices are the right environment for fixed-point results like <strong>Tarski’s fixed-point theorem</strong>, which is a workhorse in monotone equilibrium arguments.</p>
-<p>In terms of notation, we call the least upper bound of a set its <em>supremum</em> and the greatest lower bound its <em>infimum</em>. <strong>Important:</strong> As in the two-point case, there is nothing that says these bounds need to lie <em>in the subset</em>, it just says that any point that we can compare to the elements of the set, we can also compare to those, and the order is in the right way.</p>
-<hr />
-<h2 id="increasing-differences-the-core-monotonicity-condition">9. Increasing differences: the core monotonicity condition</h2>
-<p>Now we move from ordering choices to ordering how incentives change.</p>
-<p>Let <span class="math inline">\(X\)</span> be a poset (often a lattice) and let <span class="math inline">\(T\)</span> be a poset of parameters (often <span class="math inline">\(T=\mathbb{R}\)</span> with <span class="math inline">\(\leq\)</span>).</p>
-<p>Consider an objective function</p>
+<p>The first condition alone is not KKT. A point can make the Lagrangian stationary while violating the original problem. The other three conditions keep the Lagrangian connected to feasible choice.</p>
+<h3 id="why-a-constraint-qualification-appears">Why a constraint qualification appears</h3>
+<p>KKT multipliers do not automatically exist for every way of writing every constraint. Consider the problem</p>
 <p><span class="math display">\[
-f:X\times T \to \mathbb{R}.
+\max_x x
+\quad\text{subject to}\quad
+-x^2\geq0.
 \]</span></p>
-<hr />
-<p>We say that <span class="math inline">\(f\)</span> has <strong>increasing differences</strong> in <span class="math inline">\((x,t)\)</span> if for all <span class="math inline">\(x&#39;\succeq x\)</span> and <span class="math inline">\(t&#39;\succeq t\)</span>,</p>
+<p>The only feasible point is <span class="math inline">\(x^\ast=0\)</span>, so it is certainly optimal. But the gradient of the constraint is <span class="math inline">\(-2x^\ast=0\)</span>, while the gradient of the objective is <span class="math inline">\(1\)</span>. No multiplier can make</p>
 <p><span class="math display">\[
-f(x&#39;,t&#39;)-f(x,t&#39;) \geq f(x&#39;,t)-f(x,t).
+1+\lambda(-2x^\ast)=0.
 \]</span></p>
-<hr />
-<p>In English:</p>
+<p>The feasible set is perfectly clear, but its local description is degenerate: the constraint has a zero gradient exactly where we need it to describe the boundary.</p>
+<p>One standard way to rule this out is the <strong>linear independence constraint qualification (LICQ)</strong>: the gradients (with respect to <span class="math inline">\(x\)</span>) of the equality constraints and the binding inequality constraints must be linearly independent at the optimum. Under LICQ, a local optimum has KKT multipliers, and those multipliers are unique.</p>
+<p>There are other constraint qualifications. For a convex problem, a common one is <strong>Slater’s condition</strong>: there exists a feasible point at which every inequality constraint is strictly satisfied. We do not need a catalogue. The economic message is that a constraint qualification makes sure the equations describe the local boundary faithfully enough for multipliers to exist.</p>
+<h3 id="necessary-versus-sufficient">Necessary versus sufficient</h3>
+<p>KKT is first a <strong>necessary-condition theorem</strong>:</p>
 <blockquote>
-<p>“<span class="math inline">\(f\)</span> has increasing differences if, when the parameter <span class="math inline">\(t\)</span> is higher, increasing <span class="math inline">\(x\)</span> becomes (weakly) more attractive.”</p>
+<p>“At a regular local optimum, there must exist multipliers satisfying the KKT conditions.”</p>
 </blockquote>
-<p>There is a very concrete way to think about it:</p>
+<p>This identifies candidates. It does not, by itself, prove that a candidate is optimal—just as <span class="math inline">\(\nabla f=0\)</span> did not prove optimality in Topic <a href="Topic6.html">6</a>.</p>
+<p>KKT becomes sufficient under the appropriate global shape restrictions. With our maximization convention, suppose:</p>
 <ul>
-<li>fix two actions <span class="math inline">\(x\preceq x&#39;\)</span>,</li>
-<li>compare the advantage of choosing <span class="math inline">\(x&#39;\)</span> rather than <span class="math inline">\(x\)</span>,</li>
-<li>increasing differences says that this advantage does not fall when <span class="math inline">\(t\)</span> rises.</li>
+<li><span class="math inline">\(f(\cdot,\theta)\)</span> is concave;</li>
+<li>every <span class="math inline">\(g_j(\cdot,\theta)\)</span> is concave, so each set <span class="math inline">\(\{x:g_j(x,\theta)\geq0\}\)</span> is convex;</li>
+<li>every equality constraint <span class="math inline">\(h_k(\cdot,\theta)=0\)</span> is affine.</li>
 </ul>
-<h3 id="a-quick-differentiable-sanity-check-only-as-intuition">A quick differentiable sanity check (only as intuition)</h3>
-<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span> are intervals in <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(f\)</span> is twice differentiable, increasing differences corresponds to a nonnegative cross-partial:</p>
-<p><span class="math display">\[
-\frac{\partial^2 f}{\partial x\,\partial t}(x,t)\geq 0.
-\]</span></p>
-<p>This is not the definition, but it is a useful mental picture: cross-partials capture complementarity.</p>
-<hr />
-<h2 id="supermodularity-complementarity-inside-the-choice-vector">10. Supermodularity: complementarity inside the choice vector</h2>
-<p>Increasing differences is about complementarity between a choice <span class="math inline">\(x\)</span> and a parameter <span class="math inline">\(t\)</span>.</p>
-<p>Supermodularity is about complementarity between components of the choice vector itself.</p>
-<p>Let <span class="math inline">\(X\)</span> be a lattice and <span class="math inline">\(f:X\to\mathbb{R}\)</span>.</p>
-<hr />
-<p>We say that <span class="math inline">\(f\)</span> is <strong>supermodular</strong> if for all <span class="math inline">\(x,y\in X\)</span>,</p>
-<p><span class="math display">\[
-f(x\vee y) + f(x\wedge y) \geq f(x)+f(y).
-\]</span></p>
-<hr />
-<p>In English:</p>
-<p><em>“If I take the coordinatewise higher bundle and the coordinatewise lower bundle, their total value is at least as large as the total value of the original two bundles.”</em></p>
-<p>This inequality encodes “components like to move together.” In <span class="math inline">\(\mathbb{R}^n\)</span>, it is closely related to nonnegative cross-effects (or cross-partial derivatives).</p>
-<p>(Again: cross-partials are the differentiable picture, not the definition.)</p>
-<hr />
-<h2 id="topkis-theorem-monotone-comparative-statics-without-derivatives">11. Topkis’ theorem: monotone comparative statics without derivatives</h2>
-<p>We now connect this back to Topic <a href="Topic5.html">5</a>, where we treated optimal choices as correspondences.</p>
-<p>Let <span class="math inline">\(X\)</span> be a lattice, <span class="math inline">\(T\)</span> a poset, and let <span class="math inline">\(f:X\times T\to\mathbb{R}\)</span>.</p>
-<p>For each <span class="math inline">\(t\in T\)</span>, define the argmax correspondence</p>
-<p><span class="math display">\[
-X^\ast(t)=\operatorname{argmax}_{x\in X} f(x,t).
-\]</span></p>
-<p>Topkis’ monotonicity theorem (one standard version) says:</p>
-<hr />
-<p>If (i) <span class="math inline">\(f(\cdot,t)\)</span> is supermodular on <span class="math inline">\(X\)</span> for each <span class="math inline">\(t\)</span>, and (ii) <span class="math inline">\(f\)</span> has increasing differences in <span class="math inline">\((x,t)\)</span>, then the set of maximizers moves upward with <span class="math inline">\(t\)</span> in the following sense:</p>
+<p>Then the feasible set is convex, and any feasible point with multipliers satisfying KKT is a global maximizer. If <span class="math inline">\(f\)</span> is strictly concave, the maximizer is unique.</p>
+<p>Thus:</p>
 <ul>
-<li><p>If <span class="math inline">\(t&#39;\succeq t\)</span>, and <span class="math inline">\(x\in X^\ast(t)\)</span>, <span class="math inline">\(x&#39;\in X^\ast(t&#39;)\)</span>, then there exist maximizers <span class="math inline">\(\underline{x}\in X^\ast(t)\)</span> and <span class="math inline">\(\overline{x}\in X^\ast(t&#39;)\)</span> such that</p>
+<li>regularity makes KKT <strong>necessary</strong>;</li>
+<li>concavity and convex feasibility make KKT <strong>sufficient</strong>.</li>
+</ul>
+<h3 id="a-corner-solution-example">A corner-solution example</h3>
+<p>Consider</p>
 <p><span class="math display">\[
-\underline{x} \preceq \overline{x}.
+\max_{x\geq0}\left\{\theta x-\frac{x^2}{2}\right\}.
+\]</span></p>
+<p>Write the constraint as <span class="math inline">\(g(x)=x\geq0\)</span>. The Lagrangian is</p>
+<p><span class="math display">\[
+\mathcal{L}(x,\lambda;\theta)
+=
+\theta x-\frac{x^2}{2}+\lambda x.
+\]</span></p>
+<p>KKT requires</p>
+<p><span class="math display">\[
+\theta-x+\lambda=0,
+\qquad
+x\geq0,
+\qquad
+\lambda\geq0,
+\qquad
+\lambda x=0.
+\]</span></p>
+<p>There are two cases.</p>
+<ol type="1">
+<li>If <span class="math inline">\(\theta&gt;0\)</span>, the optimum is interior: <span class="math inline">\(x^\ast=\theta&gt;0\)</span>. Complementary slackness forces <span class="math inline">\(\lambda^\ast=0\)</span>, and stationarity becomes the familiar unconstrained first-order condition.</li>
+<li>If <span class="math inline">\(\theta&lt;0\)</span>, the optimum is the corner <span class="math inline">\(x^\ast=0\)</span>. Stationarity then gives <span class="math inline">\(\lambda^\ast=-\theta&gt;0\)</span>. The multiplier records how strongly the nonnegativity constraint prevents the agent from following the unconstrained optimum into negative <span class="math inline">\(x\)</span>.</li>
+</ol>
+<p>At <span class="math inline">\(\theta=0\)</span>, <span class="math inline">\(x^\ast=0\)</span> and <span class="math inline">\(\lambda^\ast=0\)</span>: the constraint binds but has zero marginal value. This is why complementary slackness says <span class="math inline">\(\lambda g=0\)</span>, not “binding if and only if the multiplier is positive.”</p>
+<blockquote>
+<p>“A multiplier is the marginal value of relaxing a constraint. KKT tells us how that value enters the first-order conditions.”</p>
+</blockquote>
+<hr />
+<h2 id="the-constrained-envelope-theorem">6. The constrained envelope theorem</h2>
+<p>We can now state the version used throughout demand and production theory.</p>
+<hr />
+<p><strong>Theorem (Differentiable constrained envelope theorem).</strong><br />
+Consider the parameterized maximization problem in Section 5. Suppose the objective and constraints are continuously differentiable, an optimal solution and associated KKT multipliers exist, and the solution and relevant multipliers vary differentiably near the parameter value under consideration. Suppose also that the locally relevant active constraints remain active; standard regularity conditions deliver this for constraints with nonzero multipliers. Then</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+\frac{\partial\mathcal{L}}{\partial\theta}
+\bigl(x^\ast(\theta),\lambda^\ast(\theta),\mu^\ast(\theta);\theta\bigr).
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+f_\theta
++
+\sum_{j=1}^m \lambda_j^\ast g_{j,\theta}
++
+\sum_{k=1}^r \mu_k^\ast h_{k,\theta},
+\]</span></p>
+<p>with every term evaluated at the optimum and the current parameter.</p>
+<hr />
+<blockquote>
+<p>“Differentiate the Lagrangian with respect to the parameter while holding the choices and multipliers fixed at their optimal values.”</p>
+</blockquote>
+<h3 id="why-the-formula-is-true">Why the formula is true</h3>
+<p>Differentiate the value:</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+\nabla_x f(x^\ast,\theta)\cdot x^{\ast\prime}(\theta)
++
+f_\theta(x^\ast,\theta).
+\]</span></p>
+<p>Stationarity lets us replace the gradient of the objective:</p>
+<p><span class="math display">\[
+\nabla_x f
+=
+-
+\sum_j\lambda_j^\ast\nabla_x g_j
+-
+\sum_k\mu_k^\ast\nabla_x h_k.
+\]</span></p>
+<p>For a binding inequality with a nonzero multiplier, local continuity of the multiplier and complementary slackness keep the constraint binding nearby. Differentiating</p>
+<p><span class="math display">\[
+g_j(x^\ast(\theta),\theta)=0
+\]</span></p>
+<p>gives</p>
+<p><span class="math display">\[
+\nabla_x g_j\cdot x^{\ast\prime}(\theta)+g_{j,\theta}=0.
+\]</span></p>
+<p>For a slack inequality, or a binding inequality with a zero multiplier at the parameter under study, <span class="math inline">\(\lambda_j^\ast=0\)</span>, so it contributes nothing to the formula. Equality constraints satisfy the same differentiated identity with <span class="math inline">\(h_k\)</span> in place of <span class="math inline">\(g_j\)</span>.</p>
+<p>Substituting these identities into <span class="math inline">\(V&#39;(\theta)\)</span> leaves</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+f_\theta
++
+\sum_j\lambda_j^\ast g_{j,\theta}
++
+\sum_k\mu_k^\ast h_{k,\theta}
+=
+\mathcal{L}_\theta.
+\]</span></p>
+<p>The optimizer still moves, but KKT converts the value of that movement into the shadow values of the moving constraints.</p>
+<h3 id="minimization-problems">Minimization problems</h3>
+<p>The same rule holds for minimization: form the Lagrangian with the sign convention appropriate to the constraints, then differentiate that Lagrangian directly with respect to the parameter. For example, for</p>
+<p><span class="math display">\[
+\min_x c(x,\theta)
+\quad\text{subject to}\quad
+q(x,\theta)\leq 0,
+\]</span></p>
+<p>use</p>
+<p><span class="math display">\[
+\mathcal{L}(x,\lambda;\theta)=c(x,\theta)+\lambda q(x,\theta),
+\qquad \lambda\geq 0,
+\]</span></p>
+<p>and again <span class="math inline">\(V&#39;(\theta)=\mathcal{L}_\theta\)</span>.</p>
+<hr />
+<h2 id="why-the-constraint-term-cannot-be-ignored">7. Why the constraint term cannot be ignored</h2>
+<p>Consider</p>
+<p><span class="math display">\[
+V(\theta)=\max_x x
+\quad\text{subject to}\quad
+x\leq\theta.
+\]</span></p>
+<p>The optimum is <span class="math inline">\(x^\ast(\theta)=\theta\)</span>, so <span class="math inline">\(V(\theta)=\theta\)</span> and <span class="math inline">\(V&#39;(\theta)=1\)</span>.</p>
+<p>But the objective <span class="math inline">\(f(x,\theta)=x\)</span> does not directly depend on <span class="math inline">\(\theta\)</span>, so <span class="math inline">\(f_\theta=0\)</span>. The unconstrained envelope formula would give the wrong answer.</p>
+<p>Write the constraint as <span class="math inline">\(g(x,\theta)=\theta-x\geq0\)</span>. The Lagrangian is</p>
+<p><span class="math display">\[
+\mathcal{L}(x,\lambda;\theta)=x+\lambda(\theta-x).
+\]</span></p>
+<p>Stationarity gives <span class="math inline">\(1-\lambda=0\)</span>, so <span class="math inline">\(\lambda^\ast=1\)</span>. The constrained formula gives</p>
+<p><span class="math display">\[
+V&#39;(\theta)
+=
+\mathcal{L}_\theta
+=
+\lambda^\ast
+=
+1.
+\]</span></p>
+<p>This is exactly the economic interpretation of the multiplier:</p>
+<blockquote>
+<p>“The multiplier is the marginal value of one more unit on the right-hand side of the constraint.”</p>
+</blockquote>
+<p>The example also shows why Topic <a href="Topic6.html">6</a>’s interior first-order condition is not enough for constrained problems. At the solution, <span class="math inline">\(f_x=1\)</span>, not <span class="math inline">\(0\)</span>. The boundary prevents us from walking in the profitable direction, and the multiplier records how valuable it would be to move that boundary.</p>
+<hr />
+<h2 id="three-workhorses-from-demand-and-production-theory">8. Three workhorses from demand and production theory</h2>
+<p>The constrained envelope theorem is the common engine behind results that often appear under different names.</p>
+<h3 id="shephards-lemma">8.1 Shephard’s lemma</h3>
+<p>The expenditure function is</p>
+<p><span class="math display">\[
+e(p,\bar{u})
+=
+\min_x p\cdot x
+\quad\text{subject to}\quad
+u(x)\geq\bar{u}.
+\]</span></p>
+<p>Let <span class="math inline">\(h(p,\bar{u})\)</span> denote Hicksian demand. Use the Lagrangian</p>
+<p><span class="math display">\[
+\mathcal{L}(x,\mu;p,\bar{u})
+=
+p\cdot x+\mu\bigl(\bar{u}-u(x)\bigr),
+\qquad \mu\geq0.
+\]</span></p>
+<p>Prices enter only through <span class="math inline">\(p\cdot x\)</span>. Therefore</p>
+<p><span class="math display">\[
+\frac{\partial e(p,\bar{u})}{\partial p_\ell}
+=
+\frac{\partial\mathcal{L}}{\partial p_\ell}
+=
+x_\ell^\ast
+=
+h_\ell(p,\bar{u}).
+\]</span></p>
+<p>In vector form:</p>
+<p><span class="math display">\[
+\nabla_p e(p,\bar{u})=h(p,\bar{u}).
+\]</span></p>
+<blockquote>
+<p>“The price gradient of the minimum bill is the compensated demand bundle.”</p>
+</blockquote>
+<h3 id="roys-identity">8.2 Roy’s identity</h3>
+<p>The indirect utility function is</p>
+<p><span class="math display">\[
+v(p,w)
+=
+\max_x u(x)
+\quad\text{subject to}\quad
+w-p\cdot x\geq0.
+\]</span></p>
+<p>The Lagrangian is</p>
+<p><span class="math display">\[
+\mathcal{L}(x,\lambda;p,w)
+=
+u(x)+\lambda(w-p\cdot x).
+\]</span></p>
+<p>The constrained envelope theorem gives</p>
+<p><span class="math display">\[
+\frac{\partial v}{\partial w}=\lambda^\ast,
+\qquad
+\frac{\partial v}{\partial p_\ell}=-\lambda^\ast x_\ell^\ast.
+\]</span></p>
+<p>Dividing the second identity by the first gives Roy’s identity:</p>
+<p><span class="math display">\[
+x_\ell(p,w)
+=
+-
+\frac{\partial v(p,w)/\partial p_\ell}
+{\partial v(p,w)/\partial w},
+\]</span></p>
+<p>provided <span class="math inline">\(\partial v/\partial w=\lambda^\ast&gt;0\)</span>.</p>
+<p>The denominator is not a mysterious correction. It converts utility units into wealth units.</p>
+<h3 id="hotellings-lemma">8.3 Hotelling’s lemma</h3>
+<p>The profit function is</p>
+<p><span class="math display">\[
+\pi(p)=\max_{y\in Y}p\cdot y,
+\]</span></p>
+<p>where the production set <span class="math inline">\(Y\)</span> does not depend on <span class="math inline">\(p\)</span>. Prices enter the objective directly, so</p>
+<p><span class="math display">\[
+\frac{\partial\pi(p)}{\partial p_\ell}=y_\ell^\ast(p).
+\]</span></p>
+<p>In vector form:</p>
+<p><span class="math display">\[
+\nabla_p\pi(p)=y(p)
+\]</span></p>
+<p>whenever the relevant derivative exists and the optimal netput is unique.</p>
+<p>Shephard, Roy, and Hotelling are not three unrelated tricks. They are three readings of the same envelope formula.</p>
+<hr />
+<h2 id="where-the-smooth-proof-becomes-fragile">9. Where the smooth proof becomes fragile</h2>
+<p>The chain-rule proof in Section 3 assumed much more than the formula itself seems to need:</p>
+<ul>
+<li>the choice set was a well-behaved subset of Euclidean space;</li>
+<li>the optimizer was interior;</li>
+<li>the optimizer was unique and differentiable;</li>
+<li>the primitive objective was differentiable in the choice.</li>
+</ul>
+<p>Mechanism design routinely violates these assumptions. A message set can be discrete or otherwise arbitrary. Several reports may be optimal. The optimal report may jump when the agent’s type crosses a cutoff. At exactly such a cutoff, the value function may have a kink.</p>
+<p>Consider</p>
+<p><span class="math display">\[
+V(t)=\max_{x\in\{-1,1\}} xt=|t|.
+\]</span></p>
+<p>For <span class="math inline">\(t&lt;0\)</span>, the optimizer is <span class="math inline">\(x^\ast(t)=-1\)</span>. For <span class="math inline">\(t&gt;0\)</span>, it is <span class="math inline">\(x^\ast(t)=1\)</span>. At <span class="math inline">\(t=0\)</span>, both choices are optimal. The optimizer jumps, and <span class="math inline">\(V\)</span> is not differentiable at <span class="math inline">\(0\)</span>.</p>
+<p>This is not a failure of economics. It is correct information:</p>
+<ul>
+<li>the right derivative is <span class="math inline">\(V&#39;_+(0)=1\)</span>;</li>
+<li>the left derivative is <span class="math inline">\(V&#39;_-(0)=-1\)</span>;</li>
+<li>there is no single derivative at the kink.</li>
+</ul>
+<p>Any general envelope theorem must respect this. It should not claim differentiability where the value function genuinely has none. What it can do is characterize the derivative wherever it exists, characterize one-sided derivatives under additional conditions, and provide an integral representation when the value function is sufficiently regular.</p>
+<p>That is the contribution of Milgrom and Segal.</p>
+<hr />
+<h2 id="the-milgromsegal-envelope-formula">10. The Milgrom–Segal envelope formula</h2>
+<p>Let <span class="math inline">\(X\)</span> now be an <strong>arbitrary set</strong>. It need not be convex, finite-dimensional, or even a topological space. Let the scalar parameter be <span class="math inline">\(t\in[0,1]\)</span>, and define</p>
+<p><span class="math display">\[
+V(t)=\sup_{x\in X}f(x,t),
+\]</span></p>
+<p>with optimal-choice correspondence</p>
+<p><span class="math display">\[
+X^\ast(t)=\{x\in X:f(x,t)=V(t)\}.
+\]</span></p>
+<p>Whenever we invoke an optimizer, we assume <span class="math inline">\(X^\ast(t)\)</span> is nonempty.</p>
+<hr />
+<p><strong>Theorem (Milgrom–Segal envelope formula).</strong><br />
+Fix <span class="math inline">\(t\in(0,1)\)</span> and an optimizer <span class="math inline">\(x^\ast\in X^\ast(t)\)</span>. Suppose the partial derivative <span class="math inline">\(f_t(x^\ast,t)\)</span> exists.</p>
+<ul>
+<li><p>If <span class="math inline">\(V\)</span> has a right derivative at <span class="math inline">\(t\)</span>, then</p>
+<p><span class="math display">\[
+V&#39;_+(t)\geq f_t(x^\ast,t).
+\]</span></p></li>
+<li><p>If <span class="math inline">\(V\)</span> has a left derivative at <span class="math inline">\(t\)</span>, then</p>
+<p><span class="math display">\[
+V&#39;_-(t)\leq f_t(x^\ast,t).
+\]</span></p></li>
+<li><p>If <span class="math inline">\(V\)</span> is differentiable at <span class="math inline">\(t\)</span>, then</p>
+<p><span class="math display">\[
+V&#39;(t)=f_t(x^\ast,t).
 \]</span></p></li>
 </ul>
+<p>The last equality holds for <strong>every</strong> optimizer <span class="math inline">\(x^\ast\in X^\ast(t)\)</span> whose parameter derivative exists.</p>
 <hr />
-<p>In English:</p>
-<blockquote>
-<p>“Higher parameters do not force optimal choices to move down. Even if the optimizer is not unique, you can choose maximizers consistently so that they move upward.”</p>
-</blockquote>
-<p>This is why the lattice approach is so useful: you can get monotone comparative statics even when:</p>
+<p>The striking part is what is absent:</p>
 <ul>
-<li>the solution is set-valued,</li>
-<li>the objective is not differentiable,</li>
-<li>you do not want to solve the model explicitly.</li>
+<li>no derivative with respect to <span class="math inline">\(x\)</span>;</li>
+<li>no first-order condition;</li>
+<li>no convexity of <span class="math inline">\(X\)</span>;</li>
+<li>no continuity or differentiability of an optimizer <span class="math inline">\(x^\ast(t)\)</span>.</li>
 </ul>
-<hr />
-<h2 id="a-single-agent-economic-example-effort-choice-with-a-bonus-parameter">12. A single-agent economic example: effort choice with a bonus parameter</h2>
-<p>An agent chooses effort <span class="math inline">\(e\)</span> from an interval <span class="math inline">\(X=[0,1]\)</span> (ordered by <span class="math inline">\(\leq\)</span>). A principal chooses a bonus level <span class="math inline">\(b\in T=\mathbb{R}_+\)</span>.</p>
-<p>Suppose the agent’s payoff is</p>
+<h3 id="proof-freeze-the-old-optimizer">Proof: freeze the old optimizer</h3>
+<p>Because <span class="math inline">\(x^\ast\)</span> is optimal at <span class="math inline">\(t\)</span>,</p>
 <p><span class="math display">\[
-f(e,b)= b\cdot e - c(e),
+f(x^\ast,t)=V(t).
 \]</span></p>
-<p>where <span class="math inline">\(c\)</span> is increasing and convex.</p>
-<p>Interpretation:</p>
-<ul>
-<li><span class="math inline">\(b\cdot e\)</span> is the marginal reward from effort,</li>
-<li><span class="math inline">\(c(e)\)</span> is the cost.</li>
-</ul>
-<p>Now check increasing differences.</p>
-<p>Take <span class="math inline">\(e&#39;&gt;e\)</span> and <span class="math inline">\(b&#39;&gt;b\)</span>. Then</p>
+<p>At a nearby parameter <span class="math inline">\(t&#39;\)</span>, the value <span class="math inline">\(V(t&#39;)\)</span> is the supremum over all choices, so it is at least the payoff from keeping the old optimizer:</p>
 <p><span class="math display">\[
-f(e&#39;,b&#39;)-f(e,b&#39;) = b&#39;(e&#39;-e),
+f(x^\ast,t&#39;)\leq V(t&#39;).
+\]</span></p>
+<p>Subtracting gives</p>
+<p><span class="math display">\[
+f(x^\ast,t&#39;)-f(x^\ast,t)
+\leq
+V(t&#39;)-V(t).
+\]</span></p>
+<p>If <span class="math inline">\(t&#39;&gt;t\)</span>, divide by <span class="math inline">\(t&#39;-t&gt;0\)</span> and take <span class="math inline">\(t&#39;\downarrow t\)</span>:</p>
+<p><span class="math display">\[
+f_t(x^\ast,t)\leq V&#39;_+(t).
+\]</span></p>
+<p>If <span class="math inline">\(t&#39;&lt;t\)</span>, division reverses the relevant comparison and taking <span class="math inline">\(t&#39;\uparrow t\)</span> gives</p>
+<p><span class="math display">\[
+V&#39;_-(t)\leq f_t(x^\ast,t).
+\]</span></p>
+<p>When <span class="math inline">\(V\)</span> is differentiable, <span class="math inline">\(V&#39;_-(t)=V&#39;_+(t)=V&#39;(t)\)</span>, so the two inequalities force</p>
+<p><span class="math display">\[
+V&#39;(t)=f_t(x^\ast,t).
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<p>This proof gives a different intuition from the smooth proof. We do not say that the changing optimizer has a second-order effect. We do not differentiate the optimizer at all. We simply compare the value function with the payoff from keeping yesterday’s optimal choice available today.</p>
+<hr />
+<h2 id="kinks-multiple-optimizers-and-directional-derivatives">11. Kinks, multiple optimizers, and directional derivatives</h2>
+<p>Theorem 10 tells us that if <span class="math inline">\(V\)</span> is differentiable, all optimizers must generate the same direct parameter effect. Therefore, a useful diagnostic is:</p>
+<blockquote>
+<p>“If two optimal choices have different values of <span class="math inline">\(f_t\)</span>, expect a kink in the value function.”</p>
+</blockquote>
+<p>Under familiar compactness and continuity assumptions this statement becomes exact. Suppose <span class="math inline">\(X\)</span> is compact, <span class="math inline">\(f(\cdot,t)\)</span> is upper semicontinuous in <span class="math inline">\(x\)</span>, and <span class="math inline">\(f_t(x,t)\)</span> is continuous in <span class="math inline">\((x,t)\)</span>. Then:</p>
+<p><span class="math display">\[
+V&#39;_+(t)
+=
+\max_{x\in X^\ast(t)} f_t(x,t),
 \qquad
-f(e&#39;,b)-f(e,b)= b(e&#39;-e).
+V&#39;_-(t)
+=
+\min_{x\in X^\ast(t)} f_t(x,t).
 \]</span></p>
-<p>Since <span class="math inline">\(b&#39;&gt;b\)</span> and <span class="math inline">\(e&#39;-e&gt;0\)</span>, we have</p>
+<p>Consequently, <span class="math inline">\(V\)</span> is differentiable at <span class="math inline">\(t\)</span> if and only if <span class="math inline">\(f_t(x,t)\)</span> has the same value for every <span class="math inline">\(x\in X^\ast(t)\)</span>.</p>
+<p>Return to <span class="math inline">\(V(t)=\max_{x\in\{-1,1\}}xt\)</span>. At <span class="math inline">\(t=0\)</span>, both <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> are optimal, and</p>
 <p><span class="math display">\[
-b&#39;(e&#39;-e)\geq b(e&#39;-e),
+f_t(-1,0)=-1,
+\qquad
+f_t(1,0)=1.
 \]</span></p>
-<p>so <span class="math inline">\(f\)</span> has increasing differences in <span class="math inline">\((e,b)\)</span>.</p>
-<p>What it means:</p>
+<p>The minimum is the left derivative and the maximum is the right derivative. The kink is exactly the disagreement among optimal branches.</p>
+<p>This also clarifies the role of uniqueness. A unique optimizer is a convenient sufficient condition for avoiding such disagreement, but uniqueness alone is not the deep requirement. The value function can be differentiable with several optimizers, provided all optimal branches have the same parameter derivative.</p>
+<hr />
+<h2 id="a-short-bridge-absolute-continuity-and-almost-everywhere">12. A short bridge: absolute continuity and “almost everywhere”</h2>
+<p>Mechanism design usually needs more than a derivative at one point. It needs to recover utility differences between types by integrating the derivative:</p>
+<p><span class="math display">\[
+V(t)-V(s)=\int_s^t V&#39;(r)\,\mathrm{d}r.
+\]</span></p>
+<p>Differentiability almost everywhere is not, by itself, enough for this identity. Even continuity is not enough.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>We need two pieces of language.</p>
+<h3 id="almost-everywhere">Almost everywhere</h3>
+<p>A subset <span class="math inline">\(N\subseteq[0,1]\)</span> has <strong>measure zero</strong> if, for every <span class="math inline">\(\varepsilon&gt;0\)</span>, it can be covered by countably many intervals whose total length is less than <span class="math inline">\(\varepsilon\)</span>. A statement holds <strong>almost everywhere</strong> if it can fail only on a set of measure zero.</p>
+<p>Finite and countable sets have measure zero. Thus, saying that a formula holds almost everywhere allows isolated kinks, and even countably many kinks, without treating them as economically important regions.</p>
+<h3 id="absolute-continuity">Absolute continuity</h3>
+<p>A function <span class="math inline">\(F:[0,1]\to\mathbb{R}\)</span> is <strong>absolutely continuous</strong> if, for every <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists <span class="math inline">\(\delta&gt;0\)</span> such that for every finite collection of disjoint intervals <span class="math inline">\((a_i,b_i)\)</span>,</p>
+<p><span class="math display">\[
+\sum_i(b_i-a_i)&lt;\delta
+\quad\Longrightarrow\quad
+\sum_i|F(b_i)-F(a_i)|&lt;\varepsilon.
+\]</span></p>
+<p>Absolute continuity rules out a function accumulating a nontrivial change on a set of arbitrarily small total length.</p>
+<p>The fundamental fact we need is:</p>
 <blockquote>
-<p>“A higher bonus makes higher effort relatively more attractive.”</p>
+<p>“An absolutely continuous function is differentiable almost everywhere, its derivative is integrable, and the function equals its starting value plus the integral of its derivative.”</p>
 </blockquote>
-<p>So the optimal effort correspondence <span class="math inline">\(E^\ast(b)=\operatorname{argmax}_{e\in[0,1]} f(e,b)\)</span> is (weakly) increasing in <span class="math inline">\(b\)</span>.</p>
-<p>Notice what we did not use:</p>
-<ul>
-<li><p>no first-order conditions, <!-- - no envelope theorem, --></p></li>
-<li><p>no differentiation of a solution function.</p></li>
-</ul>
-<p>We only used the order structure and a simple algebraic inequality.</p>
+<p>Thus, if <span class="math inline">\(F\)</span> is absolutely continuous,</p>
+<p><span class="math display">\[
+F(t)=F(0)+\int_0^t F&#39;(s)\,\mathrm{d}s.
+\]</span></p>
+<p>Topic <a href="Topic15.html">15</a> develops measure and the Lebesgue integral formally. For the present theorem, this one-dimensional bridge is enough to say precisely what the integral representation requires.</p>
 <hr />
-<h2 id="outlook-why-this-matters-for-micro-and-for-games-later">13. Outlook: why this matters for micro (and for games later)</h2>
-<p>Order and lattice methods matter because they let you prove robust qualitative statements that survive model variations.</p>
-<p>In microeconomics, they show up in at least three places:</p>
+<h2 id="milgromsegals-integral-envelope-theorem">13. Milgrom–Segal’s integral envelope theorem</h2>
+<p>We now add conditions that make the value function absolutely continuous.</p>
+<hr />
+<p><strong>Theorem (Milgrom–Segal integral envelope theorem).</strong><br />
+Let <span class="math inline">\(X\)</span> be arbitrary and</p>
+<p><span class="math display">\[
+V(t)=\sup_{x\in X}f(x,t),
+\qquad t\in[0,1].
+\]</span></p>
+<p>Suppose:</p>
 <ol type="1">
-<li><p><strong>Monotone comparative statics in optimization</strong><br />
-This is what we did: higher parameters lead to higher optimal choices under complementarity.</p></li>
-<li><p><strong>Strategic complements in games</strong><br />
-When players’ best responses are increasing, equilibrium sets often have lattice structure. This is one route to existence and to sharp predictions about how equilibrium moves with parameters.</p></li>
-<li><p><strong>Mechanism design and auctions</strong><br />
-“Single-crossing” and monotonicity of optimal reports are close cousins of increasing differences. They explain why allocation rules tend to be monotone in types.</p></li>
+<li><p><span class="math inline">\(f(x,\cdot)\)</span> is absolutely continuous for every <span class="math inline">\(x\in X\)</span>;</p></li>
+<li><p>there exists an integrable function <span class="math inline">\(b:[0,1]\to\mathbb{R}_+\)</span> such that</p>
+<p><span class="math display">\[
+|f_t(x,t)|\leq b(t)
+\]</span></p>
+<p>for every <span class="math inline">\(x\in X\)</span> and almost every <span class="math inline">\(t\)</span>.</p></li>
 </ol>
-<p>So this topic is not just a mathematical curiosity. It is the vocabulary behind a large family of economically meaningful monotonicity results.</p>
+<p>Then <span class="math inline">\(V\)</span> is absolutely continuous.</p>
+<p>If, in addition, <span class="math inline">\(f(x,\cdot)\)</span> is differentiable for every <span class="math inline">\(x\)</span> and an optimizer exists almost everywhere, then for any selection <span class="math inline">\(x^\ast(t)\in X^\ast(t)\)</span>,</p>
+<p><span class="math display">\[
+V(t)
+=
+V(0)
++
+\int_0^t f_t(x^\ast(s),s)\,\mathrm{d}s.
+\]</span></p>
 <hr />
-<h2 id="where-this-appears-in-mwg-and-where-it-does-not">14. Where this appears in MWG (and where it does not)</h2>
+<blockquote>
+<p>“Even if optimal choices jump, the value function can be recovered by integrating the direct parameter effect along any optimal selection.”</p>
+</blockquote>
+<h3 id="where-the-bound-is-used">Where the bound is used</h3>
+<p>For <span class="math inline">\(t&#39;&lt;t&#39;&#39;\)</span>,</p>
+<p><span class="math display">\[
+|V(t&#39;&#39;)-V(t&#39;)|
+\leq
+\sup_{x\in X}|f(x,t&#39;&#39;)-f(x,t&#39;)|.
+\]</span></p>
+<p>Because each branch <span class="math inline">\(f(x,\cdot)\)</span> is absolutely continuous,</p>
+<p><span class="math display">\[
+|f(x,t&#39;&#39;)-f(x,t&#39;)|
+\leq
+\int_{t&#39;}^{t&#39;&#39;}|f_t(x,s)|\,\mathrm{d}s
+\leq
+\int_{t&#39;}^{t&#39;&#39;}b(s)\,\mathrm{d}s.
+\]</span></p>
+<p>The same bound works for every <span class="math inline">\(x\)</span>, so</p>
+<p><span class="math display">\[
+|V(t&#39;&#39;)-V(t&#39;)|
+\leq
+\int_{t&#39;}^{t&#39;&#39;}b(s)\,\mathrm{d}s.
+\]</span></p>
+<p>This uniform control makes <span class="math inline">\(V\)</span> absolutely continuous. Therefore <span class="math inline">\(V\)</span> is differentiable almost everywhere and can be reconstructed from its derivative. At every differentiability point, the formula from Section 10 identifies that derivative as <span class="math inline">\(f_t(x^\ast(t),t)\)</span>.</p>
+<h3 id="why-the-integrable-bound-is-not-cosmetic">Why the integrable bound is not cosmetic</h3>
+<p>Let <span class="math inline">\(X=(0,\infty)\)</span> and</p>
+<p><span class="math display">\[
+f(x,t)=g(t/x),
+\qquad
+g(z)=ze^{-z},
+\qquad
+t\in[0,1].
+\]</span></p>
+<p>For every fixed <span class="math inline">\(x\)</span>, the function <span class="math inline">\(f(x,\cdot)\)</span> is smooth. For <span class="math inline">\(t&gt;0\)</span>, choosing <span class="math inline">\(x=t\)</span> makes <span class="math inline">\(t/x=1\)</span>, the unique maximizer of <span class="math inline">\(g\)</span>, so</p>
+<p><span class="math display">\[
+V(t)=g(1)=e^{-1}.
+\]</span></p>
+<p>At <span class="math inline">\(t=0\)</span>, however, <span class="math inline">\(f(x,0)=g(0)=0\)</span> for every <span class="math inline">\(x\)</span>, so <span class="math inline">\(V(0)=0\)</span>. The value function jumps at zero.</p>
+<p>What failed? The parameter derivatives cannot be bounded uniformly by an integrable function near zero. Indeed, after writing <span class="math inline">\(z=t/x\)</span>,</p>
+<p><span class="math display">\[
+|f_t(x,t)|
+=
+\frac{z e^{-z}|1-z|}{t},
+\]</span></p>
+<p>whose supremum over <span class="math inline">\(x\)</span> is a positive constant times <span class="math inline">\(1/t\)</span>. That bound is not integrable near zero. Smoothness of each individual branch is not enough; we need control that is uniform across the choices over which we take the supremum.</p>
+<hr />
+<h2 id="mechanism-design-the-payoff-identity">14. Mechanism design: the payoff identity</h2>
+<p>The Milgrom–Segal theorem was built for settings like mechanism design.</p>
+<p>Suppose a one-dimensional type <span class="math inline">\(t\in[\underline{t},\bar{t}]\)</span> can choose any message <span class="math inline">\(m\)</span> from an arbitrary message set <span class="math inline">\(M\)</span>. A message produces allocation probability <span class="math inline">\(q(m)\)</span> and payment <span class="math inline">\(p(m)\)</span>. With quasilinear utility,</p>
+<p><span class="math display">\[
+f(m,t)=tq(m)-p(m).
+\]</span></p>
+<p>The agent’s equilibrium utility is the value function</p>
+<p><span class="math display">\[
+U(t)=\sup_{m\in M}\{tq(m)-p(m)\}.
+\]</span></p>
+<p>The choice set <span class="math inline">\(M\)</span> may be discrete. The optimal message may jump. None of this affects the direct type derivative:</p>
+<p><span class="math display">\[
+f_t(m,t)=q(m).
+\]</span></p>
+<p>If the mechanism implements an allocation rule <span class="math inline">\(q^\ast(t)=q(m^\ast(t))\)</span> and the boundedness conditions of Section 13 hold, then</p>
+<p><span class="math display">\[
+U&#39;(t)=q^\ast(t)
+\quad\text{for almost every }t,
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+U(t)
+=
+U(\underline{t})
++
+\int_{\underline{t}}^t q^\ast(s)\,\mathrm{d}s.
+\]</span></p>
+<p>This is the <strong>payoff identity</strong> (or envelope characterization) used in one-dimensional mechanism design.</p>
+<p>It has two immediate consequences.</p>
+<h3 id="incentive-compatibility-implies-monotonicity">Incentive compatibility implies monotonicity</h3>
+<p>If truth-telling is optimal, then for any <span class="math inline">\(t&gt;s\)</span>,</p>
+<p><span class="math display">\[
+U(t)\geq tq^\ast(s)-p^\ast(s),
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+U(s)\geq sq^\ast(t)-p^\ast(t).
+\]</span></p>
+<p>Using <span class="math inline">\(U(r)=rq^\ast(r)-p^\ast(r)\)</span> and adding the inequalities gives</p>
+<p><span class="math display">\[
+(t-s)\bigl(q^\ast(t)-q^\ast(s)\bigr)\geq0.
+\]</span></p>
+<p>Therefore <span class="math inline">\(q^\ast(t)\geq q^\ast(s)\)</span>: higher types receive weakly higher allocations.</p>
+<h3 id="allocation-plus-one-utility-level-pins-down-payments">Allocation plus one utility level pins down payments</h3>
+<p>Since</p>
+<p><span class="math display">\[
+p^\ast(t)=tq^\ast(t)-U(t),
+\]</span></p>
+<p>the payoff identity gives</p>
+<p><span class="math display">\[
+p^\ast(t)
+=
+tq^\ast(t)
+-
+U(\underline{t})
+-
+\int_{\underline{t}}^t q^\ast(s)\,\mathrm{d}s.
+\]</span></p>
+<p>Once the allocation rule and the lowest type’s utility are fixed, the payment rule is fixed. This is the mathematical core of <strong>revenue equivalence</strong>: mechanisms that implement the same allocation rule and give the same baseline utility generate the same expected payments.</p>
+<p>In a first-price auction, the same logic appears with</p>
+<p><span class="math display">\[
+f(b,t)=(t-b)G(b),
+\]</span></p>
+<p>where <span class="math inline">\(G(b)\)</span> is the probability of winning with bid <span class="math inline">\(b\)</span>. The direct type derivative is <span class="math inline">\(G(b)\)</span>. Therefore the derivative of the bidder’s optimized payoff is her equilibrium winning probability, even though the optimal bid itself changes with type.</p>
+<hr />
+<h2 id="value-functions-beyond-static-demand">15. Value functions beyond static demand</h2>
+<p>The same structure reappears in dynamic programming. There, the “choice” can be an entire feasible continuation plan, and the parameter can be the initial state. The value function is the supremum of the payoff delivered by each plan.</p>
+<p>The smooth envelope theorem says: if the optimal plan and value function are differentiable, differentiate the primitive payoff with respect to the initial state while holding the plan fixed. Milgrom–Segal says something more robust: the envelope formula may remain valid at differentiability points even if the identity of the optimal plan changes discontinuously.</p>
+<p>This is why envelope arguments appear in:</p>
 <ul>
-<li>The language of relations and orders is closest in spirit to <strong>MWG, Mathematical Appendix A</strong> (relations and basic set-theoretic language).</li>
-<li>The lattice-theoretic approach to monotone comparative statics (increasing differences, supermodularity, Topkis’ theorem) is not developed systematically in MWG’s mathematical appendices.</li>
+<li>Bellman equations and comparative statics of value functions;</li>
+<li>optimal stopping, where the optimal stopping date can jump;</li>
+<li>contract theory, where the chosen contract can change at a cutoff;</li>
+<li>auctions, where allocation rules can be discontinuous.</li>
 </ul>
-<p>For this topic, MWG is best treated as background micro motivation, while lattice methods are typically learned from dedicated comparative statics or game-theory notes.</p>
+<p>The common object is always the same:</p>
+<p><span class="math display">\[
+\text{value at parameter}
+=
+\sup_{\text{feasible choices}}
+\text{payoff from that choice at the parameter}.
+\]</span></p>
 <hr />
-<h2 id="what-you-should-take-away">15. What you should take away</h2>
+<h2 id="where-this-appears-in-mwg-and-beyond">16. Where this appears in MWG and beyond</h2>
+<p>The classical material is developed in:</p>
+<ul>
+<li><strong>MWG, Mathematical Appendix M.J</strong> (unconstrained maximization),</li>
+<li><strong>MWG, Mathematical Appendix M.K</strong> (constrained maximization),</li>
+<li><strong>MWG, Mathematical Appendix M.L</strong> (the envelope theorem),</li>
+<li><strong>MWG, Chapter 3</strong> (indirect utility, expenditure, Shephard’s lemma, and Roy’s identity),</li>
+<li><strong>MWG, Chapter 5</strong> (profit and cost functions, including Hotelling’s lemma).</li>
+</ul>
+<p>The arbitrary-choice-set theorem is not in MWG. The primary reference is:</p>
+<blockquote>
+<p>Milgrom, P. and I. Segal (2002), “Envelope Theorems for Arbitrary Choice Sets,” <em>Econometrica</em> 70(2), 583–601, https://doi.org/10.1111/1468-0262.00296.</p>
+</blockquote>
+<p>Their Theorem 1 gives the envelope formula at differentiability points; Theorem 2 gives the absolute-continuity and integral representation used in mechanism design. The paper also develops directional derivatives, parameterized constraints, saddle-point problems, and optimal stopping applications.</p>
+<hr />
+<h2 id="what-you-should-take-away">17. What you should take away</h2>
 <p>After this topic, you should be comfortable with:</p>
 <ul>
-<li>reading statements like <span class="math inline">\(x\preceq x&#39;\)</span> and understanding what order is being used,</li>
-<li>recognizing <span class="math inline">\(\mathbb{R}^n\)</span> with the product order as the natural “more in every dimension” comparison,</li>
-<li>understanding increasing differences as “higher parameters strengthen incentives to choose higher actions,”</li>
-<li>seeing why monotone comparative statics is compatible with set-valued argmax correspondences.</li>
+<li><p>distinguishing a policy or argmax from a value function;</p></li>
+<li><p>deriving the smooth interior envelope formula by the chain rule and first-order condition;</p></li>
+<li><p>reading KKT multipliers as shadow values and using</p>
+<p><span class="math display">\[
+V_\theta=\mathcal{L}_\theta
+\]</span></p>
+<p>in constrained problems;</p></li>
+<li><p>recognizing Shephard’s lemma, Roy’s identity, and Hotelling’s lemma as applications of one theorem;</p></li>
+<li><p>understanding why a kink can arise when optimal branches have different parameter derivatives;</p></li>
+<li><p>stating the Milgrom–Segal formula without assuming a smooth optimizer or a convex choice set;</p></li>
+<li><p>using absolute continuity to turn an almost-everywhere derivative into an integral payoff identity;</p></li>
+<li><p>seeing why the mechanism-design identity</p>
+<p><span class="math display">\[
+U(t)=U(\underline{t})+\int_{\underline{t}}^t q(s)\,\mathrm{d}s
+\]</span></p>
+<p>is an envelope theorem.</p></li>
 </ul>
-<p>Once this is in place, supermodular games and monotone equilibrium arguments will feel like a continuation rather than a new language.</p>
+<p>The most useful habit is simple: whenever you see a parameterized maximization problem, identify both outputs. Ask separately how the optimizer changes and how the optimized value changes. The first question may require the Implicit Function Theorem or monotone comparative statics. The second is the territory of envelope theorems.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>still assuming the first-order conditions are necessary and sufficient in our problem<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>For example, if unemployment benefit (<span class="math inline">\(\theta\)</span>) goes up, how does the labor supply respond (does it go up? How much does it go up?).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>That means as an actual function.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>For example, think of a first order condition <span class="math inline">\(x e^{\theta x}-3=0\)</span>. There is no closed-form in <span class="math inline">\(x\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Important: Note we are taking derivatives of the <em>derivative</em> here! Not of the original function!<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>We implicitly assume here that <span class="math inline">\(\partial f&#39;(x;\theta)/\partial x \neq 0\)</span> (otherwise we divide by zero). But recall, that for a (strictly) concave function that is no problem.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>You can solve it with the quasi-closed-form usage of the Lambert-W. We will not get into those details.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Sign conventions differ across books. If a maximization constraint is instead written as <span class="math inline">\(q_j(x,\theta)\leq0\)</span>, the corresponding term is <span class="math inline">\(-\lambda_j q_j\)</span> with <span class="math inline">\(\lambda_j\geq0\)</span>. Nothing economic changes. Pick one convention and use it consistently.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The Cantor function is continuous, has derivative zero almost everywhere, and yet rises from <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>. Therefore it cannot be recovered by integrating its derivative. The missing property is absolute continuity.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
 </main>
 <aside class="course-outline-right" aria-label="Course outline">
 <h2 class="outline-title">Course Outline</h2>
-<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic7.html" aria-current="page">7. Topic 7: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Measurability and Integration</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Proof Techniques in Economic Theory</a></li></ul>
+<ul class="course-outline-list"><li class="course-outline-item"><a class="course-outline-link" href="Topic1.html">1. Topic 1: Sets, Mappings, and the Language of Economic Models</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic2.html">2. Topic 2: Preferences and Utility Representation</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic3.html">3. Topic 3: Convex Sets and the Geometry of Choice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic4.html">4. Topic 4: Continuity, Closed Sets, and Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic5.html">5. Topic 5: Optimization, Correspondences, and Existence of Solutions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic6.html">6. Topic 6: Differentiability and Marginal Reasoning</a></li><li class="course-outline-item"><a class="course-outline-link course-outline-link-active" href="Topic7.html" aria-current="page">7. Topic 7: Envelope Theorems and Value Functions</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic8.html">8. Topic 8: Order, Lattices, and Monotonicity</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic9.html">9. Topic 9: Probability and Expectations</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic10.html">10. Topic 10: Fixed Points and Equilibrium Existence</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic11.html">11. Topic 11: Discounting and Infinite Horizons</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic12.html">12. Topic 12: Dynamic Programming and Recursive Thinking</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic13.html">13. Topic 13: Linear Constraints and Incentives as Geometry</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic14.html">14. Topic 14: Topology in Practice</a></li><li class="course-outline-item"><a class="course-outline-link" href="Topic15.html">15. Topic 15: Measurability and Integration</a></li></ul>
 </aside>
 </div>
 <div id="outline-backdrop" class="outline-backdrop"></div>
@@ -359,7 +849,7 @@ When players’ best responses are increasing, equilibrium sets often have latti
     <h2 class="outline-title">On This Page</h2>
     <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
   </div>
-  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-order-shows-up-in-economic-theory">1. Why order shows up in economic theory</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#excursion-the-implicit-function-theorem">2. Excursion: The Implicit Function Theorem</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#back-to-general-problems">3. Back to general problems</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partially-ordered-sets">4. Partially ordered sets</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#total-orders">Total orders</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#two-orders-economists-use-all-the-time">5. Two orders economists use all the time</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-usual-order-on-mathbbr">5.1 The usual order on \(\mathbb{R}\)</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-product-order-on-mathbbrn">5.2 The product order on \(\mathbb{R}^n\)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#monotone-maps">6. Monotone maps</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#lattices-when-any-two-points-have-a-meet-and-a-join">7. Lattices: when any two points have a meet and a join</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#example-mathbbrn-with-the-product-order">Example: \(\mathbb{R}^n\) with the product order</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#complete-lattices-and-why-you-might-care-later">8. Complete lattices (and why you might care later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#increasing-differences-the-core-monotonicity-condition">9. Increasing differences: the core monotonicity condition</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-quick-differentiable-sanity-check-only-as-intuition">A quick differentiable sanity check (only as intuition)</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#supermodularity-complementarity-inside-the-choice-vector">10. Supermodularity: complementarity inside the choice vector</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#topkis-theorem-monotone-comparative-statics-without-derivatives">11. Topkis’ theorem: monotone comparative statics without derivatives</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-single-agent-economic-example-effort-choice-with-a-bonus-parameter">12. A single-agent economic example: effort choice with a bonus parameter</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#outlook-why-this-matters-for-micro-and-for-games-later">13. Outlook: why this matters for micro (and for games later)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg-and-where-it-does-not">14. Where this appears in MWG (and where it does not)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-topic-belongs-here">1. Why this topic belongs here</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#parameterized-optimization-and-the-value-function">2. Parameterized optimization and the value function</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-differentiable-interior-envelope-theorem">3. The differentiable interior envelope theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#proof">Proof</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#vector-parameters">Vector parameters</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-the-indirect-effect-disappears">4. Why the indirect effect disappears</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-small-example">A small example</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#constrained-optimization-and-kkt">5. Constrained optimization and KKT</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-lagrangian">The Lagrangian</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-karushkuhntucker-conditions">The Karush–Kuhn–Tucker conditions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-a-constraint-qualification-appears">Why a constraint qualification appears</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#necessary-versus-sufficient">Necessary versus sufficient</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#a-corner-solution-example">A corner-solution example</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-constrained-envelope-theorem">6. The constrained envelope theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-the-formula-is-true">Why the formula is true</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#minimization-problems">Minimization problems</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-the-constraint-term-cannot-be-ignored">7. Why the constraint term cannot be ignored</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#three-workhorses-from-demand-and-production-theory">8. Three workhorses from demand and production theory</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#shephards-lemma">8.1 Shephard’s lemma</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#roys-identity">8.2 Roy’s identity</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#hotellings-lemma">8.3 Hotelling’s lemma</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-the-smooth-proof-becomes-fragile">9. Where the smooth proof becomes fragile</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#the-milgromsegal-envelope-formula">10. The Milgrom–Segal envelope formula</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#proof-freeze-the-old-optimizer">Proof: freeze the old optimizer</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#kinks-multiple-optimizers-and-directional-derivatives">11. Kinks, multiple optimizers, and directional derivatives</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#a-short-bridge-absolute-continuity-and-almost-everywhere">12. A short bridge: absolute continuity and “almost everywhere”</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#almost-everywhere">Almost everywhere</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#absolute-continuity">Absolute continuity</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#milgromsegals-integral-envelope-theorem">13. Milgrom–Segal’s integral envelope theorem</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#where-the-bound-is-used">Where the bound is used</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-the-integrable-bound-is-not-cosmetic">Why the integrable bound is not cosmetic</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#mechanism-design-the-payoff-identity">14. Mechanism design: the payoff identity</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#incentive-compatibility-implies-monotonicity">Incentive compatibility implies monotonicity</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#allocation-plus-one-utility-level-pins-down-payments">Allocation plus one utility level pins down payments</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#value-functions-beyond-static-demand">15. Value functions beyond static demand</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mwg-and-beyond">16. Where this appears in MWG and beyond</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">17. What you should take away</a></li></ul>
 </aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic6.html" class="nav-prev">← Previous</a><a href="Topic8.html" class="nav-next">Next →</a></nav>
 
