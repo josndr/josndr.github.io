@@ -23,7 +23,7 @@ MathJax = {
 <button id="outline-toggle" class="outline-toggle" type="button" aria-controls="outline-drawer" aria-expanded="false">☰ On This Page</button>
 <aside class="topic-outline-left" aria-label="On this page">
 <h2 class="outline-title">On This Page</h2>
-<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-differentiability-enters-now">1. Why differentiability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#from-global-behavior-to-local-behavior">2. From global behavior to local behavior</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-the-basic-idea">3. Differentiability: the basic idea</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partial-derivatives-and-gradients">4. Partial derivatives and gradients</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#marginal-interpretation-in-economics">5. Marginal interpretation in economics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#first-order-conditions-interior-solutions">6. First-order conditions (interior solutions)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-first-order-conditions-are-not-enough">7. Why first-order conditions are not enough</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#second-order-intuition-informal">8. Second-order intuition (informal)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-and-constraints-preview">9. Differentiability and constraints (preview)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-marginal-utility">10. An economic example: marginal utility</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-comparative-statics">11. Why this matters for comparative statics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">12. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
+<ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-differentiability-enters-now">1. Why differentiability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#from-global-behavior-to-local-behavior">2. From global behavior to local behavior</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-the-basic-idea">3. Differentiability: the basic idea</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#how-good-is-approximately-little-o-and-big-o">4. How good is “approximately”? Little-\(o\) and big-\(O\)</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#differentiability-restated">Differentiability, restated</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partial-derivatives-and-gradients">5. Partial derivatives and gradients</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#marginal-interpretation-in-economics">6. Marginal interpretation in economics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#first-order-conditions-interior-solutions">7. First-order conditions (interior solutions)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-first-order-conditions-are-not-enough">8. Why first-order conditions are not enough</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#second-order-intuition-informal">9. Second-order intuition (informal)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#taylor-approximation-buying-a-better-error-term">10. Taylor approximation: buying a better error term</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-statement">The statement</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-it-is-true">Why it is true</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-that-helps-with-second-order-conditions">Why that helps with second-order conditions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#an-economic-example-the-cost-of-a-small-mistake">An economic example: the cost of a small mistake</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-and-constraints-preview">11. Differentiability and constraints (preview)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-marginal-utility">12. An economic example: marginal utility</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-comparative-statics">13. Why this matters for comparative statics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">14. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
 </aside>
 <main class="topic-content">
 <a href="../pdfs/Topic6.pdf" class="pdf-download" download>⬇ Download PDF</a>
@@ -91,7 +91,45 @@ f&#39;(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
 \]</span></p>
 <p>exists. However, the one we have works for multidimensions<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and carries more economic meaning, and once we talk about it, the notion of <span class="math inline">\(\approx\)</span> we mean here, will be clear.</p>
 <hr />
-<h2 id="partial-derivatives-and-gradients">4. Partial derivatives and gradients</h2>
+<h2 id="how-good-is-approximately-little-o-and-big-o">4. How good is “approximately”? Little-<span class="math inline">\(o\)</span> and big-<span class="math inline">\(O\)</span></h2>
+<p>Let us now be a bit more precises in <em>which</em> sense <span class="math inline">\(f(x+h) \approx f(x) + Df(x)[h]\)</span>, that is, in <em>which</em> sense is the left-hand side close to the right-hand side? The answer is a piece of notation you will meet constantly—here, in econometrics, in macro, etc.</p>
+<p>The idea is simple. We are never really interested in the size of an approximation error on its own. We are interested in how small the error is <strong>relative</strong> to the stuff we are interested in, in particular if we make stepsizes small.</p>
+<hr />
+<p>Write the error as <span class="math inline">\(r(h)\)</span>, so that</p>
+<p><span class="math display">\[
+f(x+h) = f(x) + Df(x)[h] + r(h).
+\]</span></p>
+<p>We say that</p>
+<p><span class="math display">\[
+r(h) = o(\lVert h \rVert)
+\qquad \text{if} \qquad
+\lim_{h \to 0} \frac{r(h)}{\lVert h \rVert} = 0,
+\]</span></p>
+<p>and that</p>
+<p><span class="math display">\[
+r(h) = O(\lVert h \rVert)
+\qquad \text{if} \qquad
+\frac{\lvert r(h) \rvert}{\lVert h \rVert} \text{ stays bounded as } h \to 0.
+\]</span></p>
+<p>In words, this is a description: &gt; <span class="math inline">\(r(h) = o(\lVert h\rVert)\)</span>: the error is <em>negligible next to the step</em>. Shrink the step and the error shrinks strictly faster. So if <span class="math inline">\(h\)</span> is small enough our approximation is as precise as we want it to be. &gt; &gt; <span class="math inline">\(r(h) = O(\lVert h\rVert)\)</span>: the error is <em>at worst proportional to the step</em>. It does not blow up, but it need not become negligible either.</p>
+<p>So little-<span class="math inline">\(o\)</span> is a statement about a race, big-<span class="math inline">\(O\)</span> a statement about a ceiling. Little-<span class="math inline">\(o\)</span> is the stronger claim: <span class="math inline">\(o\)</span> implies <span class="math inline">\(O\)</span>, never the other way round.</p>
+<p>A word on the equals sign, because it is a genuine abuse of notation that everyone commits and nobody apologises for. Writing <span class="math inline">\(r(h) = o(\lVert h\rVert)\)</span> does not say that <span class="math inline">\(r\)</span> equals some particular object called <span class="math inline">\(o(\lVert h\rVert)\)</span>. It says <span class="math inline">\(r\)</span> <em>belongs to the class</em> of functions that die faster than <span class="math inline">\(\lVert h\rVert\)</span>. Read it as “is of smaller order than”, not as “equals”. The one move you may not make is to cancel such a statement across an equation. Thus, doing algebra with <span class="math inline">\(o(\cdot)\)</span> and <span class="math inline">\(O(\cdot)\)</span> is fishy. People still do it, but one shouldn’t take that literally.</p>
+<hr />
+<h3 id="differentiability-restated">Differentiability, restated</h3>
+<p>With this vocabulary the definition of Section 3 becomes precise and the <span class="math inline">\(\approx\)</span> disappears:</p>
+<blockquote>
+<p><span class="math inline">\(f\)</span> is <strong>differentiable at <span class="math inline">\(x\)</span></strong> if there is a linear map <span class="math inline">\(Df(x)\)</span> with <span class="math display">\[f(x+h) = f(x) + Df(x)[h] + o(\lVert h \rVert).\]</span></p>
+</blockquote>
+<p>This is what the sidenote promised. And the approximation is not merely “good enough for practical purposes”; it is good in an exact sense, because <span class="math inline">\(Df(x)\)</span> is the <em>only</em> linear map whose error dies faster than the step itself. That uniqueness is what entitles us to say <em>the</em> derivative rather than <em>a</em> derivative.</p>
+<p>Why insist on all this? Because “small” is not a property a number has on its own. It is a property a number has <em>relative to something else</em>. A one-cent error is nothing next to a price change of a euro and enormous next to a price change of a hundredth of a cent. Little-<span class="math inline">\(o\)</span> makes the comparison explicit, and thereby turns marginal reasoning from a hope into a theorem.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<hr />
+<p>A quick economic reading. Let <span class="math inline">\(\pi(k)\)</span> be a firm’s profit at input level <span class="math inline">\(k\)</span>, and raise the input by a small amount <span class="math inline">\(h\)</span>:</p>
+<p><span class="math display">\[
+\pi(k+h) = \pi(k) + \pi&#39;(k)\,h + o(h).
+\]</span></p>
+<p>The term <span class="math inline">\(\pi&#39;(k)h\)</span> is the marginal calculation an economist actually performs. The <span class="math inline">\(o(h)\)</span> is the <em>licence</em> to perform it: whatever we threw away is not just small, it is small compared to the very change we are studying, so once <span class="math inline">\(h\)</span> is small enough it cannot overturn the sign of the marginal effect. Without that licence, “marginal profit is positive, so raise the input” would be a guess rather than an argument.</p>
+<hr />
+<h2 id="partial-derivatives-and-gradients">5. Partial derivatives and gradients</h2>
 <p>When <span class="math inline">\(f\)</span> is differentiable, the linear map <span class="math inline">\(Df(x)\)</span> can be represented by a vector of <strong>partial derivatives</strong></p>
 <p><span class="math display">\[
 \nabla f(x)
@@ -117,7 +155,7 @@ f&#39;(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
 <p>From the gradient we know how we would walk on the landscape given by the function in each direction by making <em>linear combinations</em> of the partial derivatives.</p>
 <p>The ‘’holding everything else fixed’’ language the gradient encapsulates is fundamental in economic reasoning (we often call it ceteris paribus or c.p. reasoning).</p>
 <hr />
-<h2 id="marginal-interpretation-in-economics">5. Marginal interpretation in economics</h2>
+<h2 id="marginal-interpretation-in-economics">6. Marginal interpretation in economics</h2>
 <p>Marginal reasoning appears everywhere in microeconomics:</p>
 <ul>
 <li><strong>Marginal utility</strong>: how utility changes with one more unit of a good,</li>
@@ -127,7 +165,7 @@ f&#39;(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
 <p>All of these are formalized using partial derivatives. In fact, often that is a shortcut we take because differentiability implies continuity which means that ‘small changes’ are possible in the first place. As economists we have decided to often assume continuity, because it makes the statements clearer and the error in translating back to economics is not too big. However, one has to, of course, always be vigilant whether such an assumption that only serves the economist, is costly in terms of the interpretation.</p>
 <p><em>Why is it great to have differentiability?</em> It gives us a disciplined way to talk about ‘’small changes’’ without ambiguity.</p>
 <hr />
-<h2 id="first-order-conditions-interior-solutions">6. First-order conditions (interior solutions)</h2>
+<h2 id="first-order-conditions-interior-solutions">7. First-order conditions (interior solutions)</h2>
 <p>Suppose:</p>
 <ul>
 <li><span class="math inline">\(X \subseteq \mathbb{R}^n\)</span> is open,</li>
@@ -148,7 +186,7 @@ f&#39;(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
 It identifies <strong>candidates</strong> for optimality (so called critical points).</p>
 <p>So if we are looking for an optimum in a smooth problem like the one described above, it is <em>first order</em> for us to find points that satisfy that condition. Once we have those, we can worry about which of those to eliminate.</p>
 <hr />
-<h2 id="why-first-order-conditions-are-not-enough">7. Why first-order conditions are not enough</h2>
+<h2 id="why-first-order-conditions-are-not-enough">8. Why first-order conditions are not enough</h2>
 <p>A point where <span class="math inline">\(\nabla f(x)=0\)</span> could be:</p>
 <ul>
 <li>a maximum,</li>
@@ -166,13 +204,13 @@ It identifies <strong>candidates</strong> for optimality (so called critical poi
 </ul>
 <p>This connects directly back to Topics <a href="Topic3.html">3</a> and <a href="Topic4.html">4</a>.</p>
 <hr />
-<h2 id="second-order-intuition-informal">8. Second-order intuition (informal)</h2>
+<h2 id="second-order-intuition-informal">9. Second-order intuition (informal)</h2>
 <p>Second-order information captures <strong>curvature</strong>.</p>
 <p>If <span class="math inline">\(f\)</span> is twice differentiable, curvature is summarized by the <strong>Hessian matrix</strong></p>
 <p><span class="math display">\[
 D^2 f(x).
 \]</span></p>
-<p>We will not work with Hessians explicitly here, but with help of the Hessian one can verify optimality of a critical point (yet often this is not very elegant).</p>
+<p>We will not work with Hessians much as objects in their own right, but with their help one can verify optimality of a critical point (yet often this is not very elegant). The next section shows exactly how.</p>
 <p>The key intuition is:</p>
 <blockquote>
 <p>Concavity means the function bends downward everywhere.</p>
@@ -183,7 +221,69 @@ D^2 f(x).
 <li>local optima are global.</li>
 </ul>
 <hr />
-<h2 id="differentiability-and-constraints-preview">9. Differentiability and constraints (preview)</h2>
+<h2 id="taylor-approximation-buying-a-better-error-term">10. Taylor approximation: buying a better error term</h2>
+<p>Above we showed that curvature is summarized by the Hessian, and that with its help one can verify optimality of a critical point. But we had not been precise. To do that, we use Taylor’s theorem (often called Taylor approximation) is how. It is also the tool that makes precise a trade we have been making implicitly all along: one more derivative assumed, one more term in the expansion, one order less error.</p>
+<h3 id="the-statement">The statement</h3>
+<p>Let <span class="math inline">\(f\)</span> be twice continuously differentiable near <span class="math inline">\(x\)</span>. Then</p>
+<p><span class="math display">\[
+f(x+h) = f(x) + \nabla f(x)\cdot h + \tfrac{1}{2}\, h^{\top} D^2f(x)\, h + o(\lVert h\rVert^2).
+\]</span></p>
+<p>In English:</p>
+<blockquote>
+<p>Step a little way <span class="math inline">\(h\)</span> from <span class="math inline">\(x\)</span>. The function value changes by a linear term, plus a quadratic term built from the Hessian, plus an error that is negligible even next to <span class="math inline">\(\lVert h\rVert^2\)</span>.</p>
+</blockquote>
+<p>Set this beside the first-order statement from Section 4:</p>
+<p><span class="math display">\[
+f(x+h) = f(x) + \nabla f(x)\cdot h + o(\lVert h\rVert).
+\]</span></p>
+<p>The pattern is the whole point of the theorem, so let us reiterate:</p>
+<blockquote>
+<p>Each further derivative you are willing to assume buys you one further term in the expansion, and pushes the error down by one order in <span class="math inline">\(\lVert h\rVert\)</span>.</p>
+</blockquote>
+<p>It is a real trade, and it is not free. The price is smoothness of <span class="math inline">\(f\)</span>. If <span class="math inline">\(f\)</span> is merely differentiable you get the linear term and <span class="math inline">\(o(\lVert h\rVert)\)</span>, and that is all you get.</p>
+<p>It is worth seeing this claim rather than only reading it. Take a utility function <span class="math inline">\(u(x) = \sqrt{x}\)</span> and expand it at <span class="math inline">\(x_0 = 4\)</span>. Since <span class="math inline">\(u(4) = 2\)</span>, <span class="math inline">\(u&#39;(4) = \tfrac14\)</span> and <span class="math inline">\(u&#39;&#39;(4) = -\tfrac{1}{32}\)</span>, the two approximations are</p>
+<p><span class="math display">\[
+L(x) = 2 + \tfrac{1}{4}(x-4)
+\qquad\text{and}\qquad
+Q(x) = 2 + \tfrac{1}{4}(x-4) - \tfrac{1}{64}(x-4)^2 .
+\]</span></p>
+<figure>
+<img src="../figures/fig6_taylor.png" alt="Linear and quadratic approximation of the square root at x_0=4" />
+<figcaption aria-hidden="true">Linear and quadratic approximation of the square root at <span class="math inline">\(x_0=4\)</span></figcaption>
+</figure>
+<p>Panel (a) is the qualitative picture: at <span class="math inline">\(x_0\)</span> all three curves agree, and as we walk away the straight line is the first to part company while the parabola keeps hugging the curve. Panel (b) says the same thing in a form you can check. Fix a tolerance <span class="math inline">\(\varepsilon = 0.1\)</span> and ask how far from <span class="math inline">\(x_0\)</span> each approximation stays inside it. The line manages <span class="math inline">\(x \in [1.87,\, 6.93]\)</span>, the parabola <span class="math inline">\([1.06,\, 8.39]\)</span> — a range about <span class="math inline">\(1.45\)</span> times as wide.</p>
+<p>Look also at the shape of the two error curves near <span class="math inline">\(x_0\)</span>, because that is the theorem itself drawn: the linear error leaves zero like <span class="math inline">\(\lVert h\rVert^2\)</span>, the quadratic error like <span class="math inline">\(\lVert h\rVert^3\)</span>. That is what “one order less error” buys. It is also why the advantage grows as you demand more: tighten the tolerance to <span class="math inline">\(\varepsilon = 0.02\)</span> and the ratio of the two ranges widens to about <span class="math inline">\(1.9\)</span>.</p>
+<h3 id="why-it-is-true">Why it is true</h3>
+<p>The one-dimensional case carries the entire idea. Fix <span class="math inline">\(x\)</span> and <span class="math inline">\(h\)</span> and define</p>
+<p><span class="math display">\[
+g(t) := f(x + th), \qquad t \in [0,1],
+\]</span></p>
+<p>so we walk along the segment from <span class="math inline">\(x\)</span> to <span class="math inline">\(x+h\)</span> and record the height as we go. Then <span class="math inline">\(g\)</span> is a function of one variable with <span class="math inline">\(g(0) = f(x)\)</span> and <span class="math inline">\(g(1) = f(x+h)\)</span>, and the chain rule gives <span class="math inline">\(g&#39;(0) = \nabla f(x)\cdot h\)</span> and <span class="math inline">\(g&#39;&#39;(0) = h^{\top} D^2f(x)\, h\)</span> — the two terms of the expansion, already assembled.</p>
+<p>So the multidimensional statement <em>is</em> the one-dimensional statement about <span class="math inline">\(g\)</span>, and the one-dimensional statement is the mean value theorem applied one order further than usual: control <span class="math inline">\(g&#39;&#39;\)</span> on the segment and keep honest track of what is left over.</p>
+<p>Let’s go over this. The existence of the second derivative <em>at <span class="math inline">\(x\)</span></em> is what lets us write the quadratic term at all, and—this is worth knowing—it is already enough on its own for the leftover to be <span class="math inline">\(o(\lVert h\rVert^2)\)</span>. Assuming a little more, namely that <span class="math inline">\(D^2f\)</span> is <em>continuous</em> near <span class="math inline">\(x\)</span>, is the hypothesis we stated above. It costs nothing in any application we will meet, and it buys a cleaner proof and the exact remainder form in the footnote below. What we may <em>not</em> drop is the second derivative itself: with only one derivative there is no quadratic term to write, and the best we can say remains the <span class="math inline">\(o(\lVert h\rVert)\)</span> statement of Section 4.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<h3 id="why-that-helps-with-second-order-conditions">Why that helps with second-order conditions</h3>
+<p>Now let <span class="math inline">\(x^\ast\)</span> be a critical point, so <span class="math inline">\(\nabla f(x^\ast) = 0\)</span>. The linear term vanishes and Taylor leaves</p>
+<p><span class="math display">\[
+f(x^\ast + h) - f(x^\ast) = \tfrac{1}{2}\, h^{\top} D^2f(x^\ast)\, h + o(\lVert h\rVert^2).
+\]</span></p>
+<p>Everything about <em>local</em> optimality is now visible in one line: the change in height is, up to a negligible error, a quadratic form in the direction we walk.</p>
+<ul>
+<li>Negative for every <span class="math inline">\(h \neq 0\)</span> (the Hessian is negative definite): every direction goes down, so <span class="math inline">\(x^\ast\)</span> is a <strong>local maximum</strong>.</li>
+<li>Positive for every <span class="math inline">\(h \neq 0\)</span>: every direction goes up, a <strong>local minimum</strong>.</li>
+<li>Negative in some directions and positive in others: the saddle of Section 8 — and now we can say precisely which directions are the “down” ones and which the “up” ones, because we read them off the quadratic form.</li>
+</ul>
+<p>This is the exact version of the hill-top story told in Section 7.</p>
+<p>Notice where the <span class="math inline">\(o(\lVert h\rVert^2)\)</span> does its work. It is what allows the quadratic term to <em>decide</em> the comparison: because the error dies faster than <span class="math inline">\(\lVert h\rVert^2\)</span>, a strictly signed quadratic form cannot be overturned by it once <span class="math inline">\(h\)</span> is small enough. And if the quadratic form is only <em>semi</em>definite — zero in some direction — then along that direction the error is no longer negligible next to it, and second-order information genuinely does not settle the question. That is not a failure of the method. It is the method telling us the truth, namely that we have to look further.</p>
+<h3 id="an-economic-example-the-cost-of-a-small-mistake">An economic example: the cost of a small mistake</h3>
+<p>Take a firm choosing an input <span class="math inline">\(k\)</span> at unit cost with output price <span class="math inline">\(p\)</span>, so that profit is <span class="math inline">\(\pi(k) = p f(k) - k\)</span>, and let <span class="math inline">\(k^\ast\)</span> be an interior optimum, meaning <span class="math inline">\(p f&#39;(k^\ast) = 1\)</span>. What does it cost the firm to miss the optimum slightly and choose <span class="math inline">\(k^\ast + h\)</span>? Taylor answers at once:</p>
+<p><span class="math display">\[
+\pi(k^\ast + h) - \pi(k^\ast)
+= \underbrace{0}_{\text{first order}} \; + \; \tfrac{1}{2}\, p f&#39;&#39;(k^\ast)\, h^2 \; + \; o(h^2).
+\]</span></p>
+<p>The first-order term is zero <em>because</em> <span class="math inline">\(k^\ast\)</span> was chosen optimally. So the cost of a small mistake is second order: halve the mistake and you quarter the loss.</p>
+<p>This is one of the most heavily used facts in applied microeconomics. It is why small optimization errors are usually treated as harmless, and it is the same vanishing first-order term that will make the envelope theorem work in Topic <a href="Topic7.html">7</a>. It is also a statement we could not even have phrased two sections ago: “the loss is of order <span class="math inline">\(h^2\)</span>” <em>is</em> the content, and <span class="math inline">\(o\)</span> is what lets us say it.</p>
+<hr />
+<h2 id="differentiability-and-constraints-preview">11. Differentiability and constraints (preview)</h2>
 <p>Most economic problems involve constraints:</p>
 <p><span class="math display">\[
 \max_{x \in X} f(x).
@@ -200,13 +300,13 @@ D^2 f(x).
 <p>Differentiability allows us to express trade-offs precisely.</p>
 </blockquote>
 <hr />
-<h2 id="an-economic-example-marginal-utility">10. An economic example: marginal utility</h2>
+<h2 id="an-economic-example-marginal-utility">12. An economic example: marginal utility</h2>
 <p>Consider a utility function <span class="math inline">\(u(x_1,x_2)\)</span>.</p>
 <p>The <strong>partial derivative</strong></p>
 <p><span class="math display">\[
 \frac{\partial u}{\partial x_1}(x)
 \]</span></p>
-<p>measures the marginal utility of good 1 at bundle <span class="math inline">\(x\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>measures the marginal utility of good 1 at bundle <span class="math inline">\(x\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <p>Comparing marginal utilities across goods explains:</p>
 <ul>
 <li>substitution,</li>
@@ -214,13 +314,13 @@ D^2 f(x).
 <li>interior versus corner solutions.</li>
 </ul>
 <p>Without differentiability, these ideas lose precision.</p>
-<p>There is another form of differentiation, which is the <strong>total derivative</strong>. The way to think about this is to think about the partial derivative as exactly what it is, the change in one direction of the choice vector. So in the above example, <span class="math inline">\(\frac{\partial u}{\partial x_1}(x)\)</span> means we keep <span class="math inline">\(x_2\)</span> unchanged and only change <span class="math inline">\(x_1\)</span> (marginally). But of course, there are many ways to change things “slightly.” We could walk in direction 1, in direction 2 or any weighted combination of it. The <em>total derivative</em> tells us what that means for our function. And it is (because of the linear map we defined in the beginning) a remarkably simple object. So here it is<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>There is another form of differentiation, which is the <strong>total derivative</strong>. The way to think about this is to think about the partial derivative as exactly what it is, the change in one direction of the choice vector. So in the above example, <span class="math inline">\(\frac{\partial u}{\partial x_1}(x)\)</span> means we keep <span class="math inline">\(x_2\)</span> unchanged and only change <span class="math inline">\(x_1\)</span> (marginally). But of course, there are many ways to change things “slightly.” We could walk in direction 1, in direction 2 or any weighted combination of it. The <em>total derivative</em> tells us what that means for our function. And it is (because of the linear map we defined in the beginning) a remarkably simple object. So here it is<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <p><span class="math display">\[
 \mathrm{d} u(x) = \frac{\partial u}{\partial x_1}(x) \mathrm{d}x_1 + \frac{\partial u}{\partial x_2}(x) \mathrm{d}x_2
 \]</span></p>
-<p>The <span class="math inline">\(\mathrm{d}\)</span> here is a way to think about small changes which (however) have a relative size. So if we go in the <span class="math inline">\(x_1\)</span> direction only, then <span class="math inline">\(\mathrm{d} x_2=0\)</span> is <span class="math inline">\(0\)</span> and <span class="math inline">\(\mathrm{d}x_1=1\)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>The <span class="math inline">\(\mathrm{d}\)</span> here is a way to think about small changes which (however) have a relative size. So if we go in the <span class="math inline">\(x_1\)</span> direction only, then <span class="math inline">\(\mathrm{d} x_2=0\)</span> is <span class="math inline">\(0\)</span> and <span class="math inline">\(\mathrm{d}x_1=1\)</span>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 <hr />
-<h2 id="why-this-matters-for-comparative-statics">11. Why this matters for comparative statics</h2>
+<h2 id="why-this-matters-for-comparative-statics">13. Why this matters for comparative statics</h2>
 <p>Differentiability underlies a bunch of concepts we will see in Microeconomics:</p>
 <ul>
 <li>Slutsky decompositions,</li>
@@ -238,7 +338,7 @@ D^2 f(x).
 <p>Topic <a href="Topic7.html">7</a> applies this logic to optimized values. It also introduces the KKT conditions needed when an optimum lies on a constraint, where the unconstrained condition <span class="math inline">\(\nabla f=0\)</span> is no longer appropriate.</p>
 <p>This is a powerful simplification — but one that rests on strong assumptions.</p>
 <hr />
-<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">12. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
+<h2 id="where-this-appears-in-mas-colell-whinston-and-green-mwg">14. Where this appears in Mas-Colell, Whinston, and Green (MWG)</h2>
 <p>The main references are:</p>
 <ul>
 <li><strong>MWG, Chapter 3</strong> (consumer theory)</li>
@@ -247,12 +347,14 @@ D^2 f(x).
 </ul>
 <p>Differentiability is often used implicitly; these notes make the logic explicit.</p>
 <hr />
-<h2 id="what-you-should-take-away">13. What you should take away</h2>
+<h2 id="what-you-should-take-away">15. What you should take away</h2>
 <p>After this topic, you should be comfortable with:</p>
 <ul>
 <li>interpreting derivatives as local approximations,</li>
+<li>reading <span class="math inline">\(o\)</span> and <span class="math inline">\(O\)</span> as statements about how fast an error vanishes relative to the step,</li>
 <li>reading gradients as vectors of marginal effects,</li>
 <li>understanding when first-order conditions apply,</li>
+<li>using a second-order expansion to classify a critical point,</li>
 <li>seeing how differentiability complements convexity.</li>
 </ul>
 <p>Differentiability does not replace global reasoning.<br />
@@ -262,9 +364,11 @@ It refines it.</p>
 <ol>
 <li id="fn1"><p>A linear map is a function that has the following property: <span class="math inline">\(L(ax+by)=aL(x)+bL(y)\)</span> for any vectors <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> and scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Look up Frechet derivatives for the more precise definition of the unidimensional one I have given in this sidenote<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>These are the standard derivatives we know from undergraduates and school.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>This is just spelling out the definition of derivative!!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Important: While <span class="math inline">\(\mathrm{d}x_1\)</span> is an object we can move around (multiply by <span class="math inline">\(\mathrm{d}x_1\)</span>) for example, <span class="math inline">\(\partial x_1\)</span> is <strong>not,</strong> instead, here the object is the entire <span class="math inline">\(\frac{\partial u}{\partial x_1}(x)\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You will meet stochastic cousins of these symbols in econometrics, written <span class="math inline">\(o_p\)</span> and <span class="math inline">\(O_p\)</span>, where “vanishes” means convergence in probability rather than an ordinary limit. The bookkeeping idea is identical; only the notion of vanishing changes. Nothing here is stochastic — <span class="math inline">\(o\)</span> and <span class="math inline">\(O\)</span> are statements about functions, not about random variables.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Taylor’s theorem is used freely in MWG but not stated there as a numbered result. For a precise statement and proof check, e.g., Rudin, <em>Principles of Mathematical Analysis</em>, Chapter 5 (p.110 in the third edition). If you prefer the error written as an exact quantity rather than an order statement, the standard alternative is the Lagrange remainder <span class="math inline">\(\tfrac12 h^{\top} D^2f(\xi)\,h\)</span> for some unknown point <span class="math inline">\(\xi\)</span> on the segment between <span class="math inline">\(x\)</span> and <span class="math inline">\(x+h\)</span>. Same theorem, different bookkeeping: an unknown point instead of an unknown small quantity.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>These are the standard derivatives we know from undergraduates and school.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>This is just spelling out the definition of derivative!!<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Important: While <span class="math inline">\(\mathrm{d}x_1\)</span> is an object we can move around (multiply by <span class="math inline">\(\mathrm{d}x_1\)</span>) for example, <span class="math inline">\(\partial x_1\)</span> is <strong>not,</strong> instead, here the object is the entire <span class="math inline">\(\frac{\partial u}{\partial x_1}(x)\)</span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -280,7 +384,7 @@ It refines it.</p>
     <h2 class="outline-title">On This Page</h2>
     <button id="outline-close" class="outline-close" type="button" aria-label="Close outline">✕</button>
   </div>
-  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-differentiability-enters-now">1. Why differentiability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#from-global-behavior-to-local-behavior">2. From global behavior to local behavior</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-the-basic-idea">3. Differentiability: the basic idea</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partial-derivatives-and-gradients">4. Partial derivatives and gradients</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#marginal-interpretation-in-economics">5. Marginal interpretation in economics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#first-order-conditions-interior-solutions">6. First-order conditions (interior solutions)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-first-order-conditions-are-not-enough">7. Why first-order conditions are not enough</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#second-order-intuition-informal">8. Second-order intuition (informal)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-and-constraints-preview">9. Differentiability and constraints (preview)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-marginal-utility">10. An economic example: marginal utility</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-comparative-statics">11. Why this matters for comparative statics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">12. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">13. What you should take away</a></li></ul>
+  <ul class="outline-list"><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-differentiability-enters-now">1. Why differentiability enters now</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#from-global-behavior-to-local-behavior">2. From global behavior to local behavior</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-the-basic-idea">3. Differentiability: the basic idea</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#how-good-is-approximately-little-o-and-big-o">4. How good is “approximately”? Little-\(o\) and big-\(O\)</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#differentiability-restated">Differentiability, restated</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#partial-derivatives-and-gradients">5. Partial derivatives and gradients</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#marginal-interpretation-in-economics">6. Marginal interpretation in economics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#first-order-conditions-interior-solutions">7. First-order conditions (interior solutions)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-first-order-conditions-are-not-enough">8. Why first-order conditions are not enough</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#second-order-intuition-informal">9. Second-order intuition (informal)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#taylor-approximation-buying-a-better-error-term">10. Taylor approximation: buying a better error term</a><ul class="outline-sublist"><li class="outline-item outline-item-h3"><a class="outline-link" href="#the-statement">The statement</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-it-is-true">Why it is true</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#why-that-helps-with-second-order-conditions">Why that helps with second-order conditions</a></li><li class="outline-item outline-item-h3"><a class="outline-link" href="#an-economic-example-the-cost-of-a-small-mistake">An economic example: the cost of a small mistake</a></li></ul></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#differentiability-and-constraints-preview">11. Differentiability and constraints (preview)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#an-economic-example-marginal-utility">12. An economic example: marginal utility</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#why-this-matters-for-comparative-statics">13. Why this matters for comparative statics</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#where-this-appears-in-mas-colell-whinston-and-green-mwg">14. Where this appears in Mas-Colell, Whinston, and Green (MWG)</a></li><li class="outline-item outline-item-h2"><a class="outline-link" href="#what-you-should-take-away">15. What you should take away</a></li></ul>
 </aside>
 <nav class="topic-nav bottom"><a href="../index.html" class="nav-home">↑ Mathematical Tools for Econ PhD</a><a href="Topic5.html" class="nav-prev">← Previous</a><a href="Topic7.html" class="nav-next">Next →</a></nav>
 
