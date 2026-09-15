@@ -176,6 +176,7 @@ MathJax = {
 <blockquote>
 <p>“Independence means that observing one thing does not change your beliefs about the other.”</p>
 </blockquote>
+<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have densities <span class="math inline">\(f_X\)</span> and <span class="math inline">\(f_Y\)</span>, independence is equivalent to the pair having the product density <span class="math inline">\(f_X(x)\,f_Y(y)\)</span>, so that <span class="math display">\[\Pr(X \in A \text{ and } Y \in B) = \Pr(X \in A)\cdot\Pr(Y \in B)\]</span> for any two intervals <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, and likewise for any number of independent variables. Combined with the fact that a positive density gives every interval of positive length positive probability, this is what lets us say that independent types with positive densities can jointly take values in any region of the type space: no configuration of types is ruled out in advance.</p>
 <p>Independence is a simplifying assumption that appears constantly in economic models. For instance:</p>
 <ul>
 <li>in auctions, bidders’ valuations are often assumed to be independently drawn,</li>
@@ -189,6 +190,12 @@ MathJax = {
 <blockquote>
 <p>“The conditional expectation of <span class="math inline">\(X\)</span> given <span class="math inline">\(B\)</span> is the expected value of <span class="math inline">\(X\)</span> knowing that <span class="math inline">\(B\)</span> is true.”</p>
 </blockquote>
+<p>In the continuous case, with density <span class="math inline">\(f\)</span>, the same idea reads <span class="math display">\[\mathbb{E}[X \mid B] = \frac{\mathbb{E}[X \cdot \mathbf{1}_B]}{\Pr(B)} = \frac{\int_B x\, f(x)\,\mathrm{d}x}{\int_B f(x)\,\mathrm{d}x},\]</span> provided <span class="math inline">\(\Pr(B) &gt; 0\)</span>: integrate only over the world where <span class="math inline">\(B\)</span> holds, then rescale so the weights sum to one again.</p>
+<blockquote>
+<p>“Conditioning on <span class="math inline">\(B\)</span> throws away every outcome outside <span class="math inline">\(B\)</span> and renormalizes what is left.”</p>
+</blockquote>
+<p>The case we use most is a tail event. If <span class="math inline">\(X\)</span> has a positive density on <span class="math inline">\([\underline{x},\overline{x}]\)</span>, then for <span class="math inline">\(t &gt; \underline{x}\)</span> <span class="math display">\[\mathbb{E}[X \mid X \leq t] = \frac{\int_{\underline{x}}^{t} x\, f(x)\,\mathrm{d}x}{F(t)},\]</span> and two facts about it are worth having ready. It is <em>continuous</em> in <span class="math inline">\(t\)</span> (numerator and denominator are continuous and the denominator is positive), and it is <em>strictly below</em> <span class="math inline">\(t\)</span>: a positive density puts positive mass strictly below <span class="math inline">\(t\)</span>, so the average cannot reach <span class="math inline">\(t\)</span>. For <span class="math inline">\(X\)</span> uniform on <span class="math inline">\([0,1]\)</span> this is <span class="math inline">\(\mathbb{E}[X \mid X \leq t] = t/2\)</span>.</p>
+<p>This is the object behind adverse selection. If sellers offer their cars whenever the price <span class="math inline">\(p\)</span> covers their own value, and quality is uniform on <span class="math inline">\([0,1]\)</span>, the buyer faces the pool <span class="math inline">\(\{X \leq p\}\)</span> and its average quality <span class="math inline">\(p/2\)</span>, not the population average. The two facts above are exactly what the unravelling argument uses: the pool’s average rises with the price but never catches up with the marginal car.</p>
 <p>In economics, conditional expectations appear naturally whenever agents form beliefs:</p>
 <ul>
 <li>a buyer’s expected valuation given a signal,</li>
@@ -199,7 +206,7 @@ MathJax = {
 <blockquote>
 <p>“If I first compute the expected value of <span class="math inline">\(X\)</span> for each possible value of <span class="math inline">\(Y\)</span>, and then average those conditional expectations over the distribution of <span class="math inline">\(Y\)</span>, I recover the unconditional expectation of <span class="math inline">\(X\)</span>.”</p>
 </blockquote>
-<p>This property is extremely useful in sequential models where information is revealed gradually.</p>
+<p>This property is extremely useful in sequential models where information is revealed gradually. With a two-valued <span class="math inline">\(Y\)</span> it is the split <span class="math display">\[\mathbb{E}[X] = \Pr(B)\,\mathbb{E}[X \mid B] + \Pr(B^c)\,\mathbb{E}[X \mid B^c],\]</span> which is how one passes from an expectation conditional on one agent’s own information to the unconditional, ex-ante expectation.</p>
 <p>It is also super important for consistency and tells us one way to think about distributions (that will show up in other settings, too). We could think of a larger sate space <span class="math inline">\(\Omega\)</span> that has two dimensional elements <span class="math inline">\((x,y)\)</span> and a probability distribution over those <span class="math inline">\((x,y)\)</span>. Now, we are in the end only interested in <span class="math inline">\(x\)</span>, but <span class="math inline">\(y\)</span> carries some information about <span class="math inline">\(x\)</span>.</p>
 <p>So, if we learn <span class="math inline">\(y\)</span>, we update about <span class="math inline">\(x\)</span>. But: it has to be the case that if we don’t know <span class="math inline">\(y\)</span> yet, we cannot learn anything about <span class="math inline">\(x\)</span>, so our expectations on <span class="math inline">\(x\)</span> are just <span class="math inline">\(E[X]\)</span>. But, we do know how likely all thedifferent <span class="math inline">\(y\)</span> will show up and we know what we would do then in our beliefs about <span class="math inline">\(x\)</span>, so we do know all <span class="math inline">\(E[X|Y].\)</span> But if we are consistent, then this information does not tell us anything about <span class="math inline">\(x\)</span> yet (because we haven’t seen <span class="math inline">\(y\)</span> yet), so we have to have that <span class="math inline">\(E[X]=E[E[X|Y]]\)</span>.</p>
 <hr />
@@ -222,8 +229,8 @@ MathJax = {
 <ul>
 <li><strong>MWG, Chapter 6</strong> (choice under uncertainty, expected utility),</li>
 <li><strong>MWG, Chapter 8</strong> (competitive markets with uncertainty),</li>
-<li><strong>MWG, Chapter 13</strong> (adverse selection),</li>
-<li><strong>MWG, Chapter 23</strong> (mechanism design and auctions).</li>
+<li><strong>MWG, Chapter 13</strong> (adverse selection; Section 13.B’s pool mean <span class="math inline">\(\mathbb{E}[\theta \mid r(\theta) \leq w]\)</span> is the tail conditional expectation of Section 9),</li>
+<li><strong>MWG, Chapter 23</strong> (mechanism design and auctions; Section 23.D’s independent types are the product densities of Section 8).</li>
 </ul>
 <hr />
 <h2 id="why-this-matters-for-microeconomics">12. Why this matters for microeconomics</h2>
