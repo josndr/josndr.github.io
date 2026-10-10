@@ -91,11 +91,18 @@ details.preface-more[open] summary::before { content: "▾ "; }
   border-top: 1px solid #dfe4df;
   padding-top: 0.95rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.65rem;
+  gap: 0.5rem 2.25rem;
   color: #5a6166;
   font-family: system-ui, sans-serif;
   font-size: 0.9rem;
+}
+
+.footer-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.65rem;
 }
 
 .footer-label {
