@@ -43,19 +43,19 @@ MathJax = {
 <li>a set of outcomes of a mechanism,</li>
 <li>or a set of lotteries.</li>
 </ul>
-<p>A <strong>preference relation</strong> on <span class="math inline">\(X\)</span> is a binary relation, usually denoted by <span class="math inline">\(\succeq\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>Formally, we write <span class="math display">\[ x \succeq x&#39; \]</span> to mean that <span class="math inline">\(x\)</span> is weakly preferred to <span class="math inline">\(x&#39;\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p>From the weak preference relation <span class="math inline">\(\succeq\)</span>, we define two <em>derived</em> shorthand notations:</p>
+<p>A <strong>preference relation</strong> on <span class="math inline">\(X\)</span> is a binary relation, usually denoted by <span class="math inline">\(\succsim\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Formally, we write <span class="math display">\[ x \succsim x&#39; \]</span> to mean that <span class="math inline">\(x\)</span> is weakly preferred to <span class="math inline">\(x&#39;\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>From the weak preference relation <span class="math inline">\(\succsim\)</span>, we define two <em>derived</em> shorthand notations:</p>
 <ul>
-<li><p><strong>Strict preference</strong>: <span class="math display">\[ x \succ y \]</span> meaning “<span class="math inline">\(x\)</span> is strictly preferred to <span class="math inline">\(y\)</span>”, or, formally, <span class="math inline">\(x \succeq y\)</span> but <em>not</em> <span class="math inline">\(y \succeq x\)</span>.</p></li>
+<li><p><strong>Strict preference</strong>: <span class="math display">\[ x \succ y \]</span> meaning “<span class="math inline">\(x\)</span> is strictly preferred to <span class="math inline">\(y\)</span>”, or, formally, <span class="math inline">\(x \succsim y\)</span> but <em>not</em> <span class="math inline">\(y \succsim x\)</span>.</p></li>
 <li><p><strong>Indifference</strong>: <span class="math display">\[ x \sim y \]</span> meaning “the agent is indifferent between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>”.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
 </ul>
-<p>These are not new primitives. They are constructed from <span class="math inline">\(\succeq\)</span> and will inherit its properties.</p>
+<p>These are not new primitives. They are constructed from <span class="math inline">\(\succsim\)</span> and will inherit its properties.</p>
 <hr />
 <h2 id="basic-properties-of-preferences">3. Basic properties of preferences</h2>
 <p>Economists typically impose structure on preferences to make choice predictable and analyzable.</p>
 <h3 id="completeness">Completeness</h3>
-<p>Preferences are <strong>complete</strong> if for every pair <span class="math inline">\(x,y \in X\)</span>, either <span class="math display">\[ x \succeq y \quad \text{or} \quad y \succeq x \quad \text{(or both)}. \]</span></p>
+<p>Preferences are <strong>complete</strong> if for every pair <span class="math inline">\(x,y \in X\)</span>, either <span class="math display">\[ x \succsim y \quad \text{or} \quad y \succsim x \quad \text{(or both)}. \]</span></p>
 <p>What this means:</p>
 <blockquote>
 <p>“Given any two alternatives, the agent can compare them.”</p>
@@ -63,7 +63,7 @@ MathJax = {
 <p>Completeness rules out indecision. It does <em>not</em> rule out indifference.</p>
 <hr />
 <h3 id="transitivity">Transitivity</h3>
-<p>Preferences are <strong>transitive</strong> if whenever <span class="math display">\[ x \succeq y \quad \text{and} \quad y \succeq z, \]</span> it follows that <span class="math display">\[ x \succeq z. \]</span></p>
+<p>Preferences are <strong>transitive</strong> if whenever <span class="math display">\[ x \succsim y \quad \text{and} \quad y \succsim z, \]</span> it follows that <span class="math display">\[ x \succsim z. \]</span></p>
 <p>Read aloud:</p>
 <blockquote>
 <p>“If <span class="math inline">\(x\)</span> is at least as good as <span class="math inline">\(y\)</span>, and <span class="math inline">\(y\)</span> is at least as good as <span class="math inline">\(z\)</span>, then <span class="math inline">\(x\)</span> is at least as good as <span class="math inline">\(z\)</span>.”</p>
@@ -77,7 +77,7 @@ MathJax = {
 <h2 id="choice-and-the-meaning-of-rationality">4. Choice and the meaning of rationality</h2>
 <p>Why do we impose completeness and transitivity?</p>
 <p>Because together they ensure that the agent can make an (optimal) choice from a given set <span class="math inline">\(X\)</span></p>
-<p>Formally, <span class="math inline">\(b \in X\)</span> is an optimal choice <span class="math display">\[ b \succeq x \quad \text{for all } x \in X. \]</span></p>
+<p>Formally, <span class="math inline">\(b \in X\)</span> is an optimal choice <span class="math display">\[ b \succsim x \quad \text{for all } x \in X. \]</span></p>
 <p>Notice that:</p>
 <ul>
 <li>there may be more than one such <span class="math inline">\(b\)</span>,</li>
@@ -87,7 +87,7 @@ MathJax = {
 <hr />
 <h2 id="utility-representation-turning-preferences-into-numbers">5. Utility representation: turning preferences into numbers</h2>
 <p>Working directly with preference relations can be cumbersome. Economists therefore often ask whether preferences can be <em>represented</em> by a <strong>utility function</strong>.</p>
-<p>A utility function represents a preference if we can find a mapping <span class="math display">\[ u: X \to \mathbb{R} \]</span> such that <span class="math display">\[ x \succeq x&#39; \quad \Leftrightarrow \quad u(x) \geq u(x&#39;). \]</span></p>
+<p>A utility function represents a preference if we can find a mapping <span class="math display">\[ u: X \to \mathbb{R} \]</span> such that <span class="math display">\[ x \succsim x&#39; \quad \Leftrightarrow \quad u(x) \geq u(x&#39;). \]</span></p>
 <p>Read aloud:</p>
 <blockquote>
 <p>“The agent weakly prefers <span class="math inline">\(x\)</span> to <span class="math inline">\(x&#39;\)</span> if and only if the utility assigned to <span class="math inline">\(x\)</span> is at least as large as the utility assigned to <span class="math inline">\(x&#39;\)</span>.”<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
@@ -96,7 +96,7 @@ MathJax = {
 <hr />
 <h2 id="ordinal-versus-cardinal-utility">6. Ordinal versus cardinal utility</h2>
 <p>The definition above immediately implies an important point. If <span class="math inline">\(u\)</span> represents preferences, then so does any function of the form <span class="math display">\[ v(x) = f(u(x)), \]</span> as long as <span class="math inline">\(f\)</span> is <strong>strictly increasing</strong>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-<p>Why is this the case? Well, if <span class="math inline">\(f\)</span> is strictly increasing that means higher numbers in <span class="math inline">\(\Rightarrow\)</span> higher numbers out. But because <span class="math inline">\(u(x)&gt;u(x&#39;)\)</span> if <span class="math inline">\(x \succeq x&#39;\)</span>, we know that this holds also for <span class="math inline">\(f(u(x))\)</span>.</p>
+<p>Why is this the case? Well, if <span class="math inline">\(f\)</span> is strictly increasing that means higher numbers in <span class="math inline">\(\Rightarrow\)</span> higher numbers out. But because <span class="math inline">\(u(x)&gt;u(x&#39;)\)</span> if <span class="math inline">\(x \succsim x&#39;\)</span>, we know that this holds also for <span class="math inline">\(f(u(x))\)</span>.</p>
 <p>Why is this important? Because it implies that:</p>
 <ul>
 <li>only the <strong>ordering</strong> of utility values matters,</li>
@@ -155,9 +155,9 @@ MathJax = {
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>The relation is “binary” because formally it compares elements from two sets. In our context the two sets are <span class="math inline">\(X\)</span> and <span class="math inline">\(X\)</span> again. If you want to be pedantic <span class="math inline">\(\succeq\)</span> in itself is a subset of <span class="math inline">\(X \times X\)</span>. More on this after the definition.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>So in light of the set interpretation of <span class="math inline">\(\succeq\)</span>, we see that <span class="math inline">\(\succeq\)</span> is indeed the set of all pairs <span class="math inline">\((x,x&#39;)\)</span> such that we weakly prefer <span class="math inline">\(x\)</span> over <span class="math inline">\(x&#39;\)</span>. Think about the more familiar <span class="math inline">\(\geq\)</span> which of course is also a binary relation. Writing <span class="math inline">\(x \succeq x&#39;\)</span> is then a simple and intuitive shorthand for this (perhaps) more complicated object.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Think about how you would express this with <span class="math inline">\(\succeq\)</span>!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The relation is “binary” because formally it compares elements from two sets. In our context the two sets are <span class="math inline">\(X\)</span> and <span class="math inline">\(X\)</span> again. If you want to be pedantic <span class="math inline">\(\succsim\)</span> in itself is a subset of <span class="math inline">\(X \times X\)</span>. More on this after the definition.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>So in light of the set interpretation of <span class="math inline">\(\succsim\)</span>, we see that <span class="math inline">\(\succsim\)</span> is indeed the set of all pairs <span class="math inline">\((x,x&#39;)\)</span> such that we weakly prefer <span class="math inline">\(x\)</span> over <span class="math inline">\(x&#39;\)</span>. Think about the more familiar <span class="math inline">\(\geq\)</span> which of course is also a binary relation. Writing <span class="math inline">\(x \succsim x&#39;\)</span> is then a simple and intuitive shorthand for this (perhaps) more complicated object.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Think about how you would express this with <span class="math inline">\(\succsim\)</span>!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>An interesting fact in economics is that while individuals are often somewhat transitive in their preferences, it may be the case that a <em>group</em> of individuals with transitive preferences does <em>not</em> have transitive preferences on the group level.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>The term <em>if and only if</em> describes <em>equivalence</em> because it says the left hand side is true <em>if</em> the right hand side is true (<span class="math inline">\(\Leftarrow\)</span>). But it also says, that the left hand side can be true <em>only if</em> the right hand side is true, which in turn means that the left hand side being true implies the right hand side being true (<span class="math inline">\(\Rightarrow\)</span>).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>You may wonder why we need to “represent” something here. There reason is (as often) tractability. If we have the utility representation, we work on the real-line which makes it very easy for us to compare things. As we will see below, it also makes it easier for us to understand what properties mean, because we simply know very well how to operate and walk around in <span class="math inline">\(\mathbb{R}\)</span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
